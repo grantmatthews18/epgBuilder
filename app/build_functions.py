@@ -218,7 +218,7 @@ def create_combined_channels(channels):
             for i in range(0, pattern_cfg.get("num_combined_channels", 10)):
                 combined_channels[pattern_cfg["name"]]["service_channels"].append({
                     "channel_number": i + 1,
-                    "id": f"{pattern_cfg.get('channel_name').lower().replace(' ', '_')}_{i+1}",
+                    "id": f"{pattern_cfg.get('channel_name').lower().replace(' ', '_').replace('+', '_plus')}_{i+1}",
                     "channel_name": f"{pattern_cfg.get('channel_name')} {i+1}",
                     "icon_url": pattern_cfg.get("icon_url"),
                     "category": pattern_cfg.get("category"),
@@ -277,6 +277,27 @@ def create_combined_channels(channels):
     for pattern_name in combined_channels:
         for service_channel in combined_channels[pattern_name]["service_channels"]:
             service_channel["programs"].sort(key=lambda x: x["start_dt"])
+    
+    # Add placeholder events for channels with no programs
+    now_utc = datetime.now(tz.UTC)
+    period_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
+    period_end = period_start + timedelta(days=7)
+    
+    for pattern_name in combined_channels:
+        for service_channel in combined_channels[pattern_name]["service_channels"]:
+            if not service_channel["programs"]:
+                # Add a placeholder for the entire 7-day period
+                service_channel["programs"].append({
+                    "start_dt": period_start,
+                    "stop_dt": period_end,
+                    "start_str": format_xmltv_timestamp(period_start),
+                    "stop_str": format_xmltv_timestamp(period_end),
+                    "original_channel_id": None,
+                    "stream_url": None,
+                    "program_name": "No Events Scheduled",
+                    "description": "No program information available for this channel",
+                    "icon_url": service_channel["icon_url"]
+                })
     
     return combined_channels
 
