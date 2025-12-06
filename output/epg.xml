@@ -1,0 +1,2059 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tv generator-info-name="epgBuilder">
+  <channel id="7623">
+    <display-name>NHL PPV 01</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
+  </channel>
+  <channel id="7624">
+    <display-name>NHL PPV 02</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
+  </channel>
+  <channel id="7625">
+    <display-name>NHL PPV 03</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
+  </channel>
+  <channel id="7626">
+    <display-name>NHL PPV 04</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
+  </channel>
+  <channel id="7627">
+    <display-name>NHL PPV 05</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
+  </channel>
+  <channel id="8744">
+    <display-name>ESPN+ 001</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8745">
+    <display-name>ESPN+ 002</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8746">
+    <display-name>ESPN+ 003</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8747">
+    <display-name>ESPN+ 004</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8748">
+    <display-name>ESPN+ 005</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8749">
+    <display-name>ESPN+ 006</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8750">
+    <display-name>ESPN+ 007</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8751">
+    <display-name>ESPN+ 008</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8752">
+    <display-name>ESPN+ 009</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8753">
+    <display-name>ESPN+ 010</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8754">
+    <display-name>ESPN+ 011</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8755">
+    <display-name>ESPN+ 012</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8756">
+    <display-name>ESPN+ 013</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8757">
+    <display-name>ESPN+ 014</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8758">
+    <display-name>ESPN+ 015</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8759">
+    <display-name>ESPN+ 016</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8760">
+    <display-name>ESPN+ 017</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8761">
+    <display-name>ESPN+ 018</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8762">
+    <display-name>ESPN+ 019</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8763">
+    <display-name>ESPN+ 020</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8764">
+    <display-name>ESPN+ 021</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8765">
+    <display-name>ESPN+ 022</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8766">
+    <display-name>ESPN+ 023</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8767">
+    <display-name>ESPN+ 024</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8768">
+    <display-name>ESPN+ 025</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8769">
+    <display-name>ESPN+ 026</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8770">
+    <display-name>ESPN+ 027</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8771">
+    <display-name>ESPN+ 028</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8772">
+    <display-name>ESPN+ 029</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8773">
+    <display-name>ESPN+ 030</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8774">
+    <display-name>ESPN+ 031</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8775">
+    <display-name>ESPN+ 032</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8776">
+    <display-name>ESPN+ 033</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8777">
+    <display-name>ESPN+ 034</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8778">
+    <display-name>ESPN+ 035</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8779">
+    <display-name>ESPN+ 036</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8780">
+    <display-name>ESPN+ 037</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8781">
+    <display-name>ESPN+ 038</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8782">
+    <display-name>ESPN+ 039</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8783">
+    <display-name>ESPN+ 040</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8784">
+    <display-name>ESPN+ 041</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8785">
+    <display-name>ESPN+ 042</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8786">
+    <display-name>ESPN+ 043</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8787">
+    <display-name>ESPN+ 044</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8788">
+    <display-name>ESPN+ 045</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8789">
+    <display-name>ESPN+ 046</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8790">
+    <display-name>ESPN+ 047</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8791">
+    <display-name>ESPN+ 048</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8792">
+    <display-name>ESPN+ 049</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8793">
+    <display-name>ESPN+ 050</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8794">
+    <display-name>ESPN+ 051</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8795">
+    <display-name>ESPN+ 052</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8796">
+    <display-name>ESPN+ 053</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8797">
+    <display-name>ESPN+ 054</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8798">
+    <display-name>ESPN+ 055</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8799">
+    <display-name>ESPN+ 056</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8800">
+    <display-name>ESPN+ 057</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8801">
+    <display-name>ESPN+ 058</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8802">
+    <display-name>ESPN+ 059</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8803">
+    <display-name>ESPN+ 060</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8804">
+    <display-name>ESPN+ 061</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8805">
+    <display-name>ESPN+ 062</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8806">
+    <display-name>ESPN+ 063</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8807">
+    <display-name>ESPN+ 064</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8808">
+    <display-name>ESPN+ 065</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8809">
+    <display-name>ESPN+ 066</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8810">
+    <display-name>ESPN+ 067</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8811">
+    <display-name>ESPN+ 068</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8812">
+    <display-name>ESPN+ 069</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8813">
+    <display-name>ESPN+ 070</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8814">
+    <display-name>ESPN+ 071</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8815">
+    <display-name>ESPN+ 072</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8816">
+    <display-name>ESPN+ 073</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8817">
+    <display-name>ESPN+ 074</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8818">
+    <display-name>ESPN+ 075</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8819">
+    <display-name>ESPN+ 076</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8820">
+    <display-name>ESPN+ 077</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8821">
+    <display-name>ESPN+ 078</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8822">
+    <display-name>ESPN+ 079</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8823">
+    <display-name>ESPN+ 080</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8824">
+    <display-name>ESPN+ 081</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8825">
+    <display-name>ESPN+ 082</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8826">
+    <display-name>ESPN+ 083</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8827">
+    <display-name>ESPN+ 084</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8828">
+    <display-name>ESPN+ 085</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8829">
+    <display-name>ESPN+ 086</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8830">
+    <display-name>ESPN+ 087</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8831">
+    <display-name>ESPN+ 088</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8832">
+    <display-name>ESPN+ 089</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8833">
+    <display-name>ESPN+ 090</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8834">
+    <display-name>ESPN+ 091</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8835">
+    <display-name>ESPN+ 092</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8836">
+    <display-name>ESPN+ 093</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8837">
+    <display-name>ESPN+ 094</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8838">
+    <display-name>ESPN+ 095</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8839">
+    <display-name>ESPN+ 096</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8840">
+    <display-name>ESPN+ 097</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8841">
+    <display-name>ESPN+ 098</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8842">
+    <display-name>ESPN+ 099</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8843">
+    <display-name>ESPN+ 100</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8844">
+    <display-name>ESPN+ 101</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8845">
+    <display-name>ESPN+ 102</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8846">
+    <display-name>ESPN+ 103</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8847">
+    <display-name>ESPN+ 104</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8848">
+    <display-name>ESPN+ 105</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8849">
+    <display-name>ESPN+ 106</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8850">
+    <display-name>ESPN+ 107</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8851">
+    <display-name>ESPN+ 108</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8852">
+    <display-name>ESPN+ 109</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8853">
+    <display-name>ESPN+ 110</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8854">
+    <display-name>ESPN+ 111</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8855">
+    <display-name>ESPN+ 112</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8856">
+    <display-name>ESPN+ 113</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8857">
+    <display-name>ESPN+ 114</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8858">
+    <display-name>ESPN+ 115</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8859">
+    <display-name>ESPN+ 116</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8860">
+    <display-name>ESPN+ 117</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8861">
+    <display-name>ESPN+ 118</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8862">
+    <display-name>ESPN+ 119</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8863">
+    <display-name>ESPN+ 120</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8864">
+    <display-name>ESPN+ 121</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8865">
+    <display-name>ESPN+ 122</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8866">
+    <display-name>ESPN+ 123</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8867">
+    <display-name>ESPN+ 124</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8868">
+    <display-name>ESPN+ 125</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8869">
+    <display-name>ESPN+ 126</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8870">
+    <display-name>ESPN+ 127</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8871">
+    <display-name>ESPN+ 128</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8872">
+    <display-name>ESPN+ 129</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8873">
+    <display-name>ESPN+ 130</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8874">
+    <display-name>ESPN+ 131</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8875">
+    <display-name>ESPN+ 132</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8876">
+    <display-name>ESPN+ 133</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8877">
+    <display-name>ESPN+ 134</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8878">
+    <display-name>ESPN+ 135</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8879">
+    <display-name>ESPN+ 136</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8880">
+    <display-name>ESPN+ 137</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8881">
+    <display-name>ESPN+ 138</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8882">
+    <display-name>ESPN+ 139</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8883">
+    <display-name>ESPN+ 140</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8884">
+    <display-name>ESPN+ 141</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8885">
+    <display-name>ESPN+ 142</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8886">
+    <display-name>ESPN+ 143</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8887">
+    <display-name>ESPN+ 144</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8888">
+    <display-name>ESPN+ 145</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8889">
+    <display-name>ESPN+ 146</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8890">
+    <display-name>ESPN+ 147</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8891">
+    <display-name>ESPN+ 148</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="8892">
+    <display-name>ESPN+ 149</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
+  </channel>
+  <channel id="10970">
+    <display-name>Paramount+ 01</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
+  </channel>
+  <channel id="11092">
+    <display-name>BTN+ 001</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11093">
+    <display-name>BTN+ 002</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11094">
+    <display-name>BTN+ 003</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11095">
+    <display-name>BTN+ 004</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11096">
+    <display-name>BTN+ 005</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11097">
+    <display-name>BTN+ 006</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11098">
+    <display-name>BTN+ 007</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11099">
+    <display-name>BTN+ 008</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11100">
+    <display-name>BTN+ 009</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11101">
+    <display-name>BTN+ 010</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11102">
+    <display-name>BTN+ 011</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11103">
+    <display-name>BTN+ 012</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11104">
+    <display-name>BTN+ 013</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11105">
+    <display-name>BTN+ 014</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11106">
+    <display-name>BTN+ 015</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11107">
+    <display-name>BTN+ 016</display-name>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
+  </channel>
+  <channel id="11831">
+    <display-name>TSN+ 01</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11832">
+    <display-name>TSN+ 02</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11833">
+    <display-name>TSN+ 03</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11835">
+    <display-name>TSN+ 05</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11836">
+    <display-name>TSN+ 05</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11837">
+    <display-name>TSN+ 06</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11838">
+    <display-name>TSN+ 07</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11839">
+    <display-name>TSN+ 08</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11840">
+    <display-name>TSN+ 09</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11841">
+    <display-name>TSN+ 10</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11842">
+    <display-name>TSN+ 11</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11843">
+    <display-name>TSN+ 12</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11844">
+    <display-name>TSN+ 13</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11845">
+    <display-name>TSN+ 14</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11846">
+    <display-name>TSN+ 15</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11847">
+    <display-name>TSN+ 16</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11848">
+    <display-name>TSN+ 17</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11849">
+    <display-name>TSN+ 18</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11850">
+    <display-name>TSN+ 19</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11851">
+    <display-name>TSN+ 20</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11852">
+    <display-name>TSN+ 21</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11853">
+    <display-name>TSN+ 22</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11854">
+    <display-name>TSN+ 23</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11855">
+    <display-name>TSN+ 24</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11856">
+    <display-name>TSN+ 25</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11857">
+    <display-name>TSN+ 26</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11858">
+    <display-name>TSN+ 27</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11859">
+    <display-name>TSN+ 28</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11860">
+    <display-name>TSN+ 29</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11861">
+    <display-name>TSN+ 30</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11862">
+    <display-name>TSN+ 31</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11863">
+    <display-name>TSN+ 32</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11864">
+    <display-name>TSN+ 33</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11865">
+    <display-name>TSN+ 34</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11866">
+    <display-name>TSN+ 35</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11867">
+    <display-name>TSN+ 36</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11868">
+    <display-name>TSN+ 37</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11869">
+    <display-name>TSN+ 38</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11870">
+    <display-name>TSN+ 39</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11871">
+    <display-name>TSN+ 40</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11872">
+    <display-name>TSN+ 41</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11873">
+    <display-name>TSN+ 42</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11874">
+    <display-name>TSN+ 43</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11875">
+    <display-name>TSN+ 44</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11876">
+    <display-name>TSN+ 45</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11877">
+    <display-name>TSN+ 46</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11878">
+    <display-name>TSN+ 47</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11879">
+    <display-name>TSN+ 48</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11880">
+    <display-name>TSN+ 49</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11881">
+    <display-name>TSN+ 50</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11882">
+    <display-name>TSN+ 51</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11883">
+    <display-name>TSN+ 52</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11884">
+    <display-name>TSN+ 53</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11885">
+    <display-name>TSN+ 54</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11886">
+    <display-name>TSN+ 55</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11887">
+    <display-name>TSN+ 56</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11888">
+    <display-name>TSN+ 57</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11889">
+    <display-name>TSN+ 58</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11890">
+    <display-name>TSN+ 60</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11891">
+    <display-name>TSN+ 59</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11892">
+    <display-name>TSN+ 61</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11893">
+    <display-name>TSN+ 62</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11894">
+    <display-name>TSN+ 63</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11895">
+    <display-name>TSN+ 64</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11896">
+    <display-name>TSN+ 65</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11897">
+    <display-name>TSN+ 66</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11898">
+    <display-name>TSN+ 67</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11899">
+    <display-name>TSN+ 68</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11900">
+    <display-name>TSN+ 69</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11901">
+    <display-name>TSN+ 70</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11902">
+    <display-name>TSN+ 71</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11903">
+    <display-name>TSN+ 72</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11904">
+    <display-name>TSN+ 73</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11905">
+    <display-name>TSN+ 74</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11906">
+    <display-name>TSN+ 75</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11907">
+    <display-name>TSN+ 76</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11908">
+    <display-name>TSN+ 77</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11909">
+    <display-name>TSN+ 78</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11910">
+    <display-name>TSN+ 79</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11911">
+    <display-name>TSN+ 80</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11912">
+    <display-name>TSN+ 81</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11913">
+    <display-name>TSN+ 82</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11914">
+    <display-name>TSN+ 83</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11915">
+    <display-name>TSN+ 84</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11916">
+    <display-name>TSN+ 85</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <channel id="11917">
+    <display-name>TSN+ 86</display-name>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
+  </channel>
+  <programme channel="7623" start="20251207000000 +0000" stop="20251207030000 +0000">
+    <title>Golden Knights at Devils</title>
+    <desc>NHL | 01 - 7pm Golden Knights at Devils</desc>
+  </programme>
+  <programme channel="7624" start="20251207000000 +0000" stop="20251207030000 +0000">
+    <title>Sabres at Jets</title>
+    <desc>NHL | 02 - 7pm Sabres at Jets</desc>
+  </programme>
+  <programme channel="7625" start="20251207010000 +0000" stop="20251207040000 +0000">
+    <title>Sharks at Stars</title>
+    <desc>NHL | 03 - 8pm Sharks at Stars</desc>
+  </programme>
+  <programme channel="7626" start="20251207020000 +0000" stop="20251207050000 +0000">
+    <title>Mammoth at Canucks</title>
+    <desc>NHL | 04 - 9pm Mammoth at Canucks</desc>
+  </programme>
+  <programme channel="7627" start="20251207030000 +0000" stop="20251207060000 +0000">
+    <title>Capitals at Ducks</title>
+    <desc>NHL | 05 - 10pm Capitals at Ducks</desc>
+  </programme>
+  <programme channel="8744" start="20251205075500 +0000" stop="20251205105500 +0000">
+    <title>Melbourne Victory vs. Canberra United</title>
+    <desc>US (ESPN+ 001) | Melbourne Victory vs. Canberra United Dec 05 2:55AM ET (2025-12-05 02:55:00)</desc>
+  </programme>
+  <programme channel="8745" start="20251205083000 +0000" stop="20251205113000 +0000">
+    <title>Macarthur FC vs. Melbourne Victory</title>
+    <desc>US (ESPN+ 002) | Macarthur FC vs. Melbourne Victory Dec 05 3:30AM ET (2025-12-05 03:30:09)</desc>
+  </programme>
+  <programme channel="8746" start="20251205104000 +0000" stop="20251205134000 +0000">
+    <title>Perth Glory vs. Western Sydney Wanderers FC</title>
+    <desc>US (ESPN+ 003) | Perth Glory vs. Western Sydney Wanderers FC Dec 05 5:40AM ET (2025-12-05 05:40:00)</desc>
+  </programme>
+  <programme channel="8747" start="20251205105500 +0000" stop="20251205135500 +0000">
+    <title>En Español_Formula 2 Abu Dhabi Qualifying</title>
+    <desc>US (ESPN+ 004) | En Español_Formula 2 Abu Dhabi Qualifying Dec 05 5:55AM ET (2025-12-05 05:55:00)</desc>
+  </programme>
+  <programme channel="8748" start="20251205110000 +0000" stop="20251205140000 +0000">
+    <title>Formula 2 Abu Dhabi Qualifying</title>
+    <desc>US (ESPN+ 005) | Formula 2 Abu Dhabi Qualifying Dec 05 6:00AM ET (2025-12-05 06:00:00)</desc>
+  </programme>
+  <programme channel="8749" start="20251205134000 +0000" stop="20251205164000 +0000">
+    <title>Skechers World Champions Cup (Day Two)</title>
+    <desc>US (ESPN+ 006) | Skechers World Champions Cup (Day Two) Dec 05 8:40AM ET (2025-12-05 08:40:00)</desc>
+  </programme>
+  <programme channel="8750" start="20251205141500 +0000" stop="20251205171500 +0000">
+    <title>F1 Show: Abu Dhabi</title>
+    <desc>US (ESPN+ 007) | F1 Show: Abu Dhabi Dec 05 9:15AM ET (2025-12-05 09:15:00)</desc>
+  </programme>
+  <programme channel="8751" start="20251205143000 +0000" stop="20251205173000 +0000">
+    <title>Angola vs. Brazil (Main Round)</title>
+    <desc>US (ESPN+ 008) | Angola vs. Brazil (Main Round) Dec 05 9:30AM ET (2025-12-05 09:30:00)</desc>
+  </programme>
+  <programme channel="8752" start="20251205145500 +0000" stop="20251205175500 +0000">
+    <title>Bahía FP vs. FP Riviera Maya (Playoff)</title>
+    <desc>US (ESPN+ 009) | Bahía FP vs. FP Riviera Maya (Playoff) Dec 05 9:55AM ET (2025-12-05 09:55:00)</desc>
+  </programme>
+  <programme channel="8753" start="20251205150000 +0000" stop="20251205180000 +0000">
+    <title>Big Al Invitational (Swimming)</title>
+    <desc>US (ESPN+ 010) | Big Al Invitational (Swimming) Dec 05 10:00AM ET (2025-12-05 10:00:00)</desc>
+  </programme>
+  <programme channel="8754" start="20251205150000 +0000" stop="20251205180000 +0000">
+    <title>Clinton & Friends</title>
+    <desc>US (ESPN+ 011) | Clinton & Friends Dec 05 10:00AM ET (2025-12-05 10:00:05)</desc>
+  </programme>
+  <programme channel="8755" start="20251205160000 +0000" stop="20251205190000 +0000">
+    <title>Houston Christian vs. South Florida</title>
+    <desc>US (ESPN+ 012) | Houston Christian vs. South Florida Dec 05 11:00AM ET (2025-12-05 11:00:00)</desc>
+  </programme>
+  <programme channel="8756" start="20251205160000 +0000" stop="20251205190000 +0000">
+    <title>Merrimack vs. New Hampshire</title>
+    <desc>US (ESPN+ 013) | Merrimack vs. New Hampshire Dec 05 11:00AM ET (2025-12-05 11:00:05)</desc>
+  </programme>
+  <programme channel="8757" start="20251205160000 +0000" stop="20251205190000 +0000">
+    <title>Stony Brook vs. Harvard</title>
+    <desc>US (ESPN+ 014) | Stony Brook vs. Harvard Dec 05 11:00AM ET (2025-12-05 11:00:10)</desc>
+  </programme>
+  <programme channel="8758" start="20251205160000 +0000" stop="20251205190000 +0000">
+    <title>Hawk Talk with Brandon Schneider</title>
+    <desc>US (ESPN+ 015) | Hawk Talk with Brandon Schneider Dec 05 11:00AM ET (2025-12-05 11:00:15)</desc>
+  </programme>
+  <programme channel="8759" start="20251205161000 +0000" stop="20251205191000 +0000">
+    <title>Socal BSC vs. Cruzn Academy (Playoff)</title>
+    <desc>US (ESPN+ 016) | Socal BSC vs. Cruzn Academy (Playoff) Dec 05 11:10AM ET (2025-12-05 11:10:00)</desc>
+  </programme>
+  <programme channel="8760" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>Japan vs. Hungary (Main Round)</title>
+    <desc>US (ESPN+ 017) | Japan vs. Hungary (Main Round) Dec 05 12:00PM ET (2025-12-05 12:00:00)</desc>
+  </programme>
+  <programme channel="8761" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>Mecum Auctions: Kansas City 2025 (Day 1)</title>
+    <desc>US (ESPN+ 018) | Mecum Auctions: Kansas City 2025 (Day 1) Dec 05 12:00PM ET (2025-12-05 12:00:05)</desc>
+  </programme>
+  <programme channel="8762" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>The Pat McAfee Show</title>
+    <desc>US (ESPN+ 019) | The Pat McAfee Show Dec 05 12:00PM ET (2025-12-05 12:00:10)</desc>
+  </programme>
+  <programme channel="8763" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>Fairfield vs. Howard</title>
+    <desc>US (ESPN+ 020) | Fairfield vs. Howard Dec 05 12:00PM ET (2025-12-05 12:00:15)</desc>
+  </programme>
+  <programme channel="8764" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>Big Al Invitational (Diving)</title>
+    <desc>US (ESPN+ 021) | Big Al Invitational (Diving) Dec 05 12:00PM ET (2025-12-05 12:00:20)</desc>
+  </programme>
+  <programme channel="8765" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>Fri_ 12/5 _ The Rich Eisen Show</title>
+    <desc>US (ESPN+ 022) | Fri_ 12/5 _ The Rich Eisen Show Dec 05 12:00PM ET (2025-12-05 12:00:25)</desc>
+  </programme>
+  <programme channel="8766" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>Sweden vs. South Korea (Main Round)</title>
+    <desc>US (ESPN+ 023) | Sweden vs. South Korea (Main Round) Dec 05 12:00PM ET (2025-12-05 12:00:30)</desc>
+  </programme>
+  <programme channel="8767" start="20251205170500 +0000" stop="20251205200500 +0000">
+    <title>ISU Winter Open</title>
+    <desc>US (ESPN+ 024) | ISU Winter Open Dec 05 12:05PM ET (2025-12-05 12:05:00)</desc>
+  </programme>
+  <programme channel="8768" start="20251205172500 +0000" stop="20251205202500 +0000">
+    <title>Cruzn vs. Cali BSC (Women`s Quarterfinal)</title>
+    <desc>US (ESPN+ 025) | Cruzn vs. Cali BSC (Women`s Quarterfinal) Dec 05 12:25PM ET (2025-12-05 12:25:00)</desc>
+  </programme>
+  <programme channel="8769" start="20251205172500 +0000" stop="20251205202500 +0000">
+    <title>Fortuna Dusseldorf vs. FC Schalke 04</title>
+    <desc>US (ESPN+ 026) | Fortuna Dusseldorf vs. FC Schalke 04 Dec 05 12:25PM ET (2025-12-05 12:25:05)</desc>
+  </programme>
+  <programme channel="8770" start="20251205172500 +0000" stop="20251205202500 +0000">
+    <title>Preußen Münster vs. Hannover 96</title>
+    <desc>US (ESPN+ 027) | Preußen Münster vs. Hannover 96 Dec 05 12:25PM ET (2025-12-05 12:25:10)</desc>
+  </programme>
+  <programme channel="8771" start="20251205180000 +0000" stop="20251205210000 +0000">
+    <title>VfB Stuttgart II vs. Rot_Weiss Essen</title>
+    <desc>US (ESPN+ 028) | VfB Stuttgart II vs. Rot_Weiss Essen Dec 05 1:00PM ET (2025-12-05 13:00:00)</desc>
+  </programme>
+  <programme channel="8772" start="20251205180000 +0000" stop="20251205210000 +0000">
+    <title>Cornhole (Open Women`s_ Juniors & Senior Singles)</title>
+    <desc>US (ESPN+ 029) | Cornhole (Open Women`s_ Juniors & Senior Singles) Dec 05 1:00PM ET (2025-12-05 13:00:05)</desc>
+  </programme>
+  <programme channel="8773" start="20251205182500 +0000" stop="20251205212500 +0000">
+    <title>HBCU vs. Ivy League</title>
+    <desc>US (ESPN+ 030) | HBCU vs. Ivy League Dec 05 1:25PM ET (2025-12-05 13:25:00)</desc>
+  </programme>
+  <programme channel="8774" start="20251205183000 +0000" stop="20251205213000 +0000">
+    <title>Jai Alai (Battle Court Jai_Alai Playoff)</title>
+    <desc>US (ESPN+ 031) | Jai Alai (Battle Court Jai_Alai Playoff) Dec 05 1:30PM ET (2025-12-05 13:30:00)</desc>
+  </programme>
+  <programme channel="8775" start="20251205184000 +0000" stop="20251205214000 +0000">
+    <title>Garita Palmera BS vs. Samara ADG FP (Men`s Quarterfinal)</title>
+    <desc>US (ESPN+ 032) | Garita Palmera BS vs. Samara ADG FP (Men`s Quarterfinal) Dec 05 1:40PM ET (2025-12-05 13:40:00)</desc>
+  </programme>
+  <programme channel="8776" start="20251205190000 +0000" stop="20251205220000 +0000">
+    <title>Assumption vs. Sacred Heart</title>
+    <desc>US (ESPN+ 033) | Assumption vs. Sacred Heart Dec 05 2:00PM ET (2025-12-05 14:00:00)</desc>
+  </programme>
+  <programme channel="8777" start="20251205190000 +0000" stop="20251205220000 +0000">
+    <title>Holy Cross vs. Vermont</title>
+    <desc>US (ESPN+ 034) | Holy Cross vs. Vermont Dec 05 2:00PM ET (2025-12-05 14:00:05)</desc>
+  </programme>
+  <programme channel="8778" start="20251205192000 +0000" stop="20251205222000 +0000">
+    <title>1. FSV Mainz 05 vs. Borussia Mönchengladbach</title>
+    <desc>US (ESPN+ 035) | 1. FSV Mainz 05 vs. Borussia Mönchengladbach Dec 05 2:20PM ET (2025-12-05 14:20:00)</desc>
+  </programme>
+  <programme channel="8779" start="20251205192500 +0000" stop="20251205222500 +0000">
+    <title>Salford City vs. Leyton Orient (Round 2)</title>
+    <desc>US (ESPN+ 036) | Salford City vs. Leyton Orient (Round 2) Dec 05 2:25PM ET (2025-12-05 14:25:00)</desc>
+  </programme>
+  <programme channel="8780" start="20251205193000 +0000" stop="20251205223000 +0000">
+    <title>Switzerland vs. Denmark (Main Round)</title>
+    <desc>US (ESPN+ 037) | Switzerland vs. Denmark (Main Round) Dec 05 2:30PM ET (2025-12-05 14:30:00)</desc>
+  </programme>
+  <programme channel="8781" start="20251205195000 +0000" stop="20251205225000 +0000">
+    <title>Real Oviedo vs. RCD Mallorca</title>
+    <desc>US (ESPN+ 038) | Real Oviedo vs. RCD Mallorca Dec 05 2:50PM ET (2025-12-05 14:50:00)</desc>
+  </programme>
+  <programme channel="8782" start="20251205195500 +0000" stop="20251205225500 +0000">
+    <title>En Español_Real Oviedo vs. RCD Mallorca</title>
+    <desc>US (ESPN+ 039) | En Español_Real Oviedo vs. RCD Mallorca Dec 05 2:55PM ET (2025-12-05 14:55:00)</desc>
+  </programme>
+  <programme channel="8783" start="20251205195500 +0000" stop="20251205225500 +0000">
+    <title>Cruzn vs. Fuego FC (Men`s Quarterfinal)</title>
+    <desc>US (ESPN+ 040) | Cruzn vs. Fuego FC (Men`s Quarterfinal) Dec 05 2:55PM ET (2025-12-05 14:55:05)</desc>
+  </programme>
+  <programme channel="8784" start="20251205200000 +0000" stop="20251205230000 +0000">
+    <title>Jerome Tang Show</title>
+    <desc>US (ESPN+ 041) | Jerome Tang Show Dec 05 3:00PM ET (2025-12-05 15:00:00)</desc>
+  </programme>
+  <programme channel="8785" start="20251205200000 +0000" stop="20251205230000 +0000">
+    <title>RPI vs. Dartmouth</title>
+    <desc>US (ESPN+ 042) | RPI vs. Dartmouth Dec 05 3:00PM ET (2025-12-05 15:00:05)</desc>
+  </programme>
+  <programme channel="8786" start="20251205200000 +0000" stop="20251205230000 +0000">
+    <title>UFC 323 Pre_Show: Dvalishvili vs. Yan 2</title>
+    <desc>US (ESPN+ 043) | UFC 323 Pre_Show: Dvalishvili vs. Yan 2 Dec 05 3:00PM ET (2025-12-05 15:00:10)</desc>
+  </programme>
+  <programme channel="8787" start="20251205200000 +0000" stop="20251205230000 +0000">
+    <title>Freddie & Harry</title>
+    <desc>US (ESPN+ 044) | Freddie & Harry Dec 05 3:00PM ET (2025-12-05 15:00:15)</desc>
+  </programme>
+  <programme channel="8788" start="20251205200000 +0000" stop="20251205230000 +0000">
+    <title>Union vs. Harvard</title>
+    <desc>US (ESPN+ 045) | Union vs. Harvard Dec 05 3:00PM ET (2025-12-05 15:00:20)</desc>
+  </programme>
+  <programme channel="8789" start="20251205210000 +0000" stop="20251206000000 +0000">
+    <title>Michigan vs. #8 Xavier (First Round)</title>
+    <desc>US (ESPN+ 046) | Michigan vs. #8 Xavier (First Round) Dec 05 4:00PM ET (2025-12-05 16:00:00)</desc>
+  </programme>
+  <programme channel="8790" start="20251205210000 +0000" stop="20251206000000 +0000">
+    <title>Marquette vs. #7 Western Kentucky (First Round)</title>
+    <desc>US (ESPN+ 047) | Marquette vs. #7 Western Kentucky (First Round) Dec 05 4:00PM ET (2025-12-05 16:00:05)</desc>
+  </programme>
+  <programme channel="8791" start="20251205212500 +0000" stop="20251206002500 +0000">
+    <title>Sao Pedro BS vs. San Marcelino FC (Women`s Quarterfinal)</title>
+    <desc>US (ESPN+ 048) | Sao Pedro BS vs. San Marcelino FC (Women`s Quarterfinal) Dec 05 4:25PM ET (2025-12-05 16:25:00)</desc>
+  </programme>
+  <programme channel="8792" start="20251205220000 +0000" stop="20251206010000 +0000">
+    <title>#6 Baylor vs. #3 Purdue (Second Round)</title>
+    <desc>US (ESPN+ 049) | #6 Baylor vs. #3 Purdue (Second Round) Dec 05 5:00PM ET (2025-12-05 17:00:00)</desc>
+  </programme>
+  <programme channel="8793" start="20251205220000 +0000" stop="20251206010000 +0000">
+    <title>New Zealand vs. West Indies (1st Test _ Day 5)</title>
+    <desc>US (ESPN+ 050) | New Zealand vs. West Indies (1st Test _ Day 5) Dec 05 5:00PM ET (2025-12-05 17:00:05)</desc>
+  </programme>
+  <programme channel="8794" start="20251205220000 +0000" stop="20251206010000 +0000">
+    <title>Stephen F. Austin vs. #6 TCU (First Round)</title>
+    <desc>US (ESPN+ 051) | Stephen F. Austin vs. #6 TCU (First Round) Dec 05 5:00PM ET (2025-12-05 17:00:10)</desc>
+  </programme>
+  <programme channel="8795" start="20251205220000 +0000" stop="20251206010000 +0000">
+    <title>Fri_ 12/5 _ ESPN FC</title>
+    <desc>US (ESPN+ 052) | Fri_ 12/5 _ ESPN FC Dec 05 5:00PM ET (2025-12-05 17:00:15)</desc>
+  </programme>
+  <programme channel="8796" start="20251205220000 +0000" stop="20251206010000 +0000">
+    <title>Collin Klein Press Conference</title>
+    <desc>US (ESPN+ 053) | Collin Klein Press Conference Dec 05 5:00PM ET (2025-12-05 17:00:20)</desc>
+  </programme>
+  <programme channel="8797" start="20251205220000 +0000" stop="20251206010000 +0000">
+    <title>Defiance College vs. Eastern Michigan</title>
+    <desc>US (ESPN+ 054) | Defiance College vs. Eastern Michigan Dec 05 5:00PM ET (2025-12-05 17:00:25)</desc>
+  </programme>
+  <programme channel="8798" start="20251205220000 +0000" stop="20251206010000 +0000">
+    <title>Florida vs. #7 Rice (First Round)</title>
+    <desc>US (ESPN+ 055) | Florida vs. #7 Rice (First Round) Dec 05 5:00PM ET (2025-12-05 17:00:30)</desc>
+  </programme>
+  <programme channel="8799" start="20251205223000 +0000" stop="20251206013000 +0000">
+    <title>South Florida vs. #8 Penn State (First Round)</title>
+    <desc>US (ESPN+ 056) | South Florida vs. #8 Penn State (First Round) Dec 05 5:30PM ET (2025-12-05 17:30:00)</desc>
+  </programme>
+  <programme channel="8800" start="20251205223000 +0000" stop="20251206013000 +0000">
+    <title>Kansas State vs. #8 San Diego (First Round)</title>
+    <desc>US (ESPN+ 057) | Kansas State vs. #8 San Diego (First Round) Dec 05 5:30PM ET (2025-12-05 17:30:05)</desc>
+  </programme>
+  <programme channel="8801" start="20251205223000 +0000" stop="20251206013000 +0000">
+    <title>St. Thomas_Minnesota vs. #5 Iowa State (First Round)</title>
+    <desc>US (ESPN+ 058) | St. Thomas_Minnesota vs. #5 Iowa State (First Round) Dec 05 5:30PM ET (2025-12-05 17:30:10)</desc>
+  </programme>
+  <programme channel="8802" start="20251205223000 +0000" stop="20251206013000 +0000">
+    <title>The 5th Set</title>
+    <desc>US (ESPN+ 059) | The 5th Set Dec 05 5:30PM ET (2025-12-05 17:30:15)</desc>
+  </programme>
+  <programme channel="8803" start="20251205224000 +0000" stop="20251206014000 +0000">
+    <title>Vasco da Gama vs. BS_UES (Women`s Quarterfinal)</title>
+    <desc>US (ESPN+ 060) | Vasco da Gama vs. BS_UES (Women`s Quarterfinal) Dec 05 5:40PM ET (2025-12-05 17:40:00)</desc>
+  </programme>
+  <programme channel="8804" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Big Al Invitational (Diving)</title>
+    <desc>US (ESPN+ 061) | Big Al Invitational (Diving) Dec 05 6:00PM ET (2025-12-05 18:00:00)</desc>
+  </programme>
+  <programme channel="8805" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Merrimack vs. Providence</title>
+    <desc>US (ESPN+ 062) | Merrimack vs. Providence Dec 05 6:00PM ET (2025-12-05 18:00:05)</desc>
+  </programme>
+  <programme channel="8806" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Michigan State vs. Gardner_Webb</title>
+    <desc>US (ESPN+ 063) | Michigan State vs. Gardner_Webb Dec 05 6:00PM ET (2025-12-05 18:00:10)</desc>
+  </programme>
+  <programme channel="8807" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>#11 Princeton vs. #15 Colgate</title>
+    <desc>US (ESPN+ 064) | #11 Princeton vs. #15 Colgate Dec 05 6:00PM ET (2025-12-05 18:00:15)</desc>
+  </programme>
+  <programme channel="8808" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Bucknell vs. Vermont</title>
+    <desc>US (ESPN+ 065) | Bucknell vs. Vermont Dec 05 6:00PM ET (2025-12-05 18:00:20)</desc>
+  </programme>
+  <programme channel="8809" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Central Connecticut vs. Dartmouth</title>
+    <desc>US (ESPN+ 066) | Central Connecticut vs. Dartmouth Dec 05 6:00PM ET (2025-12-05 18:00:25)</desc>
+  </programme>
+  <programme channel="8810" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Boston University vs. #7 UConn</title>
+    <desc>US (ESPN+ 067) | Boston University vs. #7 UConn Dec 05 6:00PM ET (2025-12-05 18:00:30)</desc>
+  </programme>
+  <programme channel="8811" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>#15 NC State vs. #7 Georgetown (Quarterfinals)</title>
+    <desc>US (ESPN+ 068) | #15 NC State vs. #7 Georgetown (Quarterfinals) Dec 05 6:00PM ET (2025-12-05 18:00:35)</desc>
+  </programme>
+  <programme channel="8812" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Maine vs. New Hampshire</title>
+    <desc>US (ESPN+ 069) | Maine vs. New Hampshire Dec 05 6:00PM ET (2025-12-05 18:00:40)</desc>
+  </programme>
+  <programme channel="8813" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Big Al Invitational (Swimming)</title>
+    <desc>US (ESPN+ 070) | Big Al Invitational (Swimming) Dec 05 6:00PM ET (2025-12-05 18:00:45)</desc>
+  </programme>
+  <programme channel="8814" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>#6 Northeastern vs. Boston College</title>
+    <desc>US (ESPN+ 071) | #6 Northeastern vs. Boston College Dec 05 6:00PM ET (2025-12-05 18:00:50)</desc>
+  </programme>
+  <programme channel="8815" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Delaware vs. Colgate</title>
+    <desc>US (ESPN+ 072) | Delaware vs. Colgate Dec 05 6:00PM ET (2025-12-05 18:00:55)</desc>
+  </programme>
+  <programme channel="8816" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>#5 Colorado vs. #4 Indiana (Second Round)</title>
+    <desc>US (ESPN+ 073) | #5 Colorado vs. #4 Indiana (Second Round) Dec 05 6:00PM ET (2025-12-05 18:01:00)</desc>
+  </programme>
+  <programme channel="8817" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>Oshawa FireWolves vs. Halifax Thunderbirds</title>
+    <desc>US (ESPN+ 074) | Oshawa FireWolves vs. Halifax Thunderbirds Dec 05 6:00PM ET (2025-12-05 18:01:05)</desc>
+  </programme>
+  <programme channel="8818" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>#9 Quinnipiac vs. #8 Cornell</title>
+    <desc>US (ESPN+ 075) | #9 Quinnipiac vs. #8 Cornell Dec 05 6:00PM ET (2025-12-05 18:01:10)</desc>
+  </programme>
+  <programme channel="8819" start="20251205230500 +0000" stop="20251206020500 +0000">
+    <title>Fri_ 12/5 _ Pardon The Interruption</title>
+    <desc>US (ESPN+ 076) | Fri_ 12/5 _ Pardon The Interruption Dec 05 6:05PM ET (2025-12-05 18:05:00)</desc>
+  </programme>
+  <programme channel="8820" start="20251205233000 +0000" stop="20251206023000 +0000">
+    <title>Loyola Chicago vs. #2 Louisville (First Round)</title>
+    <desc>US (ESPN+ 077) | Loyola Chicago vs. #2 Louisville (First Round) Dec 05 6:30PM ET (2025-12-05 18:30:00)</desc>
+  </programme>
+  <programme channel="8821" start="20251205233000 +0000" stop="20251206023000 +0000">
+    <title>UMBC vs. #1 Pittsburgh (First Round)</title>
+    <desc>US (ESPN+ 078) | UMBC vs. #1 Pittsburgh (First Round) Dec 05 6:30PM ET (2025-12-05 18:30:05)</desc>
+  </programme>
+  <programme channel="8822" start="20251205234500 +0000" stop="20251206024500 +0000">
+    <title>American Football Championship Pregame Show presented by LLH Healthcare</title>
+    <desc>US (ESPN+ 079) | American Football Championship Pregame Show presented by LLH Healthcare Dec 05 6:45PM ET (2025-12-05 18:45:00)</desc>
+  </programme>
+  <programme channel="8823" start="20251205235500 +0000" stop="20251206025500 +0000">
+    <title>Sportivo Luqueno vs. Yunis Limon FP (Men`s Quarterfinal)</title>
+    <desc>US (ESPN+ 080) | Sportivo Luqueno vs. Yunis Limon FP (Men`s Quarterfinal) Dec 05 6:55PM ET (2025-12-05 18:55:00)</desc>
+  </programme>
+  <programme channel="8824" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Niagara vs. Siena</title>
+    <desc>US (ESPN+ 081) | Niagara vs. Siena Dec 05 7:00PM ET (2025-12-05 19:00:00)</desc>
+  </programme>
+  <programme channel="8825" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Illinois Chicago vs. Ohio</title>
+    <desc>US (ESPN+ 082) | Illinois Chicago vs. Ohio Dec 05 7:00PM ET (2025-12-05 19:00:05)</desc>
+  </programme>
+  <programme channel="8826" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>South Alabama vs. East Tennessee State</title>
+    <desc>US (ESPN+ 083) | South Alabama vs. East Tennessee State Dec 05 7:00PM ET (2025-12-05 19:00:10)</desc>
+  </programme>
+  <programme channel="8827" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Tyler vs. Iowa Western Community College (Semifinal)</title>
+    <desc>US (ESPN+ 084) | Tyler vs. Iowa Western Community College (Semifinal) Dec 05 7:00PM ET (2025-12-05 19:00:15)</desc>
+  </programme>
+  <programme channel="8828" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Colgate vs. St. Lawrence</title>
+    <desc>US (ESPN+ 085) | Colgate vs. St. Lawrence Dec 05 7:00PM ET (2025-12-05 19:00:20)</desc>
+  </programme>
+  <programme channel="8829" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>New Hampshire vs. #12 Maine</title>
+    <desc>US (ESPN+ 086) | New Hampshire vs. #12 Maine Dec 05 7:00PM ET (2025-12-05 19:00:25)</desc>
+  </programme>
+  <programme channel="8830" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Maryland vs. American University</title>
+    <desc>US (ESPN+ 087) | Maryland vs. American University Dec 05 7:00PM ET (2025-12-05 19:00:30)</desc>
+  </programme>
+  <programme channel="8831" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Buffalo Sabres vs. Winnipeg Jets</title>
+    <desc>US (ESPN+ 088) | Buffalo Sabres vs. Winnipeg Jets Dec 05 7:00PM ET (2025-12-05 19:00:35)</desc>
+  </programme>
+  <programme channel="8832" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Buffalo Sabres vs. Winnipeg Jets</title>
+    <desc>US (ESPN+ 089) | Buffalo Sabres vs. Winnipeg Jets Dec 05 7:00PM ET (2025-12-05 19:00:40)</desc>
+  </programme>
+  <programme channel="8833" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>En Español_Nazareno Morel vs. Nicolas Jara (Main Card)</title>
+    <desc>US (ESPN+ 090) | En Español_Nazareno Morel vs. Nicolas Jara (Main Card) Dec 05 7:00PM ET (2025-12-05 19:00:45)</desc>
+  </programme>
+  <programme channel="8834" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Quinnipiac vs. Iona</title>
+    <desc>US (ESPN+ 091) | Quinnipiac vs. Iona Dec 05 7:00PM ET (2025-12-05 19:00:50)</desc>
+  </programme>
+  <programme channel="8835" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Canisius vs. Saint Peter`s</title>
+    <desc>US (ESPN+ 092) | Canisius vs. Saint Peter`s Dec 05 7:00PM ET (2025-12-05 19:00:55)</desc>
+  </programme>
+  <programme channel="8836" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>#8 UCLA vs. #1 Kentucky (Second Round)</title>
+    <desc>US (ESPN+ 093) | #8 UCLA vs. #1 Kentucky (Second Round) Dec 05 7:00PM ET (2025-12-05 19:01:00)</desc>
+  </programme>
+  <programme channel="8837" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Jai Alai (Battle Court Jai_Alai Playoff)</title>
+    <desc>US (ESPN+ 094) | Jai Alai (Battle Court Jai_Alai Playoff) Dec 05 7:00PM ET (2025-12-05 19:01:05)</desc>
+  </programme>
+  <programme channel="8838" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Samford vs. VCU</title>
+    <desc>US (ESPN+ 095) | Samford vs. VCU Dec 05 7:00PM ET (2025-12-05 19:01:10)</desc>
+  </programme>
+  <programme channel="8839" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Fairfield vs. Manhattan</title>
+    <desc>US (ESPN+ 096) | Fairfield vs. Manhattan Dec 05 7:00PM ET (2025-12-05 19:01:15)</desc>
+  </programme>
+  <programme channel="8840" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>NJIT vs. High Point</title>
+    <desc>US (ESPN+ 097) | NJIT vs. High Point Dec 05 7:00PM ET (2025-12-05 19:01:20)</desc>
+  </programme>
+  <programme channel="8841" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>#15 UConn vs. Merrimack</title>
+    <desc>US (ESPN+ 098) | #15 UConn vs. Merrimack Dec 05 7:00PM ET (2025-12-05 19:01:25)</desc>
+  </programme>
+  <programme channel="8842" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Maryland_Eastern Shore vs. Wichita State</title>
+    <desc>US (ESPN+ 099) | Maryland_Eastern Shore vs. Wichita State Dec 05 7:00PM ET (2025-12-05 19:01:30)</desc>
+  </programme>
+  <programme channel="8843" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Yale vs. #20 Harvard</title>
+    <desc>US (ESPN+ 100) | Yale vs. #20 Harvard Dec 05 7:00PM ET (2025-12-05 19:01:35)</desc>
+  </programme>
+  <programme channel="8844" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Mercyhurst vs. Lafayette</title>
+    <desc>US (ESPN+ 101) | Mercyhurst vs. Lafayette Dec 05 7:00PM ET (2025-12-05 19:01:40)</desc>
+  </programme>
+  <programme channel="8845" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Mount St. Mary`s vs. Marist</title>
+    <desc>US (ESPN+ 102) | Mount St. Mary`s vs. Marist Dec 05 7:00PM ET (2025-12-05 19:01:45)</desc>
+  </programme>
+  <programme channel="8846" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Brown vs. #10 Dartmouth</title>
+    <desc>US (ESPN+ 103) | Brown vs. #10 Dartmouth Dec 05 7:00PM ET (2025-12-05 19:01:50)</desc>
+  </programme>
+  <programme channel="8847" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Mercyhurst vs. #25 West Virginia</title>
+    <desc>US (ESPN+ 104) | Mercyhurst vs. #25 West Virginia Dec 05 7:00PM ET (2025-12-05 19:01:55)</desc>
+  </programme>
+  <programme channel="8848" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Princeton vs. Union</title>
+    <desc>US (ESPN+ 105) | Princeton vs. Union Dec 05 7:00PM ET (2025-12-05 19:02:00)</desc>
+  </programme>
+  <programme channel="8849" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Vermont vs. #18 Boston University</title>
+    <desc>US (ESPN+ 106) | Vermont vs. #18 Boston University Dec 05 7:00PM ET (2025-12-05 19:02:05)</desc>
+  </programme>
+  <programme channel="8850" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Youngstown State vs. Milwaukee</title>
+    <desc>US (ESPN+ 107) | Youngstown State vs. Milwaukee Dec 05 7:00PM ET (2025-12-05 19:02:10)</desc>
+  </programme>
+  <programme channel="8851" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>#8 Quinnipiac vs. Rensselaer</title>
+    <desc>US (ESPN+ 108) | #8 Quinnipiac vs. Rensselaer Dec 05 7:00PM ET (2025-12-05 19:02:15)</desc>
+  </programme>
+  <programme channel="8852" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Georgia State vs. Florida International</title>
+    <desc>US (ESPN+ 109) | Georgia State vs. Florida International Dec 05 7:00PM ET (2025-12-05 19:02:20)</desc>
+  </programme>
+  <programme channel="8853" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>#16 Cornell vs. Clarkson</title>
+    <desc>US (ESPN+ 110) | #16 Cornell vs. Clarkson Dec 05 7:00PM ET (2025-12-05 19:02:25)</desc>
+  </programme>
+  <programme channel="8854" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>#5 Miami vs. #4 Kansas (Second Round)</title>
+    <desc>US (ESPN+ 111) | #5 Miami vs. #4 Kansas (Second Round) Dec 05 7:00PM ET (2025-12-05 19:02:30)</desc>
+  </programme>
+  <programme channel="8855" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Bryant vs. Brown</title>
+    <desc>US (ESPN+ 112) | Bryant vs. Brown Dec 05 7:00PM ET (2025-12-05 19:02:35)</desc>
+  </programme>
+  <programme channel="8856" start="20251206001500 +0000" stop="20251206031500 +0000">
+    <title>#14 Boston College vs. UMass Lowell</title>
+    <desc>US (ESPN+ 113) | #14 Boston College vs. UMass Lowell Dec 05 7:15PM ET (2025-12-05 19:15:00)</desc>
+  </programme>
+  <programme channel="8857" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>Campbell vs. #3 Texas A&M (First Round)</title>
+    <desc>US (ESPN+ 114) | Campbell vs. #3 Texas A&M (First Round) Dec 05 7:30PM ET (2025-12-05 19:30:00)</desc>
+  </programme>
+  <programme channel="8858" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>Arizona vs. #7 South Dakota State (First Round)</title>
+    <desc>US (ESPN+ 115) | Arizona vs. #7 South Dakota State (First Round) Dec 05 7:30PM ET (2025-12-05 19:30:05)</desc>
+  </programme>
+  <programme channel="8859" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>Cleary vs. Eastern Michigan</title>
+    <desc>US (ESPN+ 116) | Cleary vs. Eastern Michigan Dec 05 7:30PM ET (2025-12-05 19:30:10)</desc>
+  </programme>
+  <programme channel="8860" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>Northern Iowa vs. Creighton (Second Round)</title>
+    <desc>US (ESPN+ 117) | Northern Iowa vs. Creighton (Second Round) Dec 05 7:30PM ET (2025-12-05 19:30:15)</desc>
+  </programme>
+  <programme channel="8861" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>San Jose Sharks vs. Dallas Stars</title>
+    <desc>US (ESPN+ 118) | San Jose Sharks vs. Dallas Stars Dec 05 7:30PM ET (2025-12-05 19:30:20)</desc>
+  </programme>
+  <programme channel="8862" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>San Jose Sharks vs. Dallas Stars</title>
+    <desc>US (ESPN+ 119) | San Jose Sharks vs. Dallas Stars Dec 05 7:30PM ET (2025-12-05 19:30:25)</desc>
+  </programme>
+  <programme channel="8863" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>UAB vs. Drake</title>
+    <desc>US (ESPN+ 120) | UAB vs. Drake Dec 05 7:30PM ET (2025-12-05 19:30:30)</desc>
+  </programme>
+  <programme channel="8864" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>Northwestern State vs. McNeese</title>
+    <desc>US (ESPN+ 121) | Northwestern State vs. McNeese Dec 05 7:30PM ET (2025-12-05 19:30:35)</desc>
+  </programme>
+  <programme channel="8865" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>Central Arkansas vs. #2 SMU (First Round)</title>
+    <desc>US (ESPN+ 122) | Central Arkansas vs. #2 SMU (First Round) Dec 05 7:30PM ET (2025-12-05 19:30:40)</desc>
+  </programme>
+  <programme channel="8866" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>Christendom College vs. VMI</title>
+    <desc>US (ESPN+ 123) | Christendom College vs. VMI Dec 05 7:30PM ET (2025-12-05 19:30:45)</desc>
+  </programme>
+  <programme channel="8867" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>UFC 323 Ceremonial Weigh_In: Dvalishvili vs. Yan 2</title>
+    <desc>US (ESPN+ 124) | UFC 323 Ceremonial Weigh_In: Dvalishvili vs. Yan 2 Dec 05 8:00PM ET (2025-12-05 20:00:00)</desc>
+  </programme>
+  <programme channel="8868" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>Long Island University vs. #1 Nebraska (First Round)</title>
+    <desc>US (ESPN+ 125) | Long Island University vs. #1 Nebraska (First Round) Dec 05 8:00PM ET (2025-12-05 20:00:05)</desc>
+  </programme>
+  <programme channel="8869" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>Omaha Westside vs. Liberty (MO)</title>
+    <desc>US (ESPN+ 126) | Omaha Westside vs. Liberty (MO) Dec 05 8:00PM ET (2025-12-05 20:00:10)</desc>
+  </programme>
+  <programme channel="8870" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>Utah State vs. Arizona State (Second Round)</title>
+    <desc>US (ESPN+ 127) | Utah State vs. Arizona State (Second Round) Dec 05 8:00PM ET (2025-12-05 20:00:15)</desc>
+  </programme>
+  <programme channel="8871" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>Fairfield vs. #4 Minnesota (First Round)</title>
+    <desc>US (ESPN+ 128) | Fairfield vs. #4 Minnesota (First Round) Dec 05 8:00PM ET (2025-12-05 20:00:20)</desc>
+  </programme>
+  <programme channel="8872" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>North Carolina vs. #3 Wisconsin (Second Round)</title>
+    <desc>US (ESPN+ 129) | North Carolina vs. #3 Wisconsin (Second Round) Dec 05 8:00PM ET (2025-12-05 20:00:25)</desc>
+  </programme>
+  <programme channel="8873" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>Florida A&M vs. #1 Texas (First Round)</title>
+    <desc>US (ESPN+ 130) | Florida A&M vs. #1 Texas (First Round) Dec 05 8:00PM ET (2025-12-05 20:00:30)</desc>
+  </programme>
+  <programme channel="8874" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>Notre Dame vs. TCU</title>
+    <desc>US (ESPN+ 131) | Notre Dame vs. TCU Dec 05 8:00PM ET (2025-12-05 20:00:35)</desc>
+  </programme>
+  <programme channel="8875" start="20251206011000 +0000" stop="20251206041000 +0000">
+    <title>Barra De Santiago vs. Ceilândia EC (Women`s Quarterfinal)</title>
+    <desc>US (ESPN+ 132) | Barra De Santiago vs. Ceilândia EC (Women`s Quarterfinal) Dec 05 8:10PM ET (2025-12-05 20:10:00)</desc>
+  </programme>
+  <programme channel="8876" start="20251206013000 +0000" stop="20251206043000 +0000">
+    <title>Utah Mammoth vs. Vancouver Canucks</title>
+    <desc>US (ESPN+ 133) | Utah Mammoth vs. Vancouver Canucks Dec 05 8:30PM ET (2025-12-05 20:30:00)</desc>
+  </programme>
+  <programme channel="8877" start="20251206013000 +0000" stop="20251206043000 +0000">
+    <title>Utah Mammoth vs. Vancouver Canucks</title>
+    <desc>US (ESPN+ 134) | Utah Mammoth vs. Vancouver Canucks Dec 05 8:30PM ET (2025-12-05 20:30:05)</desc>
+  </programme>
+  <programme channel="8878" start="20251206013000 +0000" stop="20251206043000 +0000">
+    <title>McNeese vs. Arizona State</title>
+    <desc>US (ESPN+ 135) | McNeese vs. Arizona State Dec 05 8:30PM ET (2025-12-05 20:30:10)</desc>
+  </programme>
+  <programme channel="8879" start="20251206013000 +0000" stop="20251206043000 +0000">
+    <title>Futbol Americas: World Cup Draw Special</title>
+    <desc>US (ESPN+ 136) | Futbol Americas: World Cup Draw Special Dec 05 8:30PM ET (2025-12-05 20:30:15)</desc>
+  </programme>
+  <programme channel="8880" start="20251206020000 +0000" stop="20251206050000 +0000">
+    <title>Utah State vs. Loyola Marymount</title>
+    <desc>US (ESPN+ 137) | Utah State vs. Loyola Marymount Dec 05 9:00PM ET (2025-12-05 21:00:00)</desc>
+  </programme>
+  <programme channel="8881" start="20251206020000 +0000" stop="20251206050000 +0000">
+    <title>Tauranga Whai vs. Tokomanawa Queens (Semifinal #1)</title>
+    <desc>US (ESPN+ 138) | Tauranga Whai vs. Tokomanawa Queens (Semifinal #1) Dec 05 9:00PM ET (2025-12-05 21:00:05)</desc>
+  </programme>
+  <programme channel="8882" start="20251206022500 +0000" stop="20251206052500 +0000">
+    <title>Barra De Santiago vs. Rancho Viejo FP (Men`s Quarterfinal)</title>
+    <desc>US (ESPN+ 139) | Barra De Santiago vs. Rancho Viejo FP (Men`s Quarterfinal) Dec 05 9:25PM ET (2025-12-05 21:25:00)</desc>
+  </programme>
+  <programme channel="8883" start="20251206023000 +0000" stop="20251206053000 +0000">
+    <title>Washington Capitals vs. Anaheim Ducks</title>
+    <desc>US (ESPN+ 140) | Washington Capitals vs. Anaheim Ducks Dec 05 9:30PM ET (2025-12-05 21:30:00)</desc>
+  </programme>
+  <programme channel="8884" start="20251206023000 +0000" stop="20251206053000 +0000">
+    <title>Washington Capitals vs. Anaheim Ducks</title>
+    <desc>US (ESPN+ 141) | Washington Capitals vs. Anaheim Ducks Dec 05 9:30PM ET (2025-12-05 21:30:05)</desc>
+  </programme>
+  <programme channel="8885" start="20251206030000 +0000" stop="20251206060000 +0000">
+    <title>#16 Furman vs. #8 Portland (Quarterfinals)</title>
+    <desc>US (ESPN+ 142) | #16 Furman vs. #8 Portland (Quarterfinals) Dec 05 10:00PM ET (2025-12-05 22:00:00)</desc>
+  </programme>
+  <programme channel="8886" start="20251206030000 +0000" stop="20251206060000 +0000">
+    <title>Utah Valley vs. #2 Stanford (First Round)</title>
+    <desc>US (ESPN+ 143) | Utah Valley vs. #2 Stanford (First Round) Dec 05 10:00PM ET (2025-12-05 22:00:05)</desc>
+  </programme>
+  <programme channel="8887" start="20251206030000 +0000" stop="20251206060000 +0000">
+    <title>Sun Belt Championship Trophy Ceremony (Trophy Presentation)</title>
+    <desc>US (ESPN+ 144) | Sun Belt Championship Trophy Ceremony (Trophy Presentation) Dec 05 10:00PM ET (2025-12-05 22:00:10)</desc>
+  </programme>
+  <programme channel="8888" start="20251206030000 +0000" stop="20251206060000 +0000">
+    <title>NCAA Women`s Volleyball Tournament (Second Round)</title>
+    <desc>US (ESPN+ 145) | NCAA Women`s Volleyball Tournament (Second Round) Dec 05 10:00PM ET (2025-12-05 22:00:15)</desc>
+  </programme>
+  <programme channel="8889" start="20251206035000 +0000" stop="20251206065000 +0000">
+    <title>Auckland FC vs. Wellington Phoenix</title>
+    <desc>US (ESPN+ 146) | Auckland FC vs. Wellington Phoenix Dec 05 10:50PM ET (2025-12-05 22:50:00)</desc>
+  </programme>
+  <programme channel="8890" start="20251206043000 +0000" stop="20251206073000 +0000">
+    <title>American Championship Trophy Ceremony (Trophy Presentation)</title>
+    <desc>US (ESPN+ 147) | American Championship Trophy Ceremony (Trophy Presentation) Dec 05 11:30PM ET (2025-12-05 23:30:00)</desc>
+  </programme>
+  <programme channel="8891" start="20251206043000 +0000" stop="20251206073000 +0000">
+    <title>American Football Championship presented by LLH Heathcare Post_Game Press Conference</title>
+    <desc>US (ESPN+ 148) | American Football Championship presented by LLH Heathcare Post_Game Press Conference  Dec 05 11:30PM ET (2025-12-05 23:30:05)</desc>
+  </programme>
+  <programme channel="8892" start="20251206045900 +0000" stop="20251206075900 +0000">
+    <title>Minot State vs. Liberty</title>
+    <desc>US (ESPN+ 149) | Minot State vs. Liberty Dec 05 11:59PM ET (2025-12-05 23:59:00)</desc>
+  </programme>
+  <programme channel="10970" start="20251205195000 +0000" stop="20251205225000 +0000">
+    <title>English Football League: Hull City vs Middlesbrough</title>
+    <desc>English Football League: Hull City vs Middlesbrough @ Dec 5 2:50 PM :Paramount+  01</desc>
+  </programme>
+  <programme channel="11092" start="20251205185000 +0000" stop="20251205215000 +0000">
+    <title>Swimming and Diving: Cincinnati at Indiana</title>
+    <desc>US (BTN+ 001) | Swimming and Diving: Cincinnati at Indiana (2025-12-05 13:50:00)</desc>
+  </programme>
+  <programme channel="11093" start="20251205195000 +0000" stop="20251205225000 +0000">
+    <title>Ice Hockey (W): Minnesota at St. Thomas</title>
+    <desc>US (BTN+ 002) | Ice Hockey (W): Minnesota at St. Thomas (2025-12-05 14:50:00)</desc>
+  </programme>
+  <programme channel="11094" start="20251205205000 +0000" stop="20251205235000 +0000">
+    <title>Ice Hockey (W): St. Cloud St. at Minnesota St. Mankato</title>
+    <desc>US (BTN+ 003) | Ice Hockey (W): St. Cloud St. at Minnesota St. Mankato (2025-12-05 15:50:00)</desc>
+  </programme>
+  <programme channel="11095" start="20251205225000 +0000" stop="20251206015000 +0000">
+    <title>Ice Hockey (W): #1 Wisconsin at #2 Ohio State</title>
+    <desc>US (BTN+ 004) | Ice Hockey (W): #1 Wisconsin at #2 Ohio State (2025-12-05 17:50:00)</desc>
+  </programme>
+  <programme channel="11096" start="20251205235000 +0000" stop="20251206025000 +0000">
+    <title>Ice Hockey (W): UM_Duluth at Bemidji St.</title>
+    <desc>US (BTN+ 005) | Ice Hockey (W): UM_Duluth at Bemidji St. (2025-12-05 18:50:00)</desc>
+  </programme>
+  <programme channel="11097" start="20251205235005 +0000" stop="20251206025005 +0000">
+    <title>Wrestling: C. Michigan at Indiana</title>
+    <desc>US (BTN+ 006) | Wrestling: C. Michigan at Indiana (2025-12-05 18:50:05)</desc>
+  </programme>
+  <programme channel="11098" start="20251206175000 +0000" stop="20251206205000 +0000">
+    <title>Swimming and Diving: Illinois & Purdue at Wisconsin</title>
+    <desc>US (BTN+ 007) | Swimming and Diving: Illinois & Purdue at Wisconsin (2025-12-06 12:50:00)</desc>
+  </programme>
+  <programme channel="11099" start="20251206175005 +0000" stop="20251206205005 +0000">
+    <title>Basketball (W): Nebraska at Penn State</title>
+    <desc>US (BTN+ 008) | Basketball (W): Nebraska at Penn State (2025-12-06 12:50:05)</desc>
+  </programme>
+  <programme channel="11100" start="20251206195000 +0000" stop="20251206225000 +0000">
+    <title>Ice Hockey (W): Wisconsin at Ohio State</title>
+    <desc>US (BTN+ 009) | Ice Hockey (W): Wisconsin at Ohio State (2025-12-06 14:50:00)</desc>
+  </programme>
+  <programme channel="11101" start="20251206195005 +0000" stop="20251206225005 +0000">
+    <title>Ice Hockey (W): St. Thomas at Minnesota</title>
+    <desc>US (BTN+ 010) | Ice Hockey (W): St. Thomas at Minnesota (2025-12-06 14:50:05)</desc>
+  </programme>
+  <programme channel="11102" start="20251206195010 +0000" stop="20251206225010 +0000">
+    <title>Ice Hockey (W): St. Cloud St. at Minnesota St. Mankato</title>
+    <desc>US (BTN+ 011) | Ice Hockey (W): St. Cloud St. at Minnesota St. Mankato (2025-12-06 14:50:10)</desc>
+  </programme>
+  <programme channel="11103" start="20251206205000 +0000" stop="20251206235000 +0000">
+    <title>Ice Hockey (W): UM_Duluth at Bemidji St.</title>
+    <desc>US (BTN+ 012) | Ice Hockey (W): UM_Duluth at Bemidji St. (2025-12-06 15:50:00)</desc>
+  </programme>
+  <programme channel="11104" start="20251206235000 +0000" stop="20251207025000 +0000">
+    <title>Ice Hockey (M): #3 Michigan State at #1 Michigan</title>
+    <desc>US (BTN+ 013) | Ice Hockey (M): #3 Michigan State at #1 Michigan (2025-12-06 18:50:00)</desc>
+  </programme>
+  <programme channel="11105" start="20251207175000 +0000" stop="20251207205000 +0000">
+    <title>Wrestling: #14 Lehigh at #1 Penn State</title>
+    <desc>US (BTN+ 014) | Wrestling: #14 Lehigh at #1 Penn State (2025-12-07 12:50:00)</desc>
+  </programme>
+  <programme channel="11106" start="20251207185000 +0000" stop="20251207215000 +0000">
+    <title>Wrestling: N. Dakota St. at #11 Minnesota</title>
+    <desc>US (BTN+ 015) | Wrestling: N. Dakota St. at #11 Minnesota (2025-12-07 13:50:00)</desc>
+  </programme>
+  <programme channel="11107" start="20251207195000 +0000" stop="20251207225000 +0000">
+    <title>Wrestling (W): Colorado Mesa & Oklahoma State at Iowa</title>
+    <desc>US (BTN+ 016) | Wrestling (W): Colorado Mesa & Oklahoma State at Iowa (2025-12-07 14:50:00)</desc>
+  </programme>
+  <programme channel="11831" start="20251205080000 +0000" stop="20251205110000 +0000">
+    <title>SC with Jay Onrait A</title>
+    <desc>SC with Jay Onrait A @ Dec 5 3:00 AM :TSN+  01</desc>
+  </programme>
+  <programme channel="11832" start="20251205080000 +0000" stop="20251205110000 +0000">
+    <title>SPORTSCENTRE A</title>
+    <desc>SPORTSCENTRE A @ Dec 5 3:00 AM :TSN+  02</desc>
+  </programme>
+  <programme channel="11833" start="20251205080000 +0000" stop="20251205110000 +0000">
+    <title>SportsCentre Road to 2026 A</title>
+    <desc>SportsCentre Road to 2026 A @ Dec 5 3:00 AM :TSN+  03</desc>
+  </programme>
+  <programme channel="11835" start="20251205090000 +0000" stop="20251205120000 +0000">
+    <title>SC with Jay Onrait B</title>
+    <desc>SC with Jay Onrait B @ Dec 5 4:00 AM :TSN+  05</desc>
+  </programme>
+  <programme channel="11836" start="20251205090000 +0000" stop="20251205120000 +0000">
+    <title>SC with Jay Onrait B</title>
+    <desc>SC with Jay Onrait B @ Dec 5 4:00 AM :TSN+  05</desc>
+  </programme>
+  <programme channel="11837" start="20251205090000 +0000" stop="20251205120000 +0000">
+    <title>SportsCentre Road to 2026 B</title>
+    <desc>SportsCentre Road to 2026 B @ Dec 5 4:00 AM :TSN+  06</desc>
+  </programme>
+  <programme channel="11838" start="20251205092000 +0000" stop="20251205122000 +0000">
+    <title>Formula 1 On Board Camera Max Verstappen Abu Dhabi Grand Prix Practice #1</title>
+    <desc>Formula 1 On Board Camera Max Verstappen Abu Dhabi Grand Prix Practice #1 @ Dec 5 4:20 AM :TSN+  07</desc>
+  </programme>
+  <programme channel="11839" start="20251205092000 +0000" stop="20251205122000 +0000">
+    <title>Formula 1 Mixed On Board Camera Abu Dhabi Grand Prix Practice #1</title>
+    <desc>Formula 1 Mixed On Board Camera Abu Dhabi Grand Prix Practice #1 @ Dec 5 4:20 AM :TSN+  08</desc>
+  </programme>
+  <programme channel="11840" start="20251205092000 +0000" stop="20251205122000 +0000">
+    <title>Formula 1 Timing Channel Abu Dhabi Grand Prix Practice #1</title>
+    <desc>Formula 1 Timing Channel Abu Dhabi Grand Prix Practice #1 @ Dec 5 4:20 AM :TSN+  09</desc>
+  </programme>
+  <programme channel="11841" start="20251205092000 +0000" stop="20251205122000 +0000">
+    <title>Formula 1 On Board Camera Lance Stroll Abu Dhabi Grand Prix Practice #1</title>
+    <desc>Formula 1 On Board Camera Lance Stroll Abu Dhabi Grand Prix Practice #1 @ Dec 5 4:20 AM :TSN+  10</desc>
+  </programme>
+  <programme channel="11842" start="20251205092000 +0000" stop="20251205122000 +0000">
+    <title>Formula 1 On Board Camera Lando Norris Abu Dhabi Grand Prix Practice #1</title>
+    <desc>Formula 1 On Board Camera Lando Norris Abu Dhabi Grand Prix Practice #1 @ Dec 5 4:20 AM :TSN+  11</desc>
+  </programme>
+  <programme channel="11843" start="20251205092000 +0000" stop="20251205122000 +0000">
+    <title>Formula 1 Driver Tracker Abu Dhabi Grand Prix Practice #1</title>
+    <desc>Formula 1 Driver Tracker Abu Dhabi Grand Prix Practice #1 @ Dec 5 4:20 AM :TSN+  12</desc>
+  </programme>
+  <programme channel="11844" start="20251205092000 +0000" stop="20251205122000 +0000">
+    <title>Formula 1 Pit Lane Abu Dhabi Grand Prix Practice #1</title>
+    <desc>Formula 1 Pit Lane Abu Dhabi Grand Prix Practice #1 @ Dec 5 4:20 AM :TSN+  13</desc>
+  </programme>
+  <programme channel="11845" start="20251205093000 +0000" stop="20251205123000 +0000">
+    <title>SPORTSCENTRE C</title>
+    <desc>SPORTSCENTRE C @ Dec 5 4:30 AM :TSN+  14</desc>
+  </programme>
+  <programme channel="11846" start="20251205100000 +0000" stop="20251205130000 +0000">
+    <title>SC with Jay Onrait C</title>
+    <desc>SC with Jay Onrait C @ Dec 5 5:00 AM :TSN+  15</desc>
+  </programme>
+  <programme channel="11847" start="20251205100000 +0000" stop="20251205130000 +0000">
+    <title>SportsCentre Road to 2026 C</title>
+    <desc>SportsCentre Road to 2026 C @ Dec 5 5:00 AM :TSN+  16</desc>
+  </programme>
+  <programme channel="11848" start="20251205103000 +0000" stop="20251205133000 +0000">
+    <title>SPORTSCENTRE D</title>
+    <desc>SPORTSCENTRE D @ Dec 5 5:30 AM :TSN+  17</desc>
+  </programme>
+  <programme channel="11849" start="20251205105800 +0000" stop="20251205135800 +0000">
+    <title>Formula 2 Qualifying Yas Island</title>
+    <desc>Formula 2 Qualifying Yas Island @ Dec 5 5:58 AM :TSN+  18</desc>
+  </programme>
+  <programme channel="11850" start="20251205110000 +0000" stop="20251205140000 +0000">
+    <title>SC with Jay Onrait D</title>
+    <desc>SC with Jay Onrait D @ Dec 5 6:00 AM :TSN+  19</desc>
+  </programme>
+  <programme channel="11851" start="20251205110000 +0000" stop="20251205140000 +0000">
+    <title>SportsCentre Road to 2026 D</title>
+    <desc>SportsCentre Road to 2026 D @ Dec 5 6:00 AM :TSN+  20</desc>
+  </programme>
+  <programme channel="11852" start="20251205113000 +0000" stop="20251205143000 +0000">
+    <title>SPORTSCENTRE E</title>
+    <desc>SPORTSCENTRE E @ Dec 5 6:30 AM :TSN+  21</desc>
+  </programme>
+  <programme channel="11853" start="20251205120000 +0000" stop="20251205150000 +0000">
+    <title>SPORTSCENTRE F</title>
+    <desc>SPORTSCENTRE F @ Dec 5 7:00 AM :TSN+  22</desc>
+  </programme>
+  <programme channel="11854" start="20251205120000 +0000" stop="20251205150000 +0000">
+    <title>SC with Jay Onrait E</title>
+    <desc>SC with Jay Onrait E @ Dec 5 7:00 AM :TSN+  23</desc>
+  </programme>
+  <programme channel="11855" start="20251205120000 +0000" stop="20251205150000 +0000">
+    <title>SportsCentre Road to 2026 E</title>
+    <desc>SportsCentre Road to 2026 E @ Dec 5 7:00 AM :TSN+  24</desc>
+  </programme>
+  <programme channel="11856" start="20251205123000 +0000" stop="20251205153000 +0000">
+    <title>SPORTSCENTRE G</title>
+    <desc>SPORTSCENTRE G @ Dec 5 7:30 AM :TSN+  25</desc>
+  </programme>
+  <programme channel="11857" start="20251205124500 +0000" stop="20251205154500 +0000">
+    <title>2025 Formula 1 Practice Abu Dhabi Grand Prix</title>
+    <desc>2025 Formula 1 Practice Abu Dhabi Grand Prix @ Dec 5 7:45 AM :TSN+  26</desc>
+  </programme>
+  <programme channel="11858" start="20251205125000 +0000" stop="20251205155000 +0000">
+    <title>Formula 1 On Board Camera Max Verstappen Abu Dhabi Grand Prix Practice #2</title>
+    <desc>Formula 1 On Board Camera Max Verstappen Abu Dhabi Grand Prix Practice #2 @ Dec 5 7:50 AM :TSN+  27</desc>
+  </programme>
+  <programme channel="11859" start="20251205125000 +0000" stop="20251205155000 +0000">
+    <title>Formula 1 Mixed On Board Camera Abu Dhabi Grand Prix Practice #2</title>
+    <desc>Formula 1 Mixed On Board Camera Abu Dhabi Grand Prix Practice #2 @ Dec 5 7:50 AM :TSN+  28</desc>
+  </programme>
+  <programme channel="11860" start="20251205125000 +0000" stop="20251205155000 +0000">
+    <title>Formula 1 Timing Channel Abu Dhabi Grand Prix Practice #2</title>
+    <desc>Formula 1 Timing Channel Abu Dhabi Grand Prix Practice #2 @ Dec 5 7:50 AM :TSN+  29</desc>
+  </programme>
+  <programme channel="11861" start="20251205125000 +0000" stop="20251205155000 +0000">
+    <title>Formula 1 On Board Camera Lance Stroll Abu Dhabi Grand Prix Practice #2</title>
+    <desc>Formula 1 On Board Camera Lance Stroll Abu Dhabi Grand Prix Practice #2 @ Dec 5 7:50 AM :TSN+  30</desc>
+  </programme>
+  <programme channel="11862" start="20251205125000 +0000" stop="20251205155000 +0000">
+    <title>Formula 1 On Board Camera Lando Norris Abu Dhabi Grand Prix Practice #2</title>
+    <desc>Formula 1 On Board Camera Lando Norris Abu Dhabi Grand Prix Practice #2 @ Dec 5 7:50 AM :TSN+  31</desc>
+  </programme>
+  <programme channel="11863" start="20251205125000 +0000" stop="20251205155000 +0000">
+    <title>Formula 1 Driver Tracker Abu Dhabi Grand Prix Practice #2</title>
+    <desc>Formula 1 Driver Tracker Abu Dhabi Grand Prix Practice #2 @ Dec 5 7:50 AM :TSN+  32</desc>
+  </programme>
+  <programme channel="11864" start="20251205125000 +0000" stop="20251205155000 +0000">
+    <title>Formula 1 Pit Lane Abu Dhabi Grand Prix Practice #2</title>
+    <desc>Formula 1 Pit Lane Abu Dhabi Grand Prix Practice #2 @ Dec 5 7:50 AM :TSN+  33</desc>
+  </programme>
+  <programme channel="11865" start="20251205130000 +0000" stop="20251205160000 +0000">
+    <title>SC with Jay Onrait F</title>
+    <desc>SC with Jay Onrait F @ Dec 5 8:00 AM :TSN+  34</desc>
+  </programme>
+  <programme channel="11866" start="20251205130000 +0000" stop="20251205160000 +0000">
+    <title>SportsCentre Road to 2026 F</title>
+    <desc>SportsCentre Road to 2026 F @ Dec 5 8:00 AM :TSN+  35</desc>
+  </programme>
+  <programme channel="11867" start="20251205133000 +0000" stop="20251205163000 +0000">
+    <title>SPORTSCENTRE H</title>
+    <desc>SPORTSCENTRE H @ Dec 5 8:30 AM :TSN+  36</desc>
+  </programme>
+  <programme channel="11868" start="20251205140000 +0000" stop="20251205170000 +0000">
+    <title>SC with Jay Onrait G</title>
+    <desc>SC with Jay Onrait G @ Dec 5 9:00 AM :TSN+  37</desc>
+  </programme>
+  <programme channel="11869" start="20251205140000 +0000" stop="20251205170000 +0000">
+    <title>SportsCentre Road to 2026 G</title>
+    <desc>SportsCentre Road to 2026 G @ Dec 5 9:00 AM :TSN+  38</desc>
+  </programme>
+  <programme channel="11870" start="20251205141500 +0000" stop="20251205171500 +0000">
+    <title>SC with Jay Onrait H</title>
+    <desc>SC with Jay Onrait H @ Dec 5 9:15 AM :TSN+  39</desc>
+  </programme>
+  <programme channel="11871" start="20251205143000 +0000" stop="20251205173000 +0000">
+    <title>SPORTSCENTRE I</title>
+    <desc>SPORTSCENTRE I @ Dec 5 9:30 AM :TSN+  40</desc>
+  </programme>
+  <programme channel="11872" start="20251205150000 +0000" stop="20251205180000 +0000">
+    <title>2026 FIFA World Cup Draw Arrival Special</title>
+    <desc>2026 FIFA World Cup Draw Arrival Special @ Dec 5 10:00 AM :TSN+  41</desc>
+  </programme>
+  <programme channel="11873" start="20251205150000 +0000" stop="20251205180000 +0000">
+    <title>First Take</title>
+    <desc>First Take @ Dec 5 10:00 AM :TSN+  42</desc>
+  </programme>
+  <programme channel="11874" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>World Champions Cup Day Two</title>
+    <desc>World Champions Cup Day Two @ Dec 5 12:00 PM :TSN+  43</desc>
+  </programme>
+  <programme channel="11875" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>The Pat McAfee Show</title>
+    <desc>The Pat McAfee Show @ Dec 5 12:00 PM :TSN+  44</desc>
+  </programme>
+  <programme channel="11876" start="20251205170000 +0000" stop="20251205200000 +0000">
+    <title>2026 FIFA World Cup Draw</title>
+    <desc>2026 FIFA World Cup Draw @ Dec 5 12:00 PM :TSN+  45</desc>
+  </programme>
+  <programme channel="11877" start="20251205190000 +0000" stop="20251205220000 +0000">
+    <title>2026 FIFA World Cup Draw Canadas World Cup Path</title>
+    <desc>2026 FIFA World Cup Draw Canadas World Cup Path @ Dec 5 2:00 PM :TSN+  46</desc>
+  </programme>
+  <programme channel="11878" start="20251205190000 +0000" stop="20251205220000 +0000">
+    <title>NFL GameDay Week 13</title>
+    <desc>NFL GameDay Week 13 @ Dec 5 2:00 PM :TSN+  47</desc>
+  </programme>
+  <programme channel="11879" start="20251205193000 +0000" stop="20251205223000 +0000">
+    <title>Why We Love Football A</title>
+    <desc>Why We Love Football A @ Dec 5 2:30 PM :TSN+  48</desc>
+  </programme>
+  <programme channel="11880" start="20251205194800 +0000" stop="20251205224800 +0000">
+    <title>LaLiga Real Oviedo vs Mallorca</title>
+    <desc>LaLiga Real Oviedo vs Mallorca @ Dec 5 2:48 PM :TSN+  49</desc>
+  </programme>
+  <programme channel="11881" start="20251205200000 +0000" stop="20251205230000 +0000">
+    <title>SailGP Abu Dhabi Highlights</title>
+    <desc>SailGP Abu Dhabi Highlights @ Dec 5 3:00 PM :TSN+  50</desc>
+  </programme>
+  <programme channel="11882" start="20251205200000 +0000" stop="20251205230000 +0000">
+    <title>2026 FIFA World Cup Draw Breakdown</title>
+    <desc>2026 FIFA World Cup Draw Breakdown @ Dec 5 3:00 PM :TSN+  51</desc>
+  </programme>
+  <programme channel="11883" start="20251205200000 +0000" stop="20251205230000 +0000">
+    <title>NBA Today</title>
+    <desc>NBA Today @ Dec 5 3:00 PM :TSN+  52</desc>
+  </programme>
+  <programme channel="11884" start="20251205200000 +0000" stop="20251205230000 +0000">
+    <title>2024 STIHL Timbersports Canadian Championship Springboard Chop</title>
+    <desc>2024 STIHL Timbersports Canadian Championship Springboard Chop @ Dec 5 3:00 PM :TSN+  53</desc>
+  </programme>
+  <programme channel="11885" start="20251205203000 +0000" stop="20251205233000 +0000">
+    <title>2024 STIHL Timbersports Canadian Championship Hot Saw Final</title>
+    <desc>2024 STIHL Timbersports Canadian Championship Hot Saw Final @ Dec 5 3:30 PM :TSN+  54</desc>
+  </programme>
+  <programme channel="11886" start="20251205210000 +0000" stop="20251206000000 +0000">
+    <title>NFL Live</title>
+    <desc>NFL Live @ Dec 5 4:00 PM :TSN+  55</desc>
+  </programme>
+  <programme channel="11887" start="20251205210000 +0000" stop="20251206000000 +0000">
+    <title>OverDrive</title>
+    <desc>OverDrive @ Dec 5 4:00 PM :TSN+  56</desc>
+  </programme>
+  <programme channel="11888" start="20251205220000 +0000" stop="20251206010000 +0000">
+    <title>College Football Live</title>
+    <desc>College Football Live @ Dec 5 5:00 PM :TSN+  57</desc>
+  </programme>
+  <programme channel="11889" start="20251205223000 +0000" stop="20251206013000 +0000">
+    <title>Pardon the Interruption</title>
+    <desc>Pardon the Interruption @ Dec 5 5:30 PM :TSN+  58</desc>
+  </programme>
+  <programme channel="11890" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>NCAA Womens Hockey Princeton vs Colgate</title>
+    <desc>NCAA Womens Hockey Princeton vs Colgate @ Dec 5 6:00 PM :TSN+  60</desc>
+  </programme>
+  <programme channel="11891" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>NLL on TSN FireWolves vs Thunderbirds</title>
+    <desc>NLL on TSN FireWolves vs Thunderbirds @ Dec 5 6:00 PM :TSN+  59</desc>
+  </programme>
+  <programme channel="11892" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>NCAA Womens College Cup Soccer SF #1 Florida State vs TCU</title>
+    <desc>NCAA Womens College Cup Soccer SF #1 Florida State vs TCU @ Dec 5 6:00 PM :TSN+  61</desc>
+  </programme>
+  <programme channel="11893" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>SPORTSCENTRE J</title>
+    <desc>SPORTSCENTRE J @ Dec 5 6:00 PM :TSN+  62</desc>
+  </programme>
+  <programme channel="11894" start="20251205230000 +0000" stop="20251206020000 +0000">
+    <title>SC November Plays of the Month A</title>
+    <desc>SC November Plays of the Month A @ Dec 5 6:00 PM :TSN+  63</desc>
+  </programme>
+  <programme channel="11895" start="20251205233000 +0000" stop="20251206023000 +0000">
+    <title>Winnipeg Jets Pre Game</title>
+    <desc>Winnipeg Jets Pre Game @ Dec 5 6:30 PM :TSN+  64</desc>
+  </programme>
+  <programme channel="11896" start="20251205233000 +0000" stop="20251206023000 +0000">
+    <title>Why We Love Football B</title>
+    <desc>Why We Love Football B @ Dec 5 6:30 PM :TSN+  65</desc>
+  </programme>
+  <programme channel="11897" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>OHL on TSN+ Erie Otters vs Owen Sound Attack</title>
+    <desc>OHL on TSN+ Erie Otters vs Owen Sound Attack @ Dec 5 7:00 PM :TSN+  66</desc>
+  </programme>
+  <programme channel="11898" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>NCAA Mens Basketball Gonzaga vs Kentucky</title>
+    <desc>NCAA Mens Basketball Gonzaga vs Kentucky @ Dec 5 7:00 PM :TSN+  67</desc>
+  </programme>
+  <programme channel="11899" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>NCAA Football Sun Belt Championship Troy vs James Madison</title>
+    <desc>NCAA Football Sun Belt Championship Troy vs James Madison @ Dec 5 7:00 PM :TSN+  68</desc>
+  </programme>
+  <programme channel="11900" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Raptors GameDay</title>
+    <desc>Raptors GameDay @ Dec 5 7:00 PM :TSN+  69</desc>
+  </programme>
+  <programme channel="11901" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>Winnipeg Jets on TSN Sabres vs Jets</title>
+    <desc>Winnipeg Jets on TSN Sabres vs Jets @ Dec 5 7:00 PM :TSN+  70</desc>
+  </programme>
+  <programme channel="11902" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>SC Top Overtime Moments A</title>
+    <desc>SC Top Overtime Moments A @ Dec 5 7:00 PM :TSN+  71</desc>
+  </programme>
+  <programme channel="11903" start="20251206000000 +0000" stop="20251206030000 +0000">
+    <title>FanDuel Road to the Final A</title>
+    <desc>FanDuel Road to the Final A @ Dec 5 7:00 PM :TSN+  72</desc>
+  </programme>
+  <programme channel="11904" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>NBA on TSN+ Spurs vs Cavaliers</title>
+    <desc>NBA on TSN+ Spurs vs Cavaliers @ Dec 5 7:30 PM :TSN+  73</desc>
+  </programme>
+  <programme channel="11905" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>Tangerine Raptors Basketball Hornets vs Raptors A</title>
+    <desc>Tangerine Raptors Basketball Hornets vs Raptors A @ Dec 5 7:30 PM :TSN+  74</desc>
+  </programme>
+  <programme channel="11906" start="20251206003000 +0000" stop="20251206033000 +0000">
+    <title>Breaking Down Barriers The Future of Girls Hockey</title>
+    <desc>Breaking Down Barriers The Future of Girls Hockey @ Dec 5 7:30 PM :TSN+  75</desc>
+  </programme>
+  <programme channel="11907" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>NCAA Football American Championship North Texas vs Tulane</title>
+    <desc>NCAA Football American Championship North Texas vs Tulane @ Dec 5 8:00 PM :TSN+  76</desc>
+  </programme>
+  <programme channel="11908" start="20251206010000 +0000" stop="20251206040000 +0000">
+    <title>SportsCentre Road to 2026 H</title>
+    <desc>SportsCentre Road to 2026 H @ Dec 5 8:00 PM :TSN+  77</desc>
+  </programme>
+  <programme channel="11909" start="20251206013000 +0000" stop="20251206043000 +0000">
+    <title>Tangerine Raptors Basketball Hornets vs Raptors B</title>
+    <desc>Tangerine Raptors Basketball Hornets vs Raptors B @ Dec 5 8:30 PM :TSN+  78</desc>
+  </programme>
+  <programme channel="11910" start="20251206014500 +0000" stop="20251206044500 +0000">
+    <title>NCAA Womens College Cup Soccer SF #2 Duke vs Stanford</title>
+    <desc>NCAA Womens College Cup Soccer SF #2 Duke vs Stanford @ Dec 5 8:45 PM :TSN+  79</desc>
+  </programme>
+  <programme channel="11911" start="20251206020000 +0000" stop="20251206050000 +0000">
+    <title>NCAA Mens Hockey Robert Morris vs Air Force</title>
+    <desc>NCAA Mens Hockey Robert Morris vs Air Force @ Dec 5 9:00 PM :TSN+  80</desc>
+  </programme>
+  <programme channel="11912" start="20251206023000 +0000" stop="20251206053000 +0000">
+    <title>SPORTSCENTRE K</title>
+    <desc>SPORTSCENTRE K @ Dec 5 9:30 PM :TSN+  81</desc>
+  </programme>
+  <programme channel="11913" start="20251206030000 +0000" stop="20251206060000 +0000">
+    <title>SPORTSCENTRE L</title>
+    <desc>SPORTSCENTRE L @ Dec 5 10:00 PM :TSN+  82</desc>
+  </programme>
+  <programme channel="11914" start="20251206033000 +0000" stop="20251206063000 +0000">
+    <title>SPORTSCENTRE M</title>
+    <desc>SPORTSCENTRE M @ Dec 5 10:30 PM :TSN+  83</desc>
+  </programme>
+  <programme channel="11915" start="20251206043000 +0000" stop="20251206073000 +0000">
+    <title>SC Top Mascot Moments</title>
+    <desc>SC Top Mascot Moments @ Dec 5 11:30 PM :TSN+  84</desc>
+  </programme>
+  <programme channel="11916" start="20251206043000 +0000" stop="20251206073000 +0000">
+    <title>SC Wacky CFL Moments</title>
+    <desc>SC Wacky CFL Moments @ Dec 5 11:30 PM :TSN+  85</desc>
+  </programme>
+  <programme channel="11917" start="20251206043000 +0000" stop="20251206073000 +0000">
+    <title>SC Top 10 Grey Cup Games</title>
+    <desc>SC Top 10 Grey Cup Games @ Dec 5 11:30 PM :TSN+  86</desc>
+  </programme>
+</tv>
