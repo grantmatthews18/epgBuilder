@@ -45,7 +45,7 @@ def get_next_event(service_channel, current_time=None):
     
     return None
 
-@app.route('/stream/<channel_id>.m3u8')
+@app.route('/stream/<channel_id>')
 def stream(channel_id):
     """Proxy the stream from provider to client"""
     # Remove .m3u8 extension if present
