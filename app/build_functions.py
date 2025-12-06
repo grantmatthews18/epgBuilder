@@ -183,8 +183,10 @@ def generate_xmltv(channels, output_file):
 
         for channel in channels:
             channel_name_escaped = html.escape(channel["channel_name"])
+            description_escaped = html.escape(channel["description"] or "")
             f.write(f'  <channel id="{channel["id"]}">\n')
             f.write(f'    <display-name>{channel_name_escaped}</display-name>\n')
+            f.write(f'    <display-name>{description_escaped}</display-name>\n')
             if channel["icon_url"]:
                 f.write(f'    <icon src="{channel["icon_url"]}"/>\n')
             f.write('  </channel>\n')

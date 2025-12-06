@@ -11,8 +11,8 @@
     },
     {
         "name": "mls_ppv",
-        "channel_name": "MLS PPV",
-        "pattern": "^.*?MLS\\s+Live\\s+(?P<channel_number>\\d+)\\s*\\|\\s*(?P<event_name>.+?)\\s+start:(?P<datetime>\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2})\\s+stop:(?P<end_datetime>\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2}).*$",
+        "channel_name": "MLS LIVE",
+        "pattern": "^.*?MLS\\s+Live\\s+(?P<channel_number>\\d+)\\s*:\\s*(?P<event_name>.+?)\\s+start:(?P<datetime>\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2})\\s+stop:(?P<end_datetime>\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2}).*$",
         "no_event_pattern": "^.*?MLS\\s+LIVE\\s+(?P<channel_number>\\d+)\\s*:?\\s*$",
         "date_provided": true,
         "datetime_format": "%Y-%m-%d %H:%M:%S",
