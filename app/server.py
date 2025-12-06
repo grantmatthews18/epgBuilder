@@ -83,45 +83,70 @@ def stream(channel_id):
     # Proxy the stream
     stream_url = current_event["stream_url"]
     
+    print(f"[STREAM] Channel: {channel_id}, Event: {current_event['program_name']}, URL: {stream_url}")
+    
     try:
+        # Forward client headers to upstream
+        headers = {
+            'User-Agent': request.headers.get('User-Agent', 'Mozilla/5.0'),
+            'Accept': request.headers.get('Accept', '*/*'),
+            'Accept-Encoding': request.headers.get('Accept-Encoding', 'identity'),
+            'Range': request.headers.get('Range', '')
+        }
+        
+        # Remove empty headers
+        headers = {k: v for k, v in headers.items() if v}
+        
         # Make a streaming request to the original URL
+        upstream = requests.get(stream_url, stream=True, timeout=30, headers=headers, allow_redirects=True)
+        
+        # Check if request was successful
+        if upstream.status_code not in [200, 206]:
+            print(f"[STREAM] Error: upstream returned {upstream.status_code}")
+            return Response(f"Upstream error: {upstream.status_code}", status=502, mimetype='text/plain')
+        
+        # Get content type from upstream response
+        content_type = upstream.headers.get('Content-Type', 'application/vnd.apple.mpegurl')
+        
+        print(f"[STREAM] Content-Type: {content_type}")
+        
+        # Stream the content in chunks
         def generate():
-            with requests.get(stream_url, stream=True, timeout=30, headers={
-                'User-Agent': request.headers.get('User-Agent', 'epgBuilder/1.0')
-            }) as upstream:
-                # Check if request was successful
-                if upstream.status_code != 200:
-                    print(f"Error fetching stream: {upstream.status_code}")
-                    return
-                
-                # Stream the content in chunks
+            try:
                 for chunk in upstream.iter_content(chunk_size=8192):
                     if chunk:
                         yield chunk
-        
-        # Get content type from the original stream
-        head = requests.head(stream_url, timeout=5, allow_redirects=True)
-        content_type = head.headers.get('Content-Type', 'application/vnd.apple.mpegurl')
+            except Exception as e:
+                print(f"[STREAM] Error during streaming: {e}")
         
         response = Response(
             stream_with_context(generate()),
+            status=upstream.status_code,
             mimetype=content_type,
             direct_passthrough=True
         )
+        
+        # Copy relevant headers from upstream
+        for header in ['Content-Length', 'Content-Range', 'Accept-Ranges', 'Last-Modified', 'ETag']:
+            if header in upstream.headers:
+                response.headers[header] = upstream.headers[header]
         
         # Add headers to prevent caching
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         response.headers['Pragma'] = 'no-cache'
         response.headers['Expires'] = '0'
-        response.headers['Connection'] = 'keep-alive'
         
         return response
         
     except requests.exceptions.Timeout:
+        print(f"[STREAM] Timeout for {channel_id}")
         return Response("Stream timeout", status=504, mimetype='text/plain')
     except requests.exceptions.RequestException as e:
-        print(f"Error proxying stream for {channel_id}: {e}")
+        print(f"[STREAM] Request error for {channel_id}: {e}")
         return Response(f"Stream error: {str(e)}", status=502, mimetype='text/plain')
+    except Exception as e:
+        print(f"[STREAM] Unexpected error for {channel_id}: {e}")
+        return Response(f"Server error: {str(e)}", status=500, mimetype='text/plain')
 
 @app.route('/playlist.m3u')
 def playlist():
