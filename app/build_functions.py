@@ -60,13 +60,15 @@ def parse_event_from_name(name):
     for pattern_cfg in PATTERNS:
         # Check no_event_pattern first
         no_event_pattern = pattern_cfg.get("no_event_pattern")
-        if no_event_pattern and re.search(no_event_pattern, name, re.IGNORECASE):
+        no_match = re.search(no_event_pattern, name, re.IGNORECASE)
+        if no_event_pattern and no_match:
+            channel_number = no_match.group("channel_number").strip()
             return {
                 "event_name": None,
                 "event_dt_utc": None,
                 "xmltv_start": None,
                 "matched_pattern": pattern_cfg["name"],
-                "channel_name": pattern_cfg.get("channel_name"),
+                "channel_name": pattern_cfg.get("channel_name") + f" {channel_number}",
                 "icon_url": pattern_cfg.get("icon_url")
             }
 
@@ -90,7 +92,16 @@ def parse_event_from_name(name):
 
         # Parse datetime
         try:
-            event_dt = datetime.strptime(datetime_str, datetime_format)
+            # Try parsing with the specified format first
+            try:
+                event_dt = datetime.strptime(datetime_str, datetime_format)
+            except ValueError:
+                # If it fails and format includes minutes, try without minutes (for times like "7pm")
+                if ":%M" in datetime_format:
+                    fallback_format = datetime_format.replace(":%M", "")
+                    event_dt = datetime.strptime(datetime_str, fallback_format)
+                else:
+                    raise
             
             # If no year in format, set to current year
             if "%Y" not in datetime_format:
@@ -120,6 +131,7 @@ def parse_event_from_name(name):
             "icon_url": pattern_cfg.get("icon_url")
         }
     
+    print(f"No pattern matched for channel name: {name}")
     return None  # no pattern matched
 
 def parse_channels(m3u_text):
@@ -179,39 +191,7 @@ def generate_xmltv(channels, output_file):
 
         for channel in channels:
             if not channel["program_start"]:
-                # Generate a default program for channels without a listing
-                today = datetime.now(tz.UTC)
-                if os.getenv("TZ"):
-                    local_tz = parse_timezone(os.getenv("TZ"))
-                    today = today.astimezone(local_tz)
-
-                start_time = today.replace(hour=0, minute=0, second=0, microsecond=0)
-                stop_time = start_time + timedelta(days=4, hours=23, minutes=59)
-                start_time_str = start_time.strftime("%Y%m%d%H%M%S %z")
-                stop_time_str = stop_time.strftime("%Y%m%d%H%M%S %z")
-
-                f.write(f'  <programme channel="{channel["id"]}" start="{start_time_str}" stop="{stop_time_str}">\n')
-                f.write('    <title>No Listing</title>\n')
-                f.write('    <desc>No program information available</desc>\n')
-                f.write('  </programme>\n')
                 continue
-
-            # Add placeholder programs before and after the scheduled event
-            today = datetime.now(tz.UTC)
-            if os.getenv("TZ"):
-                local_tz = parse_timezone(os.getenv("TZ"))
-                today = today.astimezone(local_tz)
-
-            # Placeholder before the event
-            start_of_day = today.replace(hour=0, minute=0, second=0, microsecond=0)
-            if start_time > start_of_day:
-                placeholder_stop = start_time
-                placeholder_start_str = start_of_day.strftime("%Y%m%d%H%M%S %z")
-                placeholder_stop_str = placeholder_stop.strftime("%Y%m%d%H%M%S %z")
-                f.write(f'  <programme channel="{channel["id"]}" start="{placeholder_start_str}" stop="{placeholder_stop_str}">\n')
-                f.write('    <title>No Listing</title>\n')
-                f.write('    <desc>No program information available</desc>\n')
-                f.write('  </programme>\n')
 
             # Actual event
             start_time = datetime.strptime(channel["program_start"], "%Y%m%d%H%M%S %z")
@@ -226,17 +206,6 @@ def generate_xmltv(channels, output_file):
             f.write(f'    <title>{program_name_escaped}</title>\n')
             f.write(f'    <desc>{description_escaped}</desc>\n')
             f.write('  </programme>\n')
-
-            # Placeholder after the event
-            end_of_day = start_of_day + timedelta(days=4, hours=23, minutes=59)
-            if stop_time < end_of_day:
-                placeholder_start = stop_time
-                placeholder_start_str = placeholder_start.strftime("%Y%m%d%H%M%S %z")
-                placeholder_stop_str = end_of_day.strftime("%Y%m%d%H%M%S %z")
-                f.write(f'  <programme channel="{channel["id"]}" start="{placeholder_start_str}" stop="{placeholder_stop_str}">\n')
-                f.write('    <title>No Listing</title>\n')
-                f.write('    <desc>No program information available</desc>\n')
-                f.write('  </programme>\n')
 
         f.write('</tv>\n')
 

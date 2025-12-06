@@ -10,8 +10,8 @@ echo "Using cron schedule: $CRON_SCHEDULE"
 echo "Running XMLTV generator"
 python3 /app/main.py
 
-# Create a temporary crontab with user-defined schedule
-echo "$CRON_SCHEDULE python3 /app/main.py > /proc/1/fd/1 2>&1" > /tmp/crontab
+# Create a temporary crontab with user-defined schedule, use full path to python3
+echo "$CRON_SCHEDULE /usr/local/bin/python3 /app/main.py > /proc/1/fd/1 2>&1" > /tmp/crontab
 crontab /tmp/crontab
 
 # Start cron in foreground
