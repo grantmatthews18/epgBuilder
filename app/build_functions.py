@@ -193,6 +193,16 @@ def generate_xmltv(channels, output_file):
 
         for channel in channels:
             if not channel["program_start"]:
+                # Create a dummy event
+                start_time = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=tz.UTC)
+                stop_time = start_time + timedelta(minutes=1)
+                start_time_str = start_time.strftime("%Y%m%d%H%M%S %z")
+                stop_time_str = stop_time.strftime("%Y%m%d%H%M%S %z")
+                
+                f.write(f'  <programme channel="{channel["id"]}" start="{start_time_str}" stop="{stop_time_str}">\n')
+                f.write(f'    <title>No Events</title>\n')
+                f.write(f'    <desc>No program information available</desc>\n')
+                f.write('  </programme>\n')
                 continue
 
             # Actual event
