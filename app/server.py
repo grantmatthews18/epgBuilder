@@ -1,8 +1,9 @@
-from flask import Flask, redirect, Response, request, jsonify
+from flask import Flask, redirect, Response, request, jsonify, stream_with_context
 import json
 from datetime import datetime
 from dateutil import tz, parser as dtparse
 import html
+import requests
 
 app = Flask(__name__)
 
@@ -44,9 +45,12 @@ def get_next_event(service_channel, current_time=None):
     
     return None
 
-@app.route('/stream/<channel_id>')
+@app.route('/stream/<channel_id>.m3u8')
 def stream(channel_id):
-    """Dynamic stream endpoint - redirects to current live channel"""
+    """Proxy the stream from provider to client"""
+    # Remove .m3u8 extension if present
+    channel_id = channel_id.replace('.m3u8', '')
+    
     schedule = load_schedule()
     
     # Find the combined channel across all services
@@ -60,26 +64,64 @@ def stream(channel_id):
             break
     
     if not service_channel:
-        return jsonify({"error": "Channel not found"}), 404
+        return Response("Channel not found", status=404, mimetype='text/plain')
     
     # Get current event
     current_event = get_current_event(service_channel)
     
-    if current_event:
-        # Redirect to the original stream URL
-        return redirect(current_event["stream_url"], code=302)
-    else:
+    if not current_event or not current_event.get("stream_url"):
         # No current event
         next_event = get_next_event(service_channel)
         if next_event:
             start_dt = dtparse.isoparse(next_event["start_dt"])
-            return jsonify({
-                "error": "No event currently streaming",
-                "next_event": next_event["program_name"],
-                "next_start": start_dt.strftime("%Y-%m-%d %H:%M:%S %Z")
-            }), 404
+            error_msg = f"No event currently streaming. Next: {next_event['program_name']} at {start_dt.strftime('%Y-%m-%d %H:%M:%S %Z')}"
         else:
-            return jsonify({"error": "No events scheduled"}), 404
+            error_msg = "No events scheduled for this channel"
+        
+        return Response(error_msg, status=503, mimetype='text/plain')
+    
+    # Proxy the stream
+    stream_url = current_event["stream_url"]
+    
+    try:
+        # Make a streaming request to the original URL
+        def generate():
+            with requests.get(stream_url, stream=True, timeout=30, headers={
+                'User-Agent': request.headers.get('User-Agent', 'epgBuilder/1.0')
+            }) as upstream:
+                # Check if request was successful
+                if upstream.status_code != 200:
+                    print(f"Error fetching stream: {upstream.status_code}")
+                    return
+                
+                # Stream the content in chunks
+                for chunk in upstream.iter_content(chunk_size=8192):
+                    if chunk:
+                        yield chunk
+        
+        # Get content type from the original stream
+        head = requests.head(stream_url, timeout=5, allow_redirects=True)
+        content_type = head.headers.get('Content-Type', 'application/vnd.apple.mpegurl')
+        
+        response = Response(
+            stream_with_context(generate()),
+            mimetype=content_type,
+            direct_passthrough=True
+        )
+        
+        # Add headers to prevent caching
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+        response.headers['Connection'] = 'keep-alive'
+        
+        return response
+        
+    except requests.exceptions.Timeout:
+        return Response("Stream timeout", status=504, mimetype='text/plain')
+    except requests.exceptions.RequestException as e:
+        print(f"Error proxying stream for {channel_id}: {e}")
+        return Response(f"Stream error: {str(e)}", status=502, mimetype='text/plain')
 
 @app.route('/playlist.m3u')
 def playlist():
