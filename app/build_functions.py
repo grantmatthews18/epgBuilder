@@ -5,6 +5,7 @@ import re
 from datetime import datetime, timedelta
 from dateutil import parser as dtparse
 from dateutil import tz
+import html
 
 def fetch_m3u(url):
     r = requests.get(url, timeout=30)
@@ -167,8 +168,9 @@ def generate_xmltv(channels, output_file):
         f.write('<tv generator-info-name="epgBuilder">\n')
 
         for channel in channels:
+            channel_name_escaped = html.escape(channel["channel_name"])
             f.write(f'  <channel id="{channel["id"]}">\n')
-            f.write(f'    <display-name>{channel["channel_name"]}</display-name>\n')
+            f.write(f'    <display-name>{channel_name_escaped}</display-name>\n')
             if channel["icon_url"]:
                 f.write(f'    <icon src="{channel["icon_url"]}"/>\n')
             f.write('  </channel>\n')
@@ -180,9 +182,14 @@ def generate_xmltv(channels, output_file):
             start_time = datetime.strptime(channel["program_start"], "%Y%m%d%H%M%S %z")
             stop_time = start_time + timedelta(hours=3)
             stop_time_str = stop_time.strftime("%Y%m%d%H%M%S %z")
+            
+            # Escape special XML characters
+            program_name_escaped = html.escape(channel["program_name"])
+            description_escaped = html.escape(channel["description"])
+            
             f.write(f'  <programme channel="{channel["id"]}" start="{channel["program_start"]}" stop="{stop_time_str}">\n')
-            f.write(f'    <title>{channel["program_name"]}</title>\n')
-            f.write(f'    <desc>{channel["description"]}</desc>\n')
+            f.write(f'    <title>{program_name_escaped}</title>\n')
+            f.write(f'    <desc>{description_escaped}</desc>\n')
             f.write('  </programme>\n')
 
         f.write('</tv>\n')
