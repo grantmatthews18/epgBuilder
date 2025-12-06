@@ -138,40 +138,51 @@ def parse_channels(m3u_text):
 
     channels = []
     lines = m3u_text.splitlines()
+    
+    current_extinf = None
 
     for line in lines:
-        # Confirm line is an EXTINF line
-        match = re.compile(r'#EXTINF:-1.*,(.*)').search(line)
-        if not match:
+        line = line.strip()
+        
+        # Check if this is an EXTINF line
+        if line.startswith("#EXTINF"):
+            current_extinf = parse_extinf(line)
             continue
+        
+        # Check if this is a stream URL (non-comment, non-empty line following EXTINF)
+        if current_extinf and line and not line.startswith("#"):
+            name = current_extinf["tvg-name"]
+            channel_id = current_extinf["tvg-id"]
+            channel_number = current_extinf["tvg-chno"]
+            stream_url = line
 
-        lineObj = parse_extinf(line)
+            event_info = parse_event_from_name(name)
+            if not event_info or not event_info["event_name"]:
+                channels.append({
+                    "id": channel_number,
+                    "channel_name": event_info["channel_name"] if event_info else name,
+                    "icon_url": event_info["icon_url"] if event_info else "",
+                    "program_start": None,
+                    "program_stop": None,
+                    "program_name": None,
+                    "description": None,
+                    "stream_url": stream_url
+                })
+                current_extinf = None
+                continue
 
-        name = lineObj["tvg-name"]
-        channel_id = lineObj["tvg-id"]
-        channel_number = lineObj["tvg-chno"]
-
-
-        event_info = parse_event_from_name(name)
-        if not event_info or not event_info["event_name"]:
             channels.append({
                 "id": channel_number,
-                "channel_name": event_info["channel_name"] if event_info else name,
-                "icon_url": event_info["icon_url"] if event_info else "",
-                "program_start": None,
-                "program_name": None,
-                "description": None
+                "channel_name": event_info["channel_name"],
+                "program_name": event_info["event_name"],
+                "icon_url": event_info["icon_url"],
+                "program_start": event_info["xmltv_start"],
+                "program_stop": event_info.get("xmltv_stop"),
+                "description": name,
+                "stream_url": stream_url
             })
-            continue
-
-        channels.append({
-            "id": channel_number,
-            "channel_name": event_info["channel_name"],
-            "program_name": event_info["event_name"],
-            "icon_url": event_info["icon_url"],
-            "program_start": event_info["xmltv_start"],
-            "description": name
-        })
+            
+            current_extinf = None
 
     return channels
 
@@ -222,5 +233,12 @@ def generate_xmltv(channels, output_file):
         f.write('</tv>\n')
 
 
-
+def generate_m3u(channels, output_file):
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write('#EXTM3U\n')
+        for channel in channels:
+            extinf_line = f'#EXTINF:-1 tvg-chno="{channel["id"]}" tvg-id="{channel["id"]}" tvg-name="{channel["channel_name"]}" tvg-icon="{channel["icon_url"]}",{channel["channel_name"]}\n'
+            f.write(extinf_line)
+            stream_url = f'{channel["stream_url"]}\n'
+            f.write(stream_url)
 

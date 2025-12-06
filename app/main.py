@@ -4,6 +4,7 @@ from build_functions import *
 
 M3U_URL = os.getenv("M3U_URL", "https://m3u-editor-url/playlist.m3u")
 OUTPUT_XMLTV = "/output/epg.xml"
+OUTPUT_M3U = "/output/playlist.m3u"
 
 def job():
     print("Fetching M3U file from:", M3U_URL)
@@ -14,6 +15,9 @@ def job():
 
     print("Generating XMLTV…")
     generate_xmltv(channels, OUTPUT_XMLTV)
+
+    print("Generating M3U…")
+    generate_m3u(channels, "/output/playlist.m3u")
 
     print("XMLTV updated.")
 
