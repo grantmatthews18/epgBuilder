@@ -2,7 +2,7 @@
 <tv generator-info-name="epgBuilder">
   <channel id="7226">
     <display-name>FIFA PPV 1</display-name>
-    <display-name>US: FIFA+ PPV 1 - FUJAIRAH CLUB V DIBBA AL-HISN | ROUND 3 | FIRST DIVISION LEAGUE 2025/26 | Sat 06 Dec 13:35 | 8K EXCLUSIVE</display-name>
+    <display-name>US: FIFA+ PPV 1 - AJEB V CFFEB | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7227">
@@ -17,7 +17,7 @@
   </channel>
   <channel id="7229">
     <display-name>FIFA PPV 4</display-name>
-    <display-name>US: FIFA+ PPV 4 - KITWE UNITED FC V ATLETICO LUSAKA | ZPL NATIONAL LEAGUE 2025/26 | Sat 06 Dec 13:50 | 8K EXCLUSIVE</display-name>
+    <display-name>US: FIFA+ PPV 4 - AS DOUANES V RCK | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7230">
@@ -27,12 +27,12 @@
   </channel>
   <channel id="7231">
     <display-name>FIFA PPV 6</display-name>
-    <display-name></display-name>
+    <display-name>US: FIFA+ PPV 6 - SPORTING CASCADES V AS SONABEL | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7232">
     <display-name>FIFA PPV 7</display-name>
-    <display-name>US: FIFA+ PPV 7 - LIOLI FC V MACHOKHA FC | VODACOM PREMIER LEAGUE 2025/26 | Sat 06 Dec 14:20 | 8K EXCLUSIVE</display-name>
+    <display-name></display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7233">
@@ -72,7 +72,7 @@
   </channel>
   <channel id="7240">
     <display-name>FIFA PPV 15</display-name>
-    <display-name>US: FIFA+ PPV 15 - ROYAL VISION 2026 V INTER STAR | PRIMUS LIGUE BURUNDI 2025/26 | Sat 06 Dec 13:50 | 8K EXCLUSIVE</display-name>
+    <display-name></display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7241">
@@ -4695,45 +4695,63 @@
     <display-name></display-name>
     <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </channel>
-  <programme channel="7226" start="20251206123500 +0000" stop="20251206153500 +0000">
-    <title>FUJAIRAH CLUB V DIBBA AL-HISN</title>
-    <desc>US: FIFA+ PPV 1 - FUJAIRAH CLUB V DIBBA AL-HISN | ROUND 3 | FIRST DIVISION LEAGUE 2025/26 | Sat 06 Dec 13:35 | 8K EXCLUSIVE</desc>
+  <programme channel="7226" start="20251206152000 +0000" stop="20251206182000 +0000">
+    <title>AJEB V CFFEB</title>
+    <desc>US: FIFA+ PPV 1 - AJEB V CFFEB | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
   <programme channel="7227" start="20251206145000 +0000" stop="20251206175000 +0000">
     <title>AS BINAH V GOMIDO FC</title>
     <desc>US: FIFA+ PPV 2 - AS BINAH V GOMIDO FC | D1 LONATO 2025/26 | Sat 06 Dec 15:50 | 8K EXCLUSIVE</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
   <programme channel="7228" start="20251206145000 +0000" stop="20251206175000 +0000">
     <title>ITEHAD DE TANGER V UNION TOUARGA SPORT</title>
     <desc>US: FIFA+ PPV 3 -  ITEHAD DE TANGER V UNION TOUARGA SPORT | D1 WOMEN&#x27;S CHAMPIONSHIP  2025-26 | Sat 06 Dec 15:50 | 8K EXCLUSIVE</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
-  <programme channel="7229" start="20251206125000 +0000" stop="20251206155000 +0000">
-    <title>KITWE UNITED FC V ATLETICO LUSAKA</title>
-    <desc>US: FIFA+ PPV 4 - KITWE UNITED FC V ATLETICO LUSAKA | ZPL NATIONAL LEAGUE 2025/26 | Sat 06 Dec 13:50 | 8K EXCLUSIVE</desc>
+  <programme channel="7229" start="20251206152000 +0000" stop="20251206182000 +0000">
+    <title>AS DOUANES V RCK</title>
+    <desc>US: FIFA+ PPV 4 - AS DOUANES V RCK | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
   <programme channel="7230" start="20251206145000 +0000" stop="20251206175000 +0000">
     <title>ASVO FC V DADJÈ FC</title>
     <desc>US: FIFA+ PPV 5 - ASVO FC V DADJÈ FC | LIGUE 1 2025 | Sat 06 Dec 15:50 | 8K EXCLUSIVE</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
-  <programme channel="7231" start="20251206000000 +0000" stop="20251206000100 +0000">
+  <programme channel="7231" start="20251206152000 +0000" stop="20251206182000 +0000">
+    <title>SPORTING CASCADES V AS SONABEL</title>
+    <desc>US: FIFA+ PPV 6 - SPORTING CASCADES V AS SONABEL | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
+  </programme>
+  <programme channel="7232" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
     <desc>No program information available</desc>
-  </programme>
-  <programme channel="7232" start="20251206132000 +0000" stop="20251206162000 +0000">
-    <title>LIOLI FC V MACHOKHA FC</title>
-    <desc>US: FIFA+ PPV 7 - LIOLI FC V MACHOKHA FC | VODACOM PREMIER LEAGUE 2025/26 | Sat 06 Dec 14:20 | 8K EXCLUSIVE</desc>
   </programme>
   <programme channel="7233" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>HILAL TÉMARA V MUNICIPALE LAAYOUNE</title>
     <desc>US: FIFA+ PPV 8 - HILAL TÉMARA V MUNICIPALE LAAYOUNE | D1 WOMEN&#x27;S CHAMPIONSHIP  2025-26 | Sat 06 Dec 14:50 | 8K EXCLUSIVE</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
   <programme channel="7234" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>SPORTING CASABLANCA V PHOENIX FOOTBALL ACADEMY</title>
     <desc>US: FIFA+ PPV 9 - SPORTING CASABLANCA V PHOENIX FOOTBALL ACADEMY | D1 WOMEN&#x27;S CHAMPIONSHIP  2025-26 | Sat 06 Dec 14:50 | 8K EXCLUSIVE</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
   <programme channel="7235" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>AL MUSANNAH V MUSCAT</title>
     <desc>US: FIFA+ PPV 10 - AL MUSANNAH V MUSCAT | ROUND 8 | TAMKEEN LEAGUE 2025/26 | Sat 06 Dec 14:50 | 8K EXCLUSIVE</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
   <programme channel="7236" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
@@ -4751,9 +4769,9 @@
     <title>No Events</title>
     <desc>No program information available</desc>
   </programme>
-  <programme channel="7240" start="20251206125000 +0000" stop="20251206155000 +0000">
-    <title>ROYAL VISION 2026 V INTER STAR</title>
-    <desc>US: FIFA+ PPV 15 - ROYAL VISION 2026 V INTER STAR | PRIMUS LIGUE BURUNDI 2025/26 | Sat 06 Dec 13:50 | 8K EXCLUSIVE</desc>
+  <programme channel="7240" start="20251206000000 +0000" stop="20251206000100 +0000">
+    <title>No Events</title>
+    <desc>No program information available</desc>
   </programme>
   <programme channel="7241" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
@@ -4898,78 +4916,116 @@
   <programme channel="7396" start="20251206182500 +0000" stop="20251206212500 +0000">
     <title>Miami  vs.  Vancouver</title>
     <desc>MLS Live 1 | Miami  vs.  Vancouver start:2025-12-06 18:25:00 stop:2025-12-06 21:07:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7397" start="20251130012500 +0000" stop="20251130042500 +0000">
     <title>San Diego  vs.  Vancouver</title>
     <desc>MLS Live 2 | San Diego  vs.  Vancouver start:2025-11-30 01:25:00 stop:2025-11-30 04:07:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7398" start="20251130042500 +0000" stop="20251130072500 +0000">
     <title>MLS Wrap-Up</title>
     <desc>MLS Live 3 | MLS Wrap-Up start:2025-11-30 04:25:00 stop:2025-11-30 07:07:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7399" start="20251129225500 +0000" stop="20251130015500 +0000">
     <title>Miami  vs.  New York City</title>
     <desc>MLS Live 4 | Miami  vs.  New York City start:2025-11-29 22:55:00 stop:2025-11-30 01:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7400" start="20251110015500 +0000" stop="20251110045500 +0000">
     <title>San Diego  vs.  Portland</title>
     <desc>MLS Live 5 | San Diego  vs.  Portland start:2025-11-10 01:55:00 stop:2025-11-10 04:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7401" start="20251018225500 +0000" stop="20251019015500 +0000">
     <title>Nashville  vs.  Miami</title>
     <desc>MLS Live 6 | Nashville  vs.  Miami start:2025-10-18 22:55:00 stop:2025-10-19 01:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7402" start="20251018225500 +0000" stop="20251019015500 +0000">
     <title>New England  vs.  Chicago</title>
     <desc>MLS Live 7 | New England  vs.  Chicago start:2025-10-18 22:55:00 stop:2025-10-19 01:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7403" start="20251018225500 +0000" stop="20251019015500 +0000">
     <title>New York City  vs.  Seattle</title>
     <desc>MLS Live 8 | New York City  vs.  Seattle start:2025-10-18 22:55:00 stop:2025-10-19 01:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7404" start="20251018225500 +0000" stop="20251019015500 +0000">
     <title>Toronto  vs.  Orlando</title>
     <desc>MLS Live 9 | Toronto  vs.  Orlando start:2025-10-18 22:55:00 stop:2025-10-19 01:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7405" start="20251018225515 +0000" stop="20251019015515 +0000">
     <title>MLS 360</title>
     <desc>MLS Live 10 | MLS 360 start:2025-10-18 22:55:15 stop:2025-10-19 01:37:15</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7406" start="20251019015500 +0000" stop="20251019045500 +0000">
     <title>Portland  vs.  San Diego</title>
     <desc>MLS Live 15 | Portland  vs.  San Diego start:2025-10-19 01:55:00 stop:2025-10-19 04:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7407" start="20251019015500 +0000" stop="20251019045500 +0000">
     <title>Colorado  vs.  LAFC</title>
     <desc>MLS Live 11 | Colorado  vs.  LAFC start:2025-10-19 01:55:00 stop:2025-10-19 04:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7408" start="20251019044000 +0000" stop="20251019074000 +0000">
     <title>MLS Wrap-Up</title>
     <desc>MLS Live 12 | MLS Wrap-Up start:2025-10-19 04:40:00 stop:2025-10-19 07:22:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7409" start="20251019015500 +0000" stop="20251019045500 +0000">
     <title>Kansas City  vs.  Houston</title>
     <desc>MLS Live 13 | Kansas City  vs.  Houston start:2025-10-19 01:55:00 stop:2025-10-19 04:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7410" start="20251019015500 +0000" stop="20251019045500 +0000">
     <title>LA  vs.  Minnesota</title>
     <desc>MLS Live 14 | LA  vs.  Minnesota start:2025-10-19 01:55:00 stop:2025-10-19 04:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7411" start="20251019015500 +0000" stop="20251019045500 +0000">
     <title>San Jose  vs.  Austin</title>
     <desc>MLS Live 16 | San Jose  vs.  Austin start:2025-10-19 01:55:00 stop:2025-10-19 04:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7412" start="20251019015500 +0000" stop="20251019045500 +0000">
     <title>St. Louis  vs.  Salt Lake</title>
     <desc>MLS LIVE 17 | St. Louis  vs.  Salt Lake start:2025-10-19 01:55:00 stop:2025-10-19 04:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7413" start="20251019015500 +0000" stop="20251019045500 +0000">
     <title>Vancouver  vs.  Dallas</title>
     <desc>MLS LIVE 18 | Vancouver  vs.  Dallas start:2025-10-19 01:55:00 stop:2025-10-19 04:37:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7414" start="20250720012500 +0000" stop="20250720042500 +0000">
     <title>Dallas  vs.  St. Louis</title>
     <desc>MLS LIVE 19: Dallas  vs.  St. Louis start:2025-07-20 01:25:00 stop:2025-07-20 04:07:00</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"/>
   </programme>
   <programme channel="7415" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
@@ -4978,50 +5034,74 @@
   <programme channel="7623" start="20251206173000 +0000" stop="20251206203000 +0000">
     <title>Avalanche at Rangers</title>
     <desc>NHL | 01 - 12:30pm Avalanche at Rangers</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7624" start="20251206203000 +0000" stop="20251206233000 +0000">
     <title>Blue Jackets at Panthers</title>
     <desc>NHL | 02 - 3:30pm Blue Jackets at Panthers</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7625" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Devils at Bruins</title>
     <desc>NHL | 03 - 7pm Devils at Bruins</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7626" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Canadiens at Maple Leafs</title>
     <desc>NHL | 04 - 7pm Canadiens at Maple Leafs</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7627" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Blues at Senators</title>
     <desc>NHL | 05 - 7pm Blues at Senators</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7628" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Islanders at Lightning</title>
     <desc>NHL | 06 - 7pm Islanders at Lightning</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7629" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Predators at Hurricanes</title>
     <desc>NHL | 07 - 7pm Predators at Hurricanes</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7630" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Mammoth at Flames</title>
     <desc>NHL | 08 - 7pm Mammoth at Flames</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7631" start="20251207020000 +0000" stop="20251207050000 +0000">
     <title>Blackhawks at Kings</title>
     <desc>NHL | 09 - 9pm Blackhawks at Kings</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7632" start="20251207030000 +0000" stop="20251207060000 +0000">
     <title>Jets at Oilers</title>
     <desc>NHL | 10 - 10pm Jets at Oilers</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7633" start="20251207030000 +0000" stop="20251207060000 +0000">
     <title>Wild at Canucks</title>
     <desc>NHL | 11 - 10pm Wild at Canucks</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7634" start="20251207030000 +0000" stop="20251207060000 +0000">
     <title>Red Wings at Kraken</title>
     <desc>NHL | 12 - 10pm Red Wings at Kraken</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"/>
   </programme>
   <programme channel="7635" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
@@ -5050,1062 +5130,1592 @@
   <programme channel="8744" start="20251206083000 +0000" stop="20251206113000 +0000">
     <title>Central Coast Mariners FC vs. Sydney FC</title>
     <desc>US (ESPN+ 001) | Central Coast Mariners FC vs. Sydney FC Dec 06 3:30AM ET (2025-12-06 03:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8745" start="20251206115000 +0000" stop="20251206145000 +0000">
     <title>En Español_Arsenal vs. Liverpool</title>
     <desc>US (ESPN+ 002) | En Español_Arsenal vs. Liverpool Dec 06 6:50AM ET (2025-12-06 06:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8746" start="20251206115500 +0000" stop="20251206145500 +0000">
     <title>SC Paderborn 07 vs. SV Elversberg</title>
     <desc>US (ESPN+ 003) | SC Paderborn 07 vs. SV Elversberg Dec 06 6:55AM ET (2025-12-06 06:55:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8747" start="20251206115500 +0000" stop="20251206145500 +0000">
     <title>Vfl Bochum 1848 vs. Arminia Bielefeld</title>
     <desc>US (ESPN+ 004) | Vfl Bochum 1848 vs. Arminia Bielefeld Dec 06 6:55AM ET (2025-12-06 06:55:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8748" start="20251206115500 +0000" stop="20251206145500 +0000">
     <title>1. FC Kaiserslautern vs. SG Dynamo Dresden</title>
     <desc>US (ESPN+ 005) | 1. FC Kaiserslautern vs. SG Dynamo Dresden Dec 06 6:55AM ET (2025-12-06 06:55:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8749" start="20251206115500 +0000" stop="20251206145500 +0000">
     <title>Arsenal vs. Liverpool</title>
     <desc>US (ESPN+ 006) | Arsenal vs. Liverpool Dec 06 6:55AM ET (2025-12-06 06:55:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8750" start="20251206120500 +0000" stop="20251206150500 +0000">
     <title>En Español_Formula 2 Abu Dhabi Sprint Race</title>
     <desc>US (ESPN+ 007) | En Español_Formula 2 Abu Dhabi Sprint Race Dec 06 7:05AM ET (2025-12-06 07:05:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8751" start="20251206121500 +0000" stop="20251206151500 +0000">
     <title>Formula 2 Abu Dhabi Sprint Race</title>
     <desc>US (ESPN+ 008) | Formula 2 Abu Dhabi Sprint Race Dec 06 7:15AM ET (2025-12-06 07:15:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8752" start="20251206125000 +0000" stop="20251206155000 +0000">
     <title>Villarreal CF vs. Getafe CF</title>
     <desc>US (ESPN+ 009) | Villarreal CF vs. Getafe CF Dec 06 7:50AM ET (2025-12-06 07:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8753" start="20251206125500 +0000" stop="20251206155500 +0000">
     <title>En Español_Villarreal CF vs. Getafe CF</title>
     <desc>US (ESPN+ 010) | En Español_Villarreal CF vs. Getafe CF Dec 06 7:55AM ET (2025-12-06 07:55:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8754" start="20251206130000 +0000" stop="20251206160000 +0000">
     <title>MSV Duisburg vs. FC Energie Cottbus</title>
     <desc>US (ESPN+ 011) | MSV Duisburg vs. FC Energie Cottbus Dec 06 8:00AM ET (2025-12-06 08:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8755" start="20251206131500 +0000" stop="20251206161500 +0000">
     <title>F1: Qualifying Pre_Show</title>
     <desc>US (ESPN+ 012) | F1: Qualifying Pre_Show Dec 06 8:15AM ET (2025-12-06 08:15:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8756" start="20251206140000 +0000" stop="20251206170000 +0000">
     <title>VfB Stuttgart vs. FC Bayern München</title>
     <desc>US (ESPN+ 013) | VfB Stuttgart vs. FC Bayern München Dec 06 9:00AM ET (2025-12-06 09:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8757" start="20251206142000 +0000" stop="20251206172000 +0000">
     <title>1. FC Heidenheim 1846 vs. Sport_Club Freiburg</title>
     <desc>US (ESPN+ 014) | 1. FC Heidenheim 1846 vs. Sport_Club Freiburg Dec 06 9:20AM ET (2025-12-06 09:20:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8758" start="20251206142000 +0000" stop="20251206172000 +0000">
     <title>VfL Wolfsburg vs. 1. FC Union Berlin</title>
     <desc>US (ESPN+ 015) | VfL Wolfsburg vs. 1. FC Union Berlin Dec 06 9:20AM ET (2025-12-06 09:20:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8759" start="20251206142000 +0000" stop="20251206172000 +0000">
     <title>1. FC Köln vs. FC St. Pauli</title>
     <desc>US (ESPN+ 016) | 1. FC Köln vs. FC St. Pauli Dec 06 9:20AM ET (2025-12-06 09:20:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8760" start="20251206142000 +0000" stop="20251206172000 +0000">
     <title>Goal Arena _ The Bundesliga Konferenz</title>
     <desc>US (ESPN+ 017) | Goal Arena _ The Bundesliga Konferenz Dec 06 9:20AM ET (2025-12-06 09:20:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8761" start="20251206142000 +0000" stop="20251206172000 +0000">
     <title>FC Augsburg vs. Bayer 04 Leverkusen</title>
     <desc>US (ESPN+ 018) | FC Augsburg vs. Bayer 04 Leverkusen Dec 06 9:20AM ET (2025-12-06 09:20:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8762" start="20251206142000 +0000" stop="20251206172000 +0000">
     <title>En Español_VfB Stuttgart vs. FC Bayern München</title>
     <desc>US (ESPN+ 019) | En Español_VfB Stuttgart vs. FC Bayern München Dec 06 9:20AM ET (2025-12-06 09:20:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8763" start="20251206143000 +0000" stop="20251206173000 +0000">
     <title>Montenegro vs. Serbia (Main Round)</title>
     <desc>US (ESPN+ 020) | Montenegro vs. Serbia (Main Round) Dec 06 9:30AM ET (2025-12-06 09:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8764" start="20251206145500 +0000" stop="20251206175500 +0000">
     <title>Harvard Classic</title>
     <desc>US (ESPN+ 021) | Harvard Classic Dec 06 9:55AM ET (2025-12-06 09:55:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8765" start="20251206145500 +0000" stop="20251206175500 +0000">
     <title>Las Costeñas vs. FP Riviera Maya (Playoff)</title>
     <desc>US (ESPN+ 022) | Las Costeñas vs. FP Riviera Maya (Playoff) Dec 06 9:55AM ET (2025-12-06 09:55:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8766" start="20251206150000 +0000" stop="20251206180000 +0000">
     <title>En Español_D. Alavés vs. Real Sociedad</title>
     <desc>US (ESPN+ 023) | En Español_D. Alavés vs. Real Sociedad Dec 06 10:00AM ET (2025-12-06 10:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8767" start="20251206150000 +0000" stop="20251206180000 +0000">
     <title>Big Al Invitational (Swimming)</title>
     <desc>US (ESPN+ 024) | Big Al Invitational (Swimming) Dec 06 10:00AM ET (2025-12-06 10:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8768" start="20251206150500 +0000" stop="20251206180500 +0000">
     <title>D. Alaves vs. Real Sociedad</title>
     <desc>US (ESPN+ 025) | D. Alaves vs. Real Sociedad Dec 06 10:05AM ET (2025-12-06 10:05:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8769" start="20251206152000 +0000" stop="20251206182000 +0000">
     <title>En Español_SC Heerenveen vs. PSV</title>
     <desc>US (ESPN+ 026) | En Español_SC Heerenveen vs. PSV Dec 06 10:20AM ET (2025-12-06 10:20:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8770" start="20251206152500 +0000" stop="20251206182500 +0000">
     <title>sc Heerenveen vs. PSV</title>
     <desc>US (ESPN+ 027) | sc Heerenveen vs. PSV Dec 06 10:25AM ET (2025-12-06 10:25:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8771" start="20251206153000 +0000" stop="20251206183000 +0000">
     <title>FC Schweinfurt vs. TSV 1860 Munich</title>
     <desc>US (ESPN+ 028) | FC Schweinfurt vs. TSV 1860 Munich Dec 06 10:30AM ET (2025-12-06 10:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8772" start="20251206154500 +0000" stop="20251206184500 +0000">
     <title>FA Cup Round 2 Goals Show</title>
     <desc>US (ESPN+ 029) | FA Cup Round 2 Goals Show Dec 06 10:45AM ET (2025-12-06 10:45:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8773" start="20251206160000 +0000" stop="20251206190000 +0000">
     <title>F1: Ted`s Qualifying Notebook</title>
     <desc>US (ESPN+ 030) | F1: Ted`s Qualifying Notebook Dec 06 11:00AM ET (2025-12-06 11:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8774" start="20251206161000 +0000" stop="20251206191000 +0000">
     <title>USAC FP vs. Municipal Poás (Playoff)</title>
     <desc>US (ESPN+ 031) | USAC FP vs. Municipal Poás (Playoff) Dec 06 11:10AM ET (2025-12-06 11:10:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8775" start="20251206163000 +0000" stop="20251206193000 +0000">
     <title>Penn Opener</title>
     <desc>US (ESPN+ 032) | Penn Opener Dec 06 11:30AM ET (2025-12-06 11:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8776" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Bryant vs. Brown (Diving)</title>
     <desc>US (ESPN+ 033) | Bryant vs. Brown (Diving) Dec 06 12:00PM ET (2025-12-06 12:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8777" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>UMBC vs. Bucknell</title>
     <desc>US (ESPN+ 034) | UMBC vs. Bucknell Dec 06 12:00PM ET (2025-12-06 12:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8778" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Wheaton vs. DePauw (Third Round)</title>
     <desc>US (ESPN+ 035) | Wheaton vs. DePauw (Third Round) Dec 06 12:00PM ET (2025-12-06 12:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8779" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Real Betis vs. FC Barcelona</title>
     <desc>US (ESPN+ 036) | Real Betis vs. FC Barcelona Dec 06 12:00PM ET (2025-12-06 12:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8780" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Massachusetts vs. Army</title>
     <desc>US (ESPN+ 037) | Massachusetts vs. Army Dec 06 12:00PM ET (2025-12-06 12:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8781" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Big Al Invitational (Diving)</title>
     <desc>US (ESPN+ 038) | Big Al Invitational (Diving) Dec 06 12:00PM ET (2025-12-06 12:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8782" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Mecum Auctions: Kansas City 2025 (Day 2)</title>
     <desc>US (ESPN+ 039) | Mecum Auctions: Kansas City 2025 (Day 2) Dec 06 12:00PM ET (2025-12-06 12:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8783" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Bryant vs. Brown (Swimming)</title>
     <desc>US (ESPN+ 040) | Bryant vs. Brown (Swimming) Dec 06 12:00PM ET (2025-12-06 12:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8784" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Susquehanna vs. Eastern (Pa) (Third Round)</title>
     <desc>US (ESPN+ 041) | Susquehanna vs. Eastern (Pa) (Third Round) Dec 06 12:00PM ET (2025-12-06 12:00:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8785" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Trinity University (TX) vs. Berry (Third Round)</title>
     <desc>US (ESPN+ 042) | Trinity University (TX) vs. Berry (Third Round) Dec 06 12:00PM ET (2025-12-06 12:00:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8786" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Colorado Avalanche vs. New York Rangers</title>
     <desc>US (ESPN+ 043) | Colorado Avalanche vs. New York Rangers Dec 06 12:00PM ET (2025-12-06 12:00:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8787" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Colorado Avalanche vs. New York Rangers</title>
     <desc>US (ESPN+ 044) | Colorado Avalanche vs. New York Rangers Dec 06 12:00PM ET (2025-12-06 12:00:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8788" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Cleveland State vs. Oakland</title>
     <desc>US (ESPN+ 045) | Cleveland State vs. Oakland Dec 06 12:00PM ET (2025-12-06 12:01:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8789" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>South Dakota vs. Mercer (Second Round)</title>
     <desc>US (ESPN+ 046) | South Dakota vs. Mercer (Second Round) Dec 06 12:00PM ET (2025-12-06 12:01:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8790" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Villanova vs. Lehigh (Second Round)</title>
     <desc>US (ESPN+ 047) | Villanova vs. Lehigh (Second Round) Dec 06 12:00PM ET (2025-12-06 12:01:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8791" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Salisbury (MD) vs. Johns Hopkins (Third Round)</title>
     <desc>US (ESPN+ 048) | Salisbury (MD) vs. Johns Hopkins (Third Round) Dec 06 12:00PM ET (2025-12-06 12:01:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8792" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Army vs. Navy</title>
     <desc>US (ESPN+ 049) | Army vs. Navy Dec 06 12:00PM ET (2025-12-06 12:01:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8793" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Thomas University vs. Kennesaw State</title>
     <desc>US (ESPN+ 050) | Thomas University vs. Kennesaw State Dec 06 12:00PM ET (2025-12-06 12:01:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8794" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Frostburg State vs. #1 Kutztown (PA) (Quarterfinal)</title>
     <desc>US (ESPN+ 051) | Frostburg State vs. #1 Kutztown (PA) (Quarterfinal) Dec 06 12:00PM ET (2025-12-06 12:01:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8795" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>Spain vs. Germany (Main Round)</title>
     <desc>US (ESPN+ 052) | Spain vs. Germany (Main Round) Dec 06 12:00PM ET (2025-12-06 12:01:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8796" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>John Carroll (OH) vs. Mount Union (OH) (Third Round)</title>
     <desc>US (ESPN+ 053) | John Carroll (OH) vs. Mount Union (OH) (Third Round) Dec 06 12:00PM ET (2025-12-06 12:01:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8797" start="20251206171000 +0000" stop="20251206201000 +0000">
     <title>Sutton United vs. Shrewsbury Town (Round 2)</title>
     <desc>US (ESPN+ 054) | Sutton United vs. Shrewsbury Town (Round 2) Dec 06 12:10PM ET (2025-12-06 12:10:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8798" start="20251206171500 +0000" stop="20251206201500 +0000">
     <title>En Español_Real Betis vs. FC Barcelona</title>
     <desc>US (ESPN+ 055) | En Español_Real Betis vs. FC Barcelona Dec 06 12:15PM ET (2025-12-06 12:15:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8799" start="20251206172000 +0000" stop="20251206202000 +0000">
     <title>En Español_RB Leipzig vs. Eintracht Frankfurt</title>
     <desc>US (ESPN+ 056) | En Español_RB Leipzig vs. Eintracht Frankfurt Dec 06 12:20PM ET (2025-12-06 12:20:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8800" start="20251206172000 +0000" stop="20251206202000 +0000">
     <title>RB Leipzig vs. Eintracht Frankfurt</title>
     <desc>US (ESPN+ 057) | RB Leipzig vs. Eintracht Frankfurt Dec 06 12:20PM ET (2025-12-06 12:20:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8801" start="20251206172500 +0000" stop="20251206202500 +0000">
     <title>Dimas Escazú FP vs. BSVB (Playoff)</title>
     <desc>US (ESPN+ 058) | Dimas Escazú FP vs. BSVB (Playoff) Dec 06 12:25PM ET (2025-12-06 12:25:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8802" start="20251206173000 +0000" stop="20251206203000 +0000">
     <title>En Español_Fortuna Sittard vs. Ajax</title>
     <desc>US (ESPN+ 059) | En Español_Fortuna Sittard vs. Ajax Dec 06 12:30PM ET (2025-12-06 12:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8803" start="20251206174000 +0000" stop="20251206204000 +0000">
     <title>Fortuna Sittard vs. Ajax</title>
     <desc>US (ESPN+ 060) | Fortuna Sittard vs. Ajax Dec 06 12:40PM ET (2025-12-06 12:40:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8804" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Wisconsin_Platteville vs. Bethel (MN) (Third Round)</title>
     <desc>US (ESPN+ 061) | Wisconsin_Platteville vs. Bethel (MN) (Third Round) Dec 06 1:00PM ET (2025-12-06 13:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8805" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Saint John`s (MN) vs. UW_River Falls (Third Round)</title>
     <desc>US (ESPN+ 062) | Saint John`s (MN) vs. UW_River Falls (Third Round) Dec 06 1:00PM ET (2025-12-06 13:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8806" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Maine vs. Miami (OH)</title>
     <desc>US (ESPN+ 063) | Maine vs. Miami (OH) Dec 06 1:00PM ET (2025-12-06 13:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8807" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Brown vs. George Washington</title>
     <desc>US (ESPN+ 064) | Brown vs. George Washington Dec 06 1:00PM ET (2025-12-06 13:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8808" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Quinnipiac vs. Cornell</title>
     <desc>US (ESPN+ 065) | Quinnipiac vs. Cornell Dec 06 1:00PM ET (2025-12-06 13:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8809" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>North Dakota vs. Tarleton State (Second Round)</title>
     <desc>US (ESPN+ 066) | North Dakota vs. Tarleton State (Second Round) Dec 06 1:00PM ET (2025-12-06 13:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8810" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Washington vs. #4 Maryland (Quarterfinals)</title>
     <desc>US (ESPN+ 067) | Washington vs. #4 Maryland (Quarterfinals) Dec 06 1:00PM ET (2025-12-06 13:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8811" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Minnesota State vs. Ferris State (Quarterfinal)</title>
     <desc>US (ESPN+ 068) | Minnesota State vs. Ferris State (Quarterfinal) Dec 06 1:00PM ET (2025-12-06 13:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8812" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Kent State vs. Marshall</title>
     <desc>US (ESPN+ 069) | Kent State vs. Marshall Dec 06 1:00PM ET (2025-12-06 13:00:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8813" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Wisconsin_La Crosse vs. North Central (IL) (Third Round)</title>
     <desc>US (ESPN+ 070) | Wisconsin_La Crosse vs. North Central (IL) (Third Round) Dec 06 1:00PM ET (2025-12-06 13:00:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8814" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Illinois State vs. North Dakota State (Second Round)</title>
     <desc>US (ESPN+ 071) | Illinois State vs. North Dakota State (Second Round) Dec 06 1:00PM ET (2025-12-06 13:00:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8815" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Saint Louis vs. #14 Akron (Quarterfinals)</title>
     <desc>US (ESPN+ 072) | Saint Louis vs. #14 Akron (Quarterfinals) Dec 06 1:00PM ET (2025-12-06 13:00:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8816" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Newberry vs. #1 Albany State (Quarterfinal)</title>
     <desc>US (ESPN+ 073) | Newberry vs. #1 Albany State (Quarterfinal) Dec 06 1:00PM ET (2025-12-06 13:01:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8817" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Utah Valley vs. Bowling Green</title>
     <desc>US (ESPN+ 074) | Utah Valley vs. Bowling Green Dec 06 1:00PM ET (2025-12-06 13:01:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8818" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>Charleston Southern vs. Wofford</title>
     <desc>US (ESPN+ 075) | Charleston Southern vs. Wofford Dec 06 1:00PM ET (2025-12-06 13:01:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8819" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>North Dakota SCS vs. College of DuPage (DIII Championship)</title>
     <desc>US (ESPN+ 076) | North Dakota SCS vs. College of DuPage (DIII Championship) Dec 06 1:00PM ET (2025-12-06 13:01:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8820" start="20251206183000 +0000" stop="20251206213000 +0000">
     <title>Boston College vs. #6 Northeastern</title>
     <desc>US (ESPN+ 077) | Boston College vs. #6 Northeastern Dec 06 1:30PM ET (2025-12-06 13:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8821" start="20251206184000 +0000" stop="20251206214000 +0000">
     <title>CD Milenio vs. Arcos FC (Playoff)</title>
     <desc>US (ESPN+ 078) | CD Milenio vs. Arcos FC (Playoff) Dec 06 1:40PM ET (2025-12-06 13:40:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8822" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Hannibal_LaGrange vs. Western Illinois</title>
     <desc>US (ESPN+ 079) | Hannibal_LaGrange vs. Western Illinois Dec 06 2:00PM ET (2025-12-06 14:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8823" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Delaware vs. Delaware State</title>
     <desc>US (ESPN+ 080) | Delaware vs. Delaware State Dec 06 2:00PM ET (2025-12-06 14:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8824" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Coastal Carolina vs. Winthrop</title>
     <desc>US (ESPN+ 081) | Coastal Carolina vs. Winthrop Dec 06 2:00PM ET (2025-12-06 14:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8825" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Georgia Southern vs. Gardner_Webb</title>
     <desc>US (ESPN+ 082) | Georgia Southern vs. Gardner_Webb Dec 06 2:00PM ET (2025-12-06 14:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8826" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Abilene Christian vs. Stephen F. Austin (Second Round)</title>
     <desc>US (ESPN+ 083) | Abilene Christian vs. Stephen F. Austin (Second Round) Dec 06 2:00PM ET (2025-12-06 14:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8827" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>South Dakota State vs. Montana (Second Round)</title>
     <desc>US (ESPN+ 084) | South Dakota State vs. Montana (Second Round) Dec 06 2:00PM ET (2025-12-06 14:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8828" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>St. John Fisher vs. Colgate</title>
     <desc>US (ESPN+ 085) | St. John Fisher vs. Colgate Dec 06 2:00PM ET (2025-12-06 14:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8829" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Texas Permian Basin vs. #1 Harding (Quarterfinal)</title>
     <desc>US (ESPN+ 086) | Texas Permian Basin vs. #1 Harding (Quarterfinal) Dec 06 2:00PM ET (2025-12-06 14:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8830" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Providence vs. Merrimack</title>
     <desc>US (ESPN+ 087) | Providence vs. Merrimack Dec 06 2:00PM ET (2025-12-06 14:00:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8831" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Maine vs. New Hampshire</title>
     <desc>US (ESPN+ 088) | Maine vs. New Hampshire Dec 06 2:00PM ET (2025-12-06 14:00:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8832" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Western Carolina vs. South Carolina Upstate</title>
     <desc>US (ESPN+ 089) | Western Carolina vs. South Carolina Upstate Dec 06 2:00PM ET (2025-12-06 14:00:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8833" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Maryland_Eastern Shore vs. American University</title>
     <desc>US (ESPN+ 090) | Maryland_Eastern Shore vs. American University Dec 06 2:00PM ET (2025-12-06 14:00:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8834" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Yale vs. Montana State (Second Round)</title>
     <desc>US (ESPN+ 091) | Yale vs. Montana State (Second Round) Dec 06 2:00PM ET (2025-12-06 14:01:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8835" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Sacred Heart vs. Coppin State</title>
     <desc>US (ESPN+ 092) | Sacred Heart vs. Coppin State Dec 06 2:00PM ET (2025-12-06 14:01:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8836" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Coppin State vs. Liberty</title>
     <desc>US (ESPN+ 093) | Coppin State vs. Liberty Dec 06 2:00PM ET (2025-12-06 14:01:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8837" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>UTEP vs. #8 TCU</title>
     <desc>US (ESPN+ 094) | UTEP vs. #8 TCU Dec 06 2:00PM ET (2025-12-06 14:01:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8838" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>St. Bonaventure vs. Buffalo</title>
     <desc>US (ESPN+ 095) | St. Bonaventure vs. Buffalo Dec 06 2:00PM ET (2025-12-06 14:01:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8839" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Jacksonville vs. Florida International</title>
     <desc>US (ESPN+ 096) | Jacksonville vs. Florida International Dec 06 2:00PM ET (2025-12-06 14:01:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8840" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Buffalo vs. Binghamton</title>
     <desc>US (ESPN+ 097) | Buffalo vs. Binghamton Dec 06 2:00PM ET (2025-12-06 14:01:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8841" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Holy Cross vs. Fordham</title>
     <desc>US (ESPN+ 098) | Holy Cross vs. Fordham Dec 06 2:00PM ET (2025-12-06 14:01:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8842" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Stony Brook vs. Duquesne</title>
     <desc>US (ESPN+ 099) | Stony Brook vs. Duquesne Dec 06 2:00PM ET (2025-12-06 14:01:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8843" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Coastal Carolina vs. Jacksonville</title>
     <desc>US (ESPN+ 100) | Coastal Carolina vs. Jacksonville Dec 06 2:00PM ET (2025-12-06 14:01:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8844" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Princeton vs. Belmont</title>
     <desc>US (ESPN+ 101) | Princeton vs. Belmont Dec 06 2:00PM ET (2025-12-06 14:01:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8845" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>UMBC vs. Morgan State</title>
     <desc>US (ESPN+ 102) | UMBC vs. Morgan State Dec 06 2:00PM ET (2025-12-06 14:01:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8846" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Harvard vs. Furman</title>
     <desc>US (ESPN+ 103) | Harvard vs. Furman Dec 06 2:00PM ET (2025-12-06 14:02:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8847" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Tennessee Tech vs. West Georgia</title>
     <desc>US (ESPN+ 104) | Tennessee Tech vs. West Georgia Dec 06 2:00PM ET (2025-12-06 14:02:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8848" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Detroit Mercy vs. Cleveland State</title>
     <desc>US (ESPN+ 105) | Detroit Mercy vs. Cleveland State Dec 06 2:00PM ET (2025-12-06 14:02:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8849" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>North Dakota State vs. Weber State</title>
     <desc>US (ESPN+ 106) | North Dakota State vs. Weber State Dec 06 2:00PM ET (2025-12-06 14:02:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8850" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Wagner vs. Columbia</title>
     <desc>US (ESPN+ 107) | Wagner vs. Columbia Dec 06 2:00PM ET (2025-12-06 14:02:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8851" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Western Michigan vs. SIU Edwardsville</title>
     <desc>US (ESPN+ 108) | Western Michigan vs. SIU Edwardsville Dec 06 2:00PM ET (2025-12-06 14:02:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8852" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Northern Iowa vs. Toledo</title>
     <desc>US (ESPN+ 109) | Northern Iowa vs. Toledo Dec 06 2:00PM ET (2025-12-06 14:02:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8853" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Norfolk State vs. James Madison</title>
     <desc>US (ESPN+ 110) | Norfolk State vs. James Madison Dec 06 2:00PM ET (2025-12-06 14:02:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8854" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>North Florida vs. UNC Asheville</title>
     <desc>US (ESPN+ 111) | North Florida vs. UNC Asheville Dec 06 2:00PM ET (2025-12-06 14:02:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8855" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Youngstown State vs. IU Indianapolis</title>
     <desc>US (ESPN+ 112) | Youngstown State vs. IU Indianapolis Dec 06 2:00PM ET (2025-12-06 14:02:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8856" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Yale vs. Rider</title>
     <desc>US (ESPN+ 113) | Yale vs. Rider Dec 06 2:00PM ET (2025-12-06 14:02:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8857" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>St. Lawrence vs. #10 Clarkson</title>
     <desc>US (ESPN+ 114) | St. Lawrence vs. #10 Clarkson Dec 06 2:00PM ET (2025-12-06 14:02:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8858" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Morehead State vs. Presbyterian</title>
     <desc>US (ESPN+ 115) | Morehead State vs. Presbyterian Dec 06 2:00PM ET (2025-12-06 14:03:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8859" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Holy Cross vs. Vermont</title>
     <desc>US (ESPN+ 116) | Holy Cross vs. Vermont Dec 06 2:00PM ET (2025-12-06 14:03:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8860" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Northern Kentucky vs. Purdue Fort Wayne</title>
     <desc>US (ESPN+ 117) | Northern Kentucky vs. Purdue Fort Wayne Dec 06 2:00PM ET (2025-12-06 14:03:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8861" start="20251206192500 +0000" stop="20251206222500 +0000">
     <title>Chesterfield vs. Doncaster Rovers (Round 2)</title>
     <desc>US (ESPN+ 118) | Chesterfield vs. Doncaster Rovers (Round 2) Dec 06 2:25PM ET (2025-12-06 14:25:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8862" start="20251206192500 +0000" stop="20251206222500 +0000">
     <title>SV Darmstadt 98 vs. Karlsruher SC</title>
     <desc>US (ESPN+ 119) | SV Darmstadt 98 vs. Karlsruher SC Dec 06 2:25PM ET (2025-12-06 14:25:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8863" start="20251206193000 +0000" stop="20251206223000 +0000">
     <title>En Español_Athletic Club vs. Atlético de Madrid</title>
     <desc>US (ESPN+ 120) | En Español_Athletic Club vs. Atlético de Madrid Dec 06 2:30PM ET (2025-12-06 14:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8864" start="20251206193000 +0000" stop="20251206223000 +0000">
     <title>Athletic Club vs. Atletico de Madrid</title>
     <desc>US (ESPN+ 121) | Athletic Club vs. Atletico de Madrid Dec 06 2:30PM ET (2025-12-06 14:30:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8865" start="20251206193000 +0000" stop="20251206223000 +0000">
     <title>Poland vs. Netherlands (Main Round)</title>
     <desc>US (ESPN+ 122) | Poland vs. Netherlands (Main Round) Dec 06 2:30PM ET (2025-12-06 14:30:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8866" start="20251206193000 +0000" stop="20251206223000 +0000">
     <title>En Español_Rafael Acosta vs. Franck Urquiaga (Main Card)</title>
     <desc>US (ESPN+ 123) | En Español_Rafael Acosta vs. Franck Urquiaga (Main Card) Dec 06 2:30PM ET (2025-12-06 14:30:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8867" start="20251206194500 +0000" stop="20251206224500 +0000">
     <title>En Español_Feyenoord vs. PEC Zwolle</title>
     <desc>US (ESPN+ 124) | En Español_Feyenoord vs. PEC Zwolle Dec 06 2:45PM ET (2025-12-06 14:45:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8868" start="20251206195500 +0000" stop="20251206225500 +0000">
     <title>Feyenoord vs. PEC Zwolle</title>
     <desc>US (ESPN+ 125) | Feyenoord vs. PEC Zwolle Dec 06 2:55PM ET (2025-12-06 14:55:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8869" start="20251206195500 +0000" stop="20251206225500 +0000">
     <title>Nassau BSC vs. Zarcero BS (Playoff)</title>
     <desc>US (ESPN+ 126) | Nassau BSC vs. Zarcero BS (Playoff) Dec 06 2:55PM ET (2025-12-06 14:55:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8870" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Calumet College vs. Valparaiso</title>
     <desc>US (ESPN+ 127) | Calumet College vs. Valparaiso Dec 06 3:00PM ET (2025-12-06 15:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8871" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Edward Jones Big 12 Championship Trophy Ceremony (Trophy Presentation)</title>
     <desc>US (ESPN+ 128) | Edward Jones Big 12 Championship Trophy Ceremony (Trophy Presentation) Dec 06 3:00PM ET (2025-12-06 15:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8872" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Columbus Blue Jackets vs. Florida Panthers</title>
     <desc>US (ESPN+ 129) | Columbus Blue Jackets vs. Florida Panthers Dec 06 3:00PM ET (2025-12-06 15:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8873" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Columbus Blue Jackets vs. Florida Panthers</title>
     <desc>US (ESPN+ 130) | Columbus Blue Jackets vs. Florida Panthers Dec 06 3:00PM ET (2025-12-06 15:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8874" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>RPI vs. Harvard</title>
     <desc>US (ESPN+ 131) | RPI vs. Harvard Dec 06 3:00PM ET (2025-12-06 15:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8875" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Murray State vs. Austin Peay</title>
     <desc>US (ESPN+ 132) | Murray State vs. Austin Peay Dec 06 3:00PM ET (2025-12-06 15:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8876" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>SWAC Championship Band Halftime</title>
     <desc>US (ESPN+ 133) | SWAC Championship Band Halftime Dec 06 3:00PM ET (2025-12-06 15:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8877" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Missouri State vs. Tulsa</title>
     <desc>US (ESPN+ 134) | Missouri State vs. Tulsa Dec 06 3:00PM ET (2025-12-06 15:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8878" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>UNLV vs. Rice</title>
     <desc>US (ESPN+ 135) | UNLV vs. Rice Dec 06 3:00PM ET (2025-12-06 15:00:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8879" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>UT Martin vs. Arkansas State</title>
     <desc>US (ESPN+ 136) | UT Martin vs. Arkansas State Dec 06 3:00PM ET (2025-12-06 15:00:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8880" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>#9 Quinnipiac vs. #15 Colgate</title>
     <desc>US (ESPN+ 137) | #9 Quinnipiac vs. #15 Colgate Dec 06 3:00PM ET (2025-12-06 15:00:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8881" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>MAC Championship Trophy Ceremony (Trophy Presentation)</title>
     <desc>US (ESPN+ 138) | MAC Championship Trophy Ceremony (Trophy Presentation) Dec 06 3:00PM ET (2025-12-06 15:00:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8882" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Yale vs. #13 Brown</title>
     <desc>US (ESPN+ 139) | Yale vs. #13 Brown Dec 06 3:00PM ET (2025-12-06 15:01:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8883" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Bellarmine vs. Murray State</title>
     <desc>US (ESPN+ 140) | Bellarmine vs. Murray State Dec 06 3:00PM ET (2025-12-06 15:01:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8884" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Texas Southern vs. North Texas</title>
     <desc>US (ESPN+ 141) | Texas Southern vs. North Texas Dec 06 3:00PM ET (2025-12-06 15:01:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8885" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>#15 NC State vs. #7 Georgetown (Quarterfinals)</title>
     <desc>US (ESPN+ 142) | #15 NC State vs. #7 Georgetown (Quarterfinals) Dec 06 3:00PM ET (2025-12-06 15:01:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8886" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Southeast Missouri State vs. Southern Illinois</title>
     <desc>US (ESPN+ 143) | Southeast Missouri State vs. Southern Illinois Dec 06 3:00PM ET (2025-12-06 15:01:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8887" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Union vs. Dartmouth</title>
     <desc>US (ESPN+ 144) | Union vs. Dartmouth Dec 06 3:00PM ET (2025-12-06 15:01:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8888" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Georgia State vs. Kennesaw State</title>
     <desc>US (ESPN+ 145) | Georgia State vs. Kennesaw State Dec 06 3:00PM ET (2025-12-06 15:01:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8889" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Toledo vs. Oakland</title>
     <desc>US (ESPN+ 146) | Toledo vs. Oakland Dec 06 3:00PM ET (2025-12-06 15:01:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8890" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>#11 Princeton vs. #8 Cornell</title>
     <desc>US (ESPN+ 147) | #11 Princeton vs. #8 Cornell Dec 06 3:00PM ET (2025-12-06 15:01:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8891" start="20251206200000 +0000" stop="20251206230000 +0000">
     <title>Mississippi Valley State vs. #24 Oklahoma State</title>
     <desc>US (ESPN+ 148) | Mississippi Valley State vs. #24 Oklahoma State Dec 06 3:00PM ET (2025-12-06 15:01:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8892" start="20251206203000 +0000" stop="20251206233000 +0000">
     <title>Mercer vs. Jacksonville State</title>
     <desc>US (ESPN+ 149) | Mercer vs. Jacksonville State Dec 06 3:30PM ET (2025-12-06 15:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8893" start="20251206203000 +0000" stop="20251206233000 +0000">
     <title>Abilene Christian vs. East Texas A&amp;M</title>
     <desc>US (ESPN+ 150) | Abilene Christian vs. East Texas A&amp;M Dec 06 3:30PM ET (2025-12-06 15:30:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8894" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Le Moyne vs. Binghamton</title>
     <desc>US (ESPN+ 151) | Le Moyne vs. Binghamton Dec 06 4:00PM ET (2025-12-06 16:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8895" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>New Mexico State vs. Utah Tech</title>
     <desc>US (ESPN+ 152) | New Mexico State vs. Utah Tech Dec 06 4:00PM ET (2025-12-06 16:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8896" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Akron vs. Tulane</title>
     <desc>US (ESPN+ 153) | Akron vs. Tulane Dec 06 4:00PM ET (2025-12-06 16:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8897" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Incarnate Word vs. Nicholls</title>
     <desc>US (ESPN+ 154) | Incarnate Word vs. Nicholls Dec 06 4:00PM ET (2025-12-06 16:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8898" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Southern Indiana vs. East Tennessee State</title>
     <desc>US (ESPN+ 155) | Southern Indiana vs. East Tennessee State Dec 06 4:00PM ET (2025-12-06 16:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8899" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Merrimack vs. #15 UConn</title>
     <desc>US (ESPN+ 156) | Merrimack vs. #15 UConn Dec 06 4:00PM ET (2025-12-06 16:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8900" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Air Force vs. Utah Valley</title>
     <desc>US (ESPN+ 157) | Air Force vs. Utah Valley Dec 06 4:00PM ET (2025-12-06 16:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8901" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Simpson vs. Santa Clara</title>
     <desc>US (ESPN+ 158) | Simpson vs. Santa Clara Dec 06 4:00PM ET (2025-12-06 16:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8902" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>North Carolina A&amp;T vs. North Carolina Central</title>
     <desc>US (ESPN+ 159) | North Carolina A&amp;T vs. North Carolina Central Dec 06 4:00PM ET (2025-12-06 16:00:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8903" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>UNC Greensboro vs. East Carolina</title>
     <desc>US (ESPN+ 160) | UNC Greensboro vs. East Carolina Dec 06 4:00PM ET (2025-12-06 16:00:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8904" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>IU East vs. Eastern Kentucky</title>
     <desc>US (ESPN+ 161) | IU East vs. Eastern Kentucky Dec 06 4:00PM ET (2025-12-06 16:00:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8905" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>#7 UConn vs. Boston University</title>
     <desc>US (ESPN+ 162) | #7 UConn vs. Boston University Dec 06 4:00PM ET (2025-12-06 16:00:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8906" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Longwood vs. Morgan State</title>
     <desc>US (ESPN+ 163) | Longwood vs. Morgan State Dec 06 4:00PM ET (2025-12-06 16:01:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8907" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>UMass Lowell vs. Massachusetts</title>
     <desc>US (ESPN+ 164) | UMass Lowell vs. Massachusetts Dec 06 4:00PM ET (2025-12-06 16:01:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8908" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>UNC Wilmington vs. Louisiana</title>
     <desc>US (ESPN+ 165) | UNC Wilmington vs. Louisiana Dec 06 4:00PM ET (2025-12-06 16:01:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8909" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Elon vs. Wofford</title>
     <desc>US (ESPN+ 166) | Elon vs. Wofford Dec 06 4:00PM ET (2025-12-06 16:01:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8910" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Seton Hall vs. Kansas State</title>
     <desc>US (ESPN+ 167) | Seton Hall vs. Kansas State Dec 06 4:00PM ET (2025-12-06 16:01:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8911" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Long Beach State vs. UC San Diego</title>
     <desc>US (ESPN+ 168) | Long Beach State vs. UC San Diego Dec 06 4:00PM ET (2025-12-06 16:01:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8912" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>South Dakota State vs. Northern Arizona</title>
     <desc>US (ESPN+ 169) | South Dakota State vs. Northern Arizona Dec 06 4:00PM ET (2025-12-06 16:01:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8913" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Evansville vs. Western Kentucky</title>
     <desc>US (ESPN+ 170) | Evansville vs. Western Kentucky Dec 06 4:00PM ET (2025-12-06 16:01:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8914" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Marshall vs. Ohio</title>
     <desc>US (ESPN+ 171) | Marshall vs. Ohio Dec 06 4:00PM ET (2025-12-06 16:01:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8915" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>New Mexico State vs. Abilene Christian</title>
     <desc>US (ESPN+ 172) | New Mexico State vs. Abilene Christian Dec 06 4:00PM ET (2025-12-06 16:01:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8916" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>Hawai`i vs. Cal State Fullerton</title>
     <desc>US (ESPN+ 173) | Hawai`i vs. Cal State Fullerton Dec 06 4:00PM ET (2025-12-06 16:01:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8917" start="20251206212500 +0000" stop="20251207002500 +0000">
     <title>Garita Palmera BS vs. San Salvador BSC (Playoff)</title>
     <desc>US (ESPN+ 174) | Garita Palmera BS vs. San Salvador BSC (Playoff) Dec 06 4:25PM ET (2025-12-06 16:25:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8918" start="20251206213000 +0000" stop="20251207003000 +0000">
     <title>San Francisco vs. Arizona State</title>
     <desc>US (ESPN+ 175) | San Francisco vs. Arizona State Dec 06 4:30PM ET (2025-12-06 16:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8919" start="20251206213000 +0000" stop="20251207003000 +0000">
     <title>LaGrange vs. Troy</title>
     <desc>US (ESPN+ 176) | LaGrange vs. Troy Dec 06 4:30PM ET (2025-12-06 16:30:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8920" start="20251206213000 +0000" stop="20251207003000 +0000">
     <title>UNC Greensboro vs. South Carolina Upstate</title>
     <desc>US (ESPN+ 177) | UNC Greensboro vs. South Carolina Upstate Dec 06 4:30PM ET (2025-12-06 16:30:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8921" start="20251206213000 +0000" stop="20251207003000 +0000">
     <title>Southeast Missouri State vs. Chattanooga</title>
     <desc>US (ESPN+ 178) | Southeast Missouri State vs. Chattanooga Dec 06 4:30PM ET (2025-12-06 16:30:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8922" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>Omaha vs. Portland State</title>
     <desc>US (ESPN+ 179) | Omaha vs. Portland State Dec 06 5:00PM ET (2025-12-06 17:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8923" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>ESPN FC _ Schedule Review Show</title>
     <desc>US (ESPN+ 180) | ESPN FC _ Schedule Review Show Dec 06 5:00PM ET (2025-12-06 17:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8924" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>Long Island University vs. Lehigh</title>
     <desc>US (ESPN+ 181) | Long Island University vs. Lehigh Dec 06 5:00PM ET (2025-12-06 17:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8925" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>Southern Utah vs. Oregon State</title>
     <desc>US (ESPN+ 182) | Southern Utah vs. Oregon State Dec 06 5:00PM ET (2025-12-06 17:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8926" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>Elms College vs. Brown</title>
     <desc>US (ESPN+ 183) | Elms College vs. Brown Dec 06 5:00PM ET (2025-12-06 17:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8927" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>SWAC Championship Trophy Ceremony (Trophy Presentation)</title>
     <desc>US (ESPN+ 184) | SWAC Championship Trophy Ceremony (Trophy Presentation) Dec 06 5:00PM ET (2025-12-06 17:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8928" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>UC Irvine vs. Cal State Northridge</title>
     <desc>US (ESPN+ 185) | UC Irvine vs. Cal State Northridge Dec 06 5:00PM ET (2025-12-06 17:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8929" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>La Verne vs. UW_Oshkosh (Championship)</title>
     <desc>US (ESPN+ 186) | La Verne vs. UW_Oshkosh (Championship) Dec 06 5:00PM ET (2025-12-06 17:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8930" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>Vermont vs. Pepperdine</title>
     <desc>US (ESPN+ 187) | Vermont vs. Pepperdine Dec 06 5:00PM ET (2025-12-06 17:00:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8931" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>UC Santa Barbara vs. Cal State Bakersfield</title>
     <desc>US (ESPN+ 188) | UC Santa Barbara vs. Cal State Bakersfield Dec 06 5:00PM ET (2025-12-06 17:00:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8932" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>#8 Quinnipiac vs. Union</title>
     <desc>US (ESPN+ 189) | #8 Quinnipiac vs. Union Dec 06 5:00PM ET (2025-12-06 17:00:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8933" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>Kansas City vs. Eastern Washington</title>
     <desc>US (ESPN+ 190) | Kansas City vs. Eastern Washington Dec 06 5:00PM ET (2025-12-06 17:00:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8934" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>Big Al Invitational (Swimming)</title>
     <desc>US (ESPN+ 191) | Big Al Invitational (Swimming) Dec 06 5:00PM ET (2025-12-06 17:01:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8935" start="20251206223000 +0000" stop="20251207013000 +0000">
     <title>UAlbany vs. Columbia</title>
     <desc>US (ESPN+ 192) | UAlbany vs. Columbia Dec 06 5:30PM ET (2025-12-06 17:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8936" start="20251206224000 +0000" stop="20251207014000 +0000">
     <title>Vasco da Gama vs. Cali BSC (Women`s Semifinal)</title>
     <desc>US (ESPN+ 193) | Vasco da Gama vs. Cali BSC (Women`s Semifinal) Dec 06 5:40PM ET (2025-12-06 17:40:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8937" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>Houston Christian vs. New Orleans</title>
     <desc>US (ESPN+ 194) | Houston Christian vs. New Orleans Dec 06 6:00PM ET (2025-12-06 18:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8938" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>UFC 323: Dvalishvili vs. Yan 2 (Prelims)</title>
     <desc>US (ESPN+ 195) | UFC 323: Dvalishvili vs. Yan 2 (Prelims) Dec 06 6:00PM ET (2025-12-06 18:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8939" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>William &amp; Mary vs. George Washington</title>
     <desc>US (ESPN+ 196) | William &amp; Mary vs. George Washington Dec 06 6:00PM ET (2025-12-06 18:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8940" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>Marquette vs. #2 Louisville (Second Round)</title>
     <desc>US (ESPN+ 197) | Marquette vs. #2 Louisville (Second Round) Dec 06 6:00PM ET (2025-12-06 18:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8941" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>Denver vs. Idaho State</title>
     <desc>US (ESPN+ 198) | Denver vs. Idaho State Dec 06 6:00PM ET (2025-12-06 18:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8942" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>Princeton vs. Rensselaer</title>
     <desc>US (ESPN+ 199) | Princeton vs. Rensselaer Dec 06 6:00PM ET (2025-12-06 18:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8943" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>Bowie State vs. Howard</title>
     <desc>US (ESPN+ 200) | Bowie State vs. Howard Dec 06 6:00PM ET (2025-12-06 18:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8944" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>En Español _ UFC 323: Dvalishvili vs. Yan 2 (Prelims)</title>
     <desc>US (ESPN+ 201) | En Español _ UFC 323: Dvalishvili vs. Yan 2 (Prelims) Dec 06 6:00PM ET (2025-12-06 18:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8945" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>Cornhole (Open Doubles)</title>
     <desc>US (ESPN+ 202) | Cornhole (Open Doubles) Dec 06 6:00PM ET (2025-12-06 18:00:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8946" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>Vermont vs. #18 Boston University</title>
     <desc>US (ESPN+ 203) | Vermont vs. #18 Boston University Dec 06 6:00PM ET (2025-12-06 18:00:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8947" start="20251206233000 +0000" stop="20251207023000 +0000">
     <title>St. Louis Blues vs. Ottawa Senators</title>
     <desc>US (ESPN+ 204) | St. Louis Blues vs. Ottawa Senators Dec 06 6:30PM ET (2025-12-06 18:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8948" start="20251206233000 +0000" stop="20251207023000 +0000">
     <title>St. Louis Blues vs. Ottawa Senators</title>
     <desc>US (ESPN+ 205) | St. Louis Blues vs. Ottawa Senators Dec 06 6:30PM ET (2025-12-06 18:30:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8949" start="20251206233000 +0000" stop="20251207023000 +0000">
     <title>Nashville Predators vs. Carolina Hurricanes</title>
     <desc>US (ESPN+ 206) | Nashville Predators vs. Carolina Hurricanes Dec 06 6:30PM ET (2025-12-06 18:30:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8950" start="20251206233000 +0000" stop="20251207023000 +0000">
     <title>Nashville Predators vs. Carolina Hurricanes</title>
     <desc>US (ESPN+ 207) | Nashville Predators vs. Carolina Hurricanes Dec 06 6:30PM ET (2025-12-06 18:30:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8951" start="20251206233000 +0000" stop="20251207023000 +0000">
     <title>New York Islanders vs. Tampa Bay Lightning</title>
     <desc>US (ESPN+ 208) | New York Islanders vs. Tampa Bay Lightning Dec 06 6:30PM ET (2025-12-06 18:30:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8952" start="20251206233000 +0000" stop="20251207023000 +0000">
     <title>New York Islanders vs. Tampa Bay Lightning</title>
     <desc>US (ESPN+ 209) | New York Islanders vs. Tampa Bay Lightning Dec 06 6:30PM ET (2025-12-06 18:30:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8953" start="20251206233000 +0000" stop="20251207023000 +0000">
     <title>Montreal Canadiens vs. Toronto Maple Leafs</title>
     <desc>US (ESPN+ 210) | Montreal Canadiens vs. Toronto Maple Leafs Dec 06 6:30PM ET (2025-12-06 18:30:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8954" start="20251206235500 +0000" stop="20251207025500 +0000">
     <title>Sportivo Luqueno vs. Cruzn (Men`s Semifinal)</title>
     <desc>US (ESPN+ 211) | Sportivo Luqueno vs. Cruzn (Men`s Semifinal) Dec 06 6:55PM ET (2025-12-06 18:55:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8955" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Minot State vs. Liberty</title>
     <desc>US (ESPN+ 212) | Minot State vs. Liberty Dec 06 7:00PM ET (2025-12-06 19:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8956" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>SEC Championship on ABC Presented by Dr Pepper Trophy Ceremony (Trophy Presentation)</title>
     <desc>US (ESPN+ 213) | SEC Championship on ABC Presented by Dr Pepper Trophy Ceremony (Trophy Presentation) Dec 06 7:00PM ET (2025-12-06 19:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8957" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Boston University vs. New Hampshire</title>
     <desc>US (ESPN+ 214) | Boston University vs. New Hampshire Dec 06 7:00PM ET (2025-12-06 19:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8958" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>UC Riverside vs. Cal Poly</title>
     <desc>US (ESPN+ 215) | UC Riverside vs. Cal Poly Dec 06 7:00PM ET (2025-12-06 19:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8959" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Texas A&amp;M_Corpus Christi vs. Lamar</title>
     <desc>US (ESPN+ 216) | Texas A&amp;M_Corpus Christi vs. Lamar Dec 06 7:00PM ET (2025-12-06 19:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8960" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Brown vs. #20 Harvard</title>
     <desc>US (ESPN+ 217) | Brown vs. #20 Harvard Dec 06 7:00PM ET (2025-12-06 19:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8961" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>New Jersey Devils vs. Boston Bruins</title>
     <desc>US (ESPN+ 218) | New Jersey Devils vs. Boston Bruins Dec 06 7:00PM ET (2025-12-06 19:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8962" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>New Jersey Devils vs. Boston Bruins</title>
     <desc>US (ESPN+ 219) | New Jersey Devils vs. Boston Bruins Dec 06 7:00PM ET (2025-12-06 19:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8963" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Colgate vs. Clarkson</title>
     <desc>US (ESPN+ 220) | Colgate vs. Clarkson Dec 06 7:00PM ET (2025-12-06 19:00:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8964" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>New Hampshire vs. #12 Maine</title>
     <desc>US (ESPN+ 221) | New Hampshire vs. #12 Maine Dec 06 7:00PM ET (2025-12-06 19:00:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8965" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>California Baptist vs. Utah</title>
     <desc>US (ESPN+ 222) | California Baptist vs. Utah Dec 06 7:00PM ET (2025-12-06 19:00:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8966" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Yale vs. #10 Dartmouth</title>
     <desc>US (ESPN+ 223) | Yale vs. #10 Dartmouth Dec 06 7:00PM ET (2025-12-06 19:00:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8967" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>NCAA Division III Women`s Volleyball Trophy Presentation</title>
     <desc>US (ESPN+ 224) | NCAA Division III Women`s Volleyball Trophy Presentation Dec 06 7:00PM ET (2025-12-06 19:01:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8968" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Massachusetts vs. #11 Northeastern</title>
     <desc>US (ESPN+ 225) | Massachusetts vs. #11 Northeastern Dec 06 7:00PM ET (2025-12-06 19:01:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8969" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Michigan vs. #1 Pittsburgh (Second Round)</title>
     <desc>US (ESPN+ 226) | Michigan vs. #1 Pittsburgh (Second Round) Dec 06 7:00PM ET (2025-12-06 19:01:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8970" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>#16 Cornell vs. St. Lawrence</title>
     <desc>US (ESPN+ 227) | #16 Cornell vs. St. Lawrence Dec 06 7:00PM ET (2025-12-06 19:01:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8971" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Northwest Mississippi vs. Hutchinson Community College (Semifinal)</title>
     <desc>US (ESPN+ 228) | Northwest Mississippi vs. Hutchinson Community College (Semifinal) Dec 06 7:00PM ET (2025-12-06 19:01:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8972" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Cal Poly vs. UC Riverside</title>
     <desc>US (ESPN+ 229) | Cal Poly vs. UC Riverside Dec 06 7:00PM ET (2025-12-06 19:01:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8973" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>UMass Lowell vs. #14 Boston College</title>
     <desc>US (ESPN+ 230) | UMass Lowell vs. #14 Boston College Dec 06 7:00PM ET (2025-12-06 19:01:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8974" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>Central Arkansas vs. Little Rock</title>
     <desc>US (ESPN+ 231) | Central Arkansas vs. Little Rock Dec 06 7:00PM ET (2025-12-06 19:01:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8975" start="20251207003000 +0000" stop="20251207033000 +0000">
     <title>#8 Penn State vs. #1 Texas (Second Round)</title>
     <desc>US (ESPN+ 232) | #8 Penn State vs. #1 Texas (Second Round) Dec 06 7:30PM ET (2025-12-06 19:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8976" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>Chicago State vs. Illinois State</title>
     <desc>US (ESPN+ 233) | Chicago State vs. Illinois State Dec 06 8:00PM ET (2025-12-06 20:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8977" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>Northern Illinois vs. Bradley</title>
     <desc>US (ESPN+ 234) | Northern Illinois vs. Bradley Dec 06 8:00PM ET (2025-12-06 20:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8978" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>Calgary Roughnecks vs. Saskatchewan Rush</title>
     <desc>US (ESPN+ 235) | Calgary Roughnecks vs. Saskatchewan Rush Dec 06 8:00PM ET (2025-12-06 20:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8979" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>South Dakota vs. Northern Colorado</title>
     <desc>US (ESPN+ 236) | South Dakota vs. Northern Colorado Dec 06 8:00PM ET (2025-12-06 20:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8980" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>BYU vs. Portland</title>
     <desc>US (ESPN+ 237) | BYU vs. Portland Dec 06 8:00PM ET (2025-12-06 20:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8981" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>#6 TCU vs. #3 Texas A&amp;M (Second Round)</title>
     <desc>US (ESPN+ 238) | #6 TCU vs. #3 Texas A&amp;M (Second Round) Dec 06 8:00PM ET (2025-12-06 20:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8982" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>Lindenwood vs. Eastern Illinois</title>
     <desc>US (ESPN+ 239) | Lindenwood vs. Eastern Illinois Dec 06 8:00PM ET (2025-12-06 20:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8983" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>#5 Iowa State vs. #4 Minnesota (Second Round)</title>
     <desc>US (ESPN+ 240) | #5 Iowa State vs. #4 Minnesota (Second Round) Dec 06 8:00PM ET (2025-12-06 20:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8984" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>North Dakota vs. Montana State</title>
     <desc>US (ESPN+ 241) | North Dakota vs. Montana State Dec 06 8:00PM ET (2025-12-06 20:00:40)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8985" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>Robert Morris vs. Milwaukee</title>
     <desc>US (ESPN+ 242) | Robert Morris vs. Milwaukee Dec 06 8:00PM ET (2025-12-06 20:00:45)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8986" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>Wichita State vs. Northern Iowa</title>
     <desc>US (ESPN+ 243) | Wichita State vs. Northern Iowa Dec 06 8:00PM ET (2025-12-06 20:00:50)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8987" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>Florida vs. #2 SMU (Second Round)</title>
     <desc>US (ESPN+ 244) | Florida vs. #2 SMU (Second Round) Dec 06 8:00PM ET (2025-12-06 20:00:55)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8988" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>Kansas State vs. #1 Nebraska (Second Round)</title>
     <desc>US (ESPN+ 245) | Kansas State vs. #1 Nebraska (Second Round) Dec 06 8:00PM ET (2025-12-06 20:01:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8989" start="20251207011000 +0000" stop="20251207041000 +0000">
     <title>Barra De Santiago vs. Sao Pedro BS (Women`s Semifinal)</title>
     <desc>US (ESPN+ 246) | Barra De Santiago vs. Sao Pedro BS (Women`s Semifinal) Dec 06 8:10PM ET (2025-12-06 20:10:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8990" start="20251207013000 +0000" stop="20251207043000 +0000">
     <title>Chicago Blackhawks vs. Los Angeles Kings</title>
     <desc>US (ESPN+ 247) | Chicago Blackhawks vs. Los Angeles Kings Dec 06 8:30PM ET (2025-12-06 20:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8991" start="20251207013000 +0000" stop="20251207043000 +0000">
     <title>Chicago Blackhawks vs. Los Angeles Kings</title>
     <desc>US (ESPN+ 248) | Chicago Blackhawks vs. Los Angeles Kings Dec 06 8:30PM ET (2025-12-06 20:30:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8992" start="20251207020000 +0000" stop="20251207050000 +0000">
     <title>UC San Diego vs. Long Beach State</title>
     <desc>US (ESPN+ 249) | UC San Diego vs. Long Beach State Dec 06 9:00PM ET (2025-12-06 21:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8993" start="20251207020000 +0000" stop="20251207050000 +0000">
     <title>St. Thomas University vs. Montana</title>
     <desc>US (ESPN+ 250) | St. Thomas University vs. Montana Dec 06 9:00PM ET (2025-12-06 21:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8994" start="20251207020000 +0000" stop="20251207050000 +0000">
     <title>Cal State Bakersfield vs. UC Santa Barbara</title>
     <desc>US (ESPN+ 251) | Cal State Bakersfield vs. UC Santa Barbara Dec 06 9:00PM ET (2025-12-06 21:00:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8995" start="20251207020000 +0000" stop="20251207050000 +0000">
     <title>Arkansas State vs. Little Rock</title>
     <desc>US (ESPN+ 252) | Arkansas State vs. Little Rock Dec 06 9:00PM ET (2025-12-06 21:00:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8996" start="20251207020000 +0000" stop="20251207050000 +0000">
     <title>Southern Hoiho vs. Mainland Pouakai (Semifinal #2)</title>
     <desc>US (ESPN+ 253) | Southern Hoiho vs. Mainland Pouakai (Semifinal #2) Dec 06 9:00PM ET (2025-12-06 21:00:20)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8997" start="20251207020000 +0000" stop="20251207050000 +0000">
     <title>UC Davis vs. Gonzaga</title>
     <desc>US (ESPN+ 254) | UC Davis vs. Gonzaga Dec 06 9:00PM ET (2025-12-06 21:00:25)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8998" start="20251207020000 +0000" stop="20251207050000 +0000">
     <title>NCAA Women`s Volleyball Tournament (Second Round)</title>
     <desc>US (ESPN+ 255) | NCAA Women`s Volleyball Tournament (Second Round) Dec 06 9:00PM ET (2025-12-06 21:00:30)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="8999" start="20251207020000 +0000" stop="20251207050000 +0000">
     <title>Texas State vs. Stephen F. Austin</title>
     <desc>US (ESPN+ 256) | Texas State vs. Stephen F. Austin Dec 06 9:00PM ET (2025-12-06 21:00:35)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9000" start="20251207022500 +0000" stop="20251207052500 +0000">
     <title>Barra De Santiago vs. Samara ADG FP (Men`s Semifinal)</title>
     <desc>US (ESPN+ 257) | Barra De Santiago vs. Samara ADG FP (Men`s Semifinal) Dec 06 9:25PM ET (2025-12-06 21:25:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9001" start="20251207023000 +0000" stop="20251207053000 +0000">
     <title>Detroit Red Wings vs. Seattle Kraken</title>
     <desc>US (ESPN+ 258) | Detroit Red Wings vs. Seattle Kraken Dec 06 9:30PM ET (2025-12-06 21:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9002" start="20251207023000 +0000" stop="20251207053000 +0000">
     <title>Detroit Red Wings vs. Seattle Kraken</title>
     <desc>US (ESPN+ 259) | Detroit Red Wings vs. Seattle Kraken Dec 06 9:30PM ET (2025-12-06 21:30:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9003" start="20251207023000 +0000" stop="20251207053000 +0000">
     <title>Minnesota Wild vs. Vancouver Canucks</title>
     <desc>US (ESPN+ 260) | Minnesota Wild vs. Vancouver Canucks Dec 06 9:30PM ET (2025-12-06 21:30:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9004" start="20251207023000 +0000" stop="20251207053000 +0000">
     <title>Minnesota Wild vs. Vancouver Canucks</title>
     <desc>US (ESPN+ 261) | Minnesota Wild vs. Vancouver Canucks Dec 06 9:30PM ET (2025-12-06 21:30:15)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9005" start="20251207030000 +0000" stop="20251207060000 +0000">
     <title>Cal State Northridge vs. UC Irvine</title>
     <desc>US (ESPN+ 262) | Cal State Northridge vs. UC Irvine Dec 06 10:00PM ET (2025-12-06 22:00:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9006" start="20251207030000 +0000" stop="20251207060000 +0000">
     <title>Winnipeg Jets vs. Edmonton Oilers</title>
     <desc>US (ESPN+ 263) | Winnipeg Jets vs. Edmonton Oilers Dec 06 10:00PM ET (2025-12-06 22:00:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9007" start="20251207035500 +0000" stop="20251207065500 +0000">
     <title>Melbourne City FC vs. Wellington Phoenix</title>
     <desc>US (ESPN+ 264) | Melbourne City FC vs. Wellington Phoenix Dec 06 10:55PM ET (2025-12-06 22:55:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9008" start="20251207043000 +0000" stop="20251207073000 +0000">
     <title>ACC Championship Presented by Subway Trophy Ceremony (Trophy Presentation)</title>
     <desc>US (ESPN+ 265) | ACC Championship Presented by Subway Trophy Ceremony (Trophy Presentation) Dec 06 11:30PM ET (2025-12-06 23:30:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"/>
   </programme>
   <programme channel="9009" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
@@ -7050,46 +7660,68 @@
   <programme channel="10970" start="20251206075000 +0000" stop="20251206105000 +0000">
     <title>HSBC SVNS: Cape Town Day 1</title>
     <desc>HSBC SVNS: Cape Town Day 1 @ Dec 6 2:50 AM :Paramount+  01</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10971" start="20251206122000 +0000" stop="20251206152000 +0000">
     <title>English Football League: Watford vs Norwich City</title>
     <desc>English Football League: Watford vs Norwich City @ Dec 6 7:20 AM :Paramount+  02</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10972" start="20251206122000 +0000" stop="20251206152000 +0000">
     <title>English Football League: Derby County vs Leicester City</title>
     <desc>English Football League: Derby County vs Leicester City @ Dec 6 7:20 AM :Paramount+  03</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10973" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>Serie A: Sassuolo vs Fiorentina</title>
     <desc>Serie A: Sassuolo vs Fiorentina @ Dec 6 8:50 AM :Paramount+  04</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10974" start="20251206143000 +0000" stop="20251206173000 +0000">
     <title>English Football League: Preston North End vs Wrexham</title>
     <desc>English Football League: Preston North End vs Wrexham @ Dec 6 9:30 AM :Paramount+  05</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10975" start="20251206143000 +0000" stop="20251206173000 +0000">
     <title>English Football League: Sheffield United vs Stoke City</title>
     <desc>English Football League: Sheffield United vs Stoke City @ Dec 6 9:30 AM :Paramount+  06</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10976" start="20251206143000 +0000" stop="20251206173000 +0000">
     <title>English Football League: Ipswich Town vs Coventry City</title>
     <desc>English Football League: Ipswich Town vs Coventry City @ Dec 6 9:30 AM :Paramount+  07</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10977" start="20251206143000 +0000" stop="20251206173000 +0000">
     <title>English Football League: Bristol City vs Millwall</title>
     <desc>English Football League: Bristol City vs Millwall @ Dec 6 9:30 AM :Paramount+  08</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10978" start="20251206165000 +0000" stop="20251206195000 +0000">
     <title>Serie A: Inter vs Como</title>
     <desc>Serie A: Inter vs Como @ Dec 6 11:50 AM :Paramount+  09</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10979" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>Serie A: Hellas Verona vs Atalanta</title>
     <desc>Serie A: Hellas Verona vs Atalanta @ Dec 6 2:00 PM :Paramount+  10</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10980" start="20251206195500 +0000" stop="20251206225500 +0000">
     <title>SPFL: Kilmarnock vs Rangers</title>
     <desc>SPFL: Kilmarnock vs Rangers @ Dec 6 2:55 PM :Paramount+  11</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"/>
   </programme>
   <programme channel="10981" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
@@ -7450,62 +8082,92 @@
   <programme channel="11092" start="20251206175000 +0000" stop="20251206205000 +0000">
     <title>Swimming and Diving: Illinois &amp; Purdue at Wisconsin</title>
     <desc>US (BTN+ 001) | Swimming and Diving: Illinois &amp; Purdue at Wisconsin (2025-12-06 12:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11093" start="20251206175005 +0000" stop="20251206205005 +0000">
     <title>Basketball (W): Nebraska at Penn State</title>
     <desc>US (BTN+ 002) | Basketball (W): Nebraska at Penn State (2025-12-06 12:50:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11094" start="20251206195000 +0000" stop="20251206225000 +0000">
     <title>Ice Hockey (W): Wisconsin at Ohio State</title>
     <desc>US (BTN+ 003) | Ice Hockey (W): Wisconsin at Ohio State (2025-12-06 14:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11095" start="20251206195005 +0000" stop="20251206225005 +0000">
     <title>Ice Hockey (W): St. Thomas at Minnesota</title>
     <desc>US (BTN+ 004) | Ice Hockey (W): St. Thomas at Minnesota (2025-12-06 14:50:05)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11096" start="20251206195010 +0000" stop="20251206225010 +0000">
     <title>Ice Hockey (W): St. Cloud St. at Minnesota St. Mankato</title>
     <desc>US (BTN+ 005) | Ice Hockey (W): St. Cloud St. at Minnesota St. Mankato (2025-12-06 14:50:10)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11097" start="20251206205000 +0000" stop="20251206235000 +0000">
     <title>Ice Hockey (W): UM_Duluth at Bemidji St.</title>
     <desc>US (BTN+ 006) | Ice Hockey (W): UM_Duluth at Bemidji St. (2025-12-06 15:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11098" start="20251206235000 +0000" stop="20251207025000 +0000">
     <title>Ice Hockey (M): #3 Michigan State at #1 Michigan</title>
     <desc>US (BTN+ 007) | Ice Hockey (M): #3 Michigan State at #1 Michigan (2025-12-06 18:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11099" start="20251207175000 +0000" stop="20251207205000 +0000">
     <title>Wrestling: #14 Lehigh at #1 Penn State</title>
     <desc>US (BTN+ 008) | Wrestling: #14 Lehigh at #1 Penn State (2025-12-07 12:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11100" start="20251207185000 +0000" stop="20251207215000 +0000">
     <title>Wrestling: N. Dakota St. at #11 Minnesota</title>
     <desc>US (BTN+ 009) | Wrestling: N. Dakota St. at #11 Minnesota (2025-12-07 13:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11101" start="20251207195000 +0000" stop="20251207225000 +0000">
     <title>Wrestling (W): Colorado Mesa &amp; Oklahoma State at Iowa</title>
     <desc>US (BTN+ 010) | Wrestling (W): Colorado Mesa &amp; Oklahoma State at Iowa (2025-12-07 14:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11102" start="20251207225000 +0000" stop="20251208015000 +0000">
     <title>Basketball (W): Michigan State at Wisconsin</title>
     <desc>US (BTN+ 011) | Basketball (W): Michigan State at Wisconsin (2025-12-07 17:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11103" start="20251210005000 +0000" stop="20251210035000 +0000">
     <title>Basketball (W): Nebraska_Omaha at Nebraska</title>
     <desc>US (BTN+ 012) | Basketball (W): Nebraska_Omaha at Nebraska (2025-12-09 19:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11104" start="20251210165000 +0000" stop="20251210195000 +0000">
     <title>Basketball (W): San Diego at Wisconsin</title>
     <desc>US (BTN+ 013) | Basketball (W): San Diego at Wisconsin (2025-12-10 11:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11105" start="20251210225000 +0000" stop="20251211015000 +0000">
     <title>Basketball (W): Delaware St. at Maryland</title>
     <desc>US (BTN+ 014) | Basketball (W): Delaware St. at Maryland (2025-12-10 17:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11106" start="20251211005000 +0000" stop="20251211035000 +0000">
     <title>Basketball (W): Alabama A&amp;M at Minnesota</title>
     <desc>US (BTN+ 015) | Basketball (W): Alabama A&amp;M at Minnesota (2025-12-10 19:50:00)</desc>
+    <category lang="en">Sports</category>
+    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"/>
   </programme>
   <programme channel="11107" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
@@ -7850,14 +8512,20 @@
   <programme channel="11831" start="20251206060000 +0000" stop="20251206090000 +0000">
     <title>SportsCentre Road to 2026 A</title>
     <desc>SportsCentre Road to 2026 A @ Dec 6 1:00 AM :TSN+  01</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11832" start="20251206070000 +0000" stop="20251206100000 +0000">
     <title>SPORTSCENTRE A</title>
     <desc>SPORTSCENTRE A @ Dec 6 2:00 AM :TSN+  02</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11833" start="20251206075500 +0000" stop="20251206105500 +0000">
     <title>HSBC Rugby SVNS Cape Town Day One Pool Play A</title>
     <desc>HSBC Rugby SVNS Cape Town Day One Pool Play A @ Dec 6 2:55 AM :TSN+  03</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11834" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
@@ -7866,334 +8534,500 @@
   <programme channel="11835" start="20251206080000 +0000" stop="20251206110000 +0000">
     <title>SportsCentre Road to 2026 B</title>
     <desc>SportsCentre Road to 2026 B @ Dec 6 3:00 AM :TSN+  05</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11836" start="20251206080000 +0000" stop="20251206110000 +0000">
     <title>SportsCentre Road to 2026 B</title>
     <desc>SportsCentre Road to 2026 B @ Dec 6 3:00 AM :TSN+  05</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11837" start="20251206090000 +0000" stop="20251206120000 +0000">
     <title>SPORTSCENTRE C</title>
     <desc>SPORTSCENTRE C @ Dec 6 4:00 AM :TSN+  06</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11838" start="20251206100000 +0000" stop="20251206130000 +0000">
     <title>SPORTSCENTRE D</title>
     <desc>SPORTSCENTRE D @ Dec 6 5:00 AM :TSN+  07</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11839" start="20251206100000 +0000" stop="20251206130000 +0000">
     <title>SportsCentre Road to 2026 C</title>
     <desc>SportsCentre Road to 2026 C @ Dec 6 5:00 AM :TSN+  08</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11840" start="20251206102000 +0000" stop="20251206132000 +0000">
     <title>Formula 1 Driver Tracker Abu Dhabi Grand Prix Practice #3</title>
     <desc>Formula 1 Driver Tracker Abu Dhabi Grand Prix Practice #3 @ Dec 6 5:20 AM :TSN+  09</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11841" start="20251206102000 +0000" stop="20251206132000 +0000">
     <title>Formula 1 Timing Channel Abu Dhabi Grand Prix Practice #3</title>
     <desc>Formula 1 Timing Channel Abu Dhabi Grand Prix Practice #3 @ Dec 6 5:20 AM :TSN+  10</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11842" start="20251206102000 +0000" stop="20251206132000 +0000">
     <title>Formula 1 Pit Lane Abu Dhabi Grand Prix Practice #3</title>
     <desc>Formula 1 Pit Lane Abu Dhabi Grand Prix Practice #3 @ Dec 6 5:20 AM :TSN+  11</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11843" start="20251206102000 +0000" stop="20251206132000 +0000">
     <title>Formula 1 On Board Camera Lance Stroll Abu Dhabi Grand Prix Practice #3</title>
     <desc>Formula 1 On Board Camera Lance Stroll Abu Dhabi Grand Prix Practice #3 @ Dec 6 5:20 AM :TSN+  12</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11844" start="20251206102000 +0000" stop="20251206132000 +0000">
     <title>Formula 1 Mixed On Board Camera Abu Dhabi Grand Prix Practice #3</title>
     <desc>Formula 1 Mixed On Board Camera Abu Dhabi Grand Prix Practice #3 @ Dec 6 5:20 AM :TSN+  13</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11845" start="20251206102000 +0000" stop="20251206132000 +0000">
     <title>Formula 1 On Board Camera Lando Norris Abu Dhabi Grand Prix Practice #3</title>
     <desc>Formula 1 On Board Camera Lando Norris Abu Dhabi Grand Prix Practice #3 @ Dec 6 5:20 AM :TSN+  14</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11846" start="20251206102000 +0000" stop="20251206132000 +0000">
     <title>Formula 1 On Board Camera Max Verstappen Abu Dhabi Grand Prix Practice #3</title>
     <desc>Formula 1 On Board Camera Max Verstappen Abu Dhabi Grand Prix Practice #3 @ Dec 6 5:20 AM :TSN+  15</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11847" start="20251206110000 +0000" stop="20251206140000 +0000">
     <title>SPORTSCENTRE E</title>
     <desc>SPORTSCENTRE E @ Dec 6 6:00 AM :TSN+  16</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11848" start="20251206120000 +0000" stop="20251206150000 +0000">
     <title>SPORTSCENTRE F</title>
     <desc>SPORTSCENTRE F @ Dec 6 7:00 AM :TSN+  17</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11849" start="20251206120000 +0000" stop="20251206150000 +0000">
     <title>SportsCentre Road to 2026 D</title>
     <desc>SportsCentre Road to 2026 D @ Dec 6 7:00 AM :TSN+  18</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11850" start="20251206121000 +0000" stop="20251206151000 +0000">
     <title>Formula 2 Sprint Race Yas Island</title>
     <desc>Formula 2 Sprint Race Yas Island @ Dec 6 7:10 AM :TSN+  19</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11851" start="20251206123000 +0000" stop="20251206153000 +0000">
     <title>2025 26 Formula E Qualifying Sao Paulo Round 1</title>
     <desc>2025 26 Formula E Qualifying Sao Paulo Round 1 @ Dec 6 7:30 AM :TSN+  20</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11852" start="20251206124800 +0000" stop="20251206154800 +0000">
     <title>LaLiga Villarreal vs Getafe</title>
     <desc>LaLiga Villarreal vs Getafe @ Dec 6 7:48 AM :TSN+  21</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11853" start="20251206130000 +0000" stop="20251206160000 +0000">
     <title>SC Top 40 Trick Plays of All Time A</title>
     <desc>SC Top 40 Trick Plays of All Time A @ Dec 6 8:00 AM :TSN+  22</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11854" start="20251206130000 +0000" stop="20251206160000 +0000">
     <title>SPORTSCENTRE G</title>
     <desc>SPORTSCENTRE G @ Dec 6 8:00 AM :TSN+  23</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11855" start="20251206131500 +0000" stop="20251206161500 +0000">
     <title>2025 Formula 1 Pre Qualifying Abu Dhabi Grand Prix</title>
     <desc>2025 Formula 1 Pre Qualifying Abu Dhabi Grand Prix @ Dec 6 8:15 AM :TSN+  24</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11856" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>Formula 1 Driver Tracker Abu Dhabi Grand Prix Qualifying</title>
     <desc>Formula 1 Driver Tracker Abu Dhabi Grand Prix Qualifying @ Dec 6 8:50 AM :TSN+  25</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11857" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>Formula 1 On Board Camera Lance Stroll Abu Dhabi Grand Prix Qualifying</title>
     <desc>Formula 1 On Board Camera Lance Stroll Abu Dhabi Grand Prix Qualifying @ Dec 6 8:50 AM :TSN+  26</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11858" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>Formula 1 Pit Lane Abu Dhabi Grand Prix Qualifying</title>
     <desc>Formula 1 Pit Lane Abu Dhabi Grand Prix Qualifying @ Dec 6 8:50 AM :TSN+  27</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11859" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>Formula 1 On Board Camera Lando Norris Abu Dhabi Grand Prix Qualifying</title>
     <desc>Formula 1 On Board Camera Lando Norris Abu Dhabi Grand Prix Qualifying @ Dec 6 8:50 AM :TSN+  28</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11860" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>Formula 1 Timing Channel Abu Dhabi Grand Prix Qualifying</title>
     <desc>Formula 1 Timing Channel Abu Dhabi Grand Prix Qualifying @ Dec 6 8:50 AM :TSN+  29</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11861" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>Formula 1 On Board Camera Max Verstappen Abu Dhabi Grand Prix Qualifying</title>
     <desc>Formula 1 On Board Camera Max Verstappen Abu Dhabi Grand Prix Qualifying @ Dec 6 8:50 AM :TSN+  30</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11862" start="20251206135000 +0000" stop="20251206165000 +0000">
     <title>Formula 1 Mixed On Board Camera Abu Dhabi Grand Prix Qualifying</title>
     <desc>Formula 1 Mixed On Board Camera Abu Dhabi Grand Prix Qualifying @ Dec 6 8:50 AM :TSN+  31</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11863" start="20251206135500 +0000" stop="20251206165500 +0000">
     <title>2025 Formula 1 Qualifying Abu Dhabi Grand Prix</title>
     <desc>2025 Formula 1 Qualifying Abu Dhabi Grand Prix @ Dec 6 8:55 AM :TSN+  32</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11864" start="20251206140000 +0000" stop="20251206170000 +0000">
     <title>SPORTSCENTRE H</title>
     <desc>SPORTSCENTRE H @ Dec 6 9:00 AM :TSN+  33</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11865" start="20251206140000 +0000" stop="20251206170000 +0000">
     <title>ESPN College GameDay</title>
     <desc>ESPN College GameDay @ Dec 6 9:00 AM :TSN+  34</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11866" start="20251206143500 +0000" stop="20251206173500 +0000">
     <title>HSBC Rugby SVNS Cape Town Day One Pool Play B</title>
     <desc>HSBC Rugby SVNS Cape Town Day One Pool Play B @ Dec 6 9:35 AM :TSN+  35</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11867" start="20251206150000 +0000" stop="20251206180000 +0000">
     <title>SPORTSCENTRE I</title>
     <desc>SPORTSCENTRE I @ Dec 6 10:00 AM :TSN+  36</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11868" start="20251206150300 +0000" stop="20251206180300 +0000">
     <title>LaLiga Alaves vs Real Sociedad</title>
     <desc>LaLiga Alaves vs Real Sociedad @ Dec 6 10:03 AM :TSN+  37</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11869" start="20251206160000 +0000" stop="20251206190000 +0000">
     <title>2026 Formula E Racing Sao Paulo Round 1</title>
     <desc>2026 Formula E Racing Sao Paulo Round 1 @ Dec 6 11:00 AM :TSN+  38</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11870" start="20251206160000 +0000" stop="20251206190000 +0000">
     <title>SPORTSCENTRE J</title>
     <desc>SPORTSCENTRE J @ Dec 6 11:00 AM :TSN+  39</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11871" start="20251206163000 +0000" stop="20251206193000 +0000">
     <title>2026 FIFA World Cup Schedule Release Show</title>
     <desc>2026 FIFA World Cup Schedule Release Show @ Dec 6 11:30 AM :TSN+  40</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11872" start="20251206163000 +0000" stop="20251206193000 +0000">
     <title>HSBC Rugby SVNS Cape Town Day One Pool Play C</title>
     <desc>HSBC Rugby SVNS Cape Town Day One Pool Play C @ Dec 6 11:30 AM :TSN+  41</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11873" start="20251206165500 +0000" stop="20251206195500 +0000">
     <title>Swedish Hockey League Lule? Hockey vs Farjestad BK</title>
     <desc>Swedish Hockey League Lule? Hockey vs Farjestad BK @ Dec 6 11:55 AM :TSN+  42</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11874" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>LaLiga Real Betis vs Barcelona</title>
     <desc>LaLiga Real Betis vs Barcelona @ Dec 6 12:00 PM :TSN+  43</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11875" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>NCAA Football Big 12 Championship BYU vs Texas Tech</title>
     <desc>NCAA Football Big 12 Championship BYU vs Texas Tech @ Dec 6 12:00 PM :TSN+  44</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11876" start="20251206170000 +0000" stop="20251206200000 +0000">
     <title>NCAA Football MAC Championship Miami OH vs Western Michigan</title>
     <desc>NCAA Football MAC Championship Miami OH vs Western Michigan @ Dec 6 12:00 PM :TSN+  45</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11877" start="20251206180000 +0000" stop="20251206210000 +0000">
     <title>FanDuel Road to the Final</title>
     <desc>FanDuel Road to the Final @ Dec 6 1:00 PM :TSN+  46</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11878" start="20251206183000 +0000" stop="20251206213000 +0000">
     <title>SC Top Fan Moments A</title>
     <desc>SC Top Fan Moments A @ Dec 6 1:30 PM :TSN+  47</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11879" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>NCAA Football SWAC Championship Prairie View A&amp;M vs Jackson State</title>
     <desc>NCAA Football SWAC Championship Prairie View A&amp;M vs Jackson State @ Dec 6 2:00 PM :TSN+  48</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11880" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>SC Best and Worst Celebrations</title>
     <desc>SC Best and Worst Celebrations @ Dec 6 2:00 PM :TSN+  49</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11881" start="20251206190000 +0000" stop="20251206220000 +0000">
     <title>2025 MLS Cup Pre Game</title>
     <desc>2025 MLS Cup Pre Game @ Dec 6 2:00 PM :TSN+  50</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11882" start="20251206193000 +0000" stop="20251206223000 +0000">
     <title>LaLiga Athletic Bilbao vs Atletico Madrid</title>
     <desc>LaLiga Athletic Bilbao vs Atletico Madrid @ Dec 6 2:30 PM :TSN+  51</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11883" start="20251206193000 +0000" stop="20251206223000 +0000">
     <title>PGA TOUR Hero World Challenge Third Round</title>
     <desc>PGA TOUR Hero World Challenge Third Round @ Dec 6 2:30 PM :TSN+  52</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11884" start="20251206193000 +0000" stop="20251206223000 +0000">
     <title>2025 MLS Cup Miami vs Vancouver A</title>
     <desc>2025 MLS Cup Miami vs Vancouver A @ Dec 6 2:30 PM :TSN+  53</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11885" start="20251206203000 +0000" stop="20251206233000 +0000">
     <title>College Football Scoreboard A</title>
     <desc>College Football Scoreboard A @ Dec 6 3:30 PM :TSN+  54</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11886" start="20251206203000 +0000" stop="20251206233000 +0000">
     <title>Why We Love Football A</title>
     <desc>Why We Love Football A @ Dec 6 3:30 PM :TSN+  55</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11887" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>NCAA Football Field Pass SEC Championship Georgia vs Alabama</title>
     <desc>NCAA Football Field Pass SEC Championship Georgia vs Alabama @ Dec 6 4:00 PM :TSN+  56</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11888" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>NCAA Mens Basketball Kansas State vs Seton Hall</title>
     <desc>NCAA Mens Basketball Kansas State vs Seton Hall @ Dec 6 4:00 PM :TSN+  57</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11889" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>NCAA Football SkyCast SEC Championship Georgia vs Alabama</title>
     <desc>NCAA Football SkyCast SEC Championship Georgia vs Alabama @ Dec 6 4:00 PM :TSN+  58</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11890" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>2025 Para Hockey Cup Bronze Medal</title>
     <desc>2025 Para Hockey Cup Bronze Medal @ Dec 6 4:00 PM :TSN+  60</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11891" start="20251206210000 +0000" stop="20251207000000 +0000">
     <title>NCAA Football SEC Championship Georgia vs Alabama A</title>
     <desc>NCAA Football SEC Championship Georgia vs Alabama A @ Dec 6 4:00 PM :TSN+  59</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11892" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>SC Top 50 Goals of All Time A</title>
     <desc>SC Top 50 Goals of All Time A @ Dec 6 5:00 PM :TSN+  61</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11893" start="20251206220000 +0000" stop="20251207010000 +0000">
     <title>NCAA Football SEC Championship Georgia vs Alabama B</title>
     <desc>NCAA Football SEC Championship Georgia vs Alabama B @ Dec 6 5:00 PM :TSN+  62</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11894" start="20251206223000 +0000" stop="20251207013000 +0000">
     <title>SC Top 40 Trick Plays of All Time B</title>
     <desc>SC Top 40 Trick Plays of All Time B @ Dec 6 5:30 PM :TSN+  63</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11895" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>NCAA Mens Basketball Wake Forest vs West Virginia</title>
     <desc>NCAA Mens Basketball Wake Forest vs West Virginia @ Dec 6 6:00 PM :TSN+  64</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11896" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>SC Top Overtime Moments A</title>
     <desc>SC Top Overtime Moments A @ Dec 6 6:00 PM :TSN+  65</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11897" start="20251206230000 +0000" stop="20251207020000 +0000">
     <title>SC Top 50 CHL Goals A</title>
     <desc>SC Top 50 CHL Goals A @ Dec 6 6:00 PM :TSN+  66</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11898" start="20251206233000 +0000" stop="20251207023000 +0000">
     <title>SC Top WNBA Moments A</title>
     <desc>SC Top WNBA Moments A @ Dec 6 6:30 PM :TSN+  67</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11899" start="20251206233000 +0000" stop="20251207023000 +0000">
     <title>SC Top 50 Goals of All Time B</title>
     <desc>SC Top 50 Goals of All Time B @ Dec 6 6:30 PM :TSN+  68</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11900" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>NCAA Mens Hockey UMass Lowell vs Boston College</title>
     <desc>NCAA Mens Hockey UMass Lowell vs Boston College @ Dec 6 7:00 PM :TSN+  69</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11901" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>SC Top 50 NBA Buzzer Beaters A</title>
     <desc>SC Top 50 NBA Buzzer Beaters A @ Dec 6 7:00 PM :TSN+  70</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11902" start="20251207000000 +0000" stop="20251207030000 +0000">
     <title>SC November Plays of the Month A</title>
     <desc>SC November Plays of the Month A @ Dec 6 7:00 PM :TSN+  71</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11903" start="20251207003000 +0000" stop="20251207033000 +0000">
     <title>NBA on TSN Warriors vs Cavaliers</title>
     <desc>NBA on TSN Warriors vs Cavaliers @ Dec 6 7:30 PM :TSN+  72</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11904" start="20251207003000 +0000" stop="20251207033000 +0000">
     <title>College Football Scoreboard B</title>
     <desc>College Football Scoreboard B @ Dec 6 7:30 PM :TSN+  73</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11905" start="20251207003000 +0000" stop="20251207033000 +0000">
     <title>SC Top 40 Trick Plays of All Time C</title>
     <desc>SC Top 40 Trick Plays of All Time C @ Dec 6 7:30 PM :TSN+  74</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11906" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>NLL on TSN+ Roughnecks vs Rush</title>
     <desc>NLL on TSN+ Roughnecks vs Rush @ Dec 6 8:00 PM :TSN+  75</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11907" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>NCAA Mens Basketball Illinois vs Tennessee</title>
     <desc>NCAA Mens Basketball Illinois vs Tennessee @ Dec 6 8:00 PM :TSN+  76</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11908" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>NCAA Football ACC Championship Duke vs Virginia</title>
     <desc>NCAA Football ACC Championship Duke vs Virginia @ Dec 6 8:00 PM :TSN+  77</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11909" start="20251207010000 +0000" stop="20251207040000 +0000">
     <title>2025 Para Hockey Cup Gold Medal A</title>
     <desc>2025 Para Hockey Cup Gold Medal A @ Dec 6 8:00 PM :TSN+  78</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11910" start="20251207030000 +0000" stop="20251207060000 +0000">
     <title>NCAA Mens Basketball Auburn vs Arizona</title>
     <desc>NCAA Mens Basketball Auburn vs Arizona @ Dec 6 10:00 PM :TSN+  79</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11911" start="20251207030000 +0000" stop="20251207060000 +0000">
     <title>SPORTSCENTRE K</title>
     <desc>SPORTSCENTRE K @ Dec 6 10:00 PM :TSN+  80</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11912" start="20251207030000 +0000" stop="20251207060000 +0000">
     <title>SC November Plays of the Month B</title>
     <desc>SC November Plays of the Month B @ Dec 6 10:00 PM :TSN+  81</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11913" start="20251207033000 +0000" stop="20251207063000 +0000">
     <title>SC Top 10 Women’s World Hockey Championship Games</title>
     <desc>SC Top 10 Women’s World Hockey Championship Games @ Dec 6 10:30 PM :TSN+  82</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11914" start="20251207040000 +0000" stop="20251207070000 +0000">
     <title>SPORTSCENTRE L</title>
     <desc>SPORTSCENTRE L @ Dec 6 11:00 PM :TSN+  83</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11915" start="20251207040000 +0000" stop="20251207070000 +0000">
     <title>SC Wacky CFL Moments</title>
     <desc>SC Wacky CFL Moments @ Dec 6 11:00 PM :TSN+  84</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11916" start="20251207043000 +0000" stop="20251207073000 +0000">
     <title>SPORTSCENTRE M</title>
     <desc>SPORTSCENTRE M @ Dec 6 11:30 PM :TSN+  85</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11917" start="20251207043000 +0000" stop="20251207073000 +0000">
     <title>SC Top 10 Grey Cup Games A</title>
     <desc>SC Top 10 Grey Cup Games A @ Dec 6 11:30 PM :TSN+  86</desc>
+    <category lang="en">Sports</category>
+    <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </programme>
   <programme channel="11918" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>

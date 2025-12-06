@@ -69,7 +69,8 @@ def parse_event_from_name(name):
                 "xmltv_start": None,
                 "matched_pattern": pattern_cfg["name"],
                 "channel_name": pattern_cfg.get("channel_name") + f" {channel_number}",
-                "icon_url": pattern_cfg.get("icon_url")
+                "icon_url": pattern_cfg.get("icon_url"),
+                "category": pattern_cfg.get("category")
             }
 
         # Try main pattern
@@ -128,7 +129,8 @@ def parse_event_from_name(name):
             "xmltv_start": xmltv_start,
             "matched_pattern": pattern_cfg["name"],
             "channel_name": pattern_cfg.get("channel_name") + f" {channel_number}",
-            "icon_url": pattern_cfg.get("icon_url")
+            "icon_url": pattern_cfg.get("icon_url"),
+            "category": pattern_cfg.get("category")
         }
     
     print(f"No pattern matched for channel name: {name}")
@@ -162,6 +164,7 @@ def parse_channels(m3u_text):
                     "id": channel_number,
                     "channel_name": event_info["channel_name"] if event_info else name,
                     "icon_url": event_info["icon_url"] if event_info else "",
+                    "category": event_info["category"] if event_info else None,
                     "program_start": None,
                     "program_stop": None,
                     "program_name": None,
@@ -176,6 +179,7 @@ def parse_channels(m3u_text):
                 "channel_name": event_info["channel_name"],
                 "program_name": event_info["event_name"],
                 "icon_url": event_info["icon_url"],
+                "category": event_info["category"],
                 "program_start": event_info["xmltv_start"],
                 "program_stop": event_info.get("xmltv_stop"),
                 "description": name,
@@ -237,7 +241,6 @@ def generate_xmltv(channels, output_file):
             # Add poster/icon for the program
             if channel.get("icon_url"):
                 f.write(f'    <icon src="{channel["icon_url"]}"/>\n')
-
             f.write('  </programme>\n')
 
         f.write('</tv>\n')
