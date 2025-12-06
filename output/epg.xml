@@ -2,32 +2,32 @@
 <tv generator-info-name="epgBuilder">
   <channel id="7226">
     <display-name>FIFA PPV 1</display-name>
-    <display-name>US: FIFA+ PPV 1 - AJEB V CFFEB | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</display-name>
+    <display-name>US: FIFA+ PPV 1 - DEVONSHIRE COLTS  V BOULEVARD BLAZERS | BERMUDA PREMIER DIVISION 2025/26 | Sat 06 Dec 19:50 | 8K EXCLUSIVE</display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7227">
     <display-name>FIFA PPV 2</display-name>
-    <display-name>US: FIFA+ PPV 2 - AS BINAH V GOMIDO FC | D1 LONATO 2025/26 | Sat 06 Dec 15:50 | 8K EXCLUSIVE</display-name>
+    <display-name>US: FIFA+ PPV 2 - REBELS FC V WOLUES FC  | BVIFA NATIONAL LEAGUE 2025/26 | Sat 06 Dec 20:50 | 8K EXCLUSIVE</display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7228">
     <display-name>FIFA PPV 3</display-name>
-    <display-name>US: FIFA+ PPV 3 -  ITEHAD DE TANGER V UNION TOUARGA SPORT | D1 WOMEN&#x27;S CHAMPIONSHIP  2025-26 | Sat 06 Dec 15:50 | 8K EXCLUSIVE</display-name>
+    <display-name>US: FIFA+ PPV 3 - SANDY POINT FC V OLD ROAD UNITED JETS | SKNFA PREMIER LEAGUE 2025/26 | Sat 06 Dec 20:50 | 8K EXCLUSIVE</display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7229">
     <display-name>FIFA PPV 4</display-name>
-    <display-name>US: FIFA+ PPV 4 - AS DOUANES V RCK | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</display-name>
+    <display-name>US: FIFA+ PPV 4 - FLORA V BROKI | SURINAME MAJOR LEAGUE 2025/26 | Sat 06 Dec 21:20 | 8K EXCLUSIVE</display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7230">
     <display-name>FIFA PPV 5</display-name>
-    <display-name>US: FIFA+ PPV 5 - ASVO FC V DADJÈ FC | LIGUE 1 2025 | Sat 06 Dec 15:50 | 8K EXCLUSIVE</display-name>
+    <display-name></display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7231">
     <display-name>FIFA PPV 6</display-name>
-    <display-name>US: FIFA+ PPV 6 - SPORTING CASCADES V AS SONABEL | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</display-name>
+    <display-name></display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7232">
@@ -37,17 +37,17 @@
   </channel>
   <channel id="7233">
     <display-name>FIFA PPV 8</display-name>
-    <display-name>US: FIFA+ PPV 8 - HILAL TÉMARA V MUNICIPALE LAAYOUNE | D1 WOMEN&#x27;S CHAMPIONSHIP  2025-26 | Sat 06 Dec 14:50 | 8K EXCLUSIVE</display-name>
+    <display-name></display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7234">
     <display-name>FIFA PPV 9</display-name>
-    <display-name>US: FIFA+ PPV 9 - SPORTING CASABLANCA V PHOENIX FOOTBALL ACADEMY | D1 WOMEN&#x27;S CHAMPIONSHIP  2025-26 | Sat 06 Dec 14:50 | 8K EXCLUSIVE</display-name>
+    <display-name></display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7235">
     <display-name>FIFA PPV 10</display-name>
-    <display-name>US: FIFA+ PPV 10 - AL MUSANNAH V MUSCAT | ROUND 8 | TAMKEEN LEAGUE 2025/26 | Sat 06 Dec 14:50 | 8K EXCLUSIVE</display-name>
+    <display-name></display-name>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </channel>
   <channel id="7236">
@@ -4695,63 +4695,53 @@
     <display-name></display-name>
     <icon src="https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"/>
   </channel>
-  <programme channel="7226" start="20251206152000 +0000" stop="20251206182000 +0000">
-    <title>AJEB V CFFEB</title>
-    <desc>US: FIFA+ PPV 1 - AJEB V CFFEB | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</desc>
+  <programme channel="7226" start="20251206185000 +0000" stop="20251206215000 +0000">
+    <title>DEVONSHIRE COLTS  V BOULEVARD BLAZERS</title>
+    <desc>US: FIFA+ PPV 1 - DEVONSHIRE COLTS  V BOULEVARD BLAZERS | BERMUDA PREMIER DIVISION 2025/26 | Sat 06 Dec 19:50 | 8K EXCLUSIVE</desc>
     <category lang="en">Sports</category>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
-  <programme channel="7227" start="20251206145000 +0000" stop="20251206175000 +0000">
-    <title>AS BINAH V GOMIDO FC</title>
-    <desc>US: FIFA+ PPV 2 - AS BINAH V GOMIDO FC | D1 LONATO 2025/26 | Sat 06 Dec 15:50 | 8K EXCLUSIVE</desc>
+  <programme channel="7227" start="20251206195000 +0000" stop="20251206225000 +0000">
+    <title>REBELS FC V WOLUES FC</title>
+    <desc>US: FIFA+ PPV 2 - REBELS FC V WOLUES FC  | BVIFA NATIONAL LEAGUE 2025/26 | Sat 06 Dec 20:50 | 8K EXCLUSIVE</desc>
     <category lang="en">Sports</category>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
-  <programme channel="7228" start="20251206145000 +0000" stop="20251206175000 +0000">
-    <title>ITEHAD DE TANGER V UNION TOUARGA SPORT</title>
-    <desc>US: FIFA+ PPV 3 -  ITEHAD DE TANGER V UNION TOUARGA SPORT | D1 WOMEN&#x27;S CHAMPIONSHIP  2025-26 | Sat 06 Dec 15:50 | 8K EXCLUSIVE</desc>
+  <programme channel="7228" start="20251206195000 +0000" stop="20251206225000 +0000">
+    <title>SANDY POINT FC V OLD ROAD UNITED JETS</title>
+    <desc>US: FIFA+ PPV 3 - SANDY POINT FC V OLD ROAD UNITED JETS | SKNFA PREMIER LEAGUE 2025/26 | Sat 06 Dec 20:50 | 8K EXCLUSIVE</desc>
     <category lang="en">Sports</category>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
-  <programme channel="7229" start="20251206152000 +0000" stop="20251206182000 +0000">
-    <title>AS DOUANES V RCK</title>
-    <desc>US: FIFA+ PPV 4 - AS DOUANES V RCK | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</desc>
+  <programme channel="7229" start="20251206202000 +0000" stop="20251206232000 +0000">
+    <title>FLORA V BROKI</title>
+    <desc>US: FIFA+ PPV 4 - FLORA V BROKI | SURINAME MAJOR LEAGUE 2025/26 | Sat 06 Dec 21:20 | 8K EXCLUSIVE</desc>
     <category lang="en">Sports</category>
     <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
   </programme>
-  <programme channel="7230" start="20251206145000 +0000" stop="20251206175000 +0000">
-    <title>ASVO FC V DADJÈ FC</title>
-    <desc>US: FIFA+ PPV 5 - ASVO FC V DADJÈ FC | LIGUE 1 2025 | Sat 06 Dec 15:50 | 8K EXCLUSIVE</desc>
-    <category lang="en">Sports</category>
-    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
+  <programme channel="7230" start="20251206000000 +0000" stop="20251206000100 +0000">
+    <title>No Events</title>
+    <desc>No program information available</desc>
   </programme>
-  <programme channel="7231" start="20251206152000 +0000" stop="20251206182000 +0000">
-    <title>SPORTING CASCADES V AS SONABEL</title>
-    <desc>US: FIFA+ PPV 6 - SPORTING CASCADES V AS SONABEL | BURKINA FASO LIGUE 1 2025-26 | Sat 06 Dec 16:20 | 8K EXCLUSIVE</desc>
-    <category lang="en">Sports</category>
-    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
+  <programme channel="7231" start="20251206000000 +0000" stop="20251206000100 +0000">
+    <title>No Events</title>
+    <desc>No program information available</desc>
   </programme>
   <programme channel="7232" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>
     <desc>No program information available</desc>
   </programme>
-  <programme channel="7233" start="20251206135000 +0000" stop="20251206165000 +0000">
-    <title>HILAL TÉMARA V MUNICIPALE LAAYOUNE</title>
-    <desc>US: FIFA+ PPV 8 - HILAL TÉMARA V MUNICIPALE LAAYOUNE | D1 WOMEN&#x27;S CHAMPIONSHIP  2025-26 | Sat 06 Dec 14:50 | 8K EXCLUSIVE</desc>
-    <category lang="en">Sports</category>
-    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
+  <programme channel="7233" start="20251206000000 +0000" stop="20251206000100 +0000">
+    <title>No Events</title>
+    <desc>No program information available</desc>
   </programme>
-  <programme channel="7234" start="20251206135000 +0000" stop="20251206165000 +0000">
-    <title>SPORTING CASABLANCA V PHOENIX FOOTBALL ACADEMY</title>
-    <desc>US: FIFA+ PPV 9 - SPORTING CASABLANCA V PHOENIX FOOTBALL ACADEMY | D1 WOMEN&#x27;S CHAMPIONSHIP  2025-26 | Sat 06 Dec 14:50 | 8K EXCLUSIVE</desc>
-    <category lang="en">Sports</category>
-    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
+  <programme channel="7234" start="20251206000000 +0000" stop="20251206000100 +0000">
+    <title>No Events</title>
+    <desc>No program information available</desc>
   </programme>
-  <programme channel="7235" start="20251206135000 +0000" stop="20251206165000 +0000">
-    <title>AL MUSANNAH V MUSCAT</title>
-    <desc>US: FIFA+ PPV 10 - AL MUSANNAH V MUSCAT | ROUND 8 | TAMKEEN LEAGUE 2025/26 | Sat 06 Dec 14:50 | 8K EXCLUSIVE</desc>
-    <category lang="en">Sports</category>
-    <icon src="http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"/>
+  <programme channel="7235" start="20251206000000 +0000" stop="20251206000100 +0000">
+    <title>No Events</title>
+    <desc>No program information available</desc>
   </programme>
   <programme channel="7236" start="20251206000000 +0000" stop="20251206000100 +0000">
     <title>No Events</title>

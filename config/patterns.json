@@ -8,7 +8,8 @@
         "datetime_format": "%a %d %b %H:%M",
         "timezone": "UTC+1",
         "category": "Sports",
-        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"
+        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721",
+        "num_combined_channels": 10
     },
     {
         "name": "mls_ppv",
@@ -20,7 +21,8 @@
         "end_datetime_format": "%Y-%m-%d %H:%M:%S",
         "timezone": "UTC",
         "category": "Sports",
-        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"
+        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636",
+        "num_combined_channels": 10
     },
     {
         "name": "nhl",
@@ -31,7 +33,8 @@
         "datetime_format": "%I:%M%p",
         "timezone": "America/New_York",
         "category": "Sports",
-        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"
+        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755",
+        "num_combined_channels": 10
     },
     {
         "name": "espn_plus",
@@ -42,7 +45,8 @@
         "datetime_format": "%b %d %I:%M%p ET",
         "timezone": "America/New_York",
         "category": "Sports",
-        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"
+        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438",
+        "num_combined_channels": 100
     },
     {
         "name": "btn_plus",
@@ -53,7 +57,8 @@
         "datetime_format": "%Y-%m-%d %H:%M:%S",
         "timezone": "America/New_York",
         "category": "Sports",
-        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"
+        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614",
+        "num_combined_channels": 20
     },
     {
         "name": "tsn_plus",
@@ -64,7 +69,8 @@
         "datetime_format": "%b %d %I:%M %p",
         "timezone": "America/New_York",
         "category": "Sports",
-        "icon_url": "https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"
+        "icon_url": "https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128",
+        "num_combined_channels": 30
     },
     {
         "name": "paramount_plus",
@@ -75,6 +81,7 @@
         "datetime_format": "%b %d %I:%M %p",
         "timezone": "America/New_York",
         "category": "Sports",
-        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"
+        "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581",
+        "num_combined_channels": 20
     }
 ]
