@@ -7,6 +7,7 @@
         "date_provided": true,
         "datetime_format": "%a %d %b %H:%M",
         "timezone": "UTC+1",
+        "category": "Sports",
         "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/14322.png?ver=87721"
     },
     {
@@ -18,6 +19,7 @@
         "datetime_format": "%Y-%m-%d %H:%M:%S",
         "end_datetime_format": "%Y-%m-%d %H:%M:%S",
         "timezone": "UTC",
+        "category": "Sports",
         "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/13626.png?ver=92636"
     },
     {
@@ -28,6 +30,7 @@
         "date_provided": false,
         "datetime_format": "%I:%M%p",
         "timezone": "America/New_York",
+        "category": "Sports",
         "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/8187.png?ver=79755"
     },
     {
@@ -38,6 +41,7 @@
         "date_provided": true,
         "datetime_format": "%b %d %I:%M%p ET",
         "timezone": "America/New_York",
+        "category": "Sports",
         "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/13699.png?ver=19438"
     },
     {
@@ -48,6 +52,7 @@
         "date_provided": true,
         "datetime_format": "%Y-%m-%d %H:%M:%S",
         "timezone": "America/New_York",
+        "category": "Sports",
         "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/13725.jpg?ver=63614"
     },
     {
@@ -58,6 +63,7 @@
         "date_provided": true,
         "datetime_format": "%b %d %I:%M %p",
         "timezone": "America/New_York",
+        "category": "Sports",
         "icon_url": "https://icon-tmdb.me/stalker_portal/misc/logos/320/14409.png?ver=39128"
     },
     {
@@ -68,6 +74,7 @@
         "date_provided": true,
         "datetime_format": "%b %d %I:%M %p",
         "timezone": "America/New_York",
+        "category": "Sports",
         "icon_url": "http://icon-tmdb.me/stalker_portal/misc/logos/320/2274.jpg?ver=37581"
     }
 ]

@@ -228,6 +228,16 @@ def generate_xmltv(channels, output_file):
             f.write(f'  <programme channel="{channel["id"]}" start="{channel["program_start"]}" stop="{stop_time_str}">\n')
             f.write(f'    <title>{program_name_escaped}</title>\n')
             f.write(f'    <desc>{description_escaped}</desc>\n')
+            
+            # Add category (e.g., Sports, Movies, etc.)
+            if channel.get("category"):
+                category_escaped = html.escape(channel["category"])
+                f.write(f'    <category lang="en">{category_escaped}</category>\n')
+            
+            # Add poster/icon for the program
+            if channel.get("icon_url"):
+                f.write(f'    <icon src="{channel["icon_url"]}"/>\n')
+
             f.write('  </programme>\n')
 
         f.write('</tv>\n')

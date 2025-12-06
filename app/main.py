@@ -17,7 +17,7 @@ def job():
     generate_xmltv(channels, OUTPUT_XMLTV)
 
     print("Generating M3U…")
-    generate_m3u(channels, "/output/playlist.m3u")
+    generate_m3u(channels, OUTPUT_M3U)
 
     print("XMLTV updated.")
 
