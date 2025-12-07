@@ -47,16 +47,34 @@ def stream(channel_id):
         with open(playlist_path, 'r') as f:
             content = f.read()
         
+        # Rewrite segment URLs to include channel_id path
+        # Replace relative segment paths with full URLs
+        base_url = request.url_root.rstrip('/')
+        lines = content.split('\n')
+        rewritten_lines = []
+        
+        for line in lines:
+            # If line is a segment filename (ends with .ts and doesn't start with #)
+            if line.strip().endswith('.ts') and not line.startswith('#'):
+                # Rewrite to full URL
+                segment_name = line.strip()
+                rewritten_lines.append(f'{base_url}/stream/{channel_id}/{segment_name}')
+            else:
+                rewritten_lines.append(line)
+        
+        rewritten_content = '\n'.join(rewritten_lines)
+        
         # Update access time to prevent idle timeout
         stream_manager.update_access_time(channel_id)
         
-        response = Response(content, mimetype='application/vnd.apple.mpegurl')
+        response = Response(rewritten_content, mimetype='application/vnd.apple.mpegurl')
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         response.headers['Pragma'] = 'no-cache'
         response.headers['Expires'] = '0'
         
         return response
     except Exception as e:
+        print(f"[STREAM] Error serving playlist: {e}")
         return Response(f"Error: {e}", status=500, mimetype='text/plain')
 
 @app.route('/stream/<channel_id>/<segment>')
