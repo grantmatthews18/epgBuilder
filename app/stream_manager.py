@@ -12,20 +12,28 @@ class StreamManager:
         self.active_streams = {}  # channel_id -> stream info
         self.stream_locks = {}  # channel_id -> threading.Lock
         self.output_dir = "/output/hls"
+        self.concat_dir = "/output/concat"
         os.makedirs(self.output_dir, exist_ok=True)
+        os.makedirs(self.concat_dir, exist_ok=True)
         
-        # Cleanup old HLS directories on startup
+        # Cleanup old files on startup
         self.cleanup_old_streams()
     
     def cleanup_old_streams(self):
-        """Remove old HLS directories"""
+        """Remove old HLS and concat directories"""
         try:
             for item in os.listdir(self.output_dir):
                 item_path = os.path.join(self.output_dir, item)
                 if os.path.isdir(item_path):
                     import shutil
                     shutil.rmtree(item_path)
-                    print(f"[CLEANUP] Removed old stream directory: {item}")
+                    print(f"[CLEANUP] Removed old HLS directory: {item}")
+            
+            for item in os.listdir(self.concat_dir):
+                item_path = os.path.join(self.concat_dir, item)
+                if os.path.isfile(item_path):
+                    os.remove(item_path)
+                    print(f"[CLEANUP] Removed old concat file: {item}")
         except Exception as e:
             print(f"[CLEANUP] Error: {e}")
     
@@ -35,6 +43,16 @@ class StreamManager:
                 return json.load(f)
         except:
             return {}
+    
+    def get_service_channel(self, channel_id):
+        """Find service channel by ID"""
+        schedule = self.load_schedule()
+        
+        for pattern_name, pattern_data in schedule.items():
+            for ch in pattern_data["service_channels"]:
+                if ch["id"] == channel_id:
+                    return ch
+        return None
     
     def get_current_event(self, service_channel):
         """Find which event is currently live"""
@@ -55,34 +73,89 @@ class StreamManager:
             self.stream_locks[channel_id] = threading.Lock()
         return self.stream_locks[channel_id]
     
-    def start_stream(self, channel_id, stream_url, event_name):
-        """Start FFmpeg process for a channel"""
+    def create_concat_playlist(self, channel_id, service_channel):
+        """Create FFmpeg concat playlist with all events for this channel"""
+        concat_file = f"{self.concat_dir}/{channel_id}.txt"
+        
+        # Get all programs with stream URLs
+        programs_with_streams = [p for p in service_channel["programs"] if p.get("stream_url")]
+        
+        if not programs_with_streams:
+            return None
+        
+        # Create concat playlist
+        # Each line: file 'stream_url'
+        with open(concat_file, 'w') as f:
+            for program in programs_with_streams:
+                # FFmpeg concat needs file protocol
+                f.write(f"file '{program['stream_url']}'\n")
+        
+        return concat_file
+    
+    def update_current_stream_marker(self, channel_id, current_event_index):
+        """Update a marker file to indicate which stream should be playing"""
+        marker_file = f"{self.concat_dir}/{channel_id}.marker"
+        
+        with open(marker_file, 'w') as f:
+            f.write(str(current_event_index))
+    
+    def get_current_stream_url(self, channel_id, service_channel):
+        """Get the stream URL that should be playing now"""
+        current_event = self.get_current_event(service_channel)
+        
+        if current_event and current_event.get("stream_url"):
+            return current_event["stream_url"]
+        
+        return None
+    
+    def start_stream(self, channel_id):
+        """Start FFmpeg process for a channel with dynamic stream switching"""
         lock = self.get_lock(channel_id)
         
         with lock:
-            # Check if already streaming this URL
+            # Check if already streaming
             if channel_id in self.active_streams:
                 active = self.active_streams[channel_id]
-                if active['stream_url'] == stream_url and active['process'].poll() is None:
-                    # Already streaming the correct URL and process is alive
+                if active['process'].poll() is None:
+                    # Already streaming and process is alive
                     active['last_accessed'] = datetime.now(tz.UTC)
                     print(f"[STREAM] Already streaming {channel_id}")
                     return active['playlist_path']
                 else:
-                    # Different URL or dead process, stop it
-                    print(f"[STREAM] Stopping old stream for {channel_id}")
+                    # Dead process, clean up
+                    print(f"[STREAM] Cleaning up dead stream for {channel_id}")
                     self._stop_stream_locked(channel_id)
+            
+            service_channel = self.get_service_channel(channel_id)
+            if not service_channel:
+                print(f"[STREAM] Channel not found: {channel_id}")
+                return None
+            
+            # Get current stream URL
+            current_stream_url = self.get_current_stream_url(channel_id, service_channel)
+            
+            if not current_stream_url:
+                print(f"[STREAM] No current event for {channel_id}")
+                return None
             
             output_path = f"{self.output_dir}/{channel_id}"
             os.makedirs(output_path, exist_ok=True)
             
             playlist_path = f"{output_path}/stream.m3u8"
+            input_file = f"{self.concat_dir}/{channel_id}_current.txt"
             
-            # FFmpeg command - remux (copy codecs) for efficiency
+            # Create initial input file with current stream
+            with open(input_file, 'w') as f:
+                f.write(f"file '{current_stream_url}'\n")
+            
+            # FFmpeg command using concat demuxer with auto-update
             ffmpeg_cmd = [
                 'ffmpeg',
                 '-re',  # Read input at native frame rate
-                '-i', stream_url,
+                '-f', 'concat',
+                '-safe', '0',
+                '-protocol_whitelist', 'file,http,https,tcp,tls,crypto',
+                '-i', input_file,
                 '-c', 'copy',  # Copy codecs (no transcoding)
                 '-f', 'hls',
                 '-hls_time', '6',
@@ -94,8 +167,7 @@ class StreamManager:
             ]
             
             print(f"[STREAM] Starting FFmpeg for {channel_id}")
-            print(f"[STREAM] Event: {event_name}")
-            print(f"[STREAM] Source: {stream_url}")
+            print(f"[STREAM] Initial stream: {current_stream_url}")
             
             try:
                 process = subprocess.Popen(
@@ -103,21 +175,22 @@ class StreamManager:
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                     stdin=subprocess.PIPE,
-                    preexec_fn=os.setsid  # Create new process group
+                    preexec_fn=os.setsid
                 )
                 
                 self.active_streams[channel_id] = {
                     'process': process,
-                    'stream_url': stream_url,
-                    'event_name': event_name,
+                    'current_stream_url': current_stream_url,
+                    'input_file': input_file,
                     'started_at': datetime.now(tz.UTC),
                     'last_accessed': datetime.now(tz.UTC),
-                    'playlist_path': playlist_path
+                    'playlist_path': playlist_path,
+                    'service_channel': service_channel
                 }
                 
                 # Start monitoring thread for this stream
                 monitor_thread = threading.Thread(
-                    target=self._monitor_stream,
+                    target=self._monitor_and_switch_stream,
                     args=(channel_id,),
                     daemon=True
                 )
@@ -130,11 +203,11 @@ class StreamManager:
                 print(f"[STREAM] Error starting FFmpeg: {e}")
                 return None
     
-    def _monitor_stream(self, channel_id):
-        """Monitor a specific stream - check for event changes and idle timeout"""
+    def _monitor_and_switch_stream(self, channel_id):
+        """Monitor stream and switch inputs when events change"""
         while channel_id in self.active_streams:
             try:
-                time.sleep(10)  # Check every 10 seconds
+                time.sleep(5)  # Check every 5 seconds
                 
                 lock = self.get_lock(channel_id)
                 with lock:
@@ -158,34 +231,40 @@ class StreamManager:
                         break
                     
                     # Check if event changed
-                    schedule = self.load_schedule()
-                    service_channel = None
+                    service_channel = stream_info['service_channel']
+                    current_stream_url = self.get_current_stream_url(channel_id, service_channel)
                     
-                    for pattern_name, pattern_data in schedule.items():
-                        for ch in pattern_data["service_channels"]:
-                            if ch["id"] == channel_id:
-                                service_channel = ch
-                                break
-                        if service_channel:
-                            break
+                    if not current_stream_url:
+                        # No current event
+                        print(f"[MONITOR] No current event for {channel_id}, stopping")
+                        self._stop_stream_locked(channel_id)
+                        break
                     
-                    if service_channel:
-                        current_event = self.get_current_event(service_channel)
+                    if current_stream_url != stream_info['current_stream_url']:
+                        # Event changed! Switch stream by updating input file
+                        print(f"[MONITOR] Event changed for {channel_id}")
+                        print(f"[MONITOR] Old: {stream_info['current_stream_url']}")
+                        print(f"[MONITOR] New: {current_stream_url}")
                         
-                        if not current_event or not current_event.get("stream_url"):
-                            # Event ended
-                            print(f"[MONITOR] Event ended for {channel_id}, stopping")
-                            self._stop_stream_locked(channel_id)
-                            break
+                        # Update the concat input file
+                        input_file = stream_info['input_file']
+                        with open(input_file, 'w') as f:
+                            f.write(f"file '{current_stream_url}'\n")
                         
-                        if current_event['stream_url'] != stream_info['stream_url']:
-                            # Event changed
-                            print(f"[MONITOR] Event changed for {channel_id}, will restart on next request")
-                            self._stop_stream_locked(channel_id)
-                            break
+                        # Restart FFmpeg with new stream
+                        print(f"[MONITOR] Restarting FFmpeg with new stream")
+                        self._stop_stream_locked(channel_id)
+                        
+                        # Release lock and restart
+                        lock.release()
+                        time.sleep(1)
+                        self.start_stream(channel_id)
+                        break
                 
             except Exception as e:
                 print(f"[MONITOR] Error monitoring {channel_id}: {e}")
+                import traceback
+                traceback.print_exc()
                 time.sleep(30)
     
     def _stop_stream_locked(self, channel_id):
@@ -226,35 +305,7 @@ class StreamManager:
     
     def get_stream_playlist(self, channel_id):
         """Get the playlist path for a channel, starting stream if needed"""
-        schedule = self.load_schedule()
-        
-        # Find the channel
-        service_channel = None
-        for pattern_name, pattern_data in schedule.items():
-            for ch in pattern_data["service_channels"]:
-                if ch["id"] == channel_id:
-                    service_channel = ch
-                    break
-            if service_channel:
-                break
-        
-        if not service_channel:
-            print(f"[STREAM] Channel not found: {channel_id}")
-            return None
-        
-        # Get current event
-        current_event = self.get_current_event(service_channel)
-        
-        if not current_event or not current_event.get("stream_url"):
-            print(f"[STREAM] No event for {channel_id}")
-            return None
-        
-        # Start or reuse stream
-        return self.start_stream(
-            channel_id,
-            current_event['stream_url'],
-            current_event['program_name']
-        )
+        return self.start_stream(channel_id)
     
     def update_access_time(self, channel_id):
         """Update last accessed time for a channel"""
@@ -269,8 +320,12 @@ class StreamManager:
             uptime = datetime.now(tz.UTC) - stream_info['started_at']
             idle = datetime.now(tz.UTC) - stream_info['last_accessed']
             
+            # Get current event info
+            current_event = self.get_current_event(stream_info['service_channel'])
+            
             status[channel_id] = {
-                'event_name': stream_info['event_name'],
+                'current_stream': stream_info['current_stream_url'],
+                'current_event': current_event.get('program_name') if current_event else 'No event',
                 'started_at': stream_info['started_at'].isoformat(),
                 'uptime_seconds': int(uptime.total_seconds()),
                 'idle_seconds': int(idle.total_seconds()),
