@@ -23,6 +23,7 @@ def load_schedule():
 def stream_ts(url):
     """Stream TS content from upstream URL - optimized for live streams"""
     session = None
+    bytes_sent = 0
     try:
         # Headers that mimic a real IPTV player
         headers = {
@@ -41,7 +42,7 @@ def stream_ts(url):
         r = session.get(
             url, 
             stream=True, 
-            timeout=(10, 60),  # (connect timeout, read timeout)
+            timeout=(10, None),  # Connect timeout 10s, no read timeout for live streams
             headers=headers,
             allow_redirects=True
         )
@@ -55,11 +56,13 @@ def stream_ts(url):
         
         app.logger.info(f"[STREAM] Connected successfully, content-type: {r.headers.get('Content-Type')}")
         
-        # Stream the content in chunks
+        # Stream the content - use smaller chunks and disable buffering
         chunk_count = 0
-        bytes_sent = 0
         
-        for chunk in r.iter_content(chunk_size=32768):  # 32KB chunks
+        # Disable urllib3 buffering for true streaming
+        r.raw.read = lambda amt: r.raw._fp.read(amt)
+        
+        for chunk in r.iter_content(chunk_size=8192, decode_unicode=False):  # Smaller chunks for lower latency
             if chunk:
                 chunk_count += 1
                 bytes_sent += len(chunk)
@@ -67,9 +70,9 @@ def stream_ts(url):
                 if chunk_count == 1:
                     app.logger.info(f"[STREAM] First chunk received, size: {len(chunk)} bytes")
                 
-                if chunk_count % 100 == 0:
+                if chunk_count % 500 == 0:
                     mb_sent = bytes_sent / (1024 * 1024)
-                    app.logger.debug(f"[STREAM] Streamed {chunk_count} chunks ({mb_sent:.2f}MB)")
+                    app.logger.info(f"[STREAM] Streamed {chunk_count} chunks ({mb_sent:.2f}MB)")
                 
                 yield chunk
         
@@ -80,7 +83,8 @@ def stream_ts(url):
     except requests.exceptions.RequestException as e:
         app.logger.error(f"Stream error for {url}: {e}")
     except GeneratorExit:
-        app.logger.info(f"[STREAM] Client disconnected after {bytes_sent / (1024 * 1024):.2f}MB")
+        mb_sent = bytes_sent / (1024 * 1024)
+        app.logger.info(f"[STREAM] Client disconnected after {mb_sent:.2f}MB ({chunk_count} chunks)")
     except Exception as e:
         app.logger.error(f"Unexpected error streaming {url}: {e}")
         import traceback
@@ -135,21 +139,23 @@ def stream(channel_id):
     
     stream_url = event["stream_url"]
     
-    app.logger.info(f"[STREAM] Request for channel: {channel_id}, Event: {event['program_name']}")
+    app.logger.info(f"[STREAM] Request for channel: {channel_id}, Event: {event['program_name']}, Client: {request.remote_addr}")
 
     # Stream with proper headers for live video
-    return Response(
+    response = Response(
         stream_with_context(stream_ts(stream_url)),
         mimetype='video/mp2t',
         headers={
             'Cache-Control': 'no-cache, no-store, must-revalidate',
             'Pragma': 'no-cache',
             'Expires': '0',
-            'Connection': 'keep-alive',
+            'X-Content-Type-Options': 'nosniff',
             'Accept-Ranges': 'none',
-        },
-        direct_passthrough=True  # Tell Flask to pass data directly without buffering
+        }
     )
+    
+    # Don't set Connection header - let Flask/Werkzeug handle it
+    return response
 
 @app.route('/playlist.m3u')
 def playlist():
