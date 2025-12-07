@@ -24,27 +24,62 @@ def load_schedule():
     
 
 def stream_ts(url):
-    """Stream TS content from upstream URL with error handling"""
+    """Stream TS content from upstream URL - optimized for live streams"""
     try:
-        # First, make a HEAD request or check status before streaming
-        r = requests.get(url, stream=True, timeout=10)
+        # Headers that mimic a real IPTV player
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Accept': '*/*',
+            'Connection': 'keep-alive',
+            'Accept-Encoding': 'identity',  # Don't compress
+        }
+        
+        app.logger.info(f"[STREAM] Connecting to {url}")
+        
+        # Open connection with longer timeout for live streams
+        r = requests.get(
+            url, 
+            stream=True, 
+            timeout=(10, 60),  # (connect timeout, read timeout)
+            headers=headers,
+            allow_redirects=True
+        )
         
         # Check status BEFORE yielding any data
         if r.status_code != 200:
             app.logger.error(f"Upstream error {r.status_code} for URL: {url}")
+            app.logger.error(f"Response headers: {dict(r.headers)}")
             r.close()
             return
         
-        # Now stream the content
-        for chunk in r.iter_content(chunk_size=8192):
+        app.logger.info(f"[STREAM] Connected successfully, content-type: {r.headers.get('Content-Type')}")
+        
+        # Stream the content in chunks
+        chunk_count = 0
+        for chunk in r.iter_content(chunk_size=32768):  # Larger chunks for video
             if chunk:
+                chunk_count += 1
+                if chunk_count == 1:
+                    app.logger.info(f"[STREAM] First chunk received, size: {len(chunk)} bytes")
+                if chunk_count % 100 == 0:
+                    app.logger.debug(f"[STREAM] Streamed {chunk_count} chunks (~{chunk_count * 32 // 1024}MB)")
                 yield chunk
+        
+        app.logger.info(f"[STREAM] Stream ended normally, {chunk_count} chunks sent")
                 
+    except requests.exceptions.Timeout as e:
+        app.logger.error(f"Stream timeout for {url}: {e}")
+        return
     except requests.exceptions.RequestException as e:
         app.logger.error(f"Stream error for {url}: {e}")
         return
+    except GeneratorExit:
+        app.logger.info(f"[STREAM] Client disconnected")
+        return
     except Exception as e:
         app.logger.error(f"Unexpected error streaming {url}: {e}")
+        import traceback
+        app.logger.error(traceback.format_exc())
         return
 
 
@@ -93,16 +128,18 @@ def stream(channel_id):
     
     stream_url = event["stream_url"]
     
-    app.logger.info(f"[STREAM] Channel: {channel_id}, Event: {event['program_name']}, URL: {stream_url}")
+    app.logger.info(f"[STREAM] Request for channel: {channel_id}, Event: {event['program_name']}")
 
-    # Skip validation - just try to stream directly
-    # If upstream fails, stream_ts() will handle it gracefully
+    # Stream with proper headers for live video
     return Response(
         stream_with_context(stream_ts(stream_url)),
-        content_type="video/MP2T",
+        mimetype='video/mp2t',  # Proper MIME type for MPEG-TS
         headers={
-            'Cache-Control': 'no-cache',
-            'Connection': 'keep-alive'
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+            'Connection': 'keep-alive',
+            'Accept-Ranges': 'none',  # Live stream, no seeking
         }
     )
 
