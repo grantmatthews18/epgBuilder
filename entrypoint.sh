@@ -14,14 +14,14 @@ echo "Web server will listen on port: $SERVER_PORT"
 echo "Running XMLTV generator"
 python3 /app/main.py
 
-# Start web server in background
-echo "Starting web server..."
-python3 /app/server.py &
-
-# Create a temporary crontab with user-defined schedule, use full path to python3
+# Create crontab
 echo "$CRON_SCHEDULE /usr/local/bin/python3 /app/main.py > /proc/1/fd/1 2>&1" > /tmp/crontab
 crontab /tmp/crontab
 
-# Start cron in foreground
+# Start cron in background
 echo "Starting cron..."
-cron -f
+cron
+
+# Start web server in foreground (this keeps the container alive)
+echo "Starting web server and stream manager on port $SERVER_PORT..."
+exec python3 /app/server.py
