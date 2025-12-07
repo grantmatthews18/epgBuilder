@@ -296,7 +296,6 @@ def stream_ts(url):
     r = None
     
     try:
-        # Minimal headers - let the stream speak for itself
         headers = {
             'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
             'Accept': '*/*',
@@ -304,11 +303,10 @@ def stream_ts(url):
         
         app.logger.info(f"[STREAM] Connecting to {url}")
         
-        # Direct connection with minimal overhead
         r = requests.get(
             url,
             stream=True,
-            timeout=(15, None),  # 15s connect, infinite read
+            timeout=(15, None),
             headers=headers,
             allow_redirects=True,
             verify=False
@@ -322,10 +320,13 @@ def stream_ts(url):
         
         app.logger.info(f"[STREAM] Connected, streaming...")
         
-        # Stream with NO chunking to preserve TS packet boundaries
-        # MPEG-TS packets are 188 bytes, so use multiples of 188
+        # Log upstream headers for debugging
+        app.logger.info(f"[STREAM] Upstream Content-Type: {r.headers.get('Content-Type')}")
+        app.logger.info(f"[STREAM] Upstream Content-Length: {r.headers.get('Content-Length', 'N/A')}")
+        app.logger.info(f"[STREAM] Upstream Accept-Ranges: {r.headers.get('Accept-Ranges', 'N/A')}")
+        
         TS_PACKET_SIZE = 188
-        CHUNK_SIZE = TS_PACKET_SIZE * 80  # 15,040 bytes (80 TS packets)
+        CHUNK_SIZE = TS_PACKET_SIZE * 80
         
         for chunk in r.iter_content(chunk_size=CHUNK_SIZE):
             if not chunk:
@@ -333,10 +334,6 @@ def stream_ts(url):
             
             chunk_count += 1
             bytes_sent += len(chunk)
-            
-            # Ensure we're sending complete TS packets
-            if len(chunk) % TS_PACKET_SIZE != 0:
-                app.logger.warning(f"[STREAM] Chunk {chunk_count} not aligned to TS packets: {len(chunk)} bytes")
             
             if chunk_count == 1:
                 app.logger.info(f"[STREAM] First chunk: {len(chunk)} bytes")
@@ -366,6 +363,51 @@ def stream_ts(url):
                 r.close()
             except:
                 pass
+            
+
+def proxy_with_range(url, range_header):
+    """Proxy request with Range header support"""
+    try:
+        headers = {
+            'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
+            'Accept': '*/*',
+            'Range': range_header
+        }
+        
+        r = requests.get(
+            url,
+            stream=True,
+            timeout=(15, None),
+            headers=headers,
+            allow_redirects=True,
+            verify=False
+        )
+        
+        # Return appropriate status code
+        status = r.status_code  # Will be 206 for partial content
+        
+        def generate():
+            for chunk in r.iter_content(chunk_size=16384):
+                if chunk:
+                    yield chunk
+        
+        response = Response(
+            generate(),
+            status=status,
+            mimetype='video/mp2t',
+            headers={
+                'Content-Range': r.headers.get('Content-Range', ''),
+                'Content-Length': r.headers.get('Content-Length', ''),
+                'Accept-Ranges': 'bytes',
+                'Cache-Control': 'no-cache',
+            }
+        )
+        
+        return response
+        
+    except Exception as e:
+        app.logger.error(f"[RANGE] Error: {e}")
+        return Response("Range request failed", status=500)
 
 
 @app.route('/stream/<channel_id>')
@@ -412,7 +454,15 @@ def stream(channel_id):
     stream_url = event["stream_url"]
     
     app.logger.info(f"[STREAM] {channel_id} -> {event['program_name']} (Client: {request.remote_addr})")
-
+    
+    # Check if client sent Range header
+    range_header = request.headers.get('Range')
+    if range_header:
+        app.logger.info(f"[STREAM] Client requested range: {range_header}")
+        # Forward the range request to upstream
+        return proxy_with_range(stream_url, range_header)
+    
+    # Normal streaming without range
     response = Response(
         stream_ts(stream_url),
         mimetype='video/mp2t',
@@ -420,7 +470,7 @@ def stream(channel_id):
             'Cache-Control': 'no-cache, no-store, must-revalidate',
             'Pragma': 'no-cache',
             'Expires': '0',
-            'Accept-Ranges': 'none',
+            'Accept-Ranges': 'bytes',  # Changed from 'none' to 'bytes'
             'Access-Control-Allow-Origin': '*',
         }
     )
