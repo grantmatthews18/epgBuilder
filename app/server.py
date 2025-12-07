@@ -48,7 +48,7 @@ def stream(channel_id):
             break
 
     if not channel:
-        print(f"Channel ID {channel_id} not found in schedule")
+        app.logger.error(f"Channel ID {channel_id} not found in schedule")
         return Response("Channel not found", status=404, mimetype='text/plain')
     
     """Find which event is currently live"""
@@ -70,8 +70,8 @@ def stream(channel_id):
             break
 
     if not event or not event.get("stream_url"):
-        print(f"No active event for channel ID {channel_id}")
-        print("Channel Programs:", service_channel["programs"])
+        app.logger.error(f"No active event for channel ID {channel_id}")
+        app.logger.error("Channel Programs:", service_channel["programs"])
         return Response("No active event for this channel", status=404, mimetype='text/plain')
     
     stream_url = event["stream_url"]
