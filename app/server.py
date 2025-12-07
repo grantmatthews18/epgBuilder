@@ -24,11 +24,28 @@ def load_schedule():
     
 
 def stream_ts(url):
-    with requests.get(url, stream=True) as r:
-        r.raise_for_status()
-        for chunk in r.iter_content(chunk_size=4096):
+    """Stream TS content from upstream URL with error handling"""
+    try:
+        # First, make a HEAD request or check status before streaming
+        r = requests.get(url, stream=True, timeout=10)
+        
+        # Check status BEFORE yielding any data
+        if r.status_code != 200:
+            app.logger.error(f"Upstream error {r.status_code} for URL: {url}")
+            r.close()
+            return
+        
+        # Now stream the content
+        for chunk in r.iter_content(chunk_size=8192):
             if chunk:
                 yield chunk
+                
+    except requests.exceptions.RequestException as e:
+        app.logger.error(f"Stream error for {url}: {e}")
+        return
+    except Exception as e:
+        app.logger.error(f"Unexpected error streaming {url}: {e}")
+        return
 
 
 @app.route('/stream/<channel_id>')
@@ -51,35 +68,53 @@ def stream(channel_id):
         app.logger.error(f"Channel ID {channel_id} not found in schedule")
         return Response("Channel not found", status=404, mimetype='text/plain')
     
-    """Find which event is currently live"""
+    # Find which event is currently live
     now = datetime.now(tz.UTC)
     
     event = None
     for program in channel["programs"]:
-        start_str = program.get("start_dt")
-        stop_str = program.get("stop_dt")
+        start_dt_str = program.get("start_dt")
+        stop_dt_str = program.get("stop_dt")
 
-        if not start_str or not stop_str:
+        if not start_dt_str or not stop_dt_str:
             continue
         
-        start = dtparse.parse(start_str)
-        stop = dtparse.parse(stop_str)
+        # Use isoparse for ISO 8601 format
+        start_dt = dtparse.isoparse(start_dt_str)
+        stop_dt = dtparse.isoparse(stop_dt_str)
         
-        if start <= now < stop:
+        if start_dt <= now < stop_dt:
             event = program
             break
 
     if not event or not event.get("stream_url"):
         app.logger.error(f"No active event for channel ID {channel_id}")
         app.logger.error(f"Current time: {now.isoformat()}")
-        app.logger.error(f"Channel Programs: {json.dumps(channel['programs'], indent=2)}")
         return Response("No active event for this channel", status=404, mimetype='text/plain')
     
     stream_url = event["stream_url"]
+    
+    app.logger.info(f"[STREAM] Channel: {channel_id}, Event: {event['program_name']}, URL: {stream_url}")
+    
+    # Validate the stream URL before starting response
+    try:
+        test_response = requests.head(stream_url, timeout=5, allow_redirects=True)
+        if test_response.status_code not in [200, 302, 301]:
+            app.logger.error(f"Stream validation failed: {test_response.status_code} for {stream_url}")
+            return Response(f"Stream unavailable (upstream error {test_response.status_code})", 
+                          status=502, mimetype='text/plain')
+    except requests.exceptions.RequestException as e:
+        app.logger.error(f"Stream validation error: {e}")
+        return Response(f"Stream unavailable: {str(e)}", status=502, mimetype='text/plain')
 
+    # Stream is valid, start proxying
     return Response(
         stream_with_context(stream_ts(stream_url)),
-        content_type="video/MP2T"
+        content_type="video/MP2T",
+        headers={
+            'Cache-Control': 'no-cache',
+            'Connection': 'keep-alive'
+        }
     )
 
 @app.route('/playlist.m3u')
