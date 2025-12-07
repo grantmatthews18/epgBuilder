@@ -1,9 +1,10 @@
-from flask import Flask, Response, request, jsonify, send_file
+from flask import Flask, Response, request, jsonify, send_file, stream_with_context
 import json
 from datetime import datetime
 from dateutil import tz, parser as dtparse
 import html
 import os
+import requests
 
 app = Flask(__name__)
 
@@ -20,27 +21,60 @@ def load_schedule():
     except json.JSONDecodeError:
         print("Error: Invalid JSON in schedule.json")
         return {}
+    
+
+def stream_ts(url):
+    with requests.get(url, stream=True) as r:
+        r.raise_for_status()
+        for chunk in r.iter_content(chunk_size=4096):
+            if chunk:
+                yield chunk
+
 
 @app.route('/stream/<channel_id>')
 @app.route('/stream/<channel_id>.ts')
 def stream(channel_id):
-    """Proxy stream for a channel - automatically switches sources when events change"""
     channel_id = channel_id.replace('.ts', '')
+
+    schedule = load_schedule()
     
-    # Start the proxy and get the generator
-    generator = stream_manager.proxy_stream(channel_id)
+    for pattern_name, pattern_data in schedule.items():
+        for service_channel in pattern_data.get("service_channels", []):
+            if service_channel["id"] == channel_id:
+                channel = service_channel
+                break
+        if channel:
+            break
+
+    if not channel:
+        return Response("Channel not found", status=404, mimetype='text/plain')
     
-    if not generator:
-        return Response("Stream not available", status=404, mimetype='text/plain')
+    """Find which event is currently live"""
+    now = datetime.now(tz.UTC)
     
-    # Return streaming response
-    response = Response(generator, mimetype='video/mp2t')
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-    response.headers['Pragma'] = 'no-cache'
-    response.headers['Expires'] = '0'
-    response.headers['Connection'] = 'keep-alive'
+    for program in service_channel["programs"]:
+        start_str = program.get("start")
+        stop_str = program.get("stop")
+        
+        if not start_str or not stop_str:
+            continue
+        
+        start = dtparse.parse(start_str)
+        stop = dtparse.parse(stop_str)
+        
+        if start <= now < stop:
+            event = program
+            break
+
+    if not event or not event.get("stream_url"):
+        return Response("No active event for this channel", status=404, mimetype='text/plain')
     
-    return response
+    stream_url = event["stream_url"]
+
+    return Response(
+        stream_with_context(stream_ts(stream_url)),
+        content_type="video/MP2T"
+    )
 
 @app.route('/playlist.m3u')
 def playlist():
