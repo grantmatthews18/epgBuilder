@@ -374,6 +374,8 @@ def proxy_with_range(url, range_header):
             'Range': range_header
         }
         
+        app.logger.info(f"[RANGE] Forwarding range request: {range_header}")
+        
         r = requests.get(
             url,
             stream=True,
@@ -383,30 +385,68 @@ def proxy_with_range(url, range_header):
             verify=False
         )
         
-        # Return appropriate status code
-        status = r.status_code  # Will be 206 for partial content
+        app.logger.info(f"[RANGE] Upstream status: {r.status_code}")
+        app.logger.info(f"[RANGE] Upstream Content-Range: {r.headers.get('Content-Range', 'N/A')}")
+        app.logger.info(f"[RANGE] Upstream Content-Length: {r.headers.get('Content-Length', 'N/A')}")
+        
+        # If upstream doesn't support range, return 200 with full content
+        status = r.status_code if r.status_code in [200, 206] else 200
+        
+        chunk_count = 0
+        bytes_sent = 0
         
         def generate():
-            for chunk in r.iter_content(chunk_size=16384):
-                if chunk:
-                    yield chunk
+            nonlocal chunk_count, bytes_sent
+            try:
+                for chunk in r.iter_content(chunk_size=16384):
+                    if chunk:
+                        chunk_count += 1
+                        bytes_sent += len(chunk)
+                        
+                        if chunk_count == 1:
+                            app.logger.info(f"[RANGE] First chunk sent: {len(chunk)} bytes")
+                        
+                        if chunk_count % 1000 == 0:
+                            mb = bytes_sent / (1024 * 1024)
+                            app.logger.info(f"[RANGE] Sent {mb:.1f}MB")
+                        
+                        yield chunk
+                
+                app.logger.info(f"[RANGE] Stream completed: {bytes_sent / (1024 * 1024):.2f}MB")
+            except GeneratorExit:
+                app.logger.info(f"[RANGE] Client disconnected after {bytes_sent / (1024 * 1024):.2f}MB")
+            finally:
+                r.close()
+        
+        response_headers = {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+            'Accept-Ranges': 'bytes',
+            'Access-Control-Allow-Origin': '*',
+        }
+        
+        # Only include Content-Range if upstream provided it
+        if r.headers.get('Content-Range'):
+            response_headers['Content-Range'] = r.headers['Content-Range']
+        
+        # Only include Content-Length if upstream provided it
+        if r.headers.get('Content-Length'):
+            response_headers['Content-Length'] = r.headers['Content-Length']
         
         response = Response(
             generate(),
             status=status,
             mimetype='video/mp2t',
-            headers={
-                'Content-Range': r.headers.get('Content-Range', ''),
-                'Content-Length': r.headers.get('Content-Length', ''),
-                'Accept-Ranges': 'bytes',
-                'Cache-Control': 'no-cache',
-            }
+            headers=response_headers
         )
         
         return response
         
     except Exception as e:
         app.logger.error(f"[RANGE] Error: {e}")
+        import traceback
+        app.logger.error(traceback.format_exc())
         return Response("Range request failed", status=500)
 
 
