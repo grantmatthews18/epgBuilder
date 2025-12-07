@@ -21,78 +21,30 @@ def load_schedule():
         print("Error: Invalid JSON in schedule.json")
         return {}
 
-@app.route('/stream/<channel_id>.m3u8')
-@app.route('/stream/<channel_id>/stream.m3u8')
+@app.route('/stream/<channel_id>')
+@app.route('/stream/<channel_id>.ts')
 def stream(channel_id):
-    """Serve HLS playlist for a channel - starts FFmpeg on-demand"""
-    channel_id = channel_id.replace('.m3u8', '')
+    """Proxy stream for a channel - automatically switches sources when events change"""
+    channel_id = channel_id.replace('.ts', '')
     
-    # Get or start the stream
-    playlist_path = stream_manager.get_stream_playlist(channel_id)
+    # Start the proxy and get the generator
+    generator = stream_manager.proxy_stream(channel_id)
     
-    if not playlist_path:
+    if not generator:
         return Response("Stream not available", status=404, mimetype='text/plain')
     
-    # Wait a bit for FFmpeg to create the playlist
-    import time
-    for i in range(10):  # Wait up to 5 seconds
-        if os.path.exists(playlist_path):
-            break
-        time.sleep(0.5)
+    # Return streaming response
+    response = Response(generator, mimetype='video/mp2t')
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    response.headers['Connection'] = 'keep-alive'
     
-    if not os.path.exists(playlist_path):
-        return Response("Stream starting, please retry", status=503, mimetype='text/plain')
-    
-    try:
-        with open(playlist_path, 'r') as f:
-            content = f.read()
-        
-        # Rewrite segment URLs to include channel_id path
-        # Replace relative segment paths with full URLs
-        base_url = request.url_root.rstrip('/')
-        lines = content.split('\n')
-        rewritten_lines = []
-        
-        for line in lines:
-            # If line is a segment filename (ends with .ts and doesn't start with #)
-            if line.strip().endswith('.ts') and not line.startswith('#'):
-                # Rewrite to full URL
-                segment_name = line.strip()
-                rewritten_lines.append(f'{base_url}/stream/{channel_id}/{segment_name}')
-            else:
-                rewritten_lines.append(line)
-        
-        rewritten_content = '\n'.join(rewritten_lines)
-        
-        # Update access time to prevent idle timeout
-        stream_manager.update_access_time(channel_id)
-        
-        response = Response(rewritten_content, mimetype='application/vnd.apple.mpegurl')
-        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-        response.headers['Pragma'] = 'no-cache'
-        response.headers['Expires'] = '0'
-        
-        return response
-    except Exception as e:
-        print(f"[STREAM] Error serving playlist: {e}")
-        return Response(f"Error: {e}", status=500, mimetype='text/plain')
-
-@app.route('/stream/<channel_id>/<segment>')
-def stream_segment(channel_id, segment):
-    """Serve HLS segment"""
-    segment_path = f"/output/hls/{channel_id}/{segment}"
-    
-    if not os.path.exists(segment_path):
-        return Response("Segment not found", status=404, mimetype='text/plain')
-    
-    # Update access time
-    stream_manager.update_access_time(channel_id)
-    
-    return send_file(segment_path, mimetype='video/mp2t')
+    return response
 
 @app.route('/playlist.m3u')
 def playlist():
-    """Generate M3U playlist with HLS stream URLs"""
+    """Generate M3U playlist with direct stream URLs"""
     schedule = load_schedule()
     
     base_url = request.url_root.rstrip('/')
@@ -103,7 +55,7 @@ def playlist():
         for channel in pattern_data["service_channels"]:
             if len(channel["programs"]) > 0:
                 extinf = f'#EXTINF:-1 tvg-id="{channel["id"]}" tvg-name="{channel["channel_name"]}" tvg-logo="{channel["icon_url"]}" group-title="{pattern_data["category"]}",{channel["channel_name"]}'
-                stream_url = f'{base_url}/stream/{channel["id"]}.m3u8'
+                stream_url = f'{base_url}/stream/{channel["id"]}.ts'
                 
                 lines.append(extinf)
                 lines.append(stream_url)
