@@ -256,4 +256,4 @@ def index():
     return html_content
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.getenv("SERVER_PORT", 8080)), debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=int(os.getenv("SERVER_PORT", 8080)), debug=os.getenv("DEBUG", False), threaded=True)
