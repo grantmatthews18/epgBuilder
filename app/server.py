@@ -38,6 +38,7 @@ def stream(channel_id):
 
     schedule = load_schedule()
     
+    channel = None
     for pattern_name, pattern_data in schedule.items():
         for service_channel in pattern_data.get("service_channels", []):
             if service_channel["id"] == channel_id:
@@ -52,6 +53,7 @@ def stream(channel_id):
     """Find which event is currently live"""
     now = datetime.now(tz.UTC)
     
+    event = None
     for program in service_channel["programs"]:
         start_str = program.get("start")
         stop_str = program.get("stop")
