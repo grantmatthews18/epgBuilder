@@ -24,6 +24,7 @@ def stream_ts(url):
     """Stream TS content from upstream URL - optimized for live streams"""
     session = None
     bytes_sent = 0
+    chunk_count = 0
     try:
         # Headers that mimic a real IPTV player
         headers = {
@@ -56,13 +57,8 @@ def stream_ts(url):
         
         app.logger.info(f"[STREAM] Connected successfully, content-type: {r.headers.get('Content-Type')}")
         
-        # Stream the content - use smaller chunks and disable buffering
-        chunk_count = 0
-        
-        # Disable urllib3 buffering for true streaming
-        r.raw.read = lambda amt: r.raw._fp.read(amt)
-        
-        for chunk in r.iter_content(chunk_size=8192, decode_unicode=False):  # Smaller chunks for lower latency
+        # Stream the content in small chunks for low latency
+        for chunk in r.iter_content(chunk_size=8192):
             if chunk:
                 chunk_count += 1
                 bytes_sent += len(chunk)
