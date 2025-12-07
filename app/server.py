@@ -71,7 +71,8 @@ def stream(channel_id):
 
     if not event or not event.get("stream_url"):
         app.logger.error(f"No active event for channel ID {channel_id}")
-        app.logger.error("Channel Programs:", service_channel["programs"])
+        app.logger.error(f"Current time: {now.isoformat()}")
+        app.logger.error(f"Channel Programs: {json.dumps(channel['programs'], indent=2)}")
         return Response("No active event for this channel", status=404, mimetype='text/plain')
     
     stream_url = event["stream_url"]
