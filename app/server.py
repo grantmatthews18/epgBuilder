@@ -269,12 +269,12 @@ import os
 import requests
 import urllib3
 
-# Disable SSL warnings if needed
+# Disable SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 app = Flask(__name__)
 
-# Disable all Flask response buffering
+# Disable response buffering
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 def load_schedule():
@@ -290,15 +290,16 @@ def load_schedule():
 
 
 def stream_ts(url):
-    """Stream TS content with minimal buffering to avoid discontinuities"""
+    """Stream TS content with proper packet alignment"""
     bytes_sent = 0
     chunk_count = 0
     r = None
     
     try:
         headers = {
-            'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
+            'User-Agent': 'Plex/1.0',
             'Accept': '*/*',
+            'Connection': 'keep-alive',
         }
         
         app.logger.info(f"[STREAM] Connecting to {url}")
@@ -306,43 +307,75 @@ def stream_ts(url):
         r = requests.get(
             url,
             stream=True,
-            timeout=(15, None),
+            timeout=(30, 60),  # 30s connect, 60s read timeout
             headers=headers,
             allow_redirects=True,
             verify=False
         )
         
         if r.status_code != 200:
-            app.logger.error(f"Upstream error {r.status_code}")
+            app.logger.error(f"[STREAM] Upstream error {r.status_code}")
             if r is not None:
                 r.close()
             return
         
-        app.logger.info(f"[STREAM] Connected, streaming...")
+        app.logger.info(f"[STREAM] Connected successfully")
+        app.logger.info(f"[STREAM] Content-Type: {r.headers.get('Content-Type')}")
         
-        # Log upstream headers for debugging
-        app.logger.info(f"[STREAM] Upstream Content-Type: {r.headers.get('Content-Type')}")
-        app.logger.info(f"[STREAM] Upstream Content-Length: {r.headers.get('Content-Length', 'N/A')}")
-        app.logger.info(f"[STREAM] Upstream Accept-Ranges: {r.headers.get('Accept-Ranges', 'N/A')}")
-        
+        # MPEG-TS packet is always 188 bytes
         TS_PACKET_SIZE = 188
-        CHUNK_SIZE = TS_PACKET_SIZE * 80
+        # Stream in multiples of 7 TS packets (1316 bytes) - common HLS segment size
+        CHUNK_SIZE = TS_PACKET_SIZE * 7
+        
+        buffer = bytearray()
         
         for chunk in r.iter_content(chunk_size=CHUNK_SIZE):
             if not chunk:
                 continue
             
-            chunk_count += 1
-            bytes_sent += len(chunk)
+            buffer.extend(chunk)
             
-            if chunk_count == 1:
-                app.logger.info(f"[STREAM] First chunk: {len(chunk)} bytes")
-            
-            if chunk_count % 2000 == 0:
-                mb = bytes_sent / (1024 * 1024)
-                app.logger.info(f"[STREAM] {mb:.1f}MB sent")
-            
-            yield chunk
+            # Only yield complete TS packets
+            while len(buffer) >= TS_PACKET_SIZE:
+                # Find sync byte (0x47)
+                sync_idx = buffer.find(0x47)
+                
+                if sync_idx == -1:
+                    # No sync byte found, discard buffer
+                    app.logger.warning("[STREAM] No sync byte found, discarding buffer")
+                    buffer.clear()
+                    break
+                
+                if sync_idx > 0:
+                    # Discard data before sync byte
+                    app.logger.warning(f"[STREAM] Discarding {sync_idx} bytes before sync")
+                    buffer = buffer[sync_idx:]
+                
+                if len(buffer) < TS_PACKET_SIZE:
+                    break
+                
+                # Yield one TS packet
+                packet = bytes(buffer[:TS_PACKET_SIZE])
+                buffer = buffer[TS_PACKET_SIZE:]
+                
+                chunk_count += 1
+                bytes_sent += len(packet)
+                
+                if chunk_count == 1:
+                    app.logger.info(f"[STREAM] First packet sent")
+                
+                if chunk_count % 5000 == 0:
+                    mb = bytes_sent / (1024 * 1024)
+                    app.logger.info(f"[STREAM] {mb:.1f}MB sent ({chunk_count} packets)")
+                
+                yield packet
+        
+        # Flush any remaining complete packets
+        while len(buffer) >= TS_PACKET_SIZE:
+            packet = bytes(buffer[:TS_PACKET_SIZE])
+            buffer = buffer[TS_PACKET_SIZE:]
+            bytes_sent += len(packet)
+            yield packet
         
         app.logger.info(f"[STREAM] Stream ended: {bytes_sent / (1024 * 1024):.2f}MB")
                 
@@ -363,91 +396,6 @@ def stream_ts(url):
                 r.close()
             except:
                 pass
-            
-
-def proxy_with_range(url, range_header):
-    """Proxy request with Range header support"""
-    try:
-        headers = {
-            'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18',
-            'Accept': '*/*',
-            'Range': range_header
-        }
-        
-        app.logger.info(f"[RANGE] Forwarding range request: {range_header}")
-        
-        r = requests.get(
-            url,
-            stream=True,
-            timeout=(15, None),
-            headers=headers,
-            allow_redirects=True,
-            verify=False
-        )
-        
-        app.logger.info(f"[RANGE] Upstream status: {r.status_code}")
-        app.logger.info(f"[RANGE] Upstream Content-Range: {r.headers.get('Content-Range', 'N/A')}")
-        app.logger.info(f"[RANGE] Upstream Content-Length: {r.headers.get('Content-Length', 'N/A')}")
-        
-        # If upstream doesn't support range, return 200 with full content
-        status = r.status_code if r.status_code in [200, 206] else 200
-        
-        chunk_count = 0
-        bytes_sent = 0
-        
-        def generate():
-            nonlocal chunk_count, bytes_sent
-            try:
-                for chunk in r.iter_content(chunk_size=16384):
-                    if chunk:
-                        chunk_count += 1
-                        bytes_sent += len(chunk)
-                        
-                        if chunk_count == 1:
-                            app.logger.info(f"[RANGE] First chunk sent: {len(chunk)} bytes")
-                        
-                        if chunk_count % 1000 == 0:
-                            mb = bytes_sent / (1024 * 1024)
-                            app.logger.info(f"[RANGE] Sent {mb:.1f}MB")
-                        
-                        yield chunk
-                
-                app.logger.info(f"[RANGE] Stream completed: {bytes_sent / (1024 * 1024):.2f}MB")
-            except GeneratorExit:
-                app.logger.info(f"[RANGE] Client disconnected after {bytes_sent / (1024 * 1024):.2f}MB")
-            finally:
-                r.close()
-        
-        response_headers = {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-            'Expires': '0',
-            'Accept-Ranges': 'bytes',
-            'Access-Control-Allow-Origin': '*',
-        }
-        
-        # Only include Content-Range if upstream provided it
-        if r.headers.get('Content-Range'):
-            response_headers['Content-Range'] = r.headers['Content-Range']
-        
-        # Only include Content-Length if upstream provided it
-        if r.headers.get('Content-Length'):
-            response_headers['Content-Length'] = r.headers['Content-Length']
-        
-        response = Response(
-            generate(),
-            status=status,
-            mimetype='video/mp2t',
-            headers=response_headers
-        )
-        
-        return response
-        
-    except Exception as e:
-        app.logger.error(f"[RANGE] Error: {e}")
-        import traceback
-        app.logger.error(traceback.format_exc())
-        return Response("Range request failed", status=500)
 
 
 @app.route('/stream/<channel_id>')
@@ -467,7 +415,7 @@ def stream(channel_id):
             break
 
     if not channel:
-        app.logger.error(f"Channel {channel_id} not found")
+        app.logger.error(f"[STREAM] Channel {channel_id} not found")
         return Response("Channel not found", status=404, mimetype='text/plain')
     
     now = datetime.now(tz.UTC)
@@ -488,29 +436,24 @@ def stream(channel_id):
             break
 
     if not event or not event.get("stream_url"):
-        app.logger.error(f"No active event for {channel_id}")
+        app.logger.error(f"[STREAM] No active event for {channel_id}")
         return Response("No active event", status=404, mimetype='text/plain')
     
     stream_url = event["stream_url"]
     
     app.logger.info(f"[STREAM] {channel_id} -> {event['program_name']} (Client: {request.remote_addr})")
     
-    # Check if client sent Range header
-    range_header = request.headers.get('Range')
-    if range_header:
-        app.logger.info(f"[STREAM] Client requested range: {range_header}")
-        # Forward the range request to upstream
-        return proxy_with_range(stream_url, range_header)
-    
-    # Normal streaming without range
+    # Create response with minimal buffering
     response = Response(
         stream_ts(stream_url),
         mimetype='video/mp2t',
+        direct_passthrough=True,
         headers={
             'Cache-Control': 'no-cache, no-store, must-revalidate',
             'Pragma': 'no-cache',
             'Expires': '0',
-            'Accept-Ranges': 'bytes',  # Changed from 'none' to 'bytes'
+            'X-Content-Type-Options': 'nosniff',
+            'Accept-Ranges': 'none',
             'Access-Control-Allow-Origin': '*',
         }
     )
@@ -534,7 +477,10 @@ def playlist():
                 lines.append(extinf)
                 lines.append(stream_url)
     
-    return Response('\n'.join(lines), mimetype='audio/x-mpegurl')
+    response = Response('\n'.join(lines), mimetype='audio/x-mpegurl')
+    response.headers['Cache-Control'] = 'no-cache'
+    
+    return response
 
 
 @app.route('/epg.xml')
@@ -582,7 +528,10 @@ def epg():
     
     lines.append('</tv>')
     
-    return Response('\n'.join(lines), mimetype='application/xml')
+    response = Response('\n'.join(lines), mimetype='application/xml')
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    
+    return response
 
 
 @app.route('/health')
@@ -609,6 +558,7 @@ def index():
     </body>
     </html>
     """
+
 
 
 if __name__ == '__main__':
