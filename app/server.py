@@ -1,4 +1,4 @@
-from flask import Flask, Response, request, jsonify, send_file, stream_with_context
+from flask import Flask, Response, request, jsonify, stream_with_context
 import json
 from datetime import datetime
 from dateutil import tz, parser as dtparse
@@ -7,9 +7,6 @@ import os
 import requests
 
 app = Flask(__name__)
-
-# Import stream manager
-from stream_manager import stream_manager
 
 def load_schedule():
     """Load the schedule from JSON file"""
@@ -25,19 +22,23 @@ def load_schedule():
 
 def stream_ts(url):
     """Stream TS content from upstream URL - optimized for live streams"""
+    session = None
     try:
         # Headers that mimic a real IPTV player
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
             'Accept': '*/*',
             'Connection': 'keep-alive',
-            'Accept-Encoding': 'identity',  # Don't compress
+            'Accept-Encoding': 'identity',
         }
         
         app.logger.info(f"[STREAM] Connecting to {url}")
         
+        # Use a session for better connection reuse
+        session = requests.Session()
+        
         # Open connection with longer timeout for live streams
-        r = requests.get(
+        r = session.get(
             url, 
             stream=True, 
             timeout=(10, 60),  # (connect timeout, read timeout)
@@ -56,31 +57,37 @@ def stream_ts(url):
         
         # Stream the content in chunks
         chunk_count = 0
-        for chunk in r.iter_content(chunk_size=32768):  # Larger chunks for video
+        bytes_sent = 0
+        
+        for chunk in r.iter_content(chunk_size=32768):  # 32KB chunks
             if chunk:
                 chunk_count += 1
+                bytes_sent += len(chunk)
+                
                 if chunk_count == 1:
                     app.logger.info(f"[STREAM] First chunk received, size: {len(chunk)} bytes")
+                
                 if chunk_count % 100 == 0:
-                    app.logger.debug(f"[STREAM] Streamed {chunk_count} chunks (~{chunk_count * 32 // 1024}MB)")
+                    mb_sent = bytes_sent / (1024 * 1024)
+                    app.logger.debug(f"[STREAM] Streamed {chunk_count} chunks ({mb_sent:.2f}MB)")
+                
                 yield chunk
         
-        app.logger.info(f"[STREAM] Stream ended normally, {chunk_count} chunks sent")
+        app.logger.info(f"[STREAM] Stream ended normally, sent {bytes_sent / (1024 * 1024):.2f}MB in {chunk_count} chunks")
                 
     except requests.exceptions.Timeout as e:
         app.logger.error(f"Stream timeout for {url}: {e}")
-        return
     except requests.exceptions.RequestException as e:
         app.logger.error(f"Stream error for {url}: {e}")
-        return
     except GeneratorExit:
-        app.logger.info(f"[STREAM] Client disconnected")
-        return
+        app.logger.info(f"[STREAM] Client disconnected after {bytes_sent / (1024 * 1024):.2f}MB")
     except Exception as e:
         app.logger.error(f"Unexpected error streaming {url}: {e}")
         import traceback
         app.logger.error(traceback.format_exc())
-        return
+    finally:
+        if session:
+            session.close()
 
 
 @app.route('/stream/<channel_id>')
@@ -133,14 +140,15 @@ def stream(channel_id):
     # Stream with proper headers for live video
     return Response(
         stream_with_context(stream_ts(stream_url)),
-        mimetype='video/mp2t',  # Proper MIME type for MPEG-TS
+        mimetype='video/mp2t',
         headers={
             'Cache-Control': 'no-cache, no-store, must-revalidate',
             'Pragma': 'no-cache',
             'Expires': '0',
             'Connection': 'keep-alive',
-            'Accept-Ranges': 'none',  # Live stream, no seeking
-        }
+            'Accept-Ranges': 'none',
+        },
+        direct_passthrough=True  # Tell Flask to pass data directly without buffering
     )
 
 @app.route('/playlist.m3u')
@@ -165,19 +173,6 @@ def playlist():
     response.headers['Cache-Control'] = 'no-cache'
     
     return response
-
-@app.route('/streams/status')
-def streams_status():
-    """Get status of all active streams"""
-    return jsonify(stream_manager.get_stream_status())
-
-@app.route('/streams/stop/<channel_id>')
-def stop_stream(channel_id):
-    """Manually stop a stream"""
-    stream_manager.stop_stream(channel_id)
-    return jsonify({"status": "stopped", "channel_id": channel_id})
-
-# ... keep all existing routes (epg, schedule, health, index) ...
 
 @app.route('/epg.xml')
 def epg():
@@ -234,12 +229,10 @@ def epg():
 def health():
     """Health check endpoint"""
     schedule = load_schedule()
-    status = stream_manager.get_stream_status()
     
     return jsonify({
         "status": "ok",
         "total_channels": sum(len(p["service_channels"]) for p in schedule.values()),
-        "active_streams": len(status),
         "timestamp": datetime.now(tz.UTC).isoformat()
     })
 
@@ -247,7 +240,6 @@ def health():
 def index():
     """Landing page"""
     schedule = load_schedule()
-    status = stream_manager.get_stream_status()
     
     html_content = f"""
     <!DOCTYPE html>
@@ -255,10 +247,8 @@ def index():
     <head><title>EPG Builder</title></head>
     <body style="font-family: Arial; margin: 40px;">
         <h1>EPG Builder - Combined Channels</h1>
-        <p>Active Streams: {len(status)}</p>
         <div><a href="/playlist.m3u">Download M3U Playlist</a></div>
         <div><a href="/epg.xml">Download XMLTV EPG</a></div>
-        <div><a href="/streams/status">Active Streams Status</a></div>
         <div><a href="/health">Health Check</a></div>
     </body>
     </html>
@@ -266,4 +256,4 @@ def index():
     return html_content
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=os.getenv("SERVER_PORT", 8080), debug=os.getenv("DEBUG", False), threaded=True)
+    app.run(host='0.0.0.0', port=int(os.getenv("SERVER_PORT", 8080)), debug=False, threaded=True)
