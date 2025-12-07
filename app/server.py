@@ -79,7 +79,6 @@ def stream(channel_id):
         if not start_dt_str or not stop_dt_str:
             continue
         
-        # Use isoparse for ISO 8601 format
         start_dt = dtparse.isoparse(start_dt_str)
         stop_dt = dtparse.isoparse(stop_dt_str)
         
@@ -95,19 +94,9 @@ def stream(channel_id):
     stream_url = event["stream_url"]
     
     app.logger.info(f"[STREAM] Channel: {channel_id}, Event: {event['program_name']}, URL: {stream_url}")
-    
-    # Validate the stream URL before starting response
-    try:
-        test_response = requests.head(stream_url, timeout=5, allow_redirects=True)
-        if test_response.status_code not in [200, 302, 301]:
-            app.logger.error(f"Stream validation failed: {test_response.status_code} for {stream_url}")
-            return Response(f"Stream unavailable (upstream error {test_response.status_code})", 
-                          status=502, mimetype='text/plain')
-    except requests.exceptions.RequestException as e:
-        app.logger.error(f"Stream validation error: {e}")
-        return Response(f"Stream unavailable: {str(e)}", status=502, mimetype='text/plain')
 
-    # Stream is valid, start proxying
+    # Skip validation - just try to stream directly
+    # If upstream fails, stream_ts() will handle it gracefully
     return Response(
         stream_with_context(stream_ts(stream_url)),
         content_type="video/MP2T",
