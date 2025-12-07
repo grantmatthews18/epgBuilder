@@ -55,10 +55,10 @@ def stream(channel_id):
     now = datetime.now(tz.UTC)
     
     event = None
-    for program in service_channel["programs"]:
-        start_str = program.get("start")
-        stop_str = program.get("stop")
-        
+    for program in channel["programs"]:
+        start_str = program.get("start_dt")
+        stop_str = program.get("stop_dt")
+
         if not start_str or not stop_str:
             continue
         
