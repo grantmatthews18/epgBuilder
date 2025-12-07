@@ -46,8 +46,9 @@ def get_next_event(service_channel, current_time=None):
     return None
 
 @app.route('/stream/<channel_id>')
+@app.route('/stream/<channel_id>.m3u8')
 def stream(channel_id):
-    """Proxy the stream from provider to client"""
+    """Return M3U8 playlist pointing to the current live stream"""
     # Remove .m3u8 extension if present
     channel_id = channel_id.replace('.m3u8', '')
     
@@ -64,89 +65,65 @@ def stream(channel_id):
             break
     
     if not service_channel:
+        print(f"[STREAM] Channel not found: {channel_id}")
         return Response("Channel not found", status=404, mimetype='text/plain')
     
     # Get current event
     current_event = get_current_event(service_channel)
     
     if not current_event or not current_event.get("stream_url"):
-        # No current event
+        # No current event - return empty playlist
+        print(f"[STREAM] No event for channel: {channel_id}")
         next_event = get_next_event(service_channel)
+        
         if next_event:
             start_dt = dtparse.isoparse(next_event["start_dt"])
-            error_msg = f"No event currently streaming. Next: {next_event['program_name']} at {start_dt.strftime('%Y-%m-%d %H:%M:%S %Z')}"
+            comment = f"# Next: {next_event['program_name']} at {start_dt.strftime('%Y-%m-%d %H:%M %Z')}"
         else:
-            error_msg = "No events scheduled for this channel"
+            comment = "# No events scheduled"
         
-        return Response(error_msg, status=503, mimetype='text/plain')
+        m3u8_content = f"""#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+{comment}
+#EXT-X-ENDLIST
+"""
+        response = Response(m3u8_content, mimetype='application/vnd.apple.mpegurl')
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        return response
     
-    # Proxy the stream
+    # Return M3U8 pointing to the actual stream
     stream_url = current_event["stream_url"]
     
-    print(f"[STREAM] Channel: {channel_id}, Event: {current_event['program_name']}, URL: {stream_url}")
+    print(f"[STREAM] Channel: {channel_id}")
+    print(f"[STREAM] Event: {current_event['program_name']}")
+    print(f"[STREAM] URL: {stream_url}")
     
-    try:
-        # Forward client headers to upstream
-        headers = {
-            'User-Agent': request.headers.get('User-Agent', 'Mozilla/5.0'),
-            'Accept': request.headers.get('Accept', '*/*'),
-            'Accept-Encoding': request.headers.get('Accept-Encoding', 'identity'),
-            'Range': request.headers.get('Range', '')
-        }
-        
-        # Remove empty headers
-        headers = {k: v for k, v in headers.items() if v}
-        
-        # Make a streaming request to the original URL
-        upstream = requests.get(stream_url, stream=True, timeout=30, headers=headers, allow_redirects=True)
-        
-        # Check if request was successful
-        if upstream.status_code not in [200, 206]:
-            print(f"[STREAM] Error: upstream returned {upstream.status_code}")
-            return Response(f"Upstream error: {upstream.status_code}", status=502, mimetype='text/plain')
-        
-        # Get content type from upstream response
-        content_type = upstream.headers.get('Content-Type', 'application/vnd.apple.mpegurl')
-        
-        print(f"[STREAM] Content-Type: {content_type}")
-        
-        # Stream the content in chunks
-        def generate():
-            try:
-                for chunk in upstream.iter_content(chunk_size=8192):
-                    if chunk:
-                        yield chunk
-            except Exception as e:
-                print(f"[STREAM] Error during streaming: {e}")
-        
-        response = Response(
-            stream_with_context(generate()),
-            status=upstream.status_code,
-            mimetype=content_type,
-            direct_passthrough=True
-        )
-        
-        # Copy relevant headers from upstream
-        for header in ['Content-Length', 'Content-Range', 'Accept-Ranges', 'Last-Modified', 'ETag']:
-            if header in upstream.headers:
-                response.headers[header] = upstream.headers[header]
-        
-        # Add headers to prevent caching
-        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-        response.headers['Pragma'] = 'no-cache'
-        response.headers['Expires'] = '0'
-        
-        return response
-        
-    except requests.exceptions.Timeout:
-        print(f"[STREAM] Timeout for {channel_id}")
-        return Response("Stream timeout", status=504, mimetype='text/plain')
-    except requests.exceptions.RequestException as e:
-        print(f"[STREAM] Request error for {channel_id}: {e}")
-        return Response(f"Stream error: {str(e)}", status=502, mimetype='text/plain')
-    except Exception as e:
-        print(f"[STREAM] Unexpected error for {channel_id}: {e}")
-        return Response(f"Server error: {str(e)}", status=500, mimetype='text/plain')
+    # If the URL is already an M3U8, create a simple redirect playlist
+    if '.m3u8' in stream_url or 'm3u8' in stream_url.lower():
+        m3u8_content = f"""#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-STREAM-INF:BANDWIDTH=5000000
+{stream_url}
+"""
+    else:
+        # For direct streams (TS, etc), create a simple playlist
+        m3u8_content = f"""#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,{current_event['program_name']}
+{stream_url}
+#EXT-X-ENDLIST
+"""
+    
+    response = Response(m3u8_content, mimetype='application/vnd.apple.mpegurl')
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    
+    return response
 
 @app.route('/playlist.m3u')
 def playlist():
@@ -163,12 +140,16 @@ def playlist():
             # Only include channels that have at least one program
             if len(channel["programs"]) > 0:
                 extinf = f'#EXTINF:-1 tvg-id="{channel["id"]}" tvg-name="{channel["channel_name"]}" tvg-logo="{channel["icon_url"]}" group-title="{pattern_data["category"]}",{channel["channel_name"]}'
-                stream_url = f'{base_url}/stream/{channel["id"]}'
+                # Use .m3u8 extension to indicate HLS stream
+                stream_url = f'{base_url}/stream/{channel["id"]}.m3u8'
                 
                 lines.append(extinf)
                 lines.append(stream_url)
     
-    return Response('\n'.join(lines), mimetype='audio/x-mpegurl')
+    response = Response('\n'.join(lines), mimetype='audio/x-mpegurl')
+    response.headers['Cache-Control'] = 'no-cache'
+    
+    return response
 
 @app.route('/epg.xml')
 def epg():
