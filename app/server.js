@@ -44,10 +44,10 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
     }
     
     const TS_PACKET_SIZE = 188;
-    const PACKETS_PER_WRITE = 7; // Write 7 packets at a time (1316 bytes, standard MPEG-TS over UDP)
     let buffer = Buffer.alloc(0);
     let bytesSent = 0;
     let packetCount = 0;
+    let syncLost = false;
     
     if (redirectCount === 0) {
         console.log(`[STREAM] ${channelId} -> ${programName}`);
@@ -134,69 +134,59 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         proxyRes.on('data', (chunk) => {
             buffer = Buffer.concat([buffer, chunk]);
             
-            // Process and send complete TS packet groups
-            const writeSize = TS_PACKET_SIZE * PACKETS_PER_WRITE;
+            // Find sync byte if we lost it
+            if (!syncLost && buffer.length >= TS_PACKET_SIZE) {
+                // Check if we're synced at position 0
+                if (buffer[0] !== 0x47) {
+                    syncLost = true;
+                    console.warn('[STREAM] Lost sync, searching for sync byte...');
+                }
+            }
             
-            while (buffer.length >= writeSize) {
-                // Find sync byte (0x47) at the start
-                let syncIdx = buffer.indexOf(0x47);
-                
+            // If sync is lost, find it
+            if (syncLost) {
+                const syncIdx = buffer.indexOf(0x47);
                 if (syncIdx === -1) {
-                    console.warn('[STREAM] No sync byte found in buffer');
+                    // No sync byte found, discard buffer and wait for more data
+                    console.warn(`[STREAM] No sync byte in ${buffer.length} bytes, discarding`);
                     buffer = Buffer.alloc(0);
-                    break;
+                    return;
                 }
-                
                 if (syncIdx > 0) {
-                    console.warn(`[STREAM] Discarding ${syncIdx} bytes before sync`);
+                    console.warn(`[STREAM] Found sync at offset ${syncIdx}, discarding ${syncIdx} bytes`);
                     buffer = buffer.slice(syncIdx);
-                    continue;
                 }
-                
-                // Check if we have enough data for a full write
-                if (buffer.length < writeSize) {
+                syncLost = false;
+            }
+            
+            // Process complete TS packets
+            while (buffer.length >= TS_PACKET_SIZE) {
+                // Double-check sync byte
+                if (buffer[0] !== 0x47) {
+                    syncLost = true;
                     break;
                 }
                 
-                // Verify all packets in this write have sync bytes
-                let allSynced = true;
-                for (let i = 0; i < PACKETS_PER_WRITE; i++) {
-                    if (buffer[i * TS_PACKET_SIZE] !== 0x47) {
-                        allSynced = false;
-                        break;
-                    }
+                // Extract one TS packet
+                const packet = buffer.slice(0, TS_PACKET_SIZE);
+                buffer = buffer.slice(TS_PACKET_SIZE);
+                
+                packetCount++;
+                bytesSent += packet.length;
+                
+                if (packetCount === 1) {
+                    console.log('[STREAM] First packet sent');
+                    console.log(`[STREAM] First packet hex: ${packet.slice(0, 16).toString('hex')}`);
                 }
                 
-                if (!allSynced) {
-                    // Skip to next sync byte and try again
-                    syncIdx = buffer.indexOf(0x47, 1);
-                    if (syncIdx > 0) {
-                        buffer = buffer.slice(syncIdx);
-                    } else {
-                        buffer = Buffer.alloc(0);
-                    }
-                    continue;
-                }
-                
-                // Extract packet group
-                const packetGroup = buffer.slice(0, writeSize);
-                buffer = buffer.slice(writeSize);
-                
-                packetCount += PACKETS_PER_WRITE;
-                bytesSent += packetGroup.length;
-                
-                if (packetCount === PACKETS_PER_WRITE) {
-                    console.log('[STREAM] First packet group sent');
-                }
-                
-                if (packetCount % 5000 === 0) {
-                    const mb = (bytesSent / (1024 * 1024)).toFixed(1);
+                if (packetCount % 1000 === 0) {
+                    const mb = (bytesSent / (1024 * 1024)).toFixed(2);
                     console.log(`[STREAM] ${mb}MB sent (${packetCount} packets)`);
                 }
                 
                 try {
-                    // Write packet group to response
-                    const canContinue = res.write(packetGroup);
+                    // Write packet to response
+                    const canContinue = res.write(packet);
                     if (!canContinue) {
                         // Backpressure - pause upstream
                         proxyRes.pause();
@@ -216,27 +206,6 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
             // Clean up client listeners
             res.removeListener('close', onClientClose);
             res.removeListener('error', onClientError);
-            
-            // Flush remaining complete packets
-            while (buffer.length >= TS_PACKET_SIZE) {
-                const syncIdx = buffer.indexOf(0x47);
-                if (syncIdx === -1) break;
-                if (syncIdx > 0) {
-                    buffer = buffer.slice(syncIdx);
-                }
-                if (buffer.length < TS_PACKET_SIZE) break;
-                
-                const packet = buffer.slice(0, TS_PACKET_SIZE);
-                buffer = buffer.slice(TS_PACKET_SIZE);
-                bytesSent += packet.length;
-                packetCount++;
-                
-                try {
-                    res.write(packet);
-                } catch (error) {
-                    console.error('[STREAM] Write error on flush:', error.message);
-                }
-            }
             
             const mb = (bytesSent / (1024 * 1024)).toFixed(2);
             console.log(`[STREAM] Stream ended: ${mb}MB (${packetCount} packets)`);
