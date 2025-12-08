@@ -12,8 +12,9 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 app = Flask(__name__)
 
-# Disable response buffering
+# Disable response buffering and configure for streaming
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
 def load_schedule():
     """Load the schedule from JSON file"""
@@ -181,19 +182,30 @@ def stream(channel_id):
     
     app.logger.info(f"[STREAM] {channel_id} -> {event['program_name']} (Client: {request.remote_addr})")
     
-    # Create response with headers matching working IPTV provider
+    # Create response - Werkzeug will not add Connection: close if we use a generator
+    @app.after_request
+    def after_request(response):
+        # Remove Server header and other unwanted headers
+        if response.headers.get('Server'):
+            response.headers.pop('Server', None)
+        # Ensure only one Connection header
+        if 'Connection' in response.headers:
+            response.headers['Connection'] = 'keep-alive'
+        return response
+    
     response = Response(
         stream_ts(stream_url),
         mimetype='video/mp2t',
-        direct_passthrough=True,
-        headers={
-            'Pragma': 'public',
-            'Cache-Control': 'public, must-revalidate, proxy-revalidate',
-            'Connection': 'keep-alive',
-            'Accept-Ranges': 'bytes',
-            'Access-Control-Allow-Origin': '*',
-        }
+        direct_passthrough=True
     )
+    
+    # Set headers in specific order to match working provider
+    response.headers['Date'] = response.headers.get('Date', '')
+    response.headers['Content-Type'] = 'video/mp2t'
+    response.headers['Content-Length'] = '0'
+    response.headers['Connection'] = 'keep-alive'
+    response.headers['Pragma'] = 'public'
+    response.headers['Cache-Control'] = 'public, must-revalidate, proxy-revalidate'
     
     return response
 
