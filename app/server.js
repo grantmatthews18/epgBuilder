@@ -44,7 +44,6 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
     }
     
     const TS_PACKET_SIZE = 188;
-    const CHUNK_SIZE = TS_PACKET_SIZE * 7; // 1316 bytes
     let buffer = Buffer.alloc(0);
     let bytesSent = 0;
     let packetCount = 0;
@@ -103,20 +102,20 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         console.log(`[STREAM] Connected successfully`);
         console.log(`[STREAM] Content-Type: ${proxyRes.headers['content-type']}`);
         
-        // Buffer data to ensure we have valid TS packets before sending headers
-        let headersSent = false;
+        // Send headers only once, after successful connection
+        if (!res.headersSent) {
+            res.writeHead(200, {
+                'Date': new Date().toUTCString(),
+                'Content-Type': 'video/mp2t',
+                'Connection': 'keep-alive',
+                'Pragma': 'public',
+                'Cache-Control': 'public, must-revalidate, proxy-revalidate'
+            });
+            console.log('[STREAM] Response headers sent');
+        }
         
         proxyRes.on('data', (chunk) => {
             buffer = Buffer.concat([buffer, chunk]);
-            
-            // Send headers only after we have valid TS data
-            if (!headersSent && buffer.length >= TS_PACKET_SIZE) {
-                const syncIdx = buffer.indexOf(0x47);
-                if (syncIdx !== -1) {
-                    headersSent = true;
-                    console.log('[STREAM] Sending response headers');
-                }
-            }
             
             // Process complete TS packets
             while (buffer.length >= TS_PACKET_SIZE) {
@@ -432,16 +431,7 @@ const server = http.createServer(async (req, res) => {
         
         console.log(`[STREAM] Found event: ${event.program_name}`);
         
-        // Set headers before starting stream
-        res.writeHead(200, {
-            'Date': new Date().toUTCString(),
-            'Content-Type': 'video/mp2t',
-            'Content-Length': '0',
-            'Connection': 'keep-alive',
-            'Pragma': 'public',
-            'Cache-Control': 'public, must-revalidate, proxy-revalidate'
-        });
-        
+        // DO NOT send headers here - streamTS will handle it after redirects
         streamTS(event.stream_url, res, channelId, event.program_name);
         return;
     }
