@@ -31,32 +31,45 @@ async function loadSchedule() {
     }
 }
 
-async function streamTS(sourceUrl, res) {
+
+async function streamTS(sourceUrl, res, req) {
     const TS_PACKET_SIZE = 188;
+
     let buffer = Buffer.alloc(0);
     let bytesSent = 0;
-    let firstPacketSent = false;
 
-    // Add CORS headers immediately
-    if (!res.headersSent) {
-        res.writeHead(200, {
-            'Content-Type': 'video/mp2t',
-            'Cache-Control': 'no-cache',
-            'Connection': 'keep-alive',
-            'Access-Control-Allow-Origin': '*',           // <-- CORS header
-            'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type'
-        });
-    }
+    // Minimal PAT/PMT to send immediately
+    const initialPackets = Buffer.alloc(TS_PACKET_SIZE * 2);
+    // PAT (PID 0x0000)
+    initialPackets[0] = 0x47;
+    initialPackets[1] = 0x40;
+    initialPackets[2] = 0x00;
+    initialPackets[3] = 0x10;
+    // PMT (PID 0x1000)
+    initialPackets[188] = 0x47;
+    initialPackets[189] = 0x50;
+    initialPackets[190] = 0x00;
+    initialPackets[191] = 0x10;
 
-    // Handle preflight OPTIONS request
-    if (res.req.method === 'OPTIONS') {
-        return res.end();
-    }
+    // Send headers immediately
+    res.writeHead(200, {
+        'Content-Type': 'video/mp2t',
+        'Transfer-Encoding': 'chunked',
+        'Connection': 'keep-alive',
+        'Cache-Control': 'no-cache',
+        'Access-Control-Allow-Origin': '*',
+        'Accept-Ranges': 'bytes',
+        'Server': 'PlexTSProxy'
+    });
+
+    // Send initial PAT/PMT packets immediately
+    res.write(initialPackets);
+    bytesSent += initialPackets.length;
+    console.log('[STREAM] Sent initial PAT/PMT packets');
 
     const fetchStream = (urlToFetch) => {
         const urlObj = new URL(urlToFetch);
-        const protocol = urlObj.protocol === 'https:' ? https : http;
+        const protocol = urlObj.protocol === 'https:' ? require('https') : require('http');
 
         const request = protocol.get(
             {
@@ -64,21 +77,22 @@ async function streamTS(sourceUrl, res) {
                 port: urlObj.port || (urlObj.protocol === 'https:' ? 443 : 80),
                 path: urlObj.pathname + urlObj.search,
                 headers: {
-                    'User-Agent': 'Mozilla/5.0',
+                    'User-Agent': req.headers['user-agent'] || 'Mozilla/5.0',
                     'Connection': 'keep-alive',
-                    'Accept': '*/*'
+                    'Accept': '*/*',
+                    'Range': req.headers.range || 'bytes=0-'
                 }
             },
             upstream => {
                 // Follow redirects
                 if (upstream.statusCode >= 300 && upstream.statusCode < 400 && upstream.headers.location) {
                     const redirectUrl = new URL(upstream.headers.location, urlToFetch).toString();
-                    console.log(`[STREAM] Redirect → ${redirectUrl}`);
                     upstream.destroy();
+                    console.log(`[STREAM] Redirect → ${redirectUrl}`);
                     return fetchStream(redirectUrl);
                 }
 
-                if (upstream.statusCode !== 200) {
+                if (upstream.statusCode !== 200 && upstream.statusCode !== 206) {
                     if (!res.headersSent) res.writeHead(502, { 'Content-Type': 'text/plain' });
                     return res.end('Bad Gateway');
                 }
@@ -89,27 +103,18 @@ async function streamTS(sourceUrl, res) {
                     while (buffer.length >= TS_PACKET_SIZE) {
                         const syncIdx = buffer.indexOf(0x47);
                         if (syncIdx === -1) {
-                            console.warn(`[STREAM] No sync byte found — clearing ${buffer.length} bytes`);
                             buffer = Buffer.alloc(0);
                             break;
                         }
 
-                        if (syncIdx > 0) {
-                            console.warn(`[STREAM] Discarding ${syncIdx} bytes to resync`);
-                            buffer = buffer.slice(syncIdx);
-                            if (buffer.length < TS_PACKET_SIZE) break;
-                        }
+                        if (syncIdx > 0) buffer = buffer.slice(syncIdx);
+                        if (buffer.length < TS_PACKET_SIZE) break;
 
                         const packet = buffer.slice(0, TS_PACKET_SIZE);
                         buffer = buffer.slice(TS_PACKET_SIZE);
 
                         res.write(packet);
                         bytesSent += TS_PACKET_SIZE;
-
-                        if (!firstPacketSent) {
-                            console.log('[STREAM] First packet delivered');
-                            firstPacketSent = true;
-                        }
                     }
                 });
 
@@ -124,7 +129,6 @@ async function streamTS(sourceUrl, res) {
                 });
 
                 res.on('close', () => {
-                    console.log('[STREAM] Client closed');
                     upstream.destroy();
                 });
             }
@@ -137,11 +141,8 @@ async function streamTS(sourceUrl, res) {
         });
     };
 
-    console.log(`[STREAM] Connecting to ${sourceUrl}`);
     fetchStream(sourceUrl);
 }
-
-
 
 
 function findChannelAndEvent(schedule, channelId) {
