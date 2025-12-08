@@ -37,27 +37,26 @@ async function streamTS(sourceUrl, res) {
     let bytesSent = 0;
     let firstPacketSent = false;
 
-    // Immediately send headers
+    // Add CORS headers immediately
     if (!res.headersSent) {
         res.writeHead(200, {
             'Content-Type': 'video/mp2t',
             'Cache-Control': 'no-cache',
-            'Connection': 'keep-alive'
+            'Connection': 'keep-alive',
+            'Access-Control-Allow-Origin': '*',           // <-- CORS header
+            'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type'
         });
     }
 
-    // Send a single dummy TS packet to kickstart the client
-    const dummyPacket = Buffer.alloc(TS_PACKET_SIZE, 0xff);
-    dummyPacket[0] = 0x47; // sync byte
-    res.write(dummyPacket);
-    firstPacketSent = true;
+    // Handle preflight OPTIONS request
+    if (res.req.method === 'OPTIONS') {
+        return res.end();
+    }
 
-    console.log('[STREAM] Sent initial dummy packet');
-
-    // Function to fetch upstream, follow redirects
     const fetchStream = (urlToFetch) => {
         const urlObj = new URL(urlToFetch);
-        const protocol = urlObj.protocol === 'https:' ? require('https') : require('http');
+        const protocol = urlObj.protocol === 'https:' ? https : http;
 
         const request = protocol.get(
             {
@@ -71,7 +70,7 @@ async function streamTS(sourceUrl, res) {
                 }
             },
             upstream => {
-                // Handle HTTP redirects
+                // Follow redirects
                 if (upstream.statusCode >= 300 && upstream.statusCode < 400 && upstream.headers.location) {
                     const redirectUrl = new URL(upstream.headers.location, urlToFetch).toString();
                     console.log(`[STREAM] Redirect → ${redirectUrl}`);
@@ -80,9 +79,7 @@ async function streamTS(sourceUrl, res) {
                 }
 
                 if (upstream.statusCode !== 200) {
-                    if (!res.headersSent) {
-                        res.writeHead(502, { 'Content-Type': 'text/plain' });
-                    }
+                    if (!res.headersSent) res.writeHead(502, { 'Content-Type': 'text/plain' });
                     return res.end('Bad Gateway');
                 }
 
@@ -92,13 +89,16 @@ async function streamTS(sourceUrl, res) {
                     while (buffer.length >= TS_PACKET_SIZE) {
                         const syncIdx = buffer.indexOf(0x47);
                         if (syncIdx === -1) {
+                            console.warn(`[STREAM] No sync byte found — clearing ${buffer.length} bytes`);
                             buffer = Buffer.alloc(0);
                             break;
                         }
 
-                        if (syncIdx > 0) buffer = buffer.slice(syncIdx);
-
-                        if (buffer.length < TS_PACKET_SIZE) break;
+                        if (syncIdx > 0) {
+                            console.warn(`[STREAM] Discarding ${syncIdx} bytes to resync`);
+                            buffer = buffer.slice(syncIdx);
+                            if (buffer.length < TS_PACKET_SIZE) break;
+                        }
 
                         const packet = buffer.slice(0, TS_PACKET_SIZE);
                         buffer = buffer.slice(TS_PACKET_SIZE);
@@ -107,7 +107,7 @@ async function streamTS(sourceUrl, res) {
                         bytesSent += TS_PACKET_SIZE;
 
                         if (!firstPacketSent) {
-                            console.log('[STREAM] First real packet delivered');
+                            console.log('[STREAM] First packet delivered');
                             firstPacketSent = true;
                         }
                     }
@@ -140,6 +140,7 @@ async function streamTS(sourceUrl, res) {
     console.log(`[STREAM] Connecting to ${sourceUrl}`);
     fetchStream(sourceUrl);
 }
+
 
 
 
