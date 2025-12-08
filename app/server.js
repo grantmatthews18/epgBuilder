@@ -35,11 +35,11 @@ function streamTS(sourceUrl, res) {
     console.log(`[STREAM] Connecting to ${sourceUrl}`);
 
     const TS_PACKET_SIZE = 188;
-    const CHUNK_SIZE = TS_PACKET_SIZE * 7; // 1316 bytes (matching Python)
 
+    // Continuously growing buffer (like Python)
+    let buffer = Buffer.alloc(0);
     let bytesSent = 0;
     let packetCount = 0;
-    let buffer = Buffer.alloc(0);
 
     const urlObj = new URL(sourceUrl);
     const protocol = urlObj.protocol === "https:" ? https : http;
@@ -51,37 +51,32 @@ function streamTS(sourceUrl, res) {
             path: urlObj.pathname + urlObj.search,
             method: "GET",
             headers: {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-                "Accept": "*/*",
+                "User-Agent": "Mozilla/5.0",
                 "Connection": "keep-alive",
+                "Accept": "*/*"
             }
         },
         upstream => {
-            console.log(`[STREAM] Upstream response: ${upstream.statusCode}`);
+            console.log(`[STREAM] Upstream: ${upstream.statusCode}`);
 
-            // Handle redirects automatically like Python
+            // Auto-follow redirects (like Python)
             if (
                 upstream.statusCode >= 300 &&
                 upstream.statusCode < 400 &&
                 upstream.headers.location
             ) {
                 const redirectUrl = new URL(upstream.headers.location, sourceUrl).toString();
-                console.log(`[STREAM] Following redirect → ${redirectUrl}`);
+                console.log(`[STREAM] Redirect → ${redirectUrl}`);
                 upstream.resume();
                 return streamTS(redirectUrl, res);
             }
 
             if (upstream.statusCode !== 200) {
-                console.error(`[STREAM] Upstream error: ${upstream.statusCode}`);
-                if (!res.headersSent) {
-                    res.writeHead(502, { "Content-Type": "text/plain" });
-                }
+                res.writeHead(502, { "Content-Type": "text/plain" });
                 return res.end("Bad Gateway");
             }
 
-            console.log("[STREAM] Connected OK, streaming TS");
-
-            // Send headers once (no forced chunked)
+            // Send response headers
             if (!res.headersSent) {
                 res.writeHead(200, {
                     "Content-Type": "video/mp2t",
@@ -91,43 +86,16 @@ function streamTS(sourceUrl, res) {
             }
 
             upstream.on("data", chunk => {
+                // Append new data like Python iter_content
                 buffer = Buffer.concat([buffer, chunk]);
 
-                // Only process full 1316-byte aligned chunks
-                while (buffer.length >= CHUNK_SIZE) {
-                    const chunk1316 = buffer.slice(0, CHUNK_SIZE);
-                    buffer = buffer.slice(CHUNK_SIZE);
-
-                    processTSChunk(chunk1316);
-                }
-            });
-
-            upstream.on("end", () => {
-                console.log(`[STREAM] Upstream ended`);
-                flushRemainingPackets();
-                res.end();
-            });
-
-            upstream.on("error", err => {
-                console.error("[STREAM] Upstream error:", err.message);
-                res.end();
-            });
-
-            res.on("close", () => {
-                console.log("[STREAM] Client disconnected");
-                upstream.destroy();
-            });
-
-            // ---- TS PACKET PROCESSING ----
-            function processTSChunk(chunk1316) {
-                buffer = Buffer.concat([buffer, chunk1316]);
-
-                // Emit only complete 188-byte packets
+                // Process complete TS packets only
                 while (buffer.length >= TS_PACKET_SIZE) {
                     let syncIdx = buffer.indexOf(0x47);
 
                     if (syncIdx === -1) {
-                        console.warn("[STREAM] No sync byte found — clearing buffer");
+                        // No sync at all → drop everything
+                        console.warn(`[STREAM] No sync byte found — clearing ${buffer.length} bytes`);
                         buffer = Buffer.alloc(0);
                         return;
                     }
@@ -135,45 +103,47 @@ function streamTS(sourceUrl, res) {
                     if (syncIdx > 0) {
                         console.warn(`[STREAM] Discarding ${syncIdx} bytes to resync`);
                         buffer = buffer.slice(syncIdx);
+                        if (buffer.length < TS_PACKET_SIZE) return;
                     }
 
-                    if (buffer.length < TS_PACKET_SIZE) return;
-
+                    // Now extract a clean 188-byte packet
                     const packet = buffer.slice(0, TS_PACKET_SIZE);
                     buffer = buffer.slice(TS_PACKET_SIZE);
 
                     res.write(packet);
-
                     packetCount++;
-                    bytesSent += packet.length;
+                    bytesSent += TS_PACKET_SIZE;
 
                     if (packetCount === 1)
-                        console.log("[STREAM] First packet sent");
-
-                    if (packetCount % 5000 === 0) {
-                        const mb = bytesSent / (1024 * 1024);
-                        console.log(`[STREAM] ${mb.toFixed(2)}MB sent (${packetCount} packets)`);
-                    }
+                        console.log("[STREAM] First packet delivered");
                 }
-            }
+            });
 
-            function flushRemainingPackets() {
-                while (buffer.length >= TS_PACKET_SIZE) {
-                    res.write(buffer.slice(0, TS_PACKET_SIZE));
-                    buffer = buffer.slice(TS_PACKET_SIZE);
-                }
-            }
+            upstream.on("end", () => {
+                console.log("[STREAM] Upstream ended");
+                res.end();
+            });
+
+            upstream.on("error", err => {
+                console.error("[STREAM] Upstream error", err.message);
+                res.end();
+            });
+
+            res.on("close", () => {
+                console.log("[STREAM] Client closed");
+                upstream.destroy();
+            });
         }
     );
 
     request.on("error", err => {
         console.error("[STREAM] Request error:", err.message);
-        if (!res.headersSent) {
+        if (!res.headersSent)
             res.writeHead(502, { "Content-Type": "text/plain" });
-        }
         res.end("Connection error");
     });
 }
+
 
 
 function findChannelAndEvent(schedule, channelId) {
