@@ -32,107 +32,76 @@ async function loadSchedule() {
 }
 
 async function streamTS(sourceUrl, res) {
-    const TS_PACKET_SIZE = 188;
-    let buffer = Buffer.alloc(0);
-    let bytesSent = 0;
-    let firstPacketSent = false;
-
-    const fetchStream = (urlToFetch) => {
-        const urlObj = new URL(urlToFetch);
-        const protocol = urlObj.protocol === 'https:' ? https : http;
-
-        const request = protocol.get(
-            {
-                hostname: urlObj.hostname,
-                port: urlObj.port || (urlObj.protocol === 'https:' ? 443 : 80),
-                path: urlObj.pathname + urlObj.search,
-                headers: {
-                    'User-Agent': 'Mozilla/5.0',
-                    'Connection': 'keep-alive',
-                    'Accept': '*/*'
-                }
-            },
-            upstream => {
-                // Handle redirects BEFORE sending headers
-                if (upstream.statusCode >= 300 && upstream.statusCode < 400 && upstream.headers.location) {
-                    const redirectUrl = new URL(upstream.headers.location, urlToFetch).toString();
-                    console.log(`[STREAM] Redirect → ${redirectUrl}`);
-                    upstream.destroy(); // free the upstream socket
-                    return fetchStream(redirectUrl); // follow redirect
-                }
-
-                if (upstream.statusCode !== 200) {
-                    if (!res.headersSent) {
-                        res.writeHead(502, { 'Content-Type': 'text/plain' });
-                    }
-                    return res.end('Bad Gateway');
-                }
-
-                // Send headers once, safely
-                if (!res.headersSent) {
-                    res.writeHead(200, {
-                        'Content-Type': 'video/mp2t',
-                        'Cache-Control': 'no-cache',
-                        'Connection': 'keep-alive'
-                    });
-                }
-
-                upstream.on('data', chunk => {
-                    buffer = Buffer.concat([buffer, chunk]);
-
-                    while (buffer.length >= TS_PACKET_SIZE) {
-                        const syncIdx = buffer.indexOf(0x47);
-                        if (syncIdx === -1) {
-                            console.warn(`[STREAM] No sync byte found — clearing ${buffer.length} bytes`);
-                            buffer = Buffer.alloc(0);
-                            break;
-                        }
-
-                        if (syncIdx > 0) {
-                            console.warn(`[STREAM] Discarding ${syncIdx} bytes to resync`);
-                            buffer = buffer.slice(syncIdx);
-                            if (buffer.length < TS_PACKET_SIZE) break;
-                        }
-
-                        const packet = buffer.slice(0, TS_PACKET_SIZE);
-                        buffer = buffer.slice(TS_PACKET_SIZE);
-
-                        res.write(packet);
-                        bytesSent += TS_PACKET_SIZE;
-
-                        if (!firstPacketSent) {
-                            console.log('[STREAM] First packet delivered');
-                            firstPacketSent = true;
-                        }
-                    }
-                });
-
-                upstream.on('end', () => {
-                    console.log(`[STREAM] Upstream ended, sent ${(bytesSent / 1024 / 1024).toFixed(2)} MB`);
-                    res.end();
-                });
-
-                upstream.on('error', err => {
-                    console.error('[STREAM] Upstream error:', err.message);
-                    res.end();
-                });
-
-                res.on('close', () => {
-                    console.log('[STREAM] Client closed');
-                    upstream.destroy();
-                });
-            }
-        );
-
-        request.on('error', err => {
-            console.error('[STREAM] Request error:', err.message);
-            if (!res.headersSent) res.writeHead(502, { 'Content-Type': 'text/plain' });
-            res.end('Connection error');
-        });
-    };
+    const urlObj = new URL(sourceUrl);
+    const protocol = urlObj.protocol === 'https:' ? https : http;
 
     console.log(`[STREAM] Connecting to ${sourceUrl}`);
-    fetchStream(sourceUrl);
+
+    const request = protocol.get({
+        hostname: urlObj.hostname,
+        port: urlObj.port || (urlObj.protocol === 'https:' ? 443 : 80),
+        path: urlObj.pathname + urlObj.search,
+        headers: {
+            'User-Agent': 'Mozilla/5.0',
+            'Connection': 'keep-alive',
+            'Accept': '*/*'
+        }
+    }, upstream => {
+        // Handle redirects
+        if (upstream.statusCode >= 300 && upstream.statusCode < 400 && upstream.headers.location) {
+            const redirectUrl = new URL(upstream.headers.location, sourceUrl).toString();
+            console.log(`[STREAM] Redirect → ${redirectUrl}`);
+            upstream.destroy();
+            return streamTS(redirectUrl, res);
+        }
+
+        if (upstream.statusCode !== 200) {
+            if (!res.headersSent) {
+                res.writeHead(502, { 'Content-Type': 'text/plain' });
+            }
+            return res.end('Bad Gateway');
+        }
+
+        // Send headers once
+        if (!res.headersSent) {
+            res.writeHead(200, {
+                'Content-Type': 'video/mp2t',
+                'Transfer-Encoding': 'chunked',
+                'Connection': 'keep-alive',
+                'Cache-Control': 'no-cache'
+            });
+        }
+
+        // Pipe data efficiently with backpressure handling
+        upstream.on('data', chunk => {
+            if (!res.write(chunk)) {
+                upstream.pause();
+            }
+        });
+
+        res.on('drain', () => upstream.resume());
+
+        upstream.on('end', () => {
+            console.log('[STREAM] Upstream ended');
+            res.end();
+        });
+
+        upstream.on('error', err => {
+            console.error('[STREAM] Upstream error:', err.message);
+            res.end();
+        });
+
+        res.on('close', () => {
+            console.log('[STREAM] Client closed');
+            upstream.destroy();
+        });
+    });
+
+    request.on('error', err => {
+        console.error('[STREAM] Request error:', err.message);
+        if (!res.headersSent) res.writeHead(502, { 'Content-Type': 'text/plain' });
+        res.end('Connection error');
+    });
 }
 
 
