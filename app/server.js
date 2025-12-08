@@ -23,6 +23,7 @@ async function loadSchedule() {
         const data = await fs.readFile(SCHEDULE_PATH, 'utf8');
         scheduleCache = JSON.parse(data);
         lastScheduleLoad = now;
+        console.log('[SCHEDULE] Loaded successfully');
         return scheduleCache;
     } catch (error) {
         console.error('[SCHEDULE] Error loading schedule:', error.message);
@@ -37,28 +38,35 @@ function streamTS(sourceUrl, res, channelId, programName) {
     let packetCount = 0;
     
     console.log(`[STREAM] ${channelId} -> ${programName}`);
-    console.log(`[STREAM] Connecting to ${sourceUrl}`);
+    console.log(`[STREAM] Source URL: ${sourceUrl}`);
     
     const parsedUrl = url.parse(sourceUrl);
     const protocol = parsedUrl.protocol === 'https:' ? https : http;
     
+    console.log(`[STREAM] Protocol: ${parsedUrl.protocol}, Host: ${parsedUrl.hostname}:${parsedUrl.port || (parsedUrl.protocol === 'https:' ? 443 : 80)}`);
+    
     const reqOptions = {
         hostname: parsedUrl.hostname,
-        port: parsedUrl.port,
+        port: parsedUrl.port || (parsedUrl.protocol === 'https:' ? 443 : 80),
         path: parsedUrl.path,
         method: 'GET',
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
             'Accept': '*/*',
             'Connection': 'keep-alive'
-        }
+        },
+        timeout: 30000
     };
     
     const proxyReq = protocol.request(reqOptions, (proxyRes) => {
+        console.log(`[STREAM] Upstream response: ${proxyRes.statusCode}`);
+        
         if (proxyRes.statusCode !== 200) {
             console.error(`[STREAM] Upstream error ${proxyRes.statusCode}`);
-            res.writeHead(502, { 'Content-Type': 'text/plain' });
-            res.end('Bad Gateway');
+            if (!res.headersSent) {
+                res.writeHead(502, { 'Content-Type': 'text/plain' });
+            }
+            res.end('Bad Gateway - Upstream returned ' + proxyRes.statusCode);
             return;
         }
         
@@ -134,19 +142,28 @@ function streamTS(sourceUrl, res, channelId, programName) {
             if (!res.headersSent) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
             }
-            res.end();
+            res.end('Stream error: ' + error.message);
         });
     });
     
     proxyReq.on('error', (error) => {
         console.error(`[STREAM] Proxy request error:`, error.message);
+        console.error(`[STREAM] Error details:`, error);
         if (!res.headersSent) {
             res.writeHead(502, { 'Content-Type': 'text/plain' });
         }
-        res.end('Bad Gateway');
+        res.end('Connection error: ' + error.message);
     });
     
-    proxyReq.setTimeout(60000); // 60 second timeout
+    proxyReq.on('timeout', () => {
+        console.error('[STREAM] Request timeout');
+        proxyReq.destroy();
+        if (!res.headersSent) {
+            res.writeHead(504, { 'Content-Type': 'text/plain' });
+        }
+        res.end('Gateway timeout');
+    });
+    
     proxyReq.end();
     
     // Handle client disconnect
@@ -206,6 +223,8 @@ function escapeXml(str) {
 const server = http.createServer(async (req, res) => {
     const parsedUrl = url.parse(req.url, true);
     const pathname = parsedUrl.pathname;
+    
+    console.log(`[REQUEST] ${req.method} ${pathname} from ${req.socket.remoteAddress}`);
     
     // Health endpoint
     if (pathname === '/health') {
@@ -319,6 +338,8 @@ const server = http.createServer(async (req, res) => {
     const streamMatch = pathname.match(/^\/stream\/([^\/]+?)(\.ts)?$/);
     if (streamMatch) {
         const channelId = streamMatch[1];
+        console.log(`[STREAM] Looking up channel: ${channelId}`);
+        
         const schedule = await loadSchedule();
         const { channel, event } = findChannelAndEvent(schedule, channelId);
         
@@ -331,10 +352,14 @@ const server = http.createServer(async (req, res) => {
         
         if (!event || !event.stream_url) {
             console.error(`[STREAM] No active event for ${channelId}`);
+            console.error(`[STREAM] Channel has ${channel.programs ? channel.programs.length : 0} programs`);
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('No active event');
             return;
         }
+        
+        console.log(`[STREAM] Found event: ${event.program_name}`);
+        console.log(`[STREAM] Stream URL: ${event.stream_url}`);
         
         // Set headers BEFORE streaming starts - matches working IPTV provider
         res.writeHead(200, {
@@ -360,6 +385,7 @@ server.headersTimeout = 125000; // Slightly more than keepAliveTimeout
 
 server.listen(SERVER_PORT, '0.0.0.0', () => {
     console.log(`[SERVER] EPG Builder listening on port ${SERVER_PORT}`);
+    console.log(`[SERVER] Schedule path: ${SCHEDULE_PATH}`);
 });
 
 server.on('error', (error) => {
