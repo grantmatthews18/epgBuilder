@@ -31,235 +31,150 @@ async function loadSchedule() {
     }
 }
 
-function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
-    const MAX_REDIRECTS = 5;
-    
-    if (redirectCount >= MAX_REDIRECTS) {
-        console.error('[STREAM] Too many redirects');
-        if (!res.headersSent) {
-            res.writeHead(502, { 'Content-Type': 'text/plain' });
-        }
-        res.end('Too many redirects');
-        return;
-    }
-    
+function streamTS(sourceUrl, res) {
+    console.log(`[STREAM] Connecting to ${sourceUrl}`);
+
     const TS_PACKET_SIZE = 188;
-    let buffer = Buffer.alloc(0);
+    const CHUNK_SIZE = TS_PACKET_SIZE * 7; // 1316 bytes (matching Python)
+
     let bytesSent = 0;
     let packetCount = 0;
-    let syncLost = false;
-    
-    if (redirectCount === 0) {
-        console.log(`[STREAM] ${channelId} -> ${programName}`);
-    }
-    console.log(`[STREAM] Source URL: ${sourceUrl}`);
-    
-    const parsedUrl = url.parse(sourceUrl);
-    const protocol = parsedUrl.protocol === 'https:' ? https : http;
-    
-    console.log(`[STREAM] Protocol: ${parsedUrl.protocol}, Host: ${parsedUrl.hostname}:${parsedUrl.port || (parsedUrl.protocol === 'https:' ? 443 : 80)}`);
-    
-    const reqOptions = {
-        hostname: parsedUrl.hostname,
-        port: parsedUrl.port || (parsedUrl.protocol === 'https:' ? 443 : 80),
-        path: parsedUrl.path,
-        method: 'GET',
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-            'Accept': '*/*',
-            'Connection': 'keep-alive'
+    let buffer = Buffer.alloc(0);
+
+    const urlObj = new URL(sourceUrl);
+    const protocol = urlObj.protocol === "https:" ? https : http;
+
+    const request = protocol.get(
+        {
+            hostname: urlObj.hostname,
+            port: urlObj.port || (urlObj.protocol === "https:" ? 443 : 80),
+            path: urlObj.pathname + urlObj.search,
+            method: "GET",
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                "Accept": "*/*",
+                "Connection": "keep-alive",
+            }
         },
-        timeout: 30000
-    };
-    
-    const proxyReq = protocol.request(reqOptions, (proxyRes) => {
-        console.log(`[STREAM] Upstream response: ${proxyRes.statusCode}`);
-        
-        // Handle redirects (301, 302, 303, 307, 308)
-        if (proxyRes.statusCode >= 300 && proxyRes.statusCode < 400 && proxyRes.headers.location) {
-            const redirectUrl = proxyRes.headers.location;
-            console.log(`[STREAM] Following redirect to: ${redirectUrl}`);
-            
-            // Resolve relative URLs
-            const newUrl = url.resolve(sourceUrl, redirectUrl);
-            
-            // Consume the redirect response body to free up the connection
-            proxyRes.resume();
-            
-            // Follow the redirect
-            streamTS(newUrl, res, channelId, programName, redirectCount + 1);
-            return;
-        }
-        
-        if (proxyRes.statusCode !== 200) {
-            console.error(`[STREAM] Upstream error ${proxyRes.statusCode}`);
-            if (!res.headersSent) {
-                res.writeHead(502, { 'Content-Type': 'text/plain' });
+        upstream => {
+            console.log(`[STREAM] Upstream response: ${upstream.statusCode}`);
+
+            // Handle redirects automatically like Python
+            if (
+                upstream.statusCode >= 300 &&
+                upstream.statusCode < 400 &&
+                upstream.headers.location
+            ) {
+                const redirectUrl = new URL(upstream.headers.location, sourceUrl).toString();
+                console.log(`[STREAM] Following redirect → ${redirectUrl}`);
+                upstream.resume();
+                return streamTS(redirectUrl, res);
             }
-            res.end('Bad Gateway - Upstream returned ' + proxyRes.statusCode);
-            return;
-        }
-        
-        console.log(`[STREAM] Connected successfully`);
-        console.log(`[STREAM] Content-Type: ${proxyRes.headers['content-type']}`);
-        
-        // Send headers only once, after successful connection
-        if (!res.headersSent) {
-            res.writeHead(200, {
-                'Date': new Date().toUTCString(),
-                'Content-Type': 'video/mp2t',
-                'Connection': 'keep-alive',
-                'Transfer-Encoding': 'chunked',
-                'Pragma': 'public',
-                'Cache-Control': 'no-cache'
+
+            if (upstream.statusCode !== 200) {
+                console.error(`[STREAM] Upstream error: ${upstream.statusCode}`);
+                if (!res.headersSent) {
+                    res.writeHead(502, { "Content-Type": "text/plain" });
+                }
+                return res.end("Bad Gateway");
+            }
+
+            console.log("[STREAM] Connected OK, streaming TS");
+
+            // Send headers once (no forced chunked)
+            if (!res.headersSent) {
+                res.writeHead(200, {
+                    "Content-Type": "video/mp2t",
+                    "Cache-Control": "no-cache",
+                    "Connection": "keep-alive"
+                });
+            }
+
+            upstream.on("data", chunk => {
+                buffer = Buffer.concat([buffer, chunk]);
+
+                // Only process full 1316-byte aligned chunks
+                while (buffer.length >= CHUNK_SIZE) {
+                    const chunk1316 = buffer.slice(0, CHUNK_SIZE);
+                    buffer = buffer.slice(CHUNK_SIZE);
+
+                    processTSChunk(chunk1316);
+                }
             });
-            console.log('[STREAM] Response headers sent');
-        }
-        
-        // Handle client disconnect
-        const onClientClose = () => {
-            const mb = (bytesSent / (1024 * 1024)).toFixed(2);
-            console.log(`[STREAM] Client disconnected after ${mb}MB (${packetCount} packets)`);
-            proxyReq.destroy();
-        };
-        
-        const onClientError = (error) => {
-            console.error('[STREAM] Response error:', error.message);
-            proxyReq.destroy();
-        };
-        
-        res.once('close', onClientClose);
-        res.once('error', onClientError);
-        
-        proxyRes.on('data', (chunk) => {
-            buffer = Buffer.concat([buffer, chunk]);
-            
-            // Find sync byte if we lost it
-            if (!syncLost && buffer.length >= TS_PACKET_SIZE) {
-                // Check if we're synced at position 0
-                if (buffer[0] !== 0x47) {
-                    syncLost = true;
-                    console.warn('[STREAM] Lost sync, searching for sync byte...');
-                }
-            }
-            
-            // If sync is lost, find it
-            if (syncLost) {
-                const syncIdx = buffer.indexOf(0x47);
-                if (syncIdx === -1) {
-                    // No sync byte found, discard buffer and wait for more data
-                    console.warn(`[STREAM] No sync byte in ${buffer.length} bytes, discarding`);
-                    buffer = Buffer.alloc(0);
-                    return;
-                }
-                if (syncIdx > 0) {
-                    console.warn(`[STREAM] Found sync at offset ${syncIdx}, discarding ${syncIdx} bytes`);
-                    buffer = buffer.slice(syncIdx);
-                }
-                syncLost = false;
-            }
-            
-            // Process complete TS packets
-            while (buffer.length >= TS_PACKET_SIZE) {
-                // Double-check sync byte
-                if (buffer[0] !== 0x47) {
-                    syncLost = true;
-                    break;
-                }
-                
-                // Extract one TS packet
-                const packet = buffer.slice(0, TS_PACKET_SIZE);
-                buffer = buffer.slice(TS_PACKET_SIZE);
-                
-                packetCount++;
-                bytesSent += packet.length;
-                
-                if (packetCount === 1) {
-                    console.log('[STREAM] First packet sent');
-                    console.log(`[STREAM] First packet hex: ${packet.slice(0, 16).toString('hex')}`);
-                }
-                
-                if (packetCount % 1000 === 0) {
-                    const mb = (bytesSent / (1024 * 1024)).toFixed(2);
-                    console.log(`[STREAM] ${mb}MB sent (${packetCount} packets)`);
-                }
-                
-                try {
-                    // Write packet to response
-                    const canContinue = res.write(packet);
-                    if (!canContinue) {
-                        // Backpressure - pause upstream
-                        proxyRes.pause();
-                        res.once('drain', () => {
-                            proxyRes.resume();
-                        });
-                    }
-                } catch (error) {
-                    console.error('[STREAM] Write error:', error.message);
-                    proxyReq.destroy();
-                    return;
-                }
-            }
-        });
-        
-        proxyRes.on('end', () => {
-            // Clean up client listeners
-            res.removeListener('close', onClientClose);
-            res.removeListener('error', onClientError);
-            
-            const mb = (bytesSent / (1024 * 1024)).toFixed(2);
-            console.log(`[STREAM] Stream ended: ${mb}MB (${packetCount} packets)`);
-            
-            try {
+
+            upstream.on("end", () => {
+                console.log(`[STREAM] Upstream ended`);
+                flushRemainingPackets();
                 res.end();
-            } catch (error) {
-                console.error('[STREAM] End error:', error.message);
+            });
+
+            upstream.on("error", err => {
+                console.error("[STREAM] Upstream error:", err.message);
+                res.end();
+            });
+
+            res.on("close", () => {
+                console.log("[STREAM] Client disconnected");
+                upstream.destroy();
+            });
+
+            // ---- TS PACKET PROCESSING ----
+            function processTSChunk(chunk1316) {
+                buffer = Buffer.concat([buffer, chunk1316]);
+
+                // Emit only complete 188-byte packets
+                while (buffer.length >= TS_PACKET_SIZE) {
+                    let syncIdx = buffer.indexOf(0x47);
+
+                    if (syncIdx === -1) {
+                        console.warn("[STREAM] No sync byte found — clearing buffer");
+                        buffer = Buffer.alloc(0);
+                        return;
+                    }
+
+                    if (syncIdx > 0) {
+                        console.warn(`[STREAM] Discarding ${syncIdx} bytes to resync`);
+                        buffer = buffer.slice(syncIdx);
+                    }
+
+                    if (buffer.length < TS_PACKET_SIZE) return;
+
+                    const packet = buffer.slice(0, TS_PACKET_SIZE);
+                    buffer = buffer.slice(TS_PACKET_SIZE);
+
+                    res.write(packet);
+
+                    packetCount++;
+                    bytesSent += packet.length;
+
+                    if (packetCount === 1)
+                        console.log("[STREAM] First packet sent");
+
+                    if (packetCount % 5000 === 0) {
+                        const mb = bytesSent / (1024 * 1024);
+                        console.log(`[STREAM] ${mb.toFixed(2)}MB sent (${packetCount} packets)`);
+                    }
+                }
             }
-        });
-        
-        proxyRes.on('error', (error) => {
-            console.error(`[STREAM] Proxy response error:`, error.message);
-            res.removeListener('close', onClientClose);
-            res.removeListener('error', onClientError);
-            
-            if (!res.headersSent) {
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
+
+            function flushRemainingPackets() {
+                while (buffer.length >= TS_PACKET_SIZE) {
+                    res.write(buffer.slice(0, TS_PACKET_SIZE));
+                    buffer = buffer.slice(TS_PACKET_SIZE);
+                }
             }
-            try {
-                res.end('Stream error: ' + error.message);
-            } catch (e) {
-                console.error('[STREAM] Failed to send error response');
-            }
-        });
-    });
-    
-    proxyReq.on('error', (error) => {
-        console.error(`[STREAM] Proxy request error:`, error.message);
+        }
+    );
+
+    request.on("error", err => {
+        console.error("[STREAM] Request error:", err.message);
         if (!res.headersSent) {
-            res.writeHead(502, { 'Content-Type': 'text/plain' });
+            res.writeHead(502, { "Content-Type": "text/plain" });
         }
-        try {
-            res.end('Connection error: ' + error.message);
-        } catch (e) {
-            console.error('[STREAM] Failed to send error response');
-        }
+        res.end("Connection error");
     });
-    
-    proxyReq.on('timeout', () => {
-        console.error('[STREAM] Request timeout');
-        proxyReq.destroy();
-        if (!res.headersSent) {
-            res.writeHead(504, { 'Content-Type': 'text/plain' });
-        }
-        try {
-            res.end('Gateway timeout');
-        } catch (e) {
-            console.error('[STREAM] Failed to send timeout response');
-        }
-    });
-    
-    proxyReq.end();
 }
+
 
 function findChannelAndEvent(schedule, channelId) {
     let channel = null;
@@ -461,7 +376,7 @@ const server = http.createServer(async (req, res) => {
         }
         
         // Handle GET request - stream the content
-        streamTS(event.stream_url, res, channelId, event.program_name);
+        streamTS(event.stream_url, res);
         return;
     }
     
