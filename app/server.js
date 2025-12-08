@@ -35,8 +35,6 @@ function streamTS(sourceUrl, res) {
     console.log(`[STREAM] Connecting to ${sourceUrl}`);
 
     const TS_PACKET_SIZE = 188;
-
-    // Continuously growing buffer (like Python)
     let buffer = Buffer.alloc(0);
     let bytesSent = 0;
     let packetCount = 0;
@@ -59,16 +57,12 @@ function streamTS(sourceUrl, res) {
         upstream => {
             console.log(`[STREAM] Upstream: ${upstream.statusCode}`);
 
-            // Auto-follow redirects (like Python)
-            if (
-                upstream.statusCode >= 300 &&
-                upstream.statusCode < 400 &&
-                upstream.headers.location
-            ) {
+            // Follow redirects automatically
+            if (upstream.statusCode >= 300 && upstream.statusCode < 400 && upstream.headers.location) {
                 const redirectUrl = new URL(upstream.headers.location, sourceUrl).toString();
                 console.log(`[STREAM] Redirect → ${redirectUrl}`);
-                upstream.resume();
-                return streamTS(redirectUrl, res);
+                upstream.resume(); // free upstream socket
+                return streamTS(redirectUrl, res); // recursive call
             }
 
             if (upstream.statusCode !== 200) {
@@ -76,37 +70,36 @@ function streamTS(sourceUrl, res) {
                 return res.end("Bad Gateway");
             }
 
-            // Send response headers
+            // Send IPTV-compatible headers (disable chunked encoding)
             if (!res.headersSent) {
-                res.writeHead(200, {
-                    "Content-Type": "video/mp2t",
-                    "Cache-Control": "no-cache",
-                    "Connection": "keep-alive"
-                });
+                res.statusCode = 200;
+                res.setHeader("Content-Type", "video/mp2t");
+                res.setHeader("Cache-Control", "no-cache");
+                res.setHeader("Connection", "close");
+                res.useChunkedEncodingByDefault = false;
+                res.removeHeader("Transfer-Encoding");
             }
 
             upstream.on("data", chunk => {
-                // Append new data like Python iter_content
+                // Append new data to buffer
                 buffer = Buffer.concat([buffer, chunk]);
 
                 // Process complete TS packets only
                 while (buffer.length >= TS_PACKET_SIZE) {
-                    let syncIdx = buffer.indexOf(0x47);
-
+                    const syncIdx = buffer.indexOf(0x47);
                     if (syncIdx === -1) {
-                        // No sync at all → drop everything
+                        // No sync → drop everything
                         console.warn(`[STREAM] No sync byte found — clearing ${buffer.length} bytes`);
                         buffer = Buffer.alloc(0);
-                        return;
+                        break;
                     }
-
                     if (syncIdx > 0) {
                         console.warn(`[STREAM] Discarding ${syncIdx} bytes to resync`);
                         buffer = buffer.slice(syncIdx);
-                        if (buffer.length < TS_PACKET_SIZE) return;
+                        if (buffer.length < TS_PACKET_SIZE) break;
                     }
 
-                    // Now extract a clean 188-byte packet
+                    // Extract one TS packet
                     const packet = buffer.slice(0, TS_PACKET_SIZE);
                     buffer = buffer.slice(TS_PACKET_SIZE);
 
@@ -114,21 +107,21 @@ function streamTS(sourceUrl, res) {
                     packetCount++;
                     bytesSent += TS_PACKET_SIZE;
 
-                    if (packetCount === 1)
-                        console.log("[STREAM] First packet delivered");
+                    if (packetCount === 1) console.log("[STREAM] First packet delivered");
                 }
             });
 
             upstream.on("end", () => {
-                console.log("[STREAM] Upstream ended");
+                console.log(`[STREAM] Upstream ended, sent ${bytesSent / 1024 / 1024} MB`);
                 res.end();
             });
 
             upstream.on("error", err => {
-                console.error("[STREAM] Upstream error", err.message);
+                console.error("[STREAM] Upstream error:", err.message);
                 res.end();
             });
 
+            // Handle client disconnect
             res.on("close", () => {
                 console.log("[STREAM] Client closed");
                 upstream.destroy();
@@ -138,13 +131,12 @@ function streamTS(sourceUrl, res) {
 
     request.on("error", err => {
         console.error("[STREAM] Request error:", err.message);
-        if (!res.headersSent)
+        if (!res.headersSent) {
             res.writeHead(502, { "Content-Type": "text/plain" });
+        }
         res.end("Connection error");
     });
 }
-
-
 
 function findChannelAndEvent(schedule, channelId) {
     let channel = null;
