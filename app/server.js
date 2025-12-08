@@ -44,6 +44,7 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
     }
     
     const TS_PACKET_SIZE = 188;
+    const CHUNK_SIZE = TS_PACKET_SIZE * 7; // 1316 bytes
     let buffer = Buffer.alloc(0);
     let bytesSent = 0;
     let packetCount = 0;
@@ -82,8 +83,10 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
             // Resolve relative URLs
             const newUrl = url.resolve(sourceUrl, redirectUrl);
             
+            // Consume the redirect response body to free up the connection
+            proxyRes.resume();
+            
             // Follow the redirect
-            proxyReq.destroy();
             streamTS(newUrl, res, channelId, programName, redirectCount + 1);
             return;
         }
@@ -100,8 +103,20 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         console.log(`[STREAM] Connected successfully`);
         console.log(`[STREAM] Content-Type: ${proxyRes.headers['content-type']}`);
         
+        // Buffer data to ensure we have valid TS packets before sending headers
+        let headersSent = false;
+        
         proxyRes.on('data', (chunk) => {
             buffer = Buffer.concat([buffer, chunk]);
+            
+            // Send headers only after we have valid TS data
+            if (!headersSent && buffer.length >= TS_PACKET_SIZE) {
+                const syncIdx = buffer.indexOf(0x47);
+                if (syncIdx !== -1) {
+                    headersSent = true;
+                    console.log('[STREAM] Sending response headers');
+                }
+            }
             
             // Process complete TS packets
             while (buffer.length >= TS_PACKET_SIZE) {
@@ -139,13 +154,19 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
                     console.log(`[STREAM] ${mb}MB sent (${packetCount} packets)`);
                 }
                 
-                // Write packet to response
-                if (!res.write(packet)) {
-                    // Backpressure - pause upstream
-                    proxyRes.pause();
-                    res.once('drain', () => {
-                        proxyRes.resume();
-                    });
+                try {
+                    // Write packet to response
+                    if (!res.write(packet)) {
+                        // Backpressure - pause upstream
+                        proxyRes.pause();
+                        res.once('drain', () => {
+                            proxyRes.resume();
+                        });
+                    }
+                } catch (error) {
+                    console.error('[STREAM] Write error:', error.message);
+                    proxyReq.destroy();
+                    return;
                 }
             }
         });
@@ -156,12 +177,21 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
                 const packet = buffer.slice(0, TS_PACKET_SIZE);
                 buffer = buffer.slice(TS_PACKET_SIZE);
                 bytesSent += packet.length;
-                res.write(packet);
+                try {
+                    res.write(packet);
+                } catch (error) {
+                    console.error('[STREAM] Write error on flush:', error.message);
+                }
             }
             
             const mb = (bytesSent / (1024 * 1024)).toFixed(2);
-            console.log(`[STREAM] Stream ended: ${mb}MB`);
-            res.end();
+            console.log(`[STREAM] Stream ended: ${mb}MB (${packetCount} packets)`);
+            
+            try {
+                res.end();
+            } catch (error) {
+                console.error('[STREAM] End error:', error.message);
+            }
         });
         
         proxyRes.on('error', (error) => {
@@ -169,17 +199,24 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
             if (!res.headersSent) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
             }
-            res.end('Stream error: ' + error.message);
+            try {
+                res.end('Stream error: ' + error.message);
+            } catch (e) {
+                console.error('[STREAM] Failed to send error response');
+            }
         });
     });
     
     proxyReq.on('error', (error) => {
         console.error(`[STREAM] Proxy request error:`, error.message);
-        console.error(`[STREAM] Error details:`, error);
         if (!res.headersSent) {
             res.writeHead(502, { 'Content-Type': 'text/plain' });
         }
-        res.end('Connection error: ' + error.message);
+        try {
+            res.end('Connection error: ' + error.message);
+        } catch (e) {
+            console.error('[STREAM] Failed to send error response');
+        }
     });
     
     proxyReq.on('timeout', () => {
@@ -188,7 +225,11 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         if (!res.headersSent) {
             res.writeHead(504, { 'Content-Type': 'text/plain' });
         }
-        res.end('Gateway timeout');
+        try {
+            res.end('Gateway timeout');
+        } catch (e) {
+            console.error('[STREAM] Failed to send timeout response');
+        }
     });
     
     proxyReq.end();
@@ -196,7 +237,12 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
     // Handle client disconnect
     res.on('close', () => {
         const mb = (bytesSent / (1024 * 1024)).toFixed(2);
-        console.log(`[STREAM] Client disconnected after ${mb}MB`);
+        console.log(`[STREAM] Client disconnected after ${mb}MB (${packetCount} packets)`);
+        proxyReq.destroy();
+    });
+    
+    res.on('error', (error) => {
+        console.error('[STREAM] Response error:', error.message);
         proxyReq.destroy();
     });
 }
@@ -379,16 +425,14 @@ const server = http.createServer(async (req, res) => {
         
         if (!event || !event.stream_url) {
             console.error(`[STREAM] No active event for ${channelId}`);
-            console.error(`[STREAM] Channel has ${channel.programs ? channel.programs.length : 0} programs`);
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('No active event');
             return;
         }
         
         console.log(`[STREAM] Found event: ${event.program_name}`);
-        console.log(`[STREAM] Stream URL: ${event.stream_url}`);
         
-        // Set headers BEFORE streaming starts - matches working IPTV provider
+        // Set headers before starting stream
         res.writeHead(200, {
             'Date': new Date().toUTCString(),
             'Content-Type': 'video/mp2t',
