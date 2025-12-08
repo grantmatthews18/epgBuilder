@@ -6,9 +6,18 @@ services:
     container_name: epgbuilder
     environment:
       - M3U_URL=http://192.168.1.254:36400/a0859edd-0f91-45e8-9cdf-f06ed9126ba2/playlist.m3u
-      - CRON_SCHEDULE=0 4 * * *
+      - CRON_SCHEDULE=30 2 * * *
       - TZ=America/Chicago
+      - DEFAULT_EVENT_IMG=https://cdn.18bit.co/icons/black.webp
     volumes:
       - ./output:/output
       - ./config:/config
+    ports:
+      - "8080:8080"
     restart: unless-stopped
+    networks:
+      - swagnet
+  
+networks:
+  swagnet:
+    external: true

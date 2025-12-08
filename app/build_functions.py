@@ -190,6 +190,161 @@ def parse_channels(m3u_text):
 
     return channels
 
+def has_open_slot(programs, start_dt, stop_dt):
+    """
+    Check if a time slot is available (no overlapping events)
+    Returns True if the slot is open, False if there's a conflict
+    """
+    for program in programs:
+        # Check for overlap: new event starts before existing ends AND new event ends after existing starts
+        if start_dt < program["stop_dt"] and stop_dt > program["start_dt"]:
+            return False  # Conflict found
+    return True  # No conflicts
+
+def create_combined_channels(channels):
+    with open("/config/patterns.json", "r") as f:
+        PATTERNS = json.load(f)
+
+    combined_channels = {}
+    for pattern_cfg in PATTERNS:
+        if not combined_channels.get(pattern_cfg["name"]):
+            combined_channels[pattern_cfg["name"]] = {
+                "channel_name": pattern_cfg.get("channel_name"),
+                "icon_url": pattern_cfg.get("icon_url"),
+                "category": pattern_cfg.get("category"),
+                "num_combined_channels": pattern_cfg.get("num_combined_channels", 10),
+                "service_channels": []
+            }
+            for i in range(0, pattern_cfg.get("num_combined_channels", 10)):
+                combined_channels[pattern_cfg["name"]]["service_channels"].append({
+                    "channel_number": i + 1,
+                    "id": f"{pattern_cfg.get('channel_name').lower().replace(' ', '_').replace('+', '_plus')}_{i+1}",
+                    "channel_name": f"{pattern_cfg.get('channel_name')} {i+1}",
+                    "icon_url": pattern_cfg.get("icon_url"),
+                    "category": pattern_cfg.get("category"),
+                    "programs": []
+                })
+
+    # Separate channels with events from those without
+    channels_with_events = [ch for ch in channels if ch["program_start"]]
+    
+    # Sort by start time
+    channels_with_events.sort(key=lambda x: x["program_start"])
+    
+    # Distribute events across combined channels
+    for channel in channels_with_events:
+        matched_pattern = None
+        for pattern_cfg in PATTERNS:
+            if channel["channel_name"].startswith(pattern_cfg.get("channel_name", "")):
+                matched_pattern = pattern_cfg["name"]
+                break
+        
+        if not matched_pattern:
+            print(f"No matched channel pattern for channel: {channel['channel_name']}")
+            continue
+        
+        # Parse event times
+        start_dt = datetime.strptime(channel["program_start"], "%Y%m%d%H%M%S %z")
+        
+        if channel.get("program_stop"):
+            stop_dt = datetime.strptime(channel["program_stop"], "%Y%m%d%H%M%S %z")
+        else:
+            stop_dt = start_dt + timedelta(hours=3)
+        
+        # Find first available combined channel (no time conflict)
+        assigned = False
+        for service_channel in combined_channels[matched_pattern]["service_channels"]:
+            if has_open_slot(service_channel["programs"], start_dt, stop_dt):
+                # Add event to this channel
+                service_channel["programs"].append({
+                    "start_dt": start_dt,
+                    "stop_dt": stop_dt,
+                    "start_str": channel["program_start"],
+                    "stop_str": format_xmltv_timestamp(stop_dt),
+                    "original_channel_id": channel["id"],
+                    "stream_url": channel["stream_url"],
+                    "program_name": channel["program_name"],
+                    "description": channel["description"],
+                    "icon_url": channel["icon_url"]
+                })
+                assigned = True
+                break
+        
+        if not assigned:
+            print(f"Warning: Could not assign event '{channel['program_name']}' - all combined channels full")
+    
+    # Sort programs in each channel by start time
+    for pattern_name in combined_channels:
+        for service_channel in combined_channels[pattern_name]["service_channels"]:
+            service_channel["programs"].sort(key=lambda x: x["start_dt"])
+    
+    # Add placeholder events for channels with no programs
+    now_utc = datetime.now(tz.UTC)
+    period_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
+    period_end = period_start + timedelta(days=7)
+    
+    for pattern_name in combined_channels:
+        for service_channel in combined_channels[pattern_name]["service_channels"]:
+            if not service_channel["programs"]:
+                # Add a placeholder for the entire 7-day period
+                service_channel["programs"].append({
+                    "start_dt": period_start,
+                    "stop_dt": period_end,
+                    "start_str": format_xmltv_timestamp(period_start),
+                    "stop_str": format_xmltv_timestamp(period_end),
+                    "original_channel_id": None,
+                    "stream_url": None,
+                    "program_name": "No Events Scheduled",
+                    "description": "No program information available for this channel",
+                    "icon_url": service_channel["icon_url"]
+                })
+    
+    return combined_channels
+
+def save_schedule(combined_channels):
+    """Save the schedule to a JSON file for the web server to read"""
+    # Convert datetime objects to strings for JSON serialization
+    serializable_schedule = {}
+    
+    for pattern_name, pattern_data in combined_channels.items():
+        serializable_schedule[pattern_name] = {
+            "channel_name": pattern_data["channel_name"],
+            "icon_url": pattern_data["icon_url"],
+            "category": pattern_data["category"],
+            "num_combined_channels": pattern_data["num_combined_channels"],
+            "service_channels": []
+        }
+        
+        for service_channel in pattern_data["service_channels"]:
+            serializable_channel = {
+                "channel_number": service_channel["channel_number"],
+                "id": service_channel["id"],
+                "channel_name": service_channel["channel_name"],
+                "icon_url": service_channel["icon_url"],
+                "category": service_channel["category"],
+                "programs": []
+            }
+            
+            for program in service_channel["programs"]:
+                serializable_program = {
+                    "start_dt": program["start_dt"].isoformat(),
+                    "stop_dt": program["stop_dt"].isoformat(),
+                    "start_str": program["start_str"],
+                    "stop_str": program["stop_str"],
+                    "original_channel_id": program["original_channel_id"],
+                    "stream_url": program["stream_url"],
+                    "program_name": program["program_name"],
+                    "description": program["description"],
+                    "icon_url": program["icon_url"]
+                }
+                serializable_channel["programs"].append(serializable_program)
+            
+            serializable_schedule[pattern_name]["service_channels"].append(serializable_channel)
+    
+    with open("/output/schedule.json", "w", encoding="utf-8") as f:
+        json.dump(serializable_schedule, f, indent=2)
+    
+    print(f"Schedule saved with {sum(len(p['service_channels']) for p in serializable_schedule.values())} combined channels")
 
 def generate_xmltv(channels, output_file):
     with open(output_file, "w", encoding="utf-8") as f:
@@ -254,4 +409,113 @@ def generate_m3u(channels, output_file):
             f.write(extinf_line)
             stream_url = f'{channel["stream_url"]}\n'
             f.write(stream_url)
+
+def generate_combined_xmltv(combined_channels, output_file):
+    """Generate XMLTV file for combined channels with full program schedules"""
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        f.write('<tv generator-info-name="epgBuilder">\n')
+
+        # Write channel definitions
+        for pattern_name, pattern_data in combined_channels.items():
+            for service_channel in pattern_data["service_channels"]:
+                channel_name_escaped = html.escape(str(service_channel["channel_name"]), quote=False)
+                
+                f.write(f'  <channel id="{html.escape(str(service_channel["id"]), quote=True)}">\n')
+                f.write(f'    <display-name>{channel_name_escaped}</display-name>\n')
+                if service_channel.get("icon_url"):
+                    icon_url_escaped = html.escape(str(service_channel["icon_url"]), quote=True)
+                    f.write(f'    <icon src="{icon_url_escaped}"/>\n')
+                f.write('  </channel>\n')
+
+        # Write programme listings
+        now_utc = datetime.now(tz.UTC)
+        period_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
+        period_end = period_start + timedelta(days=7)  # 7-day EPG
+        
+        for pattern_name, pattern_data in combined_channels.items():
+            for service_channel in pattern_data["service_channels"]:
+                programs = service_channel["programs"]
+                channel_id_escaped = html.escape(str(service_channel["id"]), quote=True)
+                
+                if not programs:
+                    # No events - create placeholder for entire period
+                    start_str = format_xmltv_timestamp(period_start)
+                    stop_str = format_xmltv_timestamp(period_end)
+                    f.write(f'  <programme channel="{channel_id_escaped}" start="{start_str}" stop="{stop_str}">\n')
+                    f.write('    <title>No Events Scheduled</title>\n')
+                    f.write('    <desc>No program information available</desc>\n')
+                    if service_channel.get("category"):
+                        category_escaped = html.escape(str(service_channel["category"]), quote=False)
+                        f.write(f'    <category lang="en">{category_escaped}</category>\n')
+                    f.write('  </programme>\n')
+                    continue
+                
+                # Track last end time to fill gaps
+                last_stop = period_start
+                
+                for program in programs:
+                    # Parse datetime strings if they're stored as ISO format
+                    if isinstance(program["start_dt"], str):
+                        start_dt = dtparse.isoparse(program["start_dt"])
+                    else:
+                        start_dt = program["start_dt"]
+                    
+                    if isinstance(program["stop_dt"], str):
+                        stop_dt = dtparse.isoparse(program["stop_dt"])
+                    else:
+                        stop_dt = program["stop_dt"]
+                    
+                    # Add placeholder before this event if there's a gap
+                    if start_dt > last_stop:
+                        gap_start_str = format_xmltv_timestamp(last_stop)
+                        gap_stop_str = format_xmltv_timestamp(start_dt)
+                        f.write(f'  <programme channel="{channel_id_escaped}" start="{gap_start_str}" stop="{gap_stop_str}">\n')
+                        f.write('    <title>No Event</title>\n')
+                        f.write('    <desc>No event scheduled</desc>\n')
+                        if service_channel.get("category"):
+                            category_escaped = html.escape(str(service_channel["category"]), quote=False)
+                            f.write(f'    <category lang="en">{category_escaped}</category>\n')
+                        f.write('  </programme>\n')
+                    
+                    # Write the actual event - FORCE ESCAPE ALL TEXT CONTENT
+                    # Make absolutely sure we're escaping by converting to string first
+                    raw_program_name = str(program.get("program_name", ""))
+                    raw_description = str(program.get("description", ""))
+                    
+                    # Force escape - this should convert & to &amp;
+                    program_name_escaped = html.escape(raw_program_name, quote=False)
+                    description_escaped = html.escape(raw_description, quote=False)
+                    
+                    f.write(f'  <programme channel="{channel_id_escaped}" start="{program["start_str"]}" stop="{program["stop_str"]}">\n')
+                    f.write(f'    <title>{program_name_escaped}</title>\n')
+                    f.write(f'    <desc>{description_escaped}</desc>\n')
+                    
+                    if service_channel.get("category"):
+                        category_escaped = html.escape(str(service_channel["category"]), quote=False)
+                        f.write(f'    <category lang="en">{category_escaped}</category>\n')
+                    
+                    if program.get("icon_url"):
+                        icon_url_escaped = html.escape(str(program["icon_url"]), quote=True)
+                        f.write(f'    <icon src="{icon_url_escaped}"/>\n')
+                    
+                    f.write('  </programme>\n')
+                    
+                    last_stop = stop_dt
+                
+                # Fill gap at the end if needed
+                if last_stop < period_end:
+                    gap_start_str = format_xmltv_timestamp(last_stop)
+                    gap_stop_str = format_xmltv_timestamp(period_end)
+                    f.write(f'  <programme channel="{channel_id_escaped}" start="{gap_start_str}" stop="{gap_stop_str}">\n')
+                    f.write('    <title>No Event</title>\n')
+                    f.write('    <desc>No event scheduled</desc>\n')
+                    if service_channel.get("category"):
+                        category_escaped = html.escape(str(service_channel["category"]), quote=False)
+                        f.write(f'    <category lang="en">{category_escaped}</category>\n')
+                    f.write('  </programme>\n')
+
+        f.write('</tv>\n')
+    
+    print(f"Combined XMLTV generated: {output_file}")
 
