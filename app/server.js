@@ -47,6 +47,7 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
     let buffer = Buffer.alloc(0);
     let bytesSent = 0;
     let packetCount = 0;
+    let isPaused = false;
     
     if (redirectCount === 0) {
         console.log(`[STREAM] ${channelId} -> ${programName}`);
@@ -114,6 +115,14 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
             console.log('[STREAM] Response headers sent');
         }
         
+        // Create a single drain handler to reuse
+        const onDrain = () => {
+            if (isPaused) {
+                isPaused = false;
+                proxyRes.resume();
+            }
+        };
+        
         proxyRes.on('data', (chunk) => {
             buffer = Buffer.concat([buffer, chunk]);
             
@@ -156,11 +165,14 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
                 try {
                     // Write packet to response
                     if (!res.write(packet)) {
-                        // Backpressure - pause upstream
-                        proxyRes.pause();
-                        res.once('drain', () => {
-                            proxyRes.resume();
-                        });
+                        // Backpressure - pause upstream only if not already paused
+                        if (!isPaused) {
+                            isPaused = true;
+                            proxyRes.pause();
+                            // Remove any existing drain listeners before adding new one
+                            res.removeListener('drain', onDrain);
+                            res.once('drain', onDrain);
+                        }
                     }
                 } catch (error) {
                     console.error('[STREAM] Write error:', error.message);
@@ -171,6 +183,9 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         });
         
         proxyRes.on('end', () => {
+            // Clean up drain listener
+            res.removeListener('drain', onDrain);
+            
             // Flush remaining complete packets
             while (buffer.length >= TS_PACKET_SIZE) {
                 const packet = buffer.slice(0, TS_PACKET_SIZE);
@@ -195,6 +210,8 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         
         proxyRes.on('error', (error) => {
             console.error(`[STREAM] Proxy response error:`, error.message);
+            // Clean up drain listener
+            res.removeListener('drain', onDrain);
             if (!res.headersSent) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
             }
