@@ -5,6 +5,7 @@ const url = require('url');
 
 const SERVER_PORT = process.env.SERVER_PORT || 8080;
 const SCHEDULE_PATH = '/output/schedule.json';
+const DEFAULT_EVENT_IMG = process.env.DEFAULT_EVENT_IMG || '';
 
 // Disable SSL certificate validation (like Python's verify=False)
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
@@ -148,10 +149,14 @@ async function streamTS(sourceUrl, res, req) {
 function findChannelAndEvent(schedule, channelId) {
     let channel = null;
     
+    // Decode the channel ID in case it was URL encoded
+    const decodedChannelId = decodeURIComponent(channelId);
+    
     for (const [patternName, patternData] of Object.entries(schedule)) {
         const serviceChannels = patternData.service_channels || [];
         for (const serviceChannel of serviceChannels) {
-            if (serviceChannel.id === channelId) {
+            // Match by channel name (human-friendly) or old id for backward compatibility
+            if (serviceChannel.channel_name === decodedChannelId || serviceChannel.id === channelId) {
                 channel = serviceChannel;
                 break;
             }
@@ -166,7 +171,14 @@ function findChannelAndEvent(schedule, channelId) {
     const now = new Date();
     let event = null;
     
-    for (const program of channel.programs || []) {
+    // Fill gaps to find placeholder or real events
+    const filledPrograms = fillProgramGaps(
+        channel.programs || [],
+        channel.channel_name,
+        channel.icon_url
+    );
+    
+    for (const program of filledPrograms) {
         if (!program.start_dt || !program.stop_dt) continue;
         
         const startDt = new Date(program.start_dt);
@@ -189,6 +201,63 @@ function escapeXml(str) {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&apos;');
+}
+
+function formatXmltvTimestamp(date) {
+    const year = date.getUTCFullYear();
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+    return `${year}${month}${day}${hours}${minutes}${seconds} +0000`;
+}
+
+function fillProgramGaps(programs, channelName, iconUrl) {
+    if (!programs || programs.length === 0) {
+        return [];
+    }
+    
+    // Sort programs by start time
+    const sorted = [...programs].sort((a, b) => {
+        const aStart = new Date(a.start_dt);
+        const bStart = new Date(b.start_dt);
+        return aStart - bStart;
+    });
+    
+    const filled = [];
+    const now = new Date();
+    
+    for (let i = 0; i < sorted.length; i++) {
+        const currentProgram = sorted[i];
+        const currentStop = new Date(currentProgram.stop_dt);
+        
+        // Add the current program
+        filled.push(currentProgram);
+        
+        // Check if there's a gap before the next program
+        if (i < sorted.length - 1) {
+            const nextProgram = sorted[i + 1];
+            const nextStart = new Date(nextProgram.start_dt);
+            
+            // If there's a gap, create a placeholder
+            if (currentStop < nextStart) {
+                const placeholder = {
+                    start_dt: currentStop.toISOString(),
+                    stop_dt: nextStart.toISOString(),
+                    start_str: formatXmltvTimestamp(currentStop),
+                    stop_str: formatXmltvTimestamp(nextStart),
+                    program_name: `${channelName} - No Programming`,
+                    description: 'No programming scheduled during this time',
+                    icon_url: DEFAULT_EVENT_IMG || iconUrl,
+                    is_placeholder: true
+                };
+                filled.push(placeholder);
+            }
+        }
+    }
+    
+    return filled;
 }
 
 const server = http.createServer(async (req, res) => {
@@ -240,8 +309,9 @@ const server = http.createServer(async (req, res) => {
         for (const [patternName, patternData] of Object.entries(schedule)) {
             for (const channel of patternData.service_channels || []) {
                 if (channel.programs && channel.programs.length > 0) {
-                    const extinf = `#EXTINF:-1 tvg-id="${channel.id}" tvg-name="${channel.channel_name}" tvg-logo="${channel.icon_url}" group-title="${patternData.category}",${channel.channel_name}`;
-                    const streamUrl = `${baseUrl}/stream/${channel.id}.ts`;
+                    const channelId = channel.channel_name; // Use human-friendly name as ID
+                    const extinf = `#EXTINF:-1 tvg-id="${channelId}" tvg-name="${channel.channel_name}" tvg-logo="${channel.icon_url}" group-title="${patternData.category}",${channel.channel_name}`;
+                    const streamUrl = `${baseUrl}/stream/${encodeURIComponent(channelId)}.ts`;
                     lines.push(extinf, streamUrl);
                 }
             }
@@ -267,7 +337,8 @@ const server = http.createServer(async (req, res) => {
         for (const [patternName, patternData] of Object.entries(schedule)) {
             for (const channel of patternData.service_channels || []) {
                 if (channel.programs && channel.programs.length > 0) {
-                    lines.push(`  <channel id="${escapeXml(channel.id)}">`);
+                    const channelId = channel.channel_name; // Use human-friendly name as ID
+                    lines.push(`  <channel id="${escapeXml(channelId)}">`);
                     lines.push(`    <display-name>${escapeXml(channel.channel_name)}</display-name>`);
                     if (channel.icon_url) {
                         lines.push(`    <icon src="${escapeXml(channel.icon_url)}"/>`);
@@ -277,11 +348,19 @@ const server = http.createServer(async (req, res) => {
             }
         }
         
-        // Programs
+        // Programs (with gap filling)
         for (const [patternName, patternData] of Object.entries(schedule)) {
             for (const channel of patternData.service_channels || []) {
-                for (const program of channel.programs || []) {
-                    lines.push(`  <programme channel="${escapeXml(channel.id)}" start="${program.start_str}" stop="${program.stop_str}">`);
+                const channelId = channel.channel_name; // Use human-friendly name as ID
+                // Fill gaps in programming
+                const filledPrograms = fillProgramGaps(
+                    channel.programs || [], 
+                    channel.channel_name,
+                    channel.icon_url
+                );
+                
+                for (const program of filledPrograms) {
+                    lines.push(`  <programme channel="${escapeXml(channelId)}" start="${program.start_str}" stop="${program.stop_str}">`);
                     lines.push(`    <title>${escapeXml(program.program_name)}</title>`);
                     lines.push(`    <desc>${escapeXml(program.description)}</desc>`);
                     if (patternData.category) {
@@ -308,7 +387,7 @@ const server = http.createServer(async (req, res) => {
     // Stream endpoint (handles both GET and HEAD)
     const streamMatch = pathname.match(/^\/stream\/([^\/]+?)(\.ts)?$/);
     if (streamMatch) {
-        const channelId = streamMatch[1];
+        const channelId = decodeURIComponent(streamMatch[1]);
         console.log(`[STREAM] Looking up channel: ${channelId}`);
         
         const schedule = await loadSchedule();
@@ -321,14 +400,48 @@ const server = http.createServer(async (req, res) => {
             return;
         }
         
-        if (!event || !event.stream_url) {
+        if (!event) {
             console.error(`[STREAM] No active event for ${channelId}`);
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('No active event');
             return;
         }
         
-        console.log(`[STREAM] Found event: ${event.program_name}`);
+        // If this is a placeholder event, find the most recent real event with a stream URL
+        let streamEvent = event;
+        if (event.is_placeholder || !event.stream_url) {
+            console.log(`[STREAM] Placeholder event detected, looking for fallback stream`);
+            
+            // Find the most recent program with a stream URL
+            const now = new Date();
+            let mostRecentEvent = null;
+            
+            for (const program of channel.programs || []) {
+                if (program.stream_url && !program.is_placeholder) {
+                    const programStop = new Date(program.stop_dt);
+                    if (!mostRecentEvent) {
+                        mostRecentEvent = program;
+                    } else {
+                        const mostRecentStop = new Date(mostRecentEvent.stop_dt);
+                        if (programStop > mostRecentStop) {
+                            mostRecentEvent = program;
+                        }
+                    }
+                }
+            }
+            
+            if (mostRecentEvent) {
+                streamEvent = mostRecentEvent;
+                console.log(`[STREAM] Using fallback event: ${streamEvent.program_name}`);
+            } else {
+                console.error(`[STREAM] No stream URL available for ${channelId}`);
+                res.writeHead(503, { 'Content-Type': 'text/plain' });
+                res.end('No stream available');
+                return;
+            }
+        }
+        
+        console.log(`[STREAM] Streaming event: ${streamEvent.program_name}`);
         
         // Handle HEAD request - return headers only, no body
         if (req.method === 'HEAD') {
@@ -345,7 +458,7 @@ const server = http.createServer(async (req, res) => {
         }
         
         // Handle GET request - stream the content
-        streamTS(event.stream_url, res, req);
+        streamTS(streamEvent.stream_url, res, req);
         return;
     }
     
