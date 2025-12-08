@@ -143,7 +143,7 @@ def stream(channel_id):
     channel_id = channel_id.replace('.ts', '')
 
     schedule = load_schedule()
-
+    
     channel = None
     for pattern_name, pattern_data in schedule.items():
         for service_channel in pattern_data.get("service_channels", []):
@@ -156,19 +156,20 @@ def stream(channel_id):
     if not channel:
         app.logger.error(f"[STREAM] Channel {channel_id} not found")
         return Response("Channel not found", status=404, mimetype='text/plain')
-
+    
     now = datetime.now(tz.UTC)
-
+    
     event = None
     for program in channel["programs"]:
         start_dt_str = program.get("start_dt")
         stop_dt_str = program.get("stop_dt")
+
         if not start_dt_str or not stop_dt_str:
             continue
-
+        
         start_dt = dtparse.isoparse(start_dt_str)
         stop_dt = dtparse.isoparse(stop_dt_str)
-
+        
         if start_dt <= now < stop_dt:
             event = program
             break
@@ -176,29 +177,38 @@ def stream(channel_id):
     if not event or not event.get("stream_url"):
         app.logger.error(f"[STREAM] No active event for {channel_id}")
         return Response("No active event", status=404, mimetype='text/plain')
-
+    
     stream_url = event["stream_url"]
-
+    
     app.logger.info(f"[STREAM] {channel_id} -> {event['program_name']} (Client: {request.remote_addr})")
-
-    # Create the streaming response
+    
+    # Create response - Werkzeug will not add Connection: close if we use a generator
+    @app.after_request
+    def after_request(response):
+        # Remove Server header and other unwanted headers
+        if response.headers.get('Server'):
+            response.headers.pop('Server', None)
+        # Ensure only one Connection header
+        if 'Connection' in response.headers:
+            response.headers['Connection'] = 'keep-alive'
+        return response
+    
     response = Response(
         stream_ts(stream_url),
         mimetype='video/mp2t',
         direct_passthrough=True
     )
-
-    # ---- IMPORTANT: Apply working-provider-style headers here ----
+    
+    # Set headers in specific order to match working provider
+    response.headers['Date'] = response.headers.get('Date', '')
     response.headers['Content-Type'] = 'video/mp2t'
     response.headers['Content-Length'] = '0'
     response.headers['Connection'] = 'keep-alive'
     response.headers['Pragma'] = 'public'
     response.headers['Cache-Control'] = 'public, must-revalidate, proxy-revalidate'
-
-    # Remove Werkzeug "Server" header
-    response.headers.pop('Server', None)
-
+    
     return response
+
 
 @app.route('/playlist.m3u')
 def playlist():

@@ -1,0 +1,17 @@
+{
+  "name": "epg-builder-server",
+  "version": "1.0.0",
+  "description": "EPG Builder streaming server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "DEBUG=true node server.js"
+  },
+  "keywords": ["iptv", "epg", "streaming"],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {}
+}
