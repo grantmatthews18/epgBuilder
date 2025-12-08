@@ -214,8 +214,27 @@ function formatXmltvTimestamp(date) {
 }
 
 function fillProgramGaps(programs, channelName, iconUrl) {
+    const now = new Date();
+    const oneDayAgo = new Date(now);
+    oneDayAgo.setUTCDate(oneDayAgo.getUTCDate() - 1);
+    oneDayAgo.setUTCHours(0, 0, 0, 0);
+    
+    const sevenDaysAhead = new Date(now);
+    sevenDaysAhead.setUTCDate(sevenDaysAhead.getUTCDate() + 7);
+    sevenDaysAhead.setUTCHours(23, 59, 59, 999);
+    
+    // If no programs at all, create one big placeholder
     if (!programs || programs.length === 0) {
-        return [];
+        return [{
+            start_dt: oneDayAgo.toISOString(),
+            stop_dt: sevenDaysAhead.toISOString(),
+            start_str: formatXmltvTimestamp(oneDayAgo),
+            stop_str: formatXmltvTimestamp(sevenDaysAhead),
+            program_name: 'No Events Scheduled',
+            description: 'No program information available',
+            icon_url: DEFAULT_EVENT_IMG || iconUrl,
+            is_placeholder: true
+        }];
     }
     
     // Sort programs by start time
@@ -226,8 +245,24 @@ function fillProgramGaps(programs, channelName, iconUrl) {
     });
     
     const filled = [];
-    const now = new Date();
+    const firstProgramStart = new Date(sorted[0].start_dt);
     
+    // Add placeholder before first program if needed
+    if (firstProgramStart > oneDayAgo) {
+        const placeholder = {
+            start_dt: oneDayAgo.toISOString(),
+            stop_dt: firstProgramStart.toISOString(),
+            start_str: formatXmltvTimestamp(oneDayAgo),
+            stop_str: formatXmltvTimestamp(firstProgramStart),
+            program_name: `${channelName} - No Programming`,
+            description: 'No programming scheduled during this time',
+            icon_url: DEFAULT_EVENT_IMG || iconUrl,
+            is_placeholder: true
+        };
+        filled.push(placeholder);
+    }
+    
+    // Add programs and fill gaps between them
     for (let i = 0; i < sorted.length; i++) {
         const currentProgram = sorted[i];
         const currentStop = new Date(currentProgram.stop_dt);
@@ -255,6 +290,22 @@ function fillProgramGaps(programs, channelName, iconUrl) {
                 filled.push(placeholder);
             }
         }
+    }
+    
+    // Add placeholder after last program if needed
+    const lastProgramStop = new Date(sorted[sorted.length - 1].stop_dt);
+    if (lastProgramStop < sevenDaysAhead) {
+        const placeholder = {
+            start_dt: lastProgramStop.toISOString(),
+            stop_dt: sevenDaysAhead.toISOString(),
+            start_str: formatXmltvTimestamp(lastProgramStop),
+            stop_str: formatXmltvTimestamp(sevenDaysAhead),
+            program_name: `${channelName} - No Programming`,
+            description: 'No programming scheduled during this time',
+            icon_url: DEFAULT_EVENT_IMG || iconUrl,
+            is_placeholder: true
+        };
+        filled.push(placeholder);
     }
     
     return filled;
