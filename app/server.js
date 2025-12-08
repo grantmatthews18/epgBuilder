@@ -44,10 +44,10 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
     }
     
     const TS_PACKET_SIZE = 188;
+    const PACKETS_PER_WRITE = 7; // Write 7 packets at a time (1316 bytes, standard MPEG-TS over UDP)
     let buffer = Buffer.alloc(0);
     let bytesSent = 0;
     let packetCount = 0;
-    let isPaused = false;
     
     if (redirectCount === 0) {
         console.log(`[STREAM] ${channelId} -> ${programName}`);
@@ -86,7 +86,7 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
             // Consume the redirect response body to free up the connection
             proxyRes.resume();
             
-            // Follow the redirect - DO NOT set up client listeners here
+            // Follow the redirect
             streamTS(newUrl, res, channelId, programName, redirectCount + 1);
             return;
         }
@@ -109,13 +109,14 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
                 'Date': new Date().toUTCString(),
                 'Content-Type': 'video/mp2t',
                 'Connection': 'keep-alive',
+                'Transfer-Encoding': 'chunked',
                 'Pragma': 'public',
-                'Cache-Control': 'public, must-revalidate, proxy-revalidate'
+                'Cache-Control': 'no-cache'
             });
             console.log('[STREAM] Response headers sent');
         }
         
-        // Handle client disconnect - ONLY after successful connection
+        // Handle client disconnect
         const onClientClose = () => {
             const mb = (bytesSent / (1024 * 1024)).toFixed(2);
             console.log(`[STREAM] Client disconnected after ${mb}MB (${packetCount} packets)`);
@@ -130,24 +131,18 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         res.once('close', onClientClose);
         res.once('error', onClientError);
         
-        // Create a single drain handler to reuse
-        const onDrain = () => {
-            if (isPaused) {
-                isPaused = false;
-                proxyRes.resume();
-            }
-        };
-        
         proxyRes.on('data', (chunk) => {
             buffer = Buffer.concat([buffer, chunk]);
             
-            // Process complete TS packets
-            while (buffer.length >= TS_PACKET_SIZE) {
-                // Find sync byte (0x47)
-                const syncIdx = buffer.indexOf(0x47);
+            // Process and send complete TS packet groups
+            const writeSize = TS_PACKET_SIZE * PACKETS_PER_WRITE;
+            
+            while (buffer.length >= writeSize) {
+                // Find sync byte (0x47) at the start
+                let syncIdx = buffer.indexOf(0x47);
                 
                 if (syncIdx === -1) {
-                    console.warn('[STREAM] No sync byte found, discarding buffer');
+                    console.warn('[STREAM] No sync byte found in buffer');
                     buffer = Buffer.alloc(0);
                     break;
                 }
@@ -155,21 +150,43 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
                 if (syncIdx > 0) {
                     console.warn(`[STREAM] Discarding ${syncIdx} bytes before sync`);
                     buffer = buffer.slice(syncIdx);
+                    continue;
                 }
                 
-                if (buffer.length < TS_PACKET_SIZE) {
+                // Check if we have enough data for a full write
+                if (buffer.length < writeSize) {
                     break;
                 }
                 
-                // Extract one TS packet
-                const packet = buffer.slice(0, TS_PACKET_SIZE);
-                buffer = buffer.slice(TS_PACKET_SIZE);
+                // Verify all packets in this write have sync bytes
+                let allSynced = true;
+                for (let i = 0; i < PACKETS_PER_WRITE; i++) {
+                    if (buffer[i * TS_PACKET_SIZE] !== 0x47) {
+                        allSynced = false;
+                        break;
+                    }
+                }
                 
-                packetCount++;
-                bytesSent += packet.length;
+                if (!allSynced) {
+                    // Skip to next sync byte and try again
+                    syncIdx = buffer.indexOf(0x47, 1);
+                    if (syncIdx > 0) {
+                        buffer = buffer.slice(syncIdx);
+                    } else {
+                        buffer = Buffer.alloc(0);
+                    }
+                    continue;
+                }
                 
-                if (packetCount === 1) {
-                    console.log('[STREAM] First packet sent');
+                // Extract packet group
+                const packetGroup = buffer.slice(0, writeSize);
+                buffer = buffer.slice(writeSize);
+                
+                packetCount += PACKETS_PER_WRITE;
+                bytesSent += packetGroup.length;
+                
+                if (packetCount === PACKETS_PER_WRITE) {
+                    console.log('[STREAM] First packet group sent');
                 }
                 
                 if (packetCount % 5000 === 0) {
@@ -178,16 +195,14 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
                 }
                 
                 try {
-                    // Write packet to response
-                    if (!res.write(packet)) {
-                        // Backpressure - pause upstream only if not already paused
-                        if (!isPaused) {
-                            isPaused = true;
-                            proxyRes.pause();
-                            // Remove any existing drain listeners before adding new one
-                            res.removeListener('drain', onDrain);
-                            res.once('drain', onDrain);
-                        }
+                    // Write packet group to response
+                    const canContinue = res.write(packetGroup);
+                    if (!canContinue) {
+                        // Backpressure - pause upstream
+                        proxyRes.pause();
+                        res.once('drain', () => {
+                            proxyRes.resume();
+                        });
                     }
                 } catch (error) {
                     console.error('[STREAM] Write error:', error.message);
@@ -198,18 +213,24 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         });
         
         proxyRes.on('end', () => {
-            // Clean up drain listener
-            res.removeListener('drain', onDrain);
-            
             // Clean up client listeners
             res.removeListener('close', onClientClose);
             res.removeListener('error', onClientError);
             
             // Flush remaining complete packets
             while (buffer.length >= TS_PACKET_SIZE) {
+                const syncIdx = buffer.indexOf(0x47);
+                if (syncIdx === -1) break;
+                if (syncIdx > 0) {
+                    buffer = buffer.slice(syncIdx);
+                }
+                if (buffer.length < TS_PACKET_SIZE) break;
+                
                 const packet = buffer.slice(0, TS_PACKET_SIZE);
                 buffer = buffer.slice(TS_PACKET_SIZE);
                 bytesSent += packet.length;
+                packetCount++;
+                
                 try {
                     res.write(packet);
                 } catch (error) {
@@ -229,8 +250,6 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         
         proxyRes.on('error', (error) => {
             console.error(`[STREAM] Proxy response error:`, error.message);
-            // Clean up all listeners
-            res.removeListener('drain', onDrain);
             res.removeListener('close', onClientClose);
             res.removeListener('error', onClientError);
             
