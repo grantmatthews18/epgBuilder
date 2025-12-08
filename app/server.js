@@ -86,7 +86,7 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
             // Consume the redirect response body to free up the connection
             proxyRes.resume();
             
-            // Follow the redirect
+            // Follow the redirect - DO NOT set up client listeners here
             streamTS(newUrl, res, channelId, programName, redirectCount + 1);
             return;
         }
@@ -114,6 +114,21 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
             });
             console.log('[STREAM] Response headers sent');
         }
+        
+        // Handle client disconnect - ONLY after successful connection
+        const onClientClose = () => {
+            const mb = (bytesSent / (1024 * 1024)).toFixed(2);
+            console.log(`[STREAM] Client disconnected after ${mb}MB (${packetCount} packets)`);
+            proxyReq.destroy();
+        };
+        
+        const onClientError = (error) => {
+            console.error('[STREAM] Response error:', error.message);
+            proxyReq.destroy();
+        };
+        
+        res.once('close', onClientClose);
+        res.once('error', onClientError);
         
         // Create a single drain handler to reuse
         const onDrain = () => {
@@ -186,6 +201,10 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
             // Clean up drain listener
             res.removeListener('drain', onDrain);
             
+            // Clean up client listeners
+            res.removeListener('close', onClientClose);
+            res.removeListener('error', onClientError);
+            
             // Flush remaining complete packets
             while (buffer.length >= TS_PACKET_SIZE) {
                 const packet = buffer.slice(0, TS_PACKET_SIZE);
@@ -210,8 +229,11 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
         
         proxyRes.on('error', (error) => {
             console.error(`[STREAM] Proxy response error:`, error.message);
-            // Clean up drain listener
+            // Clean up all listeners
             res.removeListener('drain', onDrain);
+            res.removeListener('close', onClientClose);
+            res.removeListener('error', onClientError);
+            
             if (!res.headersSent) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
             }
@@ -249,18 +271,6 @@ function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
     });
     
     proxyReq.end();
-    
-    // Handle client disconnect
-    res.on('close', () => {
-        const mb = (bytesSent / (1024 * 1024)).toFixed(2);
-        console.log(`[STREAM] Client disconnected after ${mb}MB (${packetCount} packets)`);
-        proxyReq.destroy();
-    });
-    
-    res.on('error', (error) => {
-        console.error('[STREAM] Response error:', error.message);
-        proxyReq.destroy();
-    });
 }
 
 function findChannelAndEvent(schedule, channelId) {
