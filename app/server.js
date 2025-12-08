@@ -31,13 +31,26 @@ async function loadSchedule() {
     }
 }
 
-function streamTS(sourceUrl, res, channelId, programName) {
+function streamTS(sourceUrl, res, channelId, programName, redirectCount = 0) {
+    const MAX_REDIRECTS = 5;
+    
+    if (redirectCount >= MAX_REDIRECTS) {
+        console.error('[STREAM] Too many redirects');
+        if (!res.headersSent) {
+            res.writeHead(502, { 'Content-Type': 'text/plain' });
+        }
+        res.end('Too many redirects');
+        return;
+    }
+    
     const TS_PACKET_SIZE = 188;
     let buffer = Buffer.alloc(0);
     let bytesSent = 0;
     let packetCount = 0;
     
-    console.log(`[STREAM] ${channelId} -> ${programName}`);
+    if (redirectCount === 0) {
+        console.log(`[STREAM] ${channelId} -> ${programName}`);
+    }
     console.log(`[STREAM] Source URL: ${sourceUrl}`);
     
     const parsedUrl = url.parse(sourceUrl);
@@ -60,6 +73,20 @@ function streamTS(sourceUrl, res, channelId, programName) {
     
     const proxyReq = protocol.request(reqOptions, (proxyRes) => {
         console.log(`[STREAM] Upstream response: ${proxyRes.statusCode}`);
+        
+        // Handle redirects (301, 302, 303, 307, 308)
+        if (proxyRes.statusCode >= 300 && proxyRes.statusCode < 400 && proxyRes.headers.location) {
+            const redirectUrl = proxyRes.headers.location;
+            console.log(`[STREAM] Following redirect to: ${redirectUrl}`);
+            
+            // Resolve relative URLs
+            const newUrl = url.resolve(sourceUrl, redirectUrl);
+            
+            // Follow the redirect
+            proxyReq.destroy();
+            streamTS(newUrl, res, channelId, programName, redirectCount + 1);
+            return;
+        }
         
         if (proxyRes.statusCode !== 200) {
             console.error(`[STREAM] Upstream error ${proxyRes.statusCode}`);
