@@ -345,7 +345,7 @@ const server = http.createServer(async (req, res) => {
         }
         
         // Handle GET request - stream the content
-        streamTS(event.stream_url, res);
+        streamTS(event.stream_url, res, req);
         return;
     }
     
