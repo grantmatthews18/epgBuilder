@@ -37,7 +37,6 @@ async function streamTS(sourceUrl, res) {
     let bytesSent = 0;
     let firstPacketSent = false;
 
-    // Function to perform HTTP/HTTPS GET and follow redirects
     const fetchStream = (urlToFetch) => {
         const urlObj = new URL(urlToFetch);
         const protocol = urlObj.protocol === 'https:' ? https : http;
@@ -54,37 +53,33 @@ async function streamTS(sourceUrl, res) {
                 }
             },
             upstream => {
+                // Handle redirects BEFORE sending headers
                 if (upstream.statusCode >= 300 && upstream.statusCode < 400 && upstream.headers.location) {
                     const redirectUrl = new URL(upstream.headers.location, urlToFetch).toString();
                     console.log(`[STREAM] Redirect → ${redirectUrl}`);
-                    upstream.destroy();
-                    fetchStream(redirectUrl); // follow redirect without closing client
-                    return;
+                    upstream.destroy(); // free the upstream socket
+                    return fetchStream(redirectUrl); // follow redirect
                 }
 
                 if (upstream.statusCode !== 200) {
                     if (!res.headersSent) {
                         res.writeHead(502, { 'Content-Type': 'text/plain' });
                     }
-                    res.end('Bad Gateway');
-                    return;
+                    return res.end('Bad Gateway');
                 }
 
-                // Send headers once, IPTV-compatible
+                // Send headers once, safely
                 if (!res.headersSent) {
                     res.writeHead(200, {
                         'Content-Type': 'video/mp2t',
                         'Cache-Control': 'no-cache',
                         'Connection': 'keep-alive'
                     });
-                    res.useChunkedEncodingByDefault = false;
-                    res.removeHeader('Transfer-Encoding');
                 }
 
                 upstream.on('data', chunk => {
                     buffer = Buffer.concat([buffer, chunk]);
 
-                    // Process full TS packets
                     while (buffer.length >= TS_PACKET_SIZE) {
                         const syncIdx = buffer.indexOf(0x47);
                         if (syncIdx === -1) {
@@ -122,7 +117,6 @@ async function streamTS(sourceUrl, res) {
                     res.end();
                 });
 
-                // Handle client disconnect
                 res.on('close', () => {
                     console.log('[STREAM] Client closed');
                     upstream.destroy();
@@ -132,17 +126,15 @@ async function streamTS(sourceUrl, res) {
 
         request.on('error', err => {
             console.error('[STREAM] Request error:', err.message);
-            if (!res.headersSent) {
-                res.writeHead(502, { 'Content-Type': 'text/plain' });
-            }
+            if (!res.headersSent) res.writeHead(502, { 'Content-Type': 'text/plain' });
             res.end('Connection error');
         });
     };
 
-    // Start streaming
     console.log(`[STREAM] Connecting to ${sourceUrl}`);
     fetchStream(sourceUrl);
 }
+
 
 function findChannelAndEvent(schedule, channelId) {
     let channel = null;
