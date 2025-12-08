@@ -433,7 +433,7 @@ const server = http.createServer(async (req, res) => {
         return;
     }
     
-    // Stream endpoint
+    // Stream endpoint (handles both GET and HEAD)
     const streamMatch = pathname.match(/^\/stream\/([^\/]+?)(\.ts)?$/);
     if (streamMatch) {
         const channelId = streamMatch[1];
@@ -458,7 +458,21 @@ const server = http.createServer(async (req, res) => {
         
         console.log(`[STREAM] Found event: ${event.program_name}`);
         
-        // DO NOT send headers here - streamTS will handle it after redirects
+        // Handle HEAD request - return headers only, no body
+        if (req.method === 'HEAD') {
+            res.writeHead(200, {
+                'Date': new Date().toUTCString(),
+                'Content-Type': 'video/mp2t',
+                'Content-Length': '0',
+                'Connection': 'keep-alive',
+                'Pragma': 'public',
+                'Cache-Control': 'public, must-revalidate, proxy-revalidate'
+            });
+            res.end();
+            return;
+        }
+        
+        // Handle GET request - stream the content
         streamTS(event.stream_url, res, channelId, event.program_name);
         return;
     }
