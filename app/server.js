@@ -31,111 +31,117 @@ async function loadSchedule() {
     }
 }
 
-function streamTS(sourceUrl, res) {
-    console.log(`[STREAM] Connecting to ${sourceUrl}`);
-
+async function streamTS(sourceUrl, res) {
     const TS_PACKET_SIZE = 188;
     let buffer = Buffer.alloc(0);
     let bytesSent = 0;
-    let packetCount = 0;
+    let firstPacketSent = false;
 
-    const urlObj = new URL(sourceUrl);
-    const protocol = urlObj.protocol === "https:" ? https : http;
+    // Function to perform HTTP/HTTPS GET and follow redirects
+    const fetchStream = (urlToFetch) => {
+        const urlObj = new URL(urlToFetch);
+        const protocol = urlObj.protocol === 'https:' ? https : http;
 
-    const request = protocol.get(
-        {
-            hostname: urlObj.hostname,
-            port: urlObj.port || (urlObj.protocol === "https:" ? 443 : 80),
-            path: urlObj.pathname + urlObj.search,
-            method: "GET",
-            headers: {
-                "User-Agent": "Mozilla/5.0",
-                "Connection": "keep-alive",
-                "Accept": "*/*"
-            }
-        },
-        upstream => {
-            console.log(`[STREAM] Upstream: ${upstream.statusCode}`);
-
-            // Follow redirects automatically
-            if (upstream.statusCode >= 300 && upstream.statusCode < 400 && upstream.headers.location) {
-                const redirectUrl = new URL(upstream.headers.location, sourceUrl).toString();
-                console.log(`[STREAM] Redirect → ${redirectUrl}`);
-                upstream.resume(); // free upstream socket
-                return streamTS(redirectUrl, res); // recursive call
-            }
-
-            if (upstream.statusCode !== 200) {
-                res.writeHead(502, { "Content-Type": "text/plain" });
-                return res.end("Bad Gateway");
-            }
-
-            // Send IPTV-compatible headers (disable chunked encoding)
-            if (!res.headersSent) {
-                res.statusCode = 200;
-                res.setHeader("Content-Type", "video/mp2t");
-                res.setHeader("Cache-Control", "no-cache");
-                res.setHeader("Connection", "close");
-                res.useChunkedEncodingByDefault = false;
-                res.removeHeader("Transfer-Encoding");
-            }
-
-            upstream.on("data", chunk => {
-                // Append new data to buffer
-                buffer = Buffer.concat([buffer, chunk]);
-
-                // Process complete TS packets only
-                while (buffer.length >= TS_PACKET_SIZE) {
-                    const syncIdx = buffer.indexOf(0x47);
-                    if (syncIdx === -1) {
-                        // No sync → drop everything
-                        console.warn(`[STREAM] No sync byte found — clearing ${buffer.length} bytes`);
-                        buffer = Buffer.alloc(0);
-                        break;
-                    }
-                    if (syncIdx > 0) {
-                        console.warn(`[STREAM] Discarding ${syncIdx} bytes to resync`);
-                        buffer = buffer.slice(syncIdx);
-                        if (buffer.length < TS_PACKET_SIZE) break;
-                    }
-
-                    // Extract one TS packet
-                    const packet = buffer.slice(0, TS_PACKET_SIZE);
-                    buffer = buffer.slice(TS_PACKET_SIZE);
-
-                    res.write(packet);
-                    packetCount++;
-                    bytesSent += TS_PACKET_SIZE;
-
-                    if (packetCount === 1) console.log("[STREAM] First packet delivered");
+        const request = protocol.get(
+            {
+                hostname: urlObj.hostname,
+                port: urlObj.port || (urlObj.protocol === 'https:' ? 443 : 80),
+                path: urlObj.pathname + urlObj.search,
+                headers: {
+                    'User-Agent': 'Mozilla/5.0',
+                    'Connection': 'keep-alive',
+                    'Accept': '*/*'
                 }
-            });
+            },
+            upstream => {
+                if (upstream.statusCode >= 300 && upstream.statusCode < 400 && upstream.headers.location) {
+                    const redirectUrl = new URL(upstream.headers.location, urlToFetch).toString();
+                    console.log(`[STREAM] Redirect → ${redirectUrl}`);
+                    upstream.destroy();
+                    fetchStream(redirectUrl); // follow redirect without closing client
+                    return;
+                }
 
-            upstream.on("end", () => {
-                console.log(`[STREAM] Upstream ended, sent ${bytesSent / 1024 / 1024} MB`);
-                res.end();
-            });
+                if (upstream.statusCode !== 200) {
+                    if (!res.headersSent) {
+                        res.writeHead(502, { 'Content-Type': 'text/plain' });
+                    }
+                    res.end('Bad Gateway');
+                    return;
+                }
 
-            upstream.on("error", err => {
-                console.error("[STREAM] Upstream error:", err.message);
-                res.end();
-            });
+                // Send headers once, IPTV-compatible
+                if (!res.headersSent) {
+                    res.writeHead(200, {
+                        'Content-Type': 'video/mp2t',
+                        'Cache-Control': 'no-cache',
+                        'Connection': 'keep-alive'
+                    });
+                    res.useChunkedEncodingByDefault = false;
+                    res.removeHeader('Transfer-Encoding');
+                }
 
-            // Handle client disconnect
-            res.on("close", () => {
-                console.log("[STREAM] Client closed");
-                upstream.destroy();
-            });
-        }
-    );
+                upstream.on('data', chunk => {
+                    buffer = Buffer.concat([buffer, chunk]);
 
-    request.on("error", err => {
-        console.error("[STREAM] Request error:", err.message);
-        if (!res.headersSent) {
-            res.writeHead(502, { "Content-Type": "text/plain" });
-        }
-        res.end("Connection error");
-    });
+                    // Process full TS packets
+                    while (buffer.length >= TS_PACKET_SIZE) {
+                        const syncIdx = buffer.indexOf(0x47);
+                        if (syncIdx === -1) {
+                            console.warn(`[STREAM] No sync byte found — clearing ${buffer.length} bytes`);
+                            buffer = Buffer.alloc(0);
+                            break;
+                        }
+
+                        if (syncIdx > 0) {
+                            console.warn(`[STREAM] Discarding ${syncIdx} bytes to resync`);
+                            buffer = buffer.slice(syncIdx);
+                            if (buffer.length < TS_PACKET_SIZE) break;
+                        }
+
+                        const packet = buffer.slice(0, TS_PACKET_SIZE);
+                        buffer = buffer.slice(TS_PACKET_SIZE);
+
+                        res.write(packet);
+                        bytesSent += TS_PACKET_SIZE;
+
+                        if (!firstPacketSent) {
+                            console.log('[STREAM] First packet delivered');
+                            firstPacketSent = true;
+                        }
+                    }
+                });
+
+                upstream.on('end', () => {
+                    console.log(`[STREAM] Upstream ended, sent ${(bytesSent / 1024 / 1024).toFixed(2)} MB`);
+                    res.end();
+                });
+
+                upstream.on('error', err => {
+                    console.error('[STREAM] Upstream error:', err.message);
+                    res.end();
+                });
+
+                // Handle client disconnect
+                res.on('close', () => {
+                    console.log('[STREAM] Client closed');
+                    upstream.destroy();
+                });
+            }
+        );
+
+        request.on('error', err => {
+            console.error('[STREAM] Request error:', err.message);
+            if (!res.headersSent) {
+                res.writeHead(502, { 'Content-Type': 'text/plain' });
+            }
+            res.end('Connection error');
+        });
+    };
+
+    // Start streaming
+    console.log(`[STREAM] Connecting to ${sourceUrl}`);
+    fetchStream(sourceUrl);
 }
 
 function findChannelAndEvent(schedule, channelId) {
