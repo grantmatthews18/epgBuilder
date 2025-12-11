@@ -384,6 +384,15 @@ const server = http.createServer(async (req, res) => {
             '<tv generator-info-name="epgBuilder-combined">'
         ];
         
+        // Calculate hidden event time: 00:00 UTC from 1 day ago
+        const now = new Date();
+        const hiddenEventStart = new Date(now);
+        hiddenEventStart.setUTCDate(hiddenEventStart.getUTCDate() - 1);
+        hiddenEventStart.setUTCHours(0, 0, 0, 0);
+        
+        const hiddenEventStop = new Date(hiddenEventStart);
+        hiddenEventStop.setUTCMinutes(30); // 30 minutes duration
+        
         // Channels
         for (const [patternName, patternData] of Object.entries(schedule)) {
             for (const channel of patternData.service_channels || []) {
@@ -399,18 +408,27 @@ const server = http.createServer(async (req, res) => {
             }
         }
         
-        // Programs (with gap filling)
+        // Programs (only real events, no placeholders)
         for (const [patternName, patternData] of Object.entries(schedule)) {
             for (const channel of patternData.service_channels || []) {
                 const channelId = channel.channel_name; // Use human-friendly name as ID
-                // Fill gaps in programming
-                const filledPrograms = fillProgramGaps(
-                    channel.programs || [], 
-                    channel.channel_name,
-                    channel.icon_url
-                );
                 
-                for (const program of filledPrograms) {
+                // Add the hidden event for IPTV player detection (00:00 UTC -1 day, 30 min duration)
+                lines.push(`  <programme channel="${escapeXml(channelId)}" start="${formatXmltvTimestamp(hiddenEventStart)}" stop="${formatXmltvTimestamp(hiddenEventStop)}">`);
+                lines.push(`    <title>${escapeXml(channel.channel_name)} - Hidden Event</title>`);
+                lines.push(`    <desc>Hidden event for IPTV player channel detection</desc>`);
+                if (patternData.category) {
+                    lines.push(`    <category lang="en">${escapeXml(patternData.category)}</category>`);
+                }
+                if (channel.icon_url) {
+                    lines.push(`    <icon src="${escapeXml(channel.icon_url)}"/>`);
+                }
+                lines.push('  </programme>');
+                
+                // Add only real programs (filter out placeholders)
+                const realPrograms = (channel.programs || []).filter(program => !program.is_placeholder);
+                
+                for (const program of realPrograms) {
                     lines.push(`  <programme channel="${escapeXml(channelId)}" start="${program.start_str}" stop="${program.stop_str}">`);
                     lines.push(`    <title>${escapeXml(program.program_name)}</title>`);
                     lines.push(`    <desc>${escapeXml(program.description)}</desc>`);
