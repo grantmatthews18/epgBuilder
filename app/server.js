@@ -282,10 +282,10 @@ const server = http.createServer(async (req, res) => {
             '<tv generator-info-name="epgBuilder-combined">'
         ];
         
-        // Calculate hidden event time: 00:00 UTC from 1 day ago
+        // Calculate hidden event time: 00:00 UTC +6 days in the future
         const now = new Date();
         const hiddenEventStart = new Date(now);
-        hiddenEventStart.setUTCDate(hiddenEventStart.getUTCDate() - 1);
+        hiddenEventStart.setUTCDate(hiddenEventStart.getUTCDate() + 6);
         hiddenEventStart.setUTCHours(0, 0, 0, 0);
         
         const hiddenEventStop = new Date(hiddenEventStart);
@@ -316,7 +316,7 @@ const server = http.createServer(async (req, res) => {
                 
                 const channelId = channel.channel_name; // Use human-friendly name as ID
                 
-                // Add the hidden event for IPTV player detection (00:00 UTC -1 day, 30 min duration)
+                // Add the hidden event for IPTV player detection (00:00 UTC +6 days, 30 min duration)
                 lines.push(`  <programme channel="${escapeXml(channelId)}" start="${formatXmltvTimestamp(hiddenEventStart)}" stop="${formatXmltvTimestamp(hiddenEventStop)}">`);
                 lines.push(`    <title>${escapeXml(channel.channel_name)} - Hidden Event</title>`);
                 lines.push(`    <desc>Hidden event for IPTV player channel detection</desc>`);

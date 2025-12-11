@@ -409,7 +409,7 @@ def generate_combined_xmltv(combined_channels, output_file):
 
         # Write programme listings
         now_utc = datetime.now(tz.UTC)
-        period_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=1)
+        period_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=6)
         
         for pattern_name, pattern_data in combined_channels.items():
             for service_channel in pattern_data["service_channels"]:
@@ -420,7 +420,7 @@ def generate_combined_xmltv(combined_channels, output_file):
                 if not programs:
                     continue
                 
-                # Add hidden event for IPTV player detection (00:00 UTC -1 day, 30 min)
+                # Add hidden event for IPTV player detection (00:00 UTC +6 days, 30 min)
                 hidden_start = period_start.replace(hour=0, minute=0, second=0, microsecond=0)
                 hidden_stop = hidden_start + timedelta(minutes=30)
                 hidden_start_str = format_xmltv_timestamp(hidden_start)
@@ -428,7 +428,7 @@ def generate_combined_xmltv(combined_channels, output_file):
                 
                 f.write(f'  <programme channel="{channel_id_escaped}" start="{hidden_start_str}" stop="{hidden_stop_str}">\n')
                 f.write(f'    <title>{html.escape(str(service_channel["channel_name"]), quote=False)} - Hidden Event</title>\n')
-                f.write('    <desc>Hidden event for IPTV player channel detection</desc>\n')
+                f.write('    <desc>Hidden event for IPTV player channel detection (future placeholder)</desc>\n')
                 if service_channel.get("category"):
                     category_escaped = html.escape(str(service_channel["category"]), quote=False)
                     f.write(f'    <category lang="en">{category_escaped}</category>\n')
