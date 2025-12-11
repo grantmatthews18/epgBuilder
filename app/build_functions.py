@@ -278,27 +278,6 @@ def create_combined_channels(channels):
         for service_channel in combined_channels[pattern_name]["service_channels"]:
             service_channel["programs"].sort(key=lambda x: x["start_dt"])
     
-    # Add placeholder events for channels with no programs
-    now_utc = datetime.now(tz.UTC)
-    period_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
-    period_end = period_start + timedelta(days=7)
-    
-    for pattern_name in combined_channels:
-        for service_channel in combined_channels[pattern_name]["service_channels"]:
-            if not service_channel["programs"]:
-                # Add a placeholder for the entire 7-day period
-                service_channel["programs"].append({
-                    "start_dt": period_start,
-                    "stop_dt": period_end,
-                    "start_str": format_xmltv_timestamp(period_start),
-                    "stop_str": format_xmltv_timestamp(period_end),
-                    "original_channel_id": None,
-                    "stream_url": None,
-                    "program_name": "No Events Scheduled",
-                    "description": "No program information available for this channel",
-                    "icon_url": service_channel["icon_url"]
-                })
-    
     return combined_channels
 
 def save_schedule(combined_channels):
@@ -430,54 +409,36 @@ def generate_combined_xmltv(combined_channels, output_file):
 
         # Write programme listings
         now_utc = datetime.now(tz.UTC)
-        period_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0)
-        period_end = period_start + timedelta(days=7)  # 7-day EPG
+        period_start = now_utc.replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=1)
         
         for pattern_name, pattern_data in combined_channels.items():
             for service_channel in pattern_data["service_channels"]:
                 programs = service_channel["programs"]
                 channel_id_escaped = html.escape(str(service_channel["id"]), quote=True)
                 
+                # Skip channels with no programs
                 if not programs:
-                    # No events - create placeholder for entire period
-                    start_str = format_xmltv_timestamp(period_start)
-                    stop_str = format_xmltv_timestamp(period_end)
-                    f.write(f'  <programme channel="{channel_id_escaped}" start="{start_str}" stop="{stop_str}">\n')
-                    f.write('    <title>No Events Scheduled</title>\n')
-                    f.write('    <desc>No program information available</desc>\n')
-                    if service_channel.get("category"):
-                        category_escaped = html.escape(str(service_channel["category"]), quote=False)
-                        f.write(f'    <category lang="en">{category_escaped}</category>\n')
-                    f.write('  </programme>\n')
                     continue
                 
-                # Track last end time to fill gaps
-                last_stop = period_start
+                # Add hidden event for IPTV player detection (00:00 UTC -1 day, 30 min)
+                hidden_start = period_start.replace(hour=0, minute=0, second=0, microsecond=0)
+                hidden_stop = hidden_start + timedelta(minutes=30)
+                hidden_start_str = format_xmltv_timestamp(hidden_start)
+                hidden_stop_str = format_xmltv_timestamp(hidden_stop)
                 
+                f.write(f'  <programme channel="{channel_id_escaped}" start="{hidden_start_str}" stop="{hidden_stop_str}">\n')
+                f.write(f'    <title>{html.escape(str(service_channel["channel_name"]), quote=False)} - Hidden Event</title>\n')
+                f.write('    <desc>Hidden event for IPTV player channel detection</desc>\n')
+                if service_channel.get("category"):
+                    category_escaped = html.escape(str(service_channel["category"]), quote=False)
+                    f.write(f'    <category lang="en">{category_escaped}</category>\n')
+                if service_channel.get("icon_url"):
+                    icon_url_escaped = html.escape(str(service_channel["icon_url"]), quote=True)
+                    f.write(f'    <icon src="{icon_url_escaped}"/>\n')
+                f.write('  </programme>\n')
+                
+                # Write only real events (no gap filling)
                 for program in programs:
-                    # Parse datetime strings if they're stored as ISO format
-                    if isinstance(program["start_dt"], str):
-                        start_dt = dtparse.isoparse(program["start_dt"])
-                    else:
-                        start_dt = program["start_dt"]
-                    
-                    if isinstance(program["stop_dt"], str):
-                        stop_dt = dtparse.isoparse(program["stop_dt"])
-                    else:
-                        stop_dt = program["stop_dt"]
-                    
-                    # Add placeholder before this event if there's a gap
-                    if start_dt > last_stop:
-                        gap_start_str = format_xmltv_timestamp(last_stop)
-                        gap_stop_str = format_xmltv_timestamp(start_dt)
-                        f.write(f'  <programme channel="{channel_id_escaped}" start="{gap_start_str}" stop="{gap_stop_str}">\n')
-                        f.write('    <title>No Event</title>\n')
-                        f.write('    <desc>No event scheduled</desc>\n')
-                        if service_channel.get("category"):
-                            category_escaped = html.escape(str(service_channel["category"]), quote=False)
-                            f.write(f'    <category lang="en">{category_escaped}</category>\n')
-                        f.write('  </programme>\n')
-                    
                     # Write the actual event - FORCE ESCAPE ALL TEXT CONTENT
                     # Make absolutely sure we're escaping by converting to string first
                     raw_program_name = str(program.get("program_name", ""))
@@ -499,20 +460,6 @@ def generate_combined_xmltv(combined_channels, output_file):
                         icon_url_escaped = html.escape(str(program["icon_url"]), quote=True)
                         f.write(f'    <icon src="{icon_url_escaped}"/>\n')
                     
-                    f.write('  </programme>\n')
-                    
-                    last_stop = stop_dt
-                
-                # Fill gap at the end if needed
-                if last_stop < period_end:
-                    gap_start_str = format_xmltv_timestamp(last_stop)
-                    gap_stop_str = format_xmltv_timestamp(period_end)
-                    f.write(f'  <programme channel="{channel_id_escaped}" start="{gap_start_str}" stop="{gap_stop_str}">\n')
-                    f.write('    <title>No Event</title>\n')
-                    f.write('    <desc>No event scheduled</desc>\n')
-                    if service_channel.get("category"):
-                        category_escaped = html.escape(str(service_channel["category"]), quote=False)
-                        f.write(f'    <category lang="en">{category_escaped}</category>\n')
                     f.write('  </programme>\n')
 
         f.write('</tv>\n')

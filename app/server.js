@@ -171,14 +171,8 @@ function findChannelAndEvent(schedule, channelId) {
     const now = new Date();
     let event = null;
     
-    // Fill gaps to find placeholder or real events
-    const filledPrograms = fillProgramGaps(
-        channel.programs || [],
-        channel.channel_name,
-        channel.icon_url
-    );
-    
-    for (const program of filledPrograms) {
+    // Find the current event without filling gaps
+    for (const program of channel.programs || []) {
         if (!program.start_dt || !program.stop_dt) continue;
         
         const startDt = new Date(program.start_dt);
@@ -213,103 +207,7 @@ function formatXmltvTimestamp(date) {
     return `${year}${month}${day}${hours}${minutes}${seconds} +0000`;
 }
 
-function fillProgramGaps(programs, channelName, iconUrl) {
-    const now = new Date();
-    const oneDayAgo = new Date(now);
-    oneDayAgo.setUTCDate(oneDayAgo.getUTCDate() - 1);
-    oneDayAgo.setUTCHours(0, 0, 0, 0);
-    
-    const sevenDaysAhead = new Date(now);
-    sevenDaysAhead.setUTCDate(sevenDaysAhead.getUTCDate() + 7);
-    sevenDaysAhead.setUTCHours(23, 59, 59, 999);
-    
-    // If no programs at all, create one big placeholder
-    if (!programs || programs.length === 0) {
-        return [{
-            start_dt: oneDayAgo.toISOString(),
-            stop_dt: sevenDaysAhead.toISOString(),
-            start_str: formatXmltvTimestamp(oneDayAgo),
-            stop_str: formatXmltvTimestamp(sevenDaysAhead),
-            program_name: 'No Events Scheduled',
-            description: 'No program information available',
-            icon_url: DEFAULT_EVENT_IMG || iconUrl,
-            is_placeholder: true
-        }];
-    }
-    
-    // Sort programs by start time
-    const sorted = [...programs].sort((a, b) => {
-        const aStart = new Date(a.start_dt);
-        const bStart = new Date(b.start_dt);
-        return aStart - bStart;
-    });
-    
-    const filled = [];
-    const firstProgramStart = new Date(sorted[0].start_dt);
-    
-    // Add placeholder before first program if needed
-    if (firstProgramStart > oneDayAgo) {
-        const placeholder = {
-            start_dt: oneDayAgo.toISOString(),
-            stop_dt: firstProgramStart.toISOString(),
-            start_str: formatXmltvTimestamp(oneDayAgo),
-            stop_str: formatXmltvTimestamp(firstProgramStart),
-            program_name: `${channelName} - No Programming`,
-            description: 'No programming scheduled during this time',
-            icon_url: DEFAULT_EVENT_IMG || iconUrl,
-            is_placeholder: true
-        };
-        filled.push(placeholder);
-    }
-    
-    // Add programs and fill gaps between them
-    for (let i = 0; i < sorted.length; i++) {
-        const currentProgram = sorted[i];
-        const currentStop = new Date(currentProgram.stop_dt);
-        
-        // Add the current program
-        filled.push(currentProgram);
-        
-        // Check if there's a gap before the next program
-        if (i < sorted.length - 1) {
-            const nextProgram = sorted[i + 1];
-            const nextStart = new Date(nextProgram.start_dt);
-            
-            // If there's a gap, create a placeholder
-            if (currentStop < nextStart) {
-                const placeholder = {
-                    start_dt: currentStop.toISOString(),
-                    stop_dt: nextStart.toISOString(),
-                    start_str: formatXmltvTimestamp(currentStop),
-                    stop_str: formatXmltvTimestamp(nextStart),
-                    program_name: `${channelName} - No Programming`,
-                    description: 'No programming scheduled during this time',
-                    icon_url: DEFAULT_EVENT_IMG || iconUrl,
-                    is_placeholder: true
-                };
-                filled.push(placeholder);
-            }
-        }
-    }
-    
-    // Add placeholder after last program if needed
-    const lastProgramStop = new Date(sorted[sorted.length - 1].stop_dt);
-    if (lastProgramStop < sevenDaysAhead) {
-        const placeholder = {
-            start_dt: lastProgramStop.toISOString(),
-            stop_dt: sevenDaysAhead.toISOString(),
-            start_str: formatXmltvTimestamp(lastProgramStop),
-            stop_str: formatXmltvTimestamp(sevenDaysAhead),
-            program_name: `${channelName} - No Programming`,
-            description: 'No programming scheduled during this time',
-            icon_url: DEFAULT_EVENT_IMG || iconUrl,
-            is_placeholder: true
-        };
-        filled.push(placeholder);
-    }
-    
-    return filled;
-}
+
 
 const server = http.createServer(async (req, res) => {
     const parsedUrl = url.parse(req.url, true);
@@ -393,7 +291,7 @@ const server = http.createServer(async (req, res) => {
         const hiddenEventStop = new Date(hiddenEventStart);
         hiddenEventStop.setUTCMinutes(30); // 30 minutes duration
         
-        // Channels
+        // Channels (only include channels with programs)
         for (const [patternName, patternData] of Object.entries(schedule)) {
             for (const channel of patternData.service_channels || []) {
                 if (channel.programs && channel.programs.length > 0) {
@@ -408,9 +306,14 @@ const server = http.createServer(async (req, res) => {
             }
         }
         
-        // Programs (only real events, no placeholders)
+        // Programs (no placeholders, just real events)
         for (const [patternName, patternData] of Object.entries(schedule)) {
             for (const channel of patternData.service_channels || []) {
+                // Only process channels that have programs
+                if (!channel.programs || channel.programs.length === 0) {
+                    continue;
+                }
+                
                 const channelId = channel.channel_name; // Use human-friendly name as ID
                 
                 // Add the hidden event for IPTV player detection (00:00 UTC -1 day, 30 min duration)
@@ -425,10 +328,8 @@ const server = http.createServer(async (req, res) => {
                 }
                 lines.push('  </programme>');
                 
-                // Add only real programs (filter out placeholders)
-                const realPrograms = (channel.programs || []).filter(program => !program.is_placeholder);
-                
-                for (const program of realPrograms) {
+                // Add all programs (placeholders already removed at source)
+                for (const program of channel.programs) {
                     lines.push(`  <programme channel="${escapeXml(channelId)}" start="${program.start_str}" stop="${program.stop_str}">`);
                     lines.push(`    <title>${escapeXml(program.program_name)}</title>`);
                     lines.push(`    <desc>${escapeXml(program.description)}</desc>`);
@@ -476,17 +377,16 @@ const server = http.createServer(async (req, res) => {
             return;
         }
         
-        // If this is a placeholder event, find the most recent real event with a stream URL
+        // If no stream URL in current event, find the most recent event with a stream URL
         let streamEvent = event;
-        if (event.is_placeholder || !event.stream_url) {
-            console.log(`[STREAM] Placeholder event detected, looking for fallback stream`);
+        if (!event.stream_url) {
+            console.log(`[STREAM] No stream URL in current event, looking for fallback stream`);
             
             // Find the most recent program with a stream URL
-            const now = new Date();
             let mostRecentEvent = null;
             
             for (const program of channel.programs || []) {
-                if (program.stream_url && !program.is_placeholder) {
+                if (program.stream_url) {
                     const programStop = new Date(program.stop_dt);
                     if (!mostRecentEvent) {
                         mostRecentEvent = program;
