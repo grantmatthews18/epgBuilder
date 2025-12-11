@@ -17,7 +17,10 @@ source /opt/venv/bin/activate
 echo "Running XMLTV generator"
 python3 /app/main.py
 
-# Create crontab
+# Export environment variables for cron
+printenv | grep -v "no_proxy" > /etc/environment
+
+# Create crontab with environment variables
 echo "$CRON_SCHEDULE /opt/venv/bin/python3 /app/main.py > /proc/1/fd/1 2>&1" > /tmp/crontab
 crontab /tmp/crontab
 
