@@ -15,9 +15,3 @@ services:
     ports:
       - "8080:8080"
     restart: unless-stopped
-    networks:
-      - swagnet
-  
-networks:
-  swagnet:
-    external: true
