@@ -83,29 +83,29 @@ def parse_event_from_name(name):
             continue
 
         event_name = match.group("event_name").strip()
-        datetime_str = match.group("datetime").strip()
+        start_time_str = match.group("start_time").strip()
         channel_number = match.group("channel_number").strip() 
-        datetime_format = pattern_cfg.get("datetime_format", "%Y-%m-%d %H:%M")
+        time_format = pattern_cfg.get("time_format", "%Y-%m-%d %H:%M")
         timezone_str = pattern_cfg.get("timezone", "UTC")
 
         # Parse timezone
         local_tz = parse_timezone(timezone_str)
 
-        # Parse datetime
+        # Parse start time
         try:
             # Try parsing with the specified format first
             try:
-                event_dt = datetime.strptime(datetime_str, datetime_format)
+                event_dt = datetime.strptime(start_time_str, time_format)
             except ValueError:
                 # If it fails and format includes minutes, try without minutes (for times like "7pm")
-                if ":%M" in datetime_format:
-                    fallback_format = datetime_format.replace(":%M", "")
-                    event_dt = datetime.strptime(datetime_str, fallback_format)
+                if ":%M" in time_format:
+                    fallback_format = time_format.replace(":%M", "")
+                    event_dt = datetime.strptime(start_time_str, fallback_format)
                 else:
                     raise
             
             # If no year in format, set to current year
-            if "%Y" not in datetime_format:
+            if "%Y" not in time_format:
                 event_dt = event_dt.replace(year=datetime.now().year)
             
             # If no date provided, use today's date
@@ -123,10 +123,45 @@ def parse_event_from_name(name):
         except ValueError:
             continue  # unable to parse, try next pattern
 
+        # Parse optional end time
+        xmltv_stop = None
+        end_dt_utc = None
+        try:
+            end_time_group = match.groupdict().get("end_time")
+            if end_time_group:
+                end_time_str = end_time_group.strip()
+                
+                # Parse end time using the same format as start time
+                try:
+                    end_dt = datetime.strptime(end_time_str, time_format)
+                except ValueError:
+                    # If it fails and format includes minutes, try without minutes
+                    if ":%M" in time_format:
+                        fallback_format = time_format.replace(":%M", "")
+                        end_dt = datetime.strptime(end_time_str, fallback_format)
+                    else:
+                        raise
+                
+                # If no year in format, set to current year
+                if "%Y" not in time_format:
+                    end_dt = end_dt.replace(year=datetime.now().year)
+                
+                # If no date provided, use the same date as start time
+                if not pattern_cfg.get("date_provided", True):
+                    end_dt = end_dt.replace(year=event_dt.year, month=event_dt.month, day=event_dt.day)
+                
+                end_dt_local = end_dt.replace(tzinfo=local_tz)
+                end_dt_utc = end_dt_local.astimezone(tz.UTC)
+                xmltv_stop = format_xmltv_timestamp(end_dt_utc)
+        except (ValueError, KeyError):
+            pass  # No end time or unable to parse, will use default duration
+
         return {
             "event_name": event_name,
             "event_dt_utc": event_dt_utc,
             "xmltv_start": xmltv_start,
+            "xmltv_stop": xmltv_stop,
+            "end_dt_utc": end_dt_utc,
             "matched_pattern": pattern_cfg["name"],
             "channel_name": pattern_cfg.get("channel_name") + f" {channel_number}",
             "icon_url": pattern_cfg.get("icon_url"),
@@ -246,6 +281,7 @@ def create_combined_channels(channels):
         # Parse event times
         start_dt = datetime.strptime(channel["program_start"], "%Y%m%d%H%M%S %z")
         
+        # Use provided end time if available, otherwise default to 3 hours
         if channel.get("program_stop"):
             stop_dt = datetime.strptime(channel["program_stop"], "%Y%m%d%H%M%S %z")
         else:
@@ -256,17 +292,19 @@ def create_combined_channels(channels):
         for service_channel in combined_channels[matched_pattern]["service_channels"]:
             if has_open_slot(service_channel["programs"], start_dt, stop_dt):
                 # Add event to this channel
-                service_channel["programs"].append({
-                    "start_dt": start_dt,
-                    "stop_dt": stop_dt,
-                    "start_str": channel["program_start"],
-                    "stop_str": format_xmltv_timestamp(stop_dt),
-                    "original_channel_id": channel["id"],
-                    "stream_url": channel["stream_url"],
-                    "program_name": channel["program_name"],
-                    "description": channel["description"],
-                    "icon_url": channel["icon_url"]
-                })
+                service_channel["programs"].append(
+                    {
+                        "start_dt": start_dt,
+                        "stop_dt": stop_dt,
+                        "start_str": channel["program_start"],
+                        "stop_str": format_xmltv_timestamp(stop_dt),
+                        "original_channel_id": channel["id"],
+                        "stream_url": channel["stream_url"],
+                        "program_name": channel["program_name"],
+                        "description": channel["description"],
+                        "icon_url": channel["icon_url"]
+                    }
+                )
                 assigned = True
                 break
         
