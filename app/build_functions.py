@@ -60,18 +60,19 @@ def parse_event_from_name(name):
     for pattern_cfg in PATTERNS:
         # Check no_event_pattern first
         no_event_pattern = pattern_cfg.get("no_event_pattern")
-        no_match = re.search(no_event_pattern, name, re.IGNORECASE)
-        if no_event_pattern and no_match:
-            channel_number = no_match.group("channel_number").strip()
-            return {
-                "event_name": None,
-                "event_dt_utc": None,
-                "xmltv_start": None,
-                "matched_pattern": pattern_cfg["name"],
-                "channel_name": pattern_cfg.get("channel_name") + f" {channel_number}",
-                "icon_url": pattern_cfg.get("icon_url"),
-                "category": pattern_cfg.get("category")
-            }
+        if no_event_pattern:
+            no_match = re.search(no_event_pattern, name, re.IGNORECASE)
+            if no_match:
+                channel_number = no_match.group("channel_number").strip()
+                return {
+                    "event_name": None,
+                    "event_dt_utc": None,
+                    "xmltv_start": None,
+                    "matched_pattern": pattern_cfg["name"],
+                    "channel_name": pattern_cfg.get("channel_name") + f" {channel_number}",
+                    "icon_url": pattern_cfg.get("icon_url"),
+                    "category": pattern_cfg.get("category")
+                }
 
         # Try main pattern
         pattern = pattern_cfg.get("pattern")
