@@ -1,0 +1,4 @@
+# Minimal requirements for epgBuilder
+requests
+dateparser
+PyYAML

@@ -6,25 +6,6 @@ set -e
 
 echo "Using cron schedule: $CRON_SCHEDULE"
 
-# Get server port from environment or default to 8080
-: "${SERVER_PORT:=8080}"
-echo "Web server will listen on port: $SERVER_PORT"
-
-# Activate Python virtual environment
-source /opt/venv/bin/activate
-
-# Run XMLTV generator immediately
-echo "Running XMLTV generator"
-python3 /app/main.py
-
-# Create crontab
-echo "$CRON_SCHEDULE /opt/venv/bin/python3 /app/main.py > /proc/1/fd/1 2>&1" > /tmp/crontab
-crontab /tmp/crontab
-
-# Start cron in background
-echo "Starting cron..."
-cron
-
-# Start Node.js web server in foreground (this keeps the container alive)
-echo "Starting Node.js web server and stream manager on port $SERVER_PORT..."
-exec node /app/server.js
+# Run strm_builder immediately
+echo "Running strm_builder..."
+python3 -m app.app

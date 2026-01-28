@@ -1,17 +1,12 @@
 version: '3.8'
 
 services:
-  epgbuilder:
-    image: epgbuilder:local
-    container_name: epgbuilder
+  strm_builder:
+    image: strm_builder:local
+    container_name: strm_builder
     environment:
-      - M3U_URL=http://192.168.1.254:36400/a0859edd-0f91-45e8-9cdf-f06ed9126ba2/playlist.m3u
-      - CRON_SCHEDULE=30 2 * * *
-      - TZ=America/Chicago
-      - DEFAULT_EVENT_IMG=https://cdn.18bit.co/icons/black.webp
+      - PPV_M3U_URL=http://192.168.1.254:36400/a0bddd39-8259-4cfa-b03c-b1946c56c1c3/playlist.m3u
     volumes:
-      - ./output:/output
+      - ./output/strm:/output
       - ./config:/config
-    ports:
-      - "8080:8080"
-    restart: unless-stopped
+    restart: no

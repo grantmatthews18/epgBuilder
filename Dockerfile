@@ -19,31 +19,21 @@
 
 # ENTRYPOINT ["/entrypoint.sh"]
 
-FROM node:18-slim
-
-RUN apt-get update && \
-    apt-get install -y cron python3 python3-pip python3-venv && \
-    rm -rf /var/lib/apt/lists/*
-
-# Create virtual environment for Python
-RUN python3 -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
+FROM python:3.12-slim
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-WORKDIR /app
 COPY app/ /app/
-
-# Install Python dependencies for the EPG builder
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Install Node.js dependencies
-RUN npm install
 
 WORKDIR /
 
+# Install Python dependencies for the EPG builder
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+
 VOLUME ["/output"]
-VOLUME ["/config"]
+# VOLUME ["/config"]
 
 ENTRYPOINT ["/entrypoint.sh"]
