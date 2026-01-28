@@ -56,6 +56,9 @@ def init():
 
     globals.CONFIG = config
 
+    # Ensure Events DB Path exists
+    os.makedirs(os.path.dirname(globals.ESPN_EVENTS_DB_PATH), exist_ok=True)
+
     # Initialize the database manager for ESPN events
     globals.ESPN_DB_MANAGER = database_functions.ESPNDatabaseManager(globals.ESPN_EVENTS_DB_PATH)
 
