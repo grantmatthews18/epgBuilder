@@ -9,4 +9,6 @@ services:
     volumes:
       - ./output/strm:/output
       - ./config:/config
+    ports:
+      - "7741:7741"
     restart: no
