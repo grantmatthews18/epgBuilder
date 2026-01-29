@@ -321,12 +321,12 @@ def get_event_data(event_string, pattern = None, tz = None):
     if match_percentage >= globals.CONFIG.get("min_match_percentage", 50) or (globals.CONFIG.get("always_accept_pattern_matched_events", False) and pattern_matched):
         if(match_percentage >= globals.CONFIG.get("min_match_percentage", 50)):
             print(f"Event {event_string} Auto-Matched to Event: {matched_event.get('event_name', 'undefined')} with Match Percentage: {match_percentage}")
-            matched_event['event_id'] += '_' + uuid.uuid4().hex[:8]
+            matched_event['event_id'] = str(matched_event['event_id']) + '_' + str(uuid.uuid4().hex[:8])
             return matched_event
         else:
             print(f"Event {event_string} not Auto-Matched. Manually extracted fields: {input_string}, {date_str}, {start_time}, {end_time}")
             return {
-                "event_id": make_safe_filename(input_string) + '_' + uuid.uuid4().hex[:8],
+                "event_id": make_safe_filename(input_string) + '_' + str(uuid.uuid4().hex[:8]),
                 "league": None,
                 "event_name": input_string,
                 "date": date_str,
