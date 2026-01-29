@@ -6,7 +6,7 @@ import app.utils.database_functions.database_functions as database_functions
 import app.utils.m3u_functions.m3u_functions as m3u_functions
 import app.utils.build_strm.build_strm as build_strm
 import app.utils.event_processor.event_processor as event_processor
-from app import api
+import app.api.flask as api
 
 import app.globals as globals
 
@@ -74,7 +74,7 @@ def init():
 
     # Start the API
     print(f"Starting API on Port {globals.CONFIG.get('port', 8080)}")
-    api.run(port=globals.CONFIG.get('port', 8080))
+    api.app.run(port=globals.CONFIG.get('port', 8080))
 
 if __name__ == "__main__":
     init()
