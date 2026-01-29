@@ -1,3 +1,5 @@
+host: http://192.168.1.254:7741
+port: 7741
 always_accept_pattern_matched_events: true
 min_match_percentage: 50
 m3u:
