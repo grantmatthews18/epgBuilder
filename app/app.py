@@ -6,7 +6,7 @@ import app.utils.database_functions.database_functions as database_functions
 import app.utils.m3u_functions.m3u_functions as m3u_functions
 import app.utils.build_strm.build_strm as build_strm
 import app.utils.event_processor.event_processor as event_processor
-import api as api
+from app import api
 
 import app.globals as globals
 
