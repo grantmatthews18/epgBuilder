@@ -72,9 +72,9 @@ def init():
     # Run initial update to build output files
     update()
 
-    # Start the API
-    print(f"Starting API on Port {globals.CONFIG.get('port', 8080)}")
-    api.app.run(port=globals.CONFIG.get('port', 8080))
+    # # Start the API
+    # print(f"Starting API on Port {globals.CONFIG.get('port', 8080)}")
+    # api.app.run(port=globals.CONFIG.get('port', 8080), debug=True)
 
 if __name__ == "__main__":
     init()

@@ -10,7 +10,7 @@ def writeChannelsToFolder(channels, folder_path):
 def writeChannelToFolder(channel, folder_path):
     item_file_path = os.path.join(folder_path, f"{channel['event_id']}.strm")
     with open(item_file_path, 'w') as f:
-        f.write(f"{globals.CONFIG.get('host', 'http://localhost:8080')}/api/stream?stream_url={channel['stream_url']}")
+        f.write(f"{channel['stream_url']}")
 
     item_metadata_path = os.path.join(folder_path, f"{channel['event_id']}.nfo")
     with open(item_metadata_path, 'w') as f:
